@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.bitcamp.semiproj.dao.MovieMapper">
+    <select id="selectMovieByTheaterID" parameterType="int" resultType="MovieDto">
+		SELECT m.*
+		FROM movie AS m
+		JOIN theater as t
+		JOIN screen AS s
+		JOIN show_schedule as shw
+		ON shw.theaterID = t.theaterID AND shw.screenID = s.screenID
+			AND shw.movieID = m.movieID
+		WHERE shw.screen_date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-%d')
+			AND DATE_ADD(NOW(), INTERVAL 7 DAY) and t.theaterID=${theaterID};
+    </select>
+</mapper>

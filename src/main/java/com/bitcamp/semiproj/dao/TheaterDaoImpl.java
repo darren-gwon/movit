@@ -21,4 +21,17 @@ public class TheaterDaoImpl implements TheaterDao {
 		return session.selectList(namespace+"selectAll");
 	}
 
+	@Override
+	public List<TheaterDto> selectRegion() {
+		return session.selectList(namespace+"selectRegion");
+	}
+	
+	@Override
+	public List<TheaterDto> selectByRegion(int regionID) {
+		return session.selectList(namespace+"selectTheaterByRegion", regionID);
+	}
+
+	
+	
+	
 }

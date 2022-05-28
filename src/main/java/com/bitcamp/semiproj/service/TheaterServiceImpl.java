@@ -18,4 +18,13 @@ public class TheaterServiceImpl implements TheaterService {
 		return theaterDao.selectAll();
 	}
 	
+	@Override
+	public List<TheaterDto> getTheaterByRegion(int regionID){
+		return theaterDao.selectByRegion(regionID);
+	}
+	
+	@Override
+	public List<TheaterDto> getAllRegions(){
+		return theaterDao.selectRegion();
+	}
 }

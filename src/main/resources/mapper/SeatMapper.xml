@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitcamp.semiproj.dao.SeatMapper">
+    <select id="selectOwnSeat" parameterType="Map" resultType="OwnSeatDto" >
+        SELECT own.*
+		FROM ownseat AS own
+		JOIN show_schedule AS shw
+		ON shw.scheduleID = own.scheduleID
+		WHERE own.scheduleID=#{scheduleID}<!--  AND shw.movieID=#{movieID} AND shw.screenID=#{screenID}; -->
+	</select>
+    
+    <select id="selectSeatPrice" parameterType="Map" resultType="PriceDto">
+    	SELECT * FROM price
+    	WHERE classID=#{classID} and age_group=#{age_group};
+    </select>
+</mapper>

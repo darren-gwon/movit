@@ -6,4 +6,10 @@
     <select id="selectAll" resultType="TheaterDto">
         SELECT * FROM theater
     </select>
+    <select id="selectTheaterByRegion" parameterType="int" resultType="TheaterDto">
+        SELECT * FROM theater where regionID=#{regionID}
+    </select>
+    <select id="selectRegion" resultType="RegionDto">
+        SELECT * FROM region;
+    </select>
 </mapper>

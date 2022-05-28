@@ -4,6 +4,15 @@
 		"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias alias="BookingDto" type="com.bitcamp.semiproj.domain.BookingDto"/>
+		<typeAlias alias="MovieDto" type="com.bitcamp.semiproj.domain.MovieDto"/>
+		<typeAlias alias="OwnSeatDto" type="com.bitcamp.semiproj.domain.OwnSeatDto"/>
+		<typeAlias alias="PriceDto" type="com.bitcamp.semiproj.domain.PriceDto"/>
+		<typeAlias alias="RegionDto" type="com.bitcamp.semiproj.domain.RegionDto"/>
+		<typeAlias alias="ScheduleDto" type="com.bitcamp.semiproj.domain.ScheduleDto"/>
+		<typeAlias alias="ScreenClassDto" type="com.bitcamp.semiproj.domain.ScreenClassDto"/>
+		<typeAlias alias="ScreenDto" type="com.bitcamp.semiproj.domain.ScreenDto"/>
+		<typeAlias alias="ScreenSeatDto" type="com.bitcamp.semiproj.domain.ScreenSeatDto"/>
 		<typeAlias alias="TheaterDto" type="com.bitcamp.semiproj.domain.TheaterDto"/>
 	</typeAliases>
 </configuration>

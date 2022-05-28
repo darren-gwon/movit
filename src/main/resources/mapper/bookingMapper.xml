@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.bitcamp.semiproj.dao.BookingMapper">
+    <insert id="insertBooking" parameterType="BookingDto">
+    	INSERT INTO booking (bookingID, scheduleID, pay_tid, user_id, quantity, booking_time)
+		VALUES("${bookingID}", "${scheduleID}", "${pay_tid}", "${user_id}","${quantity}", now());
+		
+		INSERT INTO ownseat(bookingID, scheduleID, user_id, row_no, column_no, status)
+		VALUES
+	<foreach item="item" index="index" collection="ownSeatList" separator=",">
+		("${bookingID}","${scheduleID}","${user_id}","${item.row_no}","${item.column_no}",1)
+	</foreach>
+    </insert>
+    
+    <select id="selectSequence" resultType="String">
+		SELECT LPAD(AUTO_INCREMENT, 5, 0)
+		FROM information_schema.tables
+		WHERE table_name = 'booking';
+    </select>
+
+</mapper>

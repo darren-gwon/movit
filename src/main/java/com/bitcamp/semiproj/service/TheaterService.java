@@ -8,4 +8,8 @@ public interface TheaterService {
 
 	List<TheaterDto> getAllTheaters();
 
+	List<TheaterDto> getTheaterByRegion(int regionID);
+
+	List<TheaterDto> getAllRegions();
+
 }
