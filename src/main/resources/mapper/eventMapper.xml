@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitcamp.semiproj.dao.EventMapper">
+
+  <!-- 게시글목록 -->
+ 	<select id="eventpage" parameterType="Map" resultType="EventDto">
+		select * from event order by seq desc limit #{startnum}, #{perpage}
+ 	</select>
+ 	
+ 	<select id="eventlist" resultType="EventDto">
+		select * from event order by seq desc limit 0,8
+ 	</select>
+
+ <!-- 게시글 등록 -->
+	<insert id="eventwriteform">
+		insert into event (seq,title,content,view_cnt,start_date,
+		end_date,main_img,thumbnail_img) value(#{seq},#{title},#{content},#{view_cnt},
+		#{start_date},#{end_date},#{main_img},#{thumbnail_img})
+	</insert>
+	
+	<!-- 게시글 상세 -->
+	<select id="detail" parameterType="int" resultType="EventDto">
+		select seq, title, content, view_cnt, start_date, end_date, main_img, thumbnail_img
+		from event where seq=#{seq}
+	</select>
+	<!-- 조회수 증가 -->
+	<update id="readcount" parameterType="int">
+		update event set view_cnt=view_cnt+1 where seq=#{seq}
+	</update>
+	<!-- 게시글 수정 -->
+	<update id="updateform" parameterType="EventDto" >
+		update event set title = #{title}, content = #{content}, 
+		start_date = #{start_date},end_date = #{end_date} where seq = #{seq}
+	</update>
+	<!-- 게시글 삭제 -->
+	<delete id="delete" >
+		delete from event where seq = #{seq}
+	</delete>
+ 	<!-- 게시글 총 갯수 -->
+ 	<select id="postcount" resultType="int">
+ 		select count(seq) from event
+ 	</select>
+
+ </mapper>
