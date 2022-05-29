@@ -19,5 +19,12 @@
 		<typeAlias alias="ScreenDto" type="com.bitcamp.semiproj.domain.ScreenDto"/>
 		<typeAlias alias="ScreenSeatDto" type="com.bitcamp.semiproj.domain.ScreenSeatDto"/>
 		<typeAlias alias="TheaterDto" type="com.bitcamp.semiproj.domain.TheaterDto"/>
+		<typeAlias alias="InquiryFaqDto" type="com.bitcamp.semiproj.domain.InquiryFaqDto"/>
+		<typeAlias alias="InquiryLostDto" type="com.bitcamp.semiproj.domain.InquiryLostDto"/>
+		<typeAlias alias="InquiryDto" type="com.bitcamp.semiproj.domain.InquiryDto"/>
+		<typeAlias alias="NoticeDto" type="com.bitcamp.semiproj.domain.NoticeDto"/>
+		<typeAlias alias="EventDto" type="com.bitcamp.semiproj.domain.EventDto"/>
+		<typeAlias alias="UserDto" type="com.bitcamp.semiproj.domain.UserDto"/>
+		<typeAlias alias="KakaoDto" type="com.bitcamp.semiproj.domain.KakaoDto"/>
 	</typeAliases>
 </configuration>
