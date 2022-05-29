@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitcamp.semiproj.dao.PaymentMapper">
+	<insert id="insertPayment" parameterType="KakaoPayApprovalDto">
+ 		INSERT INTO payment
+		(aid, tid, cid, sid, partner_order_id, partner_user_id, item_name,
+		item_code, quantity, payment_method_type, created_at, approved_at, payload)
+		VALUES (#{aid}, #{tid}, #{cid}, #{sid}, #{partner_order_id},
+		#{partner_user_id}, #{item_name},
+		#{item_code}, #{quantity}, #{payment_method_type}, #{created_at}, #{approved_at}, #{payload});
+		
+		INSERT INTO amount(tid, total, tax_free, vat, point, discount)
+        VALUES(#{tid}, #{amount.total}, #{amount.tax_free}, #{amount.vat}, #{amount.point}, #{amount.discount});
+        
+        <if test="card_info!=null">
+        INSERT INTO card_info(tid, purchase_corp, purchase_corp_code, issuer_corp, issuer_corp_code,
+		kakaopay_purchase_corp, kakaopay_purchase_corp_code, kakaopay_issuer_corp, kakaopay_issuer_corp_code,
+		bin, card_type, install_month, approved_id, card_mid, interest_free_install, card_item_code)
+		values(#{tid}, #{card_info.purchase_corp}, #{card_info.purchase_corp_code}, #{card_info.issuer_corp}, #{card_info.issuer_corp_code},
+		#{card_info.kakaopay_purchase_corp}, #{card_info.kakaopay_purchase_corp_code}, #{card_info.kakaopay_issuer_corp}, #{card_info.kakaopay_issuer_corp_code},
+		#{card_info.bin}, #{card_info.card_type}, #{card_info.install_month}, #{card_info.approved_id}, #{card_info.kakaopay_purchase_corp_code}, #{card_info.kakaopay_issuer_corp}, #{card_info.issuer_corp_code});
+        </if>
+	</insert>
+	
+<!-- 	<insert id="insertAmount" parameterType="KakaoPayApprovalDto">
+		INSERT INTO amount(tid, total, tax_free, vat, point, discount)
+        VALUES(#{tid}, #{amount.total}, #{amount.tax_free}, #{amount.vat}, #{amount.point}, #{amount.discount});
+	</insert>
+	
+	<insert id="insertCardInfo" parameterType="KakaoPayApprovalDto">
+
+	</insert> -->
+</mapper>
