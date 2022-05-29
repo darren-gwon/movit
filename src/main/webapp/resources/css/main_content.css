@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.content_wrap {
+    margin: 0 auto;
+    text-align: center;
+    width:100%;
+    min-width:1500px;
+    height: 2000px;
+}
+
+.content {
+	position:relative;
+}
+
+.movieSlide_wrap {
+	height: 950px;
+	background-color: black;
+}
+
+#movieSlide{
+    width: 1500px;
+    margin: 0 auto;	
+}
+
+.movie_poster_wrap{
+	position: absolute;
+	top: 490px;
+	width: 100%;
+}
+
+.movie_poster{
+	display:inline-block;
+	padding-right: 40px;
+}
+
+.movie_poster.last{
+	padding-right: 0px;
+}
+
+.movie_poster .poster_img{
+	border-radius: 10px;
+}
