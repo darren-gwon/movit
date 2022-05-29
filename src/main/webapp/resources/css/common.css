@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+*{
+    margin:0;
+    padding:0;
+}
+.wrap {
+    background-color: greenyellow;
+    width: 100%;
+    min-width: 1500px;
+}
+
+.header_wrap {
+    height: 70px;
+    background-color: black;
+}
+
+.header {
+	position: relative;
+	display: block;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	min-width: 1500px;
+	text-align: center;
+    height: 70px;
+	line-height:70px;
+	margin: 0 auto;
+}
+
+.header .logo{
+	margin:0;
+	padding:0;
+	color: white;
+	font-size:30px;
+}
+
+.header .loginBtnDiv{
+	position: absolute;
+    left:70%;
+    top:10px;
+    color: white;
+    text-shadow: 2px 2px 10px black;
+    text-decoration: none;
+}
+
+.content_wrap {
+    margin: 0 auto;
+    text-align: center;
+    width:100%;
+    min-width:1500px;
+    height: 2000px;
+}
+
+.content {
+}
+
+.movieSlide_wrap {
+	height: 850px;
+	background-color: black;
+}
+
+#movieSlide{
+    width: 1500px;
+    margin: 0 auto;	
+
+}
