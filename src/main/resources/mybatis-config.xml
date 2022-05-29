@@ -26,5 +26,8 @@
 		<typeAlias alias="EventDto" type="com.bitcamp.semiproj.domain.EventDto"/>
 		<typeAlias alias="UserDto" type="com.bitcamp.semiproj.domain.UserDto"/>
 		<typeAlias alias="KakaoDto" type="com.bitcamp.semiproj.domain.KakaoDto"/>
+		<typeAlias alias="ReviewDto" type="com.bitcamp.semiproj.domain.ReviewDto"/>
+		<typeAlias alias="LikesDto" type="com.bitcamp.semiproj.domain.LikesDto"/>
+		<typeAlias alias="MypageDto" type="com.bitcamp.semiproj.domain.MypageDto"/>
 	</typeAliases>
 </configuration>
