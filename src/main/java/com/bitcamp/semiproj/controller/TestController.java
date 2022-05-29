@@ -41,4 +41,11 @@ public class TestController {
 		model.addAttribute("theaterDto", theaterService.getAllTheaters());
 		return "main";
 	}
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String tests(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		
+		return "testmain";
+	}
 }

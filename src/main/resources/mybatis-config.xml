@@ -10,5 +10,7 @@
 		<typeAlias alias="InquiryDto" type="com.bitcamp.semiproj.domain.InquiryDto"/>
 		<typeAlias alias="NoticeDto" type="com.bitcamp.semiproj.domain.NoticeDto"/>
 		<typeAlias alias="EventDto" type="com.bitcamp.semiproj.domain.EventDto"/>
+		<typeAlias alias="UserDto" type="com.bitcamp.semiproj.domain.UserDto"/>
+		<typeAlias alias="KakaoDto" type="com.bitcamp.semiproj.domain.KakaoDto"/>
 	</typeAliases>
 </configuration>
