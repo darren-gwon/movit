@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitcamp.semiproj.dao.LikesDao">
+	<select id="checkLikes" parameterType="Map" resultType="LikesDto">
+		select * from likes where user_id=#{user_id} and movieID=#{movieID}
+	</select>
+
+	<select id="findLikes" parameterType="LikesDto" resultType="LikesDto">
+		select * from likes where reviewID=#{reviewID} and user_id=#{user_id}
+	</select>
+	
+	<insert id="insertLikes" parameterType="LikesDto">
+		insert into likes (reviewID, user_id, movieID, likes) values (#{reviewID}, #{user_id}, #{movieID}, 1)
+	</insert>
+	
+	<delete id="deleteLikes" parameterType="LikesDto">
+		delete from likes where reviewID=#{reviewID} and user_id=#{user_id}
+	</delete>
+	
+	<select id="totalLikes" parameterType="int" resultType="LikesDto">
+<!-- 		SELECT r.movieID, r.reviewID, r.total_likes
+		FROM review AS r
+		JOIN likes
+		ON r.reviewID = likes.reviewID
+		where r.movieID=#{movieID} order by r.reviewID desc; -->
+		select review.total_likes, review.reviewID, review.movieID
+        from review 
+        where review.movieID=#{movieID}
+        order by review.reviewID desc;
+	</select>
+	
+	<update id="increaseTotalLikes" parameterType="LikesDto">
+		update review set total_likes=(total_likes+1) where reviewID=#{reviewID};
+	</update>
+	
+	<update id="decreaseTotalLikes" parameterType="LikesDto">
+		update review set total_likes=(total_likes-1) where reviewID=#{reviewID};
+	</update>
+	
+</mapper>
