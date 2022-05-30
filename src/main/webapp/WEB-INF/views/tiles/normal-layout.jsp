@@ -21,20 +21,19 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<title><tiles:insertAttribute name="title" /></title>
+<title><tiles:insertAttribute name="movie" /></title>
 </head>
 
 <body>
 	<div class='wrap'>
 		<div class="sidebar_wrap">
-			<tiles:insertAttribute name="side" />
+			<tiles:insertAttribute name="sidebar" />
 		</div>
 		<div class="header_wrap">
 			<tiles:insertAttribute name="header" />
 		</div>
-		<div class='content_wrap'>
-			<tiles:insertAttribute name="mainContent" />
-			<!-- <tiles:insertAttribute name="body"/> -->
+		<div class='content'>
+			<tiles:insertAttribute name="content" />
 		</div>
 		<div class="footer_wrap">
 			<tiles:insertAttribute name="footer" />
