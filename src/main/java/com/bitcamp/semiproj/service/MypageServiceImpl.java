@@ -15,14 +15,22 @@ public class MypageServiceImpl implements MypageService {
 	@Autowired
 	MypageDao dao;
 	
-//	@Override
-//	public MypageDto getUserData(String user_id) {
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("user_id", user_id);
-//		return dao.getUserData(map);
-//	}
-
 	public MypageDto getUserData(String user_id) {
 		return dao.getUserData(user_id);
+	}
+	
+	@Override
+	public void updateMypage(MypageDto dto) {
+		dao.updateMypage(dto);
+	}
+	
+	@Override
+	public String pwCheck(String memberId) {
+		return dao.pwCheck(memberId);
+	}
+	
+	@Override
+	public void pwUpdate(String memberId, String hashedPw) {
+		dao.pwUpdate(memberId, hashedPw);
 	}
 }

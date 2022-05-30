@@ -62,7 +62,7 @@
 		<li>
 			<a href="#">회원정보</a>
 			<ul class="submenu">
-				<li><a href="updateUserInfo">개인정보변경</a></li>
+				<li><a href="mypageUserInfo">개인정보변경</a></li>
 				<li><a href="#">간편로그인설정</a></li>
 				<li><a href="#">회워정보탈퇴</a></li>
 			</ul>

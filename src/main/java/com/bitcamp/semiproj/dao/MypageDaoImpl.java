@@ -1,5 +1,6 @@
 package com.bitcamp.semiproj.dao;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,15 +16,27 @@ public class MypageDaoImpl implements MypageDao {
     private SqlSession session;
 
 	private static String namespace = "com.bitcamp.semiproj.dao.MypageDao.";
-
-//	@Override
-//	public MypageDto getUserData(Map<String, Object> map) {
-//		return session.selectOne(namespace + "getUserData", map);
-//	}
 	
 	@Override
 	public MypageDto getUserData(String user_id) {
 		return session.selectOne(namespace + "getUserData", user_id);
 	}
 
+	@Override
+	public void updateMypage(MypageDto dto) {
+		session.update(namespace + "updateMypage", dto);
+	}
+	
+	@Override
+	public String pwCheck(String user_id) {
+		return session.selectOne(namespace + "pwCheck", user_id);
+	}
+	
+	@Override
+	public void pwUpdate(String user_id, String hashedPw) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("user_id", user_id);
+		map.put("hashedPw", hashedPw);
+		session.update(namespace + "pwUpdate", map);
+	}
 }

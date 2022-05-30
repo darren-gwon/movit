@@ -78,10 +78,24 @@ $(function(){
 		var s = $(this).val();
 		$("#birthdaySelector3").val(s);
 	});
+	
+	//비번체크
+	$("#pass2").keyup(function(){
+		var p1 = $("#pass1").val();
+		var p2 = $(this).val();
+		if(p1==p2){
+			$("#pwdmsg").html("OK!").css("color","blue");
+		} else {
+			$("#pwdmsg").html("Fail!!").css("color","red");
+		}
+	});
+	
+	
 });
 </script>
 </head>
 <body>
+	<form action="updateMypage" method="post">
 	<div id="wrap">
 		<table class="type09">
 			<thead>
@@ -93,16 +107,30 @@ $(function(){
 			<tbody>
 				<tr>
 					<th>이름</th>
-					<td>${dto.name }</td> 
+					<td>
+						<span>${dto.name }</span>
+						<input type="hidden" class="form-control" name="seq" value="${dto.seq }">
+						<input type="hidden" class="form-control" name="name" value="${dto.name }">
+					</td> 
 				</tr>
 				<tr>
 					<th>아이디</th>
-					<td>${sessionScope.user_id }</td>
+					<td>
+						<span name="user_id" class="form-control">${sessionScope.user_id }</span>
+						<input type="hidden" class="form-control" name="user_id" value="${sessionScope.user_id }">
+					</td>
+				</tr>
+				<tr>
+					<th>닉네임</th>
+					<td><input type="text" name="nickname" class="form-control" value="${dto.nickname}"></td>
 				</tr>
 				<tr>
 					<th>생년월일</th>
 					<td>
-						<select id="birthdaySelector1">
+						<span name="birthday1" class="form-control">${birthday1 }년</span>
+						<span name="birthday2" class="form-control">${birthday2 }월</span> 
+						<span name="birthday3" class="form-control">${birthday3 }일</span>
+						<%-- <select id="birthdaySelector1">
 							<option value="">년</option>
 							<c:forEach var="i" begin="1900" end="2022">
 								<option value="${i}">${i}</option>
@@ -136,7 +164,7 @@ $(function(){
 						</select>
 						<input name="birthday1" id="birthday1" value="${birthday1 }">
 						<input name="birthday2" id="birthday2" value="${birthday2 }">
-						<input name="birthday3" id="birthday3" value="${birthday3 }">
+						<input name="birthday3" id="birthday3" value="${birthday3 }"> --%>
 					</td>
 				</tr>
 				<tr>
@@ -150,14 +178,15 @@ $(function(){
 							<option <c:if test="${phone1==018 }">selected</c:if>>018</option>
 							<option <c:if test="${phone1==019 }">selected</c:if>>019</option>
 						</select>
-						<input type="text" name="phone1" id="phone1" value=${phone1 }>
-						<input name="phone2" id="phone2" value=${phone2 }>-<input name="phone3" id="phone3" value=${phone3 }>
+						<input type="text" class="form-control" name="phone1" id="phone1" value=${phone1 }>
+						&nbsp;-&nbsp;<input class="form-control" name="phone2" id="phone2" value=${phone2 } style="width:40px;">&nbsp;-&nbsp;<input class="form-control" name="phone3" id="phone3" value=${phone3 } style="width:40px;">
 					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
 					<td>
-						<input name="email1" id="email1" value=${email1 }>@<input name="email2" id="email2" value=${email2 }>
+						<input class="form-control" name="email1" id="email1" value=${email1 } style="width:100px;">@
+						<input class="form-control" name="email2" id="email2" value=${email2 } style="width:100px;">
 						<select id="email3">
 							<option value="-">직접입력</option>
 							<option value="naver.com">네이버</option>
@@ -169,11 +198,16 @@ $(function(){
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td><button type="button" id="pwdbtn">변경하기</button></td>
+					<td>
+						<input type="text" name="currentpwd" id="pass0" value="${dto.password }">
+						<input type="text" name="changepwd1" id="pass1" value="">
+						<input type="text" name="changepwd1" id="pass2" value=""><div id="pwdmsg"></div>
+					</td>
 				</tr>
 			</tbody>
 		</table>
-		<button type="button">수정</button><button type="button">취소</button>
+		<button type="submit" >수정</button><button type="button" onclick="history.back()">취소</button>
 	</div>
+	</form>
 </body>
 </html>
