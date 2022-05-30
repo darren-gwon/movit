@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitcamp.semiproj.dao.ReviewDao">
+    <select id="findAllReviewList" resultType="ReviewDto">
+        select * from review order by reviewID desc
+    </select>
+    
+    <insert id="insertReview" parameterType="ReviewDto">
+    	insert into review (user_id, movieID, content, rating, write_date) values (#{user_id}, #{movieID}, #{content}, #{rating}, now())
+    </insert>
+    
+    <delete id="deleteReview" parameterType="int">
+    	delete from review where reviewID=#{reviewID}
+    </delete>
+    
+    <update id="updateReview" parameterType="ReviewDto">
+    	update review set content=#{content}, rating=#{rating} where reviewID=#{reviewID}
+    </update>
+    
+    <select id="findReviewListByMovieId" parameterType="Map" resultType="ReviewDto">
+    	select * from review where movieID=#{movieID} order by reviewID desc limit #{start}, #{perPage}
+    </select>
+    
+    <select id="findReviewTotalCountByMovieId" parameterType="int" resultType="int">
+    	select count(*) from review where movieID=#{movieID}
+    </select>
+    
+    <select id="findReviewRatingAvgByMovieId" parameterType="int" resultType="double">
+    	select round(avg(rating), 2) from review where movieID=#{movieID}
+    </select>
+    
+    <select id="findSumReviewRating" parameterType="int" resultType="int">
+    	select sum(rating) from review where movieID=#{movieID}
+    </select>
+    
+    <select id="checkUserReview" parameterType="ReviewDto" resultType="ReviewDto">
+	    SELECT reviewID, movieID, user_id
+		FROM bitcinema.review
+		where movieID=#{movieID} and user_id=#{user_id}
+		order by reviewID;
+    </select>
+</mapper>
