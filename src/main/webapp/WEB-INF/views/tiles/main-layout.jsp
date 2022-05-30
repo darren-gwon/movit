@@ -19,11 +19,16 @@
 </script>
 <link rel="stylesheet" href="/css/common.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title><tiles:insertAttribute name="title" /></title>
 </head>
 
 <body>
 	<div class='wrap'>
+		<div class="sidebar_wrap">
+			<tiles:insertAttribute name="side" />
+		</div>
 		<div class="header_wrap">
 			<tiles:insertAttribute name="header" />
 		</div>
@@ -36,6 +41,7 @@
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 </body>
 

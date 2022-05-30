@@ -39,7 +39,7 @@ public class BookingController {
 		List<TheaterDto> region = theaterService.getAllRegions();
 		m.addAttribute("region", region);
 		
-		return "/booking/booking";
+		return "/tiles/booking/booking";
 	}
 
 	@PostMapping("/getTheaterList")
