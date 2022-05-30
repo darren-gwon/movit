@@ -116,8 +116,10 @@
  
   <br><br><hr><br><br>
 </div>
-
-	<table class="type04" style="text-align: center; font-size: 17px;">
+<div class="container">
+	<div class="row">
+		<div class="col">
+	<table class="table table-sm" style="text-align: center; font-size: 17px;">
 		<thead>
 			<tr>
 				<th scope="col"><input id="allCheck" type="checkbox" name="allCheck"/></th>
@@ -141,7 +143,10 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table> 
+	</table>
+	</div>
+	</div>
+	</div> 
 <a href="<c:url value='/inquiry/lost/insert'/>" role="button" class="btn btn-outline-info">분실물 글쓰기</a>
 <input type="button" value="선택삭제" onclick="deleteValue();">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

@@ -13,202 +13,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style>
-* {
-	margin: 0;
-	padding: 0;
-}
 
-.section input[id*="slide"] {
-	display: none;
-}
-
-.section .slidewrap {
-	max-width: 1200px;
-	margin: 0 auto;
-}
-
-.section .slidelist {
-	white-space: nowrap;
-	font-size: 0;
-	overflow: hidden;
-	position: relative;
-}
-
-.section .slidelist>li {
-	display: inline-block;
-	vertical-align: middle;
-	width: 100%;
-	transition: all .5s;
-}
-
-.section .slidelist>li>a {
-	display: block;
-	position: relative;
-}
-
-.section .slidelist>li>a img {
-	width: 100%;
-}
-
-.section .slidelist label {
-	position: absolute;
-	z-index: 10;
-	top: 50%;
-	transform: translateY(-50%);
-	padding: 50px;
-	cursor: pointer;
-}
-
-.section .slidelist .textbox {
-	position: absolute;
-	z-index: 1;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	line-height: 1.6;
-	text-align: center;
-}
-
-.section .slidelist .textbox h3 {
-	font-size: 36px;
-	color: #fff;;
-	transform: translateY(30px);
-	transition: all .5s;
-}
-
-.section .slidelist .textbox p {
-	font-size: 16px;
-	color: #fff;
-	opacity: 0;
-	transform: translateY(30px);
-	transition: all .5s;
-}
-
-/* input에 체크되면 슬라이드 효과 */
-.section input[id="slide01"]:checked ~ .slidewrap .slidelist>li {
-	transform: translateX(0%);
-}
-
-.section input[id="slide02"]:checked ~ .slidewrap .slidelist>li {
-	transform: translateX(-101%);
-}
-
-.section input[id="slide03"]:checked ~ .slidewrap .slidelist>li {
-	transform: translateX(-202%);
-}
-
-/* input에 체크되면 텍스트 효과 */
-.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox h3
-	{
-	opacity: 1;
-	transform: translateY(0);
-	transition-delay: .2s;
-}
-
-.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox p
-	{
-	opacity: 1;
-	transform: translateY(0);
-	transition-delay: .4s;
-}
-
-.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox h3
-	{
-	opacity: 1;
-	transform: translateY(0);
-	transition-delay: .2s;
-}
-
-.section input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) .textbox p
-	{
-	opacity: 1;
-	transform: translateY(0);
-	transition-delay: .4s;
-}
-
-.section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox h3
-	{
-	opacity: 1;
-	transform: translateY(0);
-	transition-delay: .2s;
-}
-
-.section input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) .textbox p
-	{
-	opacity: 1;
-	transform: translateY(0);
-	transition-delay: .4s;
-}
-
-/* 좌,우 슬라이드 버튼 */
-.slide-control>div {
-	display: none;
-}
-
-.section .left {
-	left: 30px;
-	background: url('../movie_detail_bottom_slide/left.png') center center/100%
-		no-repeat;
-}
-
-.section .right {
-	right: 30px;
-	background: url('../movie_detail_bottom_slide/right.png') center center/100%
-		no-repeat;
-}
-
-.section input[id="slide01"]:checked ~ .slidewrap .slide-control>div:nth-child(1)
-	{
-	display: block;
-}
-
-.section input[id="slide02"]:checked ~ .slidewrap .slide-control>div:nth-child(2)
-	{
-	display: block;
-}
-
-.section input[id="slide03"]:checked ~ .slidewrap .slide-control>div:nth-child(3)
-	{
-	display: block;
-}
-
-/* 페이징 */
-.slide-pagelist {
-	text-align: center;
-	padding: 20px;
-}
-
-.slide-pagelist>li {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.slide-pagelist>li>label {
-	display: block;
-	padding: 8px 10px;
-	border-radius: 30px;
-	background: #ccc;
-	margin: 20px 10px;
-	cursor: pointer;
-}
-
-.section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist>li:nth-child(1)>label
-	{
-	background: #999;
-}
-
-.section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist>li:nth-child(2)>label
-	{
-	background: #999;
-}
-
-.section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist>li:nth-child(3)>label
-	{
-	background: #999;
-}
-
-</style>
 
 </head>
 
@@ -217,198 +22,195 @@
 	<div class="container" style="text-align: center;">
 		<div class="row row-cols-1 row-cols-md-3 g-4">
 			<div class="col">
-				<img src="../movie_poster_image/moviewMain2.png"
-					style="width: 1300px; height: 700px; object-fit: cover;">
+				<img src="../image/movie_detail.jpeg"
+					style="width: 1300px; height: 400px; object-fit: cover;">
 			</div>
 		</div>
 		<br> <br>
-		<div class="row" style="text-align: left; font-size: 17px;">
-			<div class="col">
-				<h1 class="font-monospace">Movie Detail</h1>
-				<br> <br>
-			</div>
-			<hr>
-			<br>
-		</div>
-
 	</div>
 
-
-	<div class="container">
-		<div class="row row-cols-2 row-cols-md-4 g-4">
-			<div class="col">
+	<div class="container" style="text-align: center;">
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-3">
 				<div class="movielist">
 					<figure>
 						<img src="../movie_poster_image/movie_list1.jpg">
 					</figure>
-					<br>
-					<div class="col" style="text-align: left;">
-						<h4 class="font-monospace" style="margin-left: 20px">
-							연령층 <b>범죄도시2</b>
-						</h4>
-					</div>
-					<br>
-					<div class="col" style="text-align: center;">
-						<button type="button" class="btn btn-outline-primary"
-							style="width: 130px;">예매하기</button>
-
-						<button type="button" class="btn btn-outline-secondary"
-							style="width: 130px;">상세보기</button>
-					</div>
-					<br>
-						<div class="row row-cols-2 row-cols-md-4 g-4">
-							<p>asddasd</p>
-						</div>
 				</div>
-				
 			</div>
+
+
+
+			<div class="col-sm-4">
+				<div class="movielist"
+					style="text-align: left; font-family: monospace;">
+					<h3>범죄도시2</h3>
+					<hr>
+					<h5>장르&nbsp;&nbsp;</h5>
+					<h5>감독&nbsp;&nbsp;</h5>
+					<h5>출연&nbsp;&nbsp;</h5>
+					<h5>나라&nbsp;&nbsp;</h5>
+					<h5>개봉일&nbsp;&nbsp;</h5>
+					<h5>배급사&nbsp;&nbsp;</h5>
+					<h5>RunningTime&nbsp;&nbsp;</h5>
+					<br><br>
+					<button type="button" class="btn btn-outline-danger"
+						style="width: 250px; height: 80px; font-size: 30px;">예매하기</button>
+				</div>
+			</div>
+
+			<div class="col-sm-5"></div>
+
 		</div>
-		
+		<br> <br>
 	</div>
 
-		
 
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col">
+				<ul class="nav nav-tabs">
+					<li class="nav-item" style="width: 300px"><a
+						class="nav-link active" href="#">영화정보</a></li>
+					<li class="nav-item" style="width: 300px"><a
+						class="nav-link active" aria-current="page" href="#">평점 및 관람평</a>
+					</li>
+	
+				</ul>
+			</div>
+			<div class="col-sm-1"></div>
+		</div>
+		<br> <br>
+		<div class="container" style="text-align: center;">
+			<div class="row">
+				<div class="col-sm-1"></div>
+				<div class="col">
+					<div class="movielist" style="text-align: left;">
+						<h3>“느낌 오지? 이 놈 잡아야 하는 거”</h3>
+						<br>
+						<h5>가리봉동 소탕작전 후 4년 뒤, 금천서 강력반은 베트남으로</h5>
+						<h5>도주한 용의자를 인도받아 오라는 미션을 받는다.</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br> 
+
+
+		<div class="container" style="text-align: center;">
+			<div class="row">
+
+				<div class="col">
+					<div class="movielist" style="text-align: left;">
+						<br> <br> <br>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<ul class="nav nav-tabs">
+					<li class="nav-item" style="width: 300px"><a
+						class="nav-link active" href="#">트레일러</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+
+	<div class="container" style="text-align: center;">
+		<div class="row">
+
+			<div class="col">
+				<iframe width="400" height="315"
+					src="https://www.youtube.com/embed/Lcy1vnU7RHw"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+			<div class="col">
+				<iframe width="400" height="315"
+					src="https://www.youtube.com/embed/aw9j_23nORs"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+			<div class="col">
+				<iframe width="400" height="315"
+					src="https://www.youtube.com/embed/cpFXov0VvBY"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
 	<br>
 	<br>
 	<div class="container">
-		<div class="row row-cols-2 row-cols-md-4 g-4">
+		<div class="row">
 			<div class="col">
-				<div class="movielist">
-					<figure>
-						<img src="../movie_poster_image/movie_list17.jpg">
-					</figure>
-					<br>
-					<div class="col" style="text-align: left;">
-						<h4 class="font-monospace" style="margin-left: 20px">
-							연령층 <b>범죄도시2</b>
-						</h4>
-					</div>
-					<br>
-					<div class="col" style="text-align: center;">
-						<button type="button" class="btn btn-outline-primary"
-							style="width: 130px;">예매하기</button>
-
-						<button type="button" class="btn btn-outline-secondary"
-							style="width: 130px;">상세보기</button>
-					</div>
-					<br>
-				</div>
-			</div>
-
-
-
-			<div class="col">
-				<div class="movielist">
-					<figure>
-						<img src="../movie_poster_image/movie_list18.jpg">
-					</figure>
-					<br>
-					<div class="col" style="text-align: left;">
-						<h4 class="font-monospace" style="margin-left: 20px">
-							연령층 <b>범죄도시2</b>
-						</h4>
-					</div>
-					<br>
-					<div class="col" style="text-align: center;">
-						<button type="button" class="btn btn-outline-primary"
-							style="width: 130px;">예매하기</button>
-
-						<button type="button" class="btn btn-outline-secondary"
-							style="width: 130px;">상세보기</button>
-					</div>
-					<br>
-				</div>
-			</div>
-
-			<div class="col">
-				<div class="movielist">
-					<figure>
-						<img src="../movie_poster_image/movie_list19.jpg">
-					</figure>
-					<br>
-					<div class="col" style="text-align: left;">
-						<h4 class="font-monospace" style="margin-left: 20px">
-							연령층 <b>범죄도시2</b>
-						</h4>
-					</div>
-					<br>
-					<div class="col" style="text-align: center;">
-						<button type="button" class="btn btn-outline-primary"
-							style="width: 130px;">예매하기</button>
-
-						<button type="button" class="btn btn-outline-secondary"
-							style="width: 130px;">상세보기</button>
-					</div>
-					<br>
-				</div>
-			</div>
-
-			<div class="col">
-				<div class="movielist">
-					<figure>
-						<img src="../movie_poster_image/movie_list20.jpg">
-					</figure>
-					<br>
-					<div class="col" style="text-align: left;">
-						<h4 class="font-monospace" style="margin-left: 20px">
-							연령층 <b>범죄도시2</b>
-						</h4>
-					</div>
-					<br>
-					<div class="col" style="text-align: center;">
-						<button type="button" class="btn btn-outline-primary"
-							style="width: 130px;">예매하기</button>
-
-						<button type="button" class="btn btn-outline-secondary"
-							style="width: 130px;">상세보기</button>
-					</div>
-					<br>
-				</div>
+				<ul class="nav nav-tabs">
+					<li class="nav-item" style="width: 300px"><a
+						class="nav-link active" href="#">스틸컷</a></li>
+				</ul>
 			</div>
 		</div>
+	</div>
+	<br>
+	<br>
 
-	<!--  -->
-		<div class="section">
-			<input type="radio" name="slide" id="slide01" checked> <input
-				type="radio" name="slide" id="slide02"> <input type="radio"
-				name="slide" id="slide03">
-			<div class="slidewrap">
-
-				<ul class="slidelist">
-					<!-- 슬라이드 영역 -->
-					<li class="slideitem"><a>
-					<img src="../movie_detail_bottom_slide/the_roundup_bottom_slide_0.jpg" style="width: 100%">
-					</a></li>
-					<li class="slideitem"><a>
-					<img src="../movie_detail_bottom_slide/the_roundup_bottom_slide_1.jpg" style="width: 100%">
-					</a></li>
-					<li class="slideitem"><a>
-					<img src="../movie_detail_bottom_slide/the_roundup_bottom_slide_2.jpg" style="width: 100%">
-					</a></li>
-
-					<!-- 좌,우 슬라이드 버튼 -->
-					<div class="slide-control">
-						<div>
-							<label for="slide03" class="left"></label> <label for="slide02"
-								class="right"></label>
+	<div class="container">
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-4">
+				<div id="carouselExampleIndicators" class="carousel slide"
+					style="width: 800px;" data-bs-ride="carousel">
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="0" class="active" aria-current="true"
+							aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img
+								src="../movie_detail_bottom_slide/the_roundup_bottom_slide_0.jpg"
+								class="d-block w-100" alt="...">
 						</div>
-						<div>
-							<label for="slide01" class="left"></label> <label for="slide03"
-								class="right"></label>
+						<div class="carousel-item">
+							<img
+								src="../movie_detail_bottom_slide/the_roundup_bottom_slide_1.jpg"
+								class="d-block w-100" alt="...">
 						</div>
-						<div>
-							<label for="slide02" class="left"></label> <label for="slide01"
-								class="right"></label>
+						<div class="carousel-item">
+							<img
+								src="../movie_detail_bottom_slide/the_roundup_bottom_slide_2.jpg"
+								class="d-block w-100" alt="...">
 						</div>
 					</div>
-
-				</ul>
-				<!-- 페이징 -->
-				<ul class="slide-pagelist">
-					<li><label for="slide01"></label></li>
-					<li><label for="slide02"></label></li>
-					<li><label for="slide03"></label></li>
-				</ul>
+					<button class="carousel-control-prev" type="button"
+						data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button"
+						data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
