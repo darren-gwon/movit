@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="header fixed-top">
+<div class="header">
 	<span id="sidebarOpen">&#9776;</span>
 	<span class="logo">;Movit</span>
 	<div class="loginBtnDiv">
