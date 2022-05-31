@@ -54,12 +54,12 @@ public class PaymentController {
 
 	@GetMapping("/kakaoPayFail")
 	public String payFail() {
-		return "/pay/fail";
+		return "pay/fail.tiles";
 	}
 	
 	@GetMapping("/kakaoPayCancel")
 	public String payCandel() {
-		return "/pay/cancel";
+		return "pay/cancel.tiles";
 	}
 	
 	@GetMapping("/kakaoPaySuccess")
@@ -80,10 +80,10 @@ public class PaymentController {
 			bookingService.insertBooking(bookingDto);
 			
 			model.addAttribute("payInfo",kPayApprovalDto);
-			return "/pay/success";
+			return "pay/success.tiles";
 		}
 		
-		return "/pay/fail";
+		return "pay/fail.tiles";
 	}
 	
 	/*
