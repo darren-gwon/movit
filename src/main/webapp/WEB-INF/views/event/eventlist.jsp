@@ -14,15 +14,15 @@
 	* {margin:0;padding:0;box-sizing:border-box;}
 	l, li {list-style:none;}
 
-	.slidebox {max-width:530px;margin:0 auto;position:relative;}
+	.slidebox {max-width:700px;margin:0 auto;position:relative; top:50px;}
 	.slidebox .slidelist {position:relative;white-space:nowrap;font-size:0;overflow:hidden;}
 	.slidebox .slidelist .slideitem {position:relative;display:inline-block;vertical-align:middle;background-color:#fff;width:100%;transition:all 1s;}
 	.slidebox .slidelist .slideitem > a {display:block;width:auto;}
-	.slidebox .slidelist .slideitem > a img {width:530px; height: 245;}
+	.slidebox .slidelist .slideitem > a img {width:700px; height: 245px;}
 
 	.slidebox .slide-control [class*="control"] label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:20px;border-radius:50%;cursor:pointer;}
-	.slidebox .slide-control [class*="control"] label.prev {left:-50px;background:#333 url('../resources/cssimg/left-arrow.png') center center / 50% no-repeat;}
-	.slidebox .slide-control [class*="control"] label.next {right:-50px;background:#333 url('../resources/cssimg/right-arrow.png') center center / 50% no-repeat;}
+	.slidebox .slide-control [class*="control"] label.prev {left:-50px;background:#333 url('../cssimg/left-arrow.png') center center / 50% no-repeat;}
+	.slidebox .slide-control [class*="control"] label.next {right:-50px;background:#333 url('../cssimg/right-arrow.png') center center / 50% no-repeat;}
 
 	[name="slide"] {display:none;}
 	#slide01:checked ~ .slidelist .slideitem {left:0;}
@@ -43,7 +43,7 @@
 		}
 		ul{
 			overflow: hidden;
-			margin: 10px 0;
+			margin: -20px 0;
 		}
 		.eventlist li{
 			position:relative;
@@ -65,10 +65,10 @@
 			overflow-anchor : none; 
 		}
 		.btnmore{
-			width: 100%;
+			width: 1170px;
 			height: 50px;
 			text-align: center;
-			background-color: #dddddd;
+			background-color: #f8f8fa;
 			margin: 36px 0 0 0;
 			border: 0px;
 			font-size: 15px;
@@ -89,18 +89,34 @@
 			color:grey;
 		}
 		div.total{
-		font-size: 16px;
-		margin-left: 50px;
-		margin-top: 100px;
-		color:gray;
-		font-weight:bold;
+			font-size: 16px;
+			margin-left: 50px;
+			margin-top: 100px;
+			color:gray;
+			font-weight:bold;
 		}
 		div.btn{
 			margin-left:1300px;
 		}
+		div.slidbakc{
+			background-color: #f8f8fa;
+			width:100%;
+			height:350px;
+		}
+		h2{
+			margin-block-start: 0.83em;
+		    margin-block-end: 0.83em;
+		    margin-inline-start: 0px;
+		    margin-inline-end: 0px;
+		    padding: 0 0 15px 0;
+		    margin-left:400px;
+		    font-size:30px;
+		}
 	</style>
 </head>
 <body>
+<h2>EVENT</h2>
+<div class="slidbakc">
 <div class="slidebox">
 	<input type="radio" name="slide" id="slide01" checked>
 	<input type="radio" name="slide" id="slide02">
@@ -108,16 +124,16 @@
 	<input type="radio" name="slide" id="slide04">
 	<ul class="slidelist">
 		<li class="slideitem">
-			<a><img src="../resources/cssimg/img1.jpg"></a>
+			<a><img src="../cssimg/img1.jpg"></a>
 		</li>
 		<li class="slideitem">
-			<a><img src="../resources/cssimg/img2.jpg"></a>
+			<a><img src="../cssimg/img2.jpg"></a>
 		</li>
 		<li class="slideitem">
-			<a><img src="../resources/cssimg/img3.jpg"></a>
+			<a><img src="../cssimg/img3.jpg"></a>
 		</li>
 		<li class="slideitem">
-			<a><img src="../resources/cssimg/img4.jpg"></a>
+			<a><img src="../cssimg/img4.jpg"></a>
 		</li>
 	</ul>
 	<div class="slide-control">
@@ -139,6 +155,7 @@
 		</div>
 	</div>
 </div>
+</div>
 	
 	<form id="eventform">
 		<div class="eventlist">
@@ -147,7 +164,7 @@
 				<c:forEach items="${list}" var="list">
 					<li>
 						<a href="../event/eventdetail?num=${list.seq}">				
-						<img src="../resources/thumnail_img/${list.thumbnail_img}">				
+						<img src="../thumnail_img/${list.thumbnail_img}">				
 						<br><br>
 						<b>${list.title}</b>
 						<br><br>
@@ -183,7 +200,7 @@ $("#morelist").click(function(){
 			$(data).each(function(i, d){
 				s+="<li>";
 				s+="<a href='../event/eventdetail?num="+d.seq+"'>";
-				s+="<img src='../resources/thumimg/"+d.thumbnail_img+"'>";
+				s+="<img src='../thumnail_img/"+d.thumbnail_img+"'>";
 				s+="<br>"+"<br>"
 				s+="<b>";
 				s+=d.title;

@@ -20,36 +20,68 @@
 				});
 	});
 </script>
-
+<style>
+	.event-detail h2.tit {
+	    width: 1100px;
+	    margin: 0 auto;
+	    padding: 0;
+	}
+	#contents {
+	    width: 100%;
+	    margin: 0;
+	    padding: 40px 0 0 0;
+	}
+	h2.tit{
+		font-size:1.8666em;
+		font-weight:400;
+		letter-spacing:-1px;
+		line-height:1.1;
+		color:#222;
+		left:30px;
+		
+	}
+	.event-detail{
+		position:relative;
+		margin:0 0 40px 0;
+		padding:0 0 30px 0;
+	}
+	.event-detail .event-date {
+		overflow: hidden;
+   		width: 1100px;
+    	margin: 0 auto 30px auto;
+    	padding: 15px 0 25px 0;
+    	line-height: 1.1;
+    	border-bottom: 1px solid #555;
+    	margin-top:20px;
+    	margin-bottom:40px;
+	}
+	.cnt {
+		margin-left:770px;
+	}
+</style>
 </head>
 <body>
-	<h1>상세내용</h1>
-
-	<table border="1">
-
-		<tr>
-			<th>제목</th>
-			<td style="width: 100px;">${dto.title}</td>
-			<th>기간</th>
-			<td style="width: 100px;">${dto.start_date}</td>
-			<td style="width: 100px;">${dto.end_date}</td>
-			<th>조회수</th>
-			<th style="width: 100px;">${dto.view_cnt}</th>
-		</tr>
-		<tr>
-			<td colspan="8" style="height: 1500px;">${dto.content}<img
-				src="../resources/main_img/${dto.main_img}">
-			</td>
-
-		</tr>
-
-
+		<div id="contents">
+			<div class="event-detail">
+			<h2 class="tit">${dto.title}</h2>
+			<p class="event-date">
+			<span>기간 : ${dto.start_date} ~ ${dto.end_date}</span>
+			<b class="cnt">조회수 : ${dto.view_cnt}</b>
+			<table align="center" border="0" cellpadding="0" cellspacing="0" width="1100">
+			<tr>
+				<td width="1100">
+					<img src="../main_img/${dto.main_img}">${dto.content}
+			 	</td>
+			 </tr>
+			</table>
+		</div>
+	</div>
 
 		<button onclick="location.href='../event/updateform?num=${dto.seq}'">수정</button>
 		<button type="button" id="del">삭제</button>
 		<button onclick="location.href='eventlist'">목록</button>
 
-	</table>
+	
 
 </body>
 </html>

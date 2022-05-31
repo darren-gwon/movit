@@ -155,11 +155,10 @@ import util.FileUtil;
 					public String postupdate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
 							HttpServletRequest request,HttpSession session) throws Exception {
 					
-					String savepath = "C:\\Dev219\\git\\movit_proj\\src\\main\\webapp\\resources\\main_img";
-					 String savepath2 = "C:\\Dev219\\git\\movit_proj\\src\\main\\webapp\\resources\\thumnail_img";
+					String savepath = request.getServletContext().getRealPath("resources/main_img/");
+					 String savepath2 = request.getServletContext().getRealPath("resources/thumnail_img/");
 					 //System.out.println(savepath);
 					 if(mainupload.get(0).getOriginalFilename().equals("")) {
-				         dto.setMain_img("no");
 				      }else {
 				         FileUtil fileUtil=new FileUtil();
 				         String photo="";
@@ -181,7 +180,6 @@ import util.FileUtil;
 				         dto.setMain_img(photo);
 				      }
 					 if(thumupload.get(0).getOriginalFilename().equals("")) {
-				         dto.setthumbnail_img("no");
 				      }else {
 				         FileUtil fileUtil=new FileUtil();
 				         String subphoto="";

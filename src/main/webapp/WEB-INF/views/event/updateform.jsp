@@ -10,7 +10,7 @@
 		$("#mainupload").change(function(){
 			var reader=new FileReader();
 			reader.onload=function(e){
-				$("#myimg").attr("src",e.target.result);
+				$("#main_img").attr("src",e.target.result);
 			}
 			reader.readAsDataURL($(this)[0].files[0]);
 		});
@@ -30,10 +30,10 @@
 		<tr>
 		<th style="width:100px;">기	간</th>
 		<td>
-			<input type="date" name="start" class="form-control"
+			<input type="date" name="start_date" class="form-control"
 					value="${dto.start_date}" style="width:150px;">
 					&nbsp;~&nbsp;
-			<input type="date" name="end" class="form-control"
+			<input type="date" name="end_date" class="form-control"
 					value="${dto.end_date}" style="width:150px;"></td>
 		</tr>
 		<tr>
@@ -68,6 +68,6 @@
 	
 </table>
 </form>
-<img src="" id="myimg">
+<img src="../main_img/${dto.main_img}" id="main_img">
 </body>
 </html>
