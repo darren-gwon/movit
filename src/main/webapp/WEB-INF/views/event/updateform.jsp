@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <script>
     $(function(){
 		$("#mainupload").change(function(){
@@ -18,6 +19,7 @@
 </script>
 </head>
 <body>
+
 <form name="updateform" method="post" enctype="multipart/form-data" action="../event/updateform?num=${dto.seq}"> 
 <table class="table table-bordered boardform" style="width:500px;">
 	<tr>

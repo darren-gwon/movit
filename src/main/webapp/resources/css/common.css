@@ -110,6 +110,8 @@
 
 .content {
 	position:relative;
+	width:1500px;
+	margin:0 auto;
 }
 
 .footer{

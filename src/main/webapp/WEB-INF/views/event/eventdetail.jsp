@@ -20,68 +20,109 @@
 				});
 	});
 </script>
+
 <style>
-	.event-detail h2.tit {
-	    width: 1100px;
-	    margin: 0 auto;
-	    padding: 0;
+.event-detail{
+	width: 1500px;
+	margin: 0 auto;
+	background-color:green;
+	
+}
+.tit{
+	float: left;
+	margin-left:200px;
+	margin-top:100px;
+	font-size:1.8666em;
+	font-weight:400;
+	letter-spacing:-1px;
+	line-height:1.1;
+	color:#222;
+}
+.event-detail .event-date{
+	float: left;
+	margin-left:200px;
+	margin-top:20px;
+	border-bottom: 1px solid #555;
+	padding: 0px 0 15px 0;
+	margin-bottom:30px;
+}
+.cnt{
+	margin-left:770px;
 	}
-	#contents {
-	    width: 100%;
-	    margin: 0;
-	    padding: 40px 0 0 0;
-	}
-	h2.tit{
-		font-size:1.8666em;
-		font-weight:400;
-		letter-spacing:-1px;
-		line-height:1.1;
-		color:#222;
-		left:30px;
-		
-	}
-	.event-detail{
-		position:relative;
-		margin:0 0 40px 0;
-		padding:0 0 30px 0;
-	}
-	.event-detail .event-date {
-		overflow: hidden;
-   		width: 1100px;
-    	margin: 0 auto 30px auto;
-    	padding: 15px 0 25px 0;
-    	line-height: 1.1;
-    	border-bottom: 1px solid #555;
-    	margin-top:20px;
-    	margin-bottom:40px;
-	}
-	.cnt {
-		margin-left:770px;
-	}
+div.btn-wrap{
+	margin-top:50px;
+	margin-left:200px;
+	width:1500px;
+	height:100px;	
+}
+div.btn-admin{
+	margin-left:1300px;
+	margin-bottom:30px;
+}
+.btn-update {
+	display: inline-block;
+    width: 80px;
+    height: 30px;
+	text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff !important;
+    background-color: #414141;
+    text-aling:center;
+    line-height: 25px;
+    border-radius: 5px;
+}
+#del{
+display: inline-block;
+    width: 80px;
+    height: 30px;
+	text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff !important;
+    background-color: #414141;
+    text-aling:center;
+    line-height: 25px;
+    border-radius: 5px;
+}
+a.btn-list{
+	display: inline-block;
+    width: 130px;
+    height: 50px;
+	text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ffffff !important;
+    background-color: #414141;
+    text-aling:center;
+    line-height: 48px;
+    border-radius: 5px;
+}
 </style>
 </head>
 <body>
-		<div id="contents">
+		<div class="content">
 			<div class="event-detail">
-			<h2 class="tit">${dto.title}</h2>
-			<p class="event-date">
-			<span>기간 : ${dto.start_date} ~ ${dto.end_date}</span>
-			<b class="cnt">조회수 : ${dto.view_cnt}</b>
-			<table align="center" border="0" cellpadding="0" cellspacing="0" width="1100">
-			<tr>
-				<td width="1100">
-					<img src="../main_img/${dto.main_img}">${dto.content}
-			 	</td>
-			 </tr>
-			</table>
+				<h2 class="tit">${dto.title}</h2>
+				<br>
+				<p class="event-date">
+				<span>기간 : ${dto.start_date} ~ ${dto.end_date}</span>
+				<b class="cnt">조회수 : ${dto.view_cnt}</b></p>
+				
+				<div class="body">
+				<img src="../resources/main_img/${dto.main_img}">${dto.content}
+				</div>
+			</div>
 		</div>
-	</div>
-
-		<button onclick="location.href='../event/updateform?num=${dto.seq}'">수정</button>
-		<button type="button" id="del">삭제</button>
-		<button onclick="location.href='eventlist'">목록</button>
-
-	
+		<div class="btn-wrap">
+		<!-- <button onclick="location.href='eventlist'">목록</button> -->
+		<a class="btn-list" href="eventlist">목록</a>
+		</div>
+		<div class="btn-admin">
+		<a class="btn-update" href="../event/updateform?num=${dto.seq}">수정</button></a>
+		<a type="button" id="del">삭제</a>
+		</div>
+		
 
 </body>
 </html>

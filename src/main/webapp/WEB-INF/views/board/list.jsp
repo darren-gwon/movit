@@ -23,18 +23,18 @@
  };
 </script>
 <style>
-div.topimg img {
-	width: 1300px;
-	height: 350px;
-	margin-top:30px;
-}
+div.title h2{
+	float:left;
+	margin-left:250px;
+	margin-top:50px;
+	margin-bottom:50px;
 
+}
 .tbl_list {
 	text-align: center;
 	border-collapse: collapse;
 	margin-top: 20px;
 }
-
 thead th {
 	font-weight: bold;
 	border-top: 2px solid gray;
@@ -54,14 +54,15 @@ tbody td {
 	color: black;
 }
 div #keyword {
-	height: 30px;
+	height: 40px;
 	width: 200px;
 	border: 2px solid grey;
 	margin-top: 50px;
-	margin-left: 1380px;
+	margin-left: 900px;
 	border-radius: 25px;
 	padding-left: 30px;
 	font-size: 15px;
+	margin-bottom:30px;
 }
 
 #search {
@@ -78,8 +79,9 @@ div #keyword {
 }
 
 div.total {
+	float:left;
 	font-size: 16px;
-	margin-left: 120px;
+	margin-left:400px;
 	margin-top: 0px;
 	margin-bottom: 10px;
 	color: gray;
@@ -93,13 +95,13 @@ ul {
 	text-align: center;
 }
 
-/* ul li {
+/*  ul li {
 	float: left;
 	margin: 20px 0px;
 	margin-left: 800px;
 	margin-bottom: 300px;
 	padding: 0 50px;
-} */
+}  */
 div.paging	{
 	text-align: center;
 	width:840px;
@@ -120,22 +122,12 @@ ul a {
 div.bu1{
 	margin-left:1500px;
 }
-div.total{
-	margin-left:300px;
-}
 </style>
 </head>
 <body>
-	<div class="container" style="text-align: center;">
-		<div class="row">
-			<div class="col">
-				<div class="topimg">
-					<img src="../cssimg/notice.png">
-				</div>
-			</div>
-		</div>
-	</div>
-
+	<div class="content">
+	<div class="title">
+	<h2>공지사항</h2></div>
 	<div class="searchtap">
 		<input type="text" id="keyword" />
 		<button type="button" id="search" onclick="search()">
@@ -144,9 +136,8 @@ div.total{
   			<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 	</svg>
 		</button>
-		
 	</div>
-<div class="total">전체 ${postcount}건</div>
+
 	<div class="container">
 		<div class="row">
 			<div class="col">
@@ -215,6 +206,7 @@ div.total{
 					<button type="button" class="btn btn-primary" style="width: 100px;"
 						onclick="location.href='${root}/board/writeform'">글쓰기</button>
 				
+				</div>
 				</div>
 		<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
