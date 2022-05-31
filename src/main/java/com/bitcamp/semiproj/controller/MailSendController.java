@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitcamp.semiproj.dao.UserDao;
+import com.bitcamp.semiproj.domain.MypageDto;
 import com.bitcamp.semiproj.service.MailSendService;
 import com.bitcamp.semiproj.service.UserService;
 @Controller
@@ -42,5 +43,34 @@ public class MailSendController {
 		}
 	}
 
+//	@RequestMapping(value = "mypage/mailCheck", method = RequestMethod.GET) 
+//	@ResponseBody 
+//	public String mypageMailCheck(
+//			@RequestParam("email1") String email1,
+//			@RequestParam("email2") String email2
+//			) { 
+//		MypageDto dto = new MypageDto();
+//		dto.setEmail(email1+"@"+email2);
+//		String email = dto.getEmail();
+//		int n= userService.userEmailCheck(email);
+//		if(n==1) {		
+//			return "1";
+//		} else {
+//			return mailService.mailSendKey(email);
+//		}
+//	}
+	
+	@RequestMapping(value = "mypage/mailCheck", method = RequestMethod.GET) 
+	@ResponseBody 
+	public String mypageMailCheck(@RequestParam("email") String email, RedirectAttributes rattr) throws Exception{ 
+		int n= userService.userEmailCheck(email);
+		if(n==1) {		
+		return "1";
+		}
+		else {
+			return mailService.mailSendKey(email);
+
+		}
+	}
 }
 

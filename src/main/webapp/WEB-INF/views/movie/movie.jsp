@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="/resources/css/movie.css" rel='stylesheet' />
+
 <div class="content">
 
 	<div class="container" style="text-align: center;">
@@ -9,7 +10,7 @@
 			</div>
 		</div>
 		<br> <br>
-		<div class="row" style="text-align: left; font-size: 17px;">
+		<div class="row" style="text-align: left; font-size: 17px;"><button type="button" class="btn btn-outline-secondary" style="width: 130px;">상세보기</button>
 			<div class="col">
 				<h1 class="font-monospace">Movie Chart</h1>
 				<br> <br>
@@ -38,7 +39,7 @@
 					<div class="col" style="text-align: center;">
 						<button type="button" class="btn btn-outline-primary" style="width: 130px;">예매하기</button>
 
-						<button type="button" class="btn btn-outline-secondary" style="width: 130px;">상세보기</button>
+						<button type="button" class="btn btn-outline-secondary" style="width: 130px;" onclick="location.href='moviedetail'">상세보기</button>
 					</div>
 					<br>
 				</div>

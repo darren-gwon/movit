@@ -4,19 +4,19 @@
 
 <mapper namespace="com.bitcamp.semiproj.dao.LikesDao">
 	<select id="checkLikes" parameterType="Map" resultType="LikesDto">
-		select * from likes where user_id=#{user_id} and movieID=#{movieID}
+		select * from review_likes where user_id=#{user_id} and movieID=#{movieID}
 	</select>
 
 	<select id="findLikes" parameterType="LikesDto" resultType="LikesDto">
-		select * from likes where reviewID=#{reviewID} and user_id=#{user_id}
+		select * from review_likes where reviewID=#{reviewID} and user_id=#{user_id}
 	</select>
 	
 	<insert id="insertLikes" parameterType="LikesDto">
-		insert into likes (reviewID, user_id, movieID, likes) values (#{reviewID}, #{user_id}, #{movieID}, 1)
+		insert into review_likes (reviewID, user_id, movieID, likes, like_date) values (#{reviewID}, #{user_id}, #{movieID}, 1, now())
 	</insert>
 	
 	<delete id="deleteLikes" parameterType="LikesDto">
-		delete from likes where reviewID=#{reviewID} and user_id=#{user_id}
+		delete from review_likes where reviewID=#{reviewID} and user_id=#{user_id}
 	</delete>
 	
 	<select id="totalLikes" parameterType="int" resultType="LikesDto">
