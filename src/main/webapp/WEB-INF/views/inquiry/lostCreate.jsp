@@ -1,83 +1,124 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta charset="UTF-8">
-    
-<style type="text/css">
-		body
-		{
-			border: 1px solid black;
-			width: 800px;
-			height: 1100px;
-		}
-		th
-		{
-			border: 1px solid black;
-		}
-		td
-		{
-			border: 1px solid black;
-		}
-	</style>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 <meta charset="UTF-8">
 </head>
 <body>
-		<form action="insert" method="post">
-		<h2>분실물 문의</h2>
-		<hr>
-		<p>;mobit에서 잃어버린 물건이 있다면 '＃분실문 문의/접수'를 통해 접수해주세요.</p>
-		<p>접수하신 글이 답변 처리중이거나 답변 완료가 될 시에는 알려드립니다.</p>
-		<hr>
-		<br><br>
-		<label>분실 장소</label>
-		<br>
-			<select name="theaterID" style="width: 600px; height: 50px;">
-    			<option value="">분실 장소</option>
-    			<option value="01">1</option>
-    			<option value="02">2</option>
-    			<option value="03">3</option>
-    			<option value="04">4</option>
-    			<option value="05">5</option>
-    			<option value="06">6</option>
-    			<option value="07">7</option>
-			</select>
-			<br><br>
-			<label>분실물 타입</label>
-			<br>
-				<input type="text" name="item_type" placeholder="고객님의 분실물 타입을 입력해주세요" style="width: 600px; height: 50px;">		
-			<br><br>
-			<label>글 제목</label>
-			<br>
-				<input type="text" name="title" placeholder="분실물 글 제목을 입력해주세요" style="width: 600px; height: 50px;">		
-			<br><br>
-				<label>분실 날짜</label>
-			<br>
-				<input type="date" name="lost_date" id="lost_date"> 
-				
-			<br><br>			
-				<label>상세 내용</label>
-			<br>
-				<input type="text" name="content" placeholder="분실물 글 내용을 작성해주세요." style="width: 600px; height: 300px;">
-			<br><br>
-				<label>접수 상태</label>
-			<br>
-				<select name="status" style="width: 600px; height: 50px;">
-    				<option value="">접수 처리 타입 선택</option>
-    				<option value="01">1</option>
-    				<option value="02">2</option>
-    			</select>
-    		
-    			
-		<hr>
-		<br><br>
-		<button type="submit" style="width: 100px; height: 50px; margin-left: 10px">등록</button>
-		<button type="button" style="width: 100px; height: 50px; margin-left: 10px"><a href="/semiproj/inquiry/lost">돌아가기</a></button>
-		</form>
+	<form action="insert" method="post">
+		<div class="container">
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col" style="text-align: center;">
+					<img src="../../image/lostTop.png" width="1200px;">
+				</div>
+				<div class="col-1"></div>
+			</div>
+		</div>
 
+
+
+
+		<div class="container">
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col">
+					<br> <br>
+					<div class="form-floating">
+						<select class="form-select" id="floatingSelect"
+							aria-label="Floating label select example" name="theaterID">
+							<option value=""></option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+						</select><label for="floatingSelect">Theater Place Select</label>
+					</div>
+
+					<br>
+
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default">분실물
+							타입 </span> <input type="text" class="form-control" name="item_type"
+							placeholder="고객님의 분실물 타입을 입력해주세요."
+							aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default">
+					</div>
+
+					<div class="input-group mb-3">
+						<span class="input-group-text">분실글 제목</span> <input type="text"
+							class="form-control" name="title" placeholder="글제목을 작성해주세요."
+							aria-label="Sizing example input"
+							aria-describedby="inputGroup-sizing-default">
+					</div>
+
+					<div class="input-group mb-3">
+						<span class="input-group-text">분실글 내용</span>
+						<textarea class="form-control" aria-label="With textarea"
+							name="content" placeholder="내용을 작성해주세요."
+							style="padding-bottom: 300px;"></textarea>
+					</div>
+
+					<div class="input-group mb-3">
+						<span class="input-group-text">분실 날짜必</span> <input type="date"
+							name="lost_date" id="lost_date" style="width: 300px;">
+					</div>
+
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default">분실물 처리</span>
+						<div class="form-floating">
+							<select class="form-select" id="floatingSelect"
+								aria-label="Floating label select example" name="status" style="width: 300px;">
+								<option value=""></option>
+								<option value="01">1</option>
+								<option value="02">2</option>
+							</select><label for="floatingSelect">Status Select</label>
+						</div>
+					</div>
+					<br>
+					<hr>
+					<br>
+				</div>
+				<div class="col-1"></div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col" style="text-align: left;">
+
+					<a href="<c:url value='/inquiry/lost'/>" role="button"
+						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
+				</div>
+				<div class="col" style="text-align: right;">
+					<button type="submit" class="btn btn-outline-dark"
+						style="width: 100px;">등록</button>
+				</div>
+				<div class="col-1"></div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+	</form>
 </body>
 </html>
