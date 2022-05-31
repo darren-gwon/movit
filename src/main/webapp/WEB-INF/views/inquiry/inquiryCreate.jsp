@@ -69,11 +69,11 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
-				<div class="col">
+				
+				<div class="col" style="text-align: left;">
 
 					<a href="<c:url value='/inquiry/list'/>" role="button"
-						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
+						class="btn btn-outline-dark" style="width: 100px; text-align: left;">뒤로가기</a>
 				</div>
 				<div class="col" style="text-align: right;">
 					<button type="submit" class="btn btn-outline-dark"

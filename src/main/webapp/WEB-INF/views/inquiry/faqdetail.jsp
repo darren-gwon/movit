@@ -17,15 +17,14 @@
 <body>
 
 	<div class="container">
-			<div class="row">
-				<div class="col-1"></div>
-					<div class="col" style="text-align: center;">
-						<img src="../../image/InquiryFAQ_TOP.png" width="1200px;">
-					</div>
-				<div class="col-1"></div>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col" style="text-align: center;">
+				<img src="../../image/InquiryFAQ_TOP.png" width="1200px;">
 			</div>
-			
+			<div class="col-1"></div>
 		</div>
+	</div>
 
 	<br>
 	<br>
@@ -53,8 +52,8 @@
 					</tr>
 					<tr>
 						<td style="display: none;">문의날짜</td>
-						<td style="display: none;"><fmt:formatDate value="${data.write_date}"
-								pattern="yyyy-MM-dd" /></td>
+						<td style="display: none;"><fmt:formatDate
+								value="${data.write_date}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 				</table>
 			</div>
@@ -63,23 +62,27 @@
 	</div>
 	<div class="container">
 		<div class="row">
-		<div class="col-1"></div>
-			<div class="col">
-			
+			<div class="col-1"></div>
+			<div class="col" style="text-align: left;">
+
 				<a href="<c:url value='/inquiry/faq'/>" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 			</div>
 			<div class="col" style="text-align: right;">
 				<a href="/inquiry/faq/update?seq=${data.seq}" role="button"
-						class="btn btn-outline-dark" style="width: 100px;">수정</a>
-				
-				<a href="/inquiry/faq/delete?seq=${data.seq}" role="button"
-						class="btn btn-outline-danger" style="width: 100px;">삭제</a>
+					class="btn btn-outline-dark" style="width: 100px;">수정</a> <a
+					href="/inquiry/faq/delete?seq=${data.seq}" role="button"
+					class="btn btn-outline-danger" style="width: 100px;">삭제</a>
 			</div>
 			<div class="col-1"></div>
 		</div>
 	</div>
-	<br><br><br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

@@ -8,7 +8,15 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+.container a
+{
+  text-decoration: none;
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">

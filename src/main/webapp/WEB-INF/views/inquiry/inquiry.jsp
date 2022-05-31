@@ -169,7 +169,7 @@ table.table-hover td {
 
 		<div class="container">
 			<div class="row">
-				<div class="col">
+				<div class="col" style="text-align: left;">
 					<a href="<c:url value='/inquiry/home'/>" role="button"
 						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 				</div>

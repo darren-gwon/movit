@@ -17,20 +17,18 @@
 
 <body>
 	<div class="container">
-			<div class="row">
-				<div class="col-1"></div>
-					<div class="col" style="text-align: center;">
-						<img src="../../image/InquiryFAQ_TOP.png" width="1200px;">
-					</div>
-				<div class="col-1"></div>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col" style="text-align: center;">
+				<img src="../../image/InquiryFAQ_TOP.png" width="1200px;">
 			</div>
-			
+			<div class="col-1"></div>
 		</div>
+
+	</div>
 
 
 	<form name="update" method="post" action="update?seq=${data.seq}">
-
-
 		<input type="hidden" value="${data.seq}">
 
 		<div class="container">
@@ -50,7 +48,7 @@
 							<option value="극장">극장</option>
 							<option value="특별관">특별관</option>
 							<option value="홈페이지">홈페이지</option>
-						</select><label for="floatingSelect"></label>
+						</select><label for="floatingSelect">Inquiry Type Select</label>
 					</div>
 
 					<br>
@@ -65,9 +63,10 @@
 
 					<div class="input-group">
 						<span class="input-group-text">FAQ 글내용</span>
-						<textarea class="form-control" aria-label="With textarea" style="padding-bottom: 300px;"
-							 name="content"
-							placeholder="content 작성해주세요.">${data.content}</textarea><br />
+						<textarea class="form-control" aria-label="With textarea"
+							style="padding-bottom: 300px;" name="content"
+							placeholder="content 작성해주세요.">${data.content}</textarea>
+						<br />
 					</div>
 
 					<br>
@@ -84,14 +83,14 @@
 					<br>
 				</div>
 
-<div class="col-1"></div>
+				<div class="col-1"></div>
 			</div>
 		</div>
 
 		<div class="container">
 			<div class="row">
 				<div class="col-1"></div>
-				<div class="col">
+				<div class="col" style="text-align: left;">
 
 					<a href="<c:url value='/inquiry/faq'/>" role="button"
 						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
@@ -107,8 +106,7 @@
 				<div class="col-1"></div>
 			</div>
 		</div>
-	<br>
-	<br>
+		<br> <br> <br><br><br><br>
 
 	</form>
 	<script

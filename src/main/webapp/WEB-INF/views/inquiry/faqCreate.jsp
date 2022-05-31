@@ -66,10 +66,14 @@
 				<div class="col-1"></div>
 			</div>
 		</div>
+		
+		
+		
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-1"></div>
-				<div class="col">
+				<div class="col" style="text-align: left;">
 
 					<a href="<c:url value='/inquiry/faq'/>" role="button"
 						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
