@@ -26,7 +26,7 @@ public class MypageController {
 	
 	@GetMapping("/home")
 	public String home(HttpSession session) {
-		session.setAttribute("user_id", "bit1633");
+		session.setAttribute("user_id", "gimzee");
 		return "/mypage/mypagehome";
 	}
 	
@@ -98,7 +98,7 @@ public class MypageController {
 	
 	@GetMapping("/pwUpdateView")
 	public String pwUpdateView() throws Exception{
-		return "/member/pwUpdateView";
+		return "/mypage/changepassword";
 	}
 	
 	@PostMapping("/pwCheck")
@@ -107,16 +107,23 @@ public class MypageController {
 			@ModelAttribute MypageDto dto,
 			@RequestParam String currentpwd
 			) {
+		int result = 0;
 		String memberPw = service.pwCheck(dto.getUser_id());
+		System.out.println("user_id = "+dto.getUser_id());
 		String cpwd = UserSha256.encrypt(currentpwd);
-		if(memberPw == cpwd) {
-			return 1;
+		System.out.println("currentpwd = "+currentpwd);
+		System.out.println("memberPw = "+memberPw+", cpwd = "+cpwd);
+		
+		if(memberPw.equals(cpwd)) {
+			result = 1;
 		} else {
-			return 0;
+			result = 0;
 		}
+		return result;
 	}
 	
 	@PostMapping("/pwUpdate")
+	@ResponseBody
 	public String pwUpdate(
 			@RequestParam String user_id,
 			@RequestParam String changepwd1,
@@ -124,10 +131,11 @@ public class MypageController {
 			HttpSession session
 			) {
 		String hashedPw = UserSha256.encrypt(changepwd1);
+		System.out.println("hashedPw = "+hashedPw+", changepwd1 = "+changepwd1+", user_id = "+user_id);
 		service.pwUpdate(user_id, hashedPw);
-		session.invalidate();
-		rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
-		
-		return "redirect:/mypage/mypagehome";
+		//session.invalidate();
+		//rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
+		//로그인화면으로 나중에 전환필요
+		return "redirect:home";
 	}
 }

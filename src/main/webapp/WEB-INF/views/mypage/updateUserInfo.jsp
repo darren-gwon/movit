@@ -79,18 +79,12 @@ $(function(){
 		$("#birthdaySelector3").val(s);
 	});
 	
-	//비번체크
-	$("#pass2").keyup(function(){
-		var p1 = $("#pass1").val();
-		var p2 = $(this).val();
-		if(p1==p2){
-			$("#pwdmsg").html("OK!").css("color","blue");
-		} else {
-			$("#pwdmsg").html("Fail!!").css("color","red");
-		}
+	
+	
+	//submit버튼이벤트(이메일 인증 확인 조건넣기)
+	$("#submit").click(function(){
+		
 	});
-	
-	
 });
 </script>
 </head>
@@ -130,41 +124,6 @@ $(function(){
 						<span name="birthday1" class="form-control">${birthday1 }년</span>
 						<span name="birthday2" class="form-control">${birthday2 }월</span> 
 						<span name="birthday3" class="form-control">${birthday3 }일</span>
-						<%-- <select id="birthdaySelector1">
-							<option value="">년</option>
-							<c:forEach var="i" begin="1900" end="2022">
-								<option value="${i}">${i}</option>
-							</c:forEach>
-						</select>
-						<select id="birthdaySelector2">
-							<option value="">월</option>
-							<c:forEach var="i" begin="1" end="12">
-								<c:choose>
-									<c:when test="${i < 10}">
-										<option value="${i}">0${i}</option>
-									</c:when>
-									<c:otherwise>
-										<option value="${i}">${i}</option>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-						</select>
-							<select id="birthdaySelector3">
-							<option value="">일</option>
-							<c:forEach var="i" begin="1" end="31">
-								<c:choose>
-									<c:when test="${i < 10}">
-										<option value="${i}">0${i}</option>
-									</c:when>
-									<c:otherwise>
-										<option value="${i}">${i}</option>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-						</select>
-						<input name="birthday1" id="birthday1" value="${birthday1 }">
-						<input name="birthday2" id="birthday2" value="${birthday2 }">
-						<input name="birthday3" id="birthday3" value="${birthday3 }"> --%>
 					</td>
 				</tr>
 				<tr>
@@ -199,14 +158,14 @@ $(function(){
 				<tr>
 					<th>비밀번호</th>
 					<td>
-						<input type="text" name="currentpwd" id="pass0" value="${dto.password }">
-						<input type="text" name="changepwd1" id="pass1" value="">
-						<input type="text" name="changepwd1" id="pass2" value=""><div id="pwdmsg"></div>
+						<!-- <div style="background-color:cyan;cursor:pointer;width:110px;" type="button" onclick="location.href='/mypage/pwUpdateView'">비밀번호 변경</div> -->
+						<button type="button" onclick="location.href='/mypage/pwUpdateView'">비밀번호 변경</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<button type="submit" >수정</button><button type="button" onclick="history.back()">취소</button>
+		<button type="submit" id="submit">수정</button>
+		<button type="button" onclick="history.back()">취소</button>
 	</div>
 	</form>
 </body>

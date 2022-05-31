@@ -25,12 +25,15 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
-	public String pwCheck(String memberId) {
-		return dao.pwCheck(memberId);
+	public String pwCheck(String user_id) {
+		return dao.pwCheck(user_id);
 	}
 	
 	@Override
-	public void pwUpdate(String memberId, String hashedPw) {
-		dao.pwUpdate(memberId, hashedPw);
+	public void pwUpdate(String user_id, String hashedPw) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user_id", user_id);
+		map.put("password", hashedPw);
+		dao.pwUpdate(map);
 	}
 }

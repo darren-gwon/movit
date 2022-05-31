@@ -19,7 +19,7 @@
 		select password from user where user_id = #{user_id}
 	</select>
 
-	<update id="pwUpdate">
+	<update id="pwUpdate" parameterType="Map">
 		update user set password = #{password} where user_id = #{user_id}
 	</update>
 </mapper>

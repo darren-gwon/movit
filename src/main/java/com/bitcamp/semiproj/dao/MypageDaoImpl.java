@@ -33,10 +33,7 @@ public class MypageDaoImpl implements MypageDao {
 	}
 	
 	@Override
-	public void pwUpdate(String user_id, String hashedPw) {
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("user_id", user_id);
-		map.put("hashedPw", hashedPw);
+	public void pwUpdate(Map<String, String> map) {
 		session.update(namespace + "pwUpdate", map);
 	}
 }
