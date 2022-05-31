@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bitcamp.semiproj.domain.KakaoDto;
+import com.bitcamp.semiproj.domain.NaverDto;
 import com.bitcamp.semiproj.domain.UserDto;
 
 
@@ -77,37 +78,32 @@ public class UserDaoImpl implements UserDao {
 
 		session.update(namespace+"temporaryPassword",map);
 	}
-	@Override
-	
-	public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson) {
-		// TODO Auto-generated method stub
-		
-		return session.selectOne(namespace+"naverCheck",apiJson);
-	}
-	@Override
-	public Map<String, Object> naverLoginPro(Map<String, Object> apiJson) {
-		// TODO Auto-generated method stub
-		return session.selectOne(namespace+"naverLogin",apiJson);
-	}
-	
-	@Override
-	public int naverConnection(Map<String, Object> apiJson) {
-		// TODO Auto-generated method stub
-		return session.insert(namespace+"naverReg",apiJson);
-	}
+	//카카오 db 저장
 	@Override
 	public void kakaoinsert(HashMap<String, Object> userInfo) {
 		// TODO Auto-generated method stub
 		session.insert(namespace+"kakaoInsert",userInfo);
 	}
+	//카카오 유저 검색
 	@Override
 	public KakaoDto findkakao(HashMap<String, Object> userInfo) {
 		// TODO Auto-generated method stub
 
 		return session.selectOne(namespace+"findkakao", userInfo);
 	}
+	//네이버 db저장
+	@Override
+	public void naverinsert(HashMap<String, Object> naver) {
+		// TODO Auto-generated method stub
+		session.insert(namespace+"naverInsert",naver);
+	}
+	//네이버 유저 검색
+	@Override
+	public NaverDto findnaver(HashMap<String, Object> naver) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+"findnaver", naver);
 
-
+	}
 
 
 

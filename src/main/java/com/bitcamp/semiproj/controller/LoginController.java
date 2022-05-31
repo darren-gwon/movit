@@ -30,7 +30,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 @Controller
-public class LoginDtoController {
+public class LoginController {
 
 	@Autowired
 	UserDao userdao;
@@ -78,16 +78,15 @@ public class LoginDtoController {
 		session.removeAttribute("user_id");
 		System.out.println(session);
 		session.invalidate(); 
-		String old_url = request.getHeader("referer");
-		return "redirect:" + old_url;
+		return "redirect:/test";
 	}
 	 
 	@RequestMapping(value = "/kakaologout", method = RequestMethod.GET)
-	public String logouts(HttpSession session, HttpServletRequest request) {
+	public String logouts(HttpSession session) {
 		// 세션에서 loginok 삭제
 		session.invalidate(); 
 		
-		return "redirect:/";
+		return "redirect:/test";
 	}
 
 	// 아이디 중복확인
