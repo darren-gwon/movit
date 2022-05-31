@@ -49,7 +49,7 @@ import util.FileUtil;
 			model.addAttribute("list", list);
 			model.addAttribute("startnum",startnum);
 			model.addAttribute("totalcount",totalcount);
-			return "/event/eventlist";
+			return "event/eventlist.tiles";
 		}
 		
 		//�Խù� ���
@@ -66,7 +66,7 @@ import util.FileUtil;
 		//�Խù� �ۼ� �� �̵�
 		@RequestMapping(value = "/eventwriteform", method = RequestMethod.GET)
 		public String write() throws Exception {
-			   return "/event/eventwriteform";
+			   return "event/eventwriteform.tiles";
 				}
 		
 		/*// �Խù� �ۼ� POST
@@ -140,7 +140,7 @@ import util.FileUtil;
 					EventDto dto=service.detail(num);	
 					service.readcount(dto);
 					model.addAttribute("dto",dto);
-					return "/event/eventdetail";
+					return "event/eventdetail.tiles";
 				}
 		//�Խù� ����
 				@RequestMapping(value="/updateform",method=RequestMethod.GET)
@@ -148,7 +148,7 @@ import util.FileUtil;
 					EventDto dto=service.detail(num);
 					model.addAttribute("dto",dto);
 					
-					return "/event/updateform";
+					return "event/updateform.tiles";
 				}
 		//�Խù� ���� post
 				@RequestMapping(value="/updateform",method=RequestMethod.POST)

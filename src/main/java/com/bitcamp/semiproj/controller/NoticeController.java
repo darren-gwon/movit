@@ -19,20 +19,20 @@ public class NoticeController {
 	@Autowired
 	private NoticeService service;
 	
-	//°Ô½Ã¹° ¸ñ·Ï
+	//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(Model model, @RequestParam(defaultValue = "1")Integer num,@
 			RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
 			) throws Exception{
 
 			
-			int postcount=service.postcount(); //°Ô½Ã¹° ÃÑ°¹¼ö
-			int postnum = 10; //ÇÑÆäÀÌÁö¿¡ Ãâ·ÂÇÒ °Ô½Ã¹° °¹¼ö
-			int pagenum = (int)Math.ceil((double)postcount/postnum); //ÇÏ´Ü ÆäÀÌÁö ¹øÈ£
-			int displaypost = (num-1) * postnum; //Ãâ·ÂÇÒ °Ô½Ã¹°
-			int pagecount = 5; // ÇÑ¹ø¿¡ Ç¥½ÃÇÒ ÆäÀÌÁö ¹øÈ£ °¹¼ö
-			int endpagenum = (int)(Math.ceil((double)num/(double)pagecount)*pagecount);// ÆäÀÌÁö ¹øÈ£ Áß ¸¶Áö¸·
-			int startpagenum = endpagenum - (pagecount - 1); //ÆäÀÌÁö ¹øÈ£ Áß Ã¹¹øÂ°
+			int postcount=service.postcount(); //ï¿½Ô½Ã¹ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½
+			int postnum = 10; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
+			int pagenum = (int)Math.ceil((double)postcount/postnum); //ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
+			int displaypost = (num-1) * postnum; //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½
+			int pagecount = 5; // ï¿½Ñ¹ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½
+			int endpagenum = (int)(Math.ceil((double)num/(double)pagecount)*pagecount);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			int startpagenum = endpagenum - (pagecount - 1); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ Ã¹ï¿½ï¿½Â°
 			
 			int endpagenum_re = (int)(Math.ceil((double)postcount / (double)pagecount));
 			
@@ -47,59 +47,59 @@ public class NoticeController {
 			model.addAttribute("list",list);
 			model.addAttribute("pagenum", pagenum);
 			
-			//½ÃÀÛ ¹× ³¡¹øÈ£
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È£
 			model.addAttribute("startpagenum", startpagenum);
 			model.addAttribute("endpagenum", endpagenum);
 			
-			//ÀÌÀü ¹× ´ÙÀ½
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			model.addAttribute("prev",prev);
 			model.addAttribute("next",next);
 			
-			//ÇöÀçÆäÀÌÁö
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			model.addAttribute("select",num);
 			
-			//°Ô½Ã¹° ÃÑ °¹¼ö
+			//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			model.addAttribute("postcount",postcount);
 	}
 	
 
 
 	
-	//°Ô½Ã¹° ÀÛ¼º Æû ÀÌµ¿
+	//ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ ï¿½Ìµï¿½
 		@RequestMapping(value = "/writeform", method = RequestMethod.GET)
 		public String write() throws Exception {
-				return "/board/writeform";
+				return "board/writeform.tiles";
 		}
-		// °Ô½Ã¹° ÀÛ¼º POST
+		// ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½ POST
 		@RequestMapping(value="/create", method=RequestMethod.POST)
 		public String postcreate(NoticeDto dto) throws Exception{
 			service.create(dto);
 			return "redirect:list";
 		}
-		//°Ô½Ã¹° »ó¼¼ÆäÀÌÁö ÀÌµ¿
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 		@RequestMapping(value="/detail", method=RequestMethod.GET)
 		public String getdetail(Model model,int num) {
 			NoticeDto dto=service.detail(num);	
 			service.readcount(dto);
 			model.addAttribute("dto",dto);
-			return "/board/detail";
+			return "board/detail.tiles";
 		}
-		//°Ô½Ã¹° ¼öÁ¤
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value="/updateform",method=RequestMethod.GET)
 			public String getupdate(Model model, int num) throws Exception{
 			NoticeDto dto=service.detail(num);
 			model.addAttribute("dto",dto);
 			
-			return "/board/updateform";
+			return "board/updateform.tiles";
 		}
-		//°Ô½Ã¹° ¼öÁ¤ post
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ post
 		@RequestMapping(value="/updateform",method=RequestMethod.POST)
 			public String postupdate(NoticeDto dto) throws Exception {
 			//System.out.println(dto);
 			service.updateform(dto);
 				return "redirect:list";
 		}
-		//°Ô½Ã¹° »èÁ¦
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value="/delete",method=RequestMethod.GET)
 			public String getdelete(int num) throws Exception {
 			//System.out.println(num);

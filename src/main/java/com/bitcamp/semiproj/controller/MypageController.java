@@ -27,7 +27,7 @@ public class MypageController {
 	@GetMapping("/home")
 	public String home(HttpSession session) {
 		session.setAttribute("user_id", "gimzee");
-		return "/mypage/mypagehome";
+		return "mypage/mypagehome.tiles";
 	}
 	
 	@PostMapping("userCheck")

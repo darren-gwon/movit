@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>   
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <style>
-	#wrap {
+	.content {
 	    width:500px;
 	    margin : 0 auto ;
 	    border: 0px solid #000;
@@ -90,7 +90,7 @@ $(function(){
 </head>
 <body>
 	<form action="updateMypage" method="post">
-	<div id="wrap">
+	<div class="content">
 		<table class="type09">
 			<thead>
 				<tr>
