@@ -90,8 +90,9 @@
 				<h3>SNS</h3>
 				<hr>
 				<div class="">
-					<img src="/resources/img/main/sns/facebook.png" class="sns_icon"> <img src="/resources/img/main/sns/youtube.png" class="sns_icon"> <img src="/resources/img/main/sns/instagram.png" class="sns_icon last">
+					<a href="https://facebook.com" target="_blank"><img src="/resources/img/main/sns/facebook.png" class="sns_icon"></a> <a href="https://youtube.com" target="_blank"><img src="/resources/img/main/sns/youtube.png" class="sns_icon"></a> <a href="https://instagram.com" target="_blank"><img src="/resources/img/main/sns/instagram.png" class="sns_icon last"></a>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
