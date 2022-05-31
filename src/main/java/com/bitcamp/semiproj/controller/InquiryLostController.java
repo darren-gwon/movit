@@ -27,13 +27,13 @@ public class InquiryLostController {
 	public String SupportHome(Model model) throws Exception{
 		List<InquiryLostDto> list = lostService.getLostList();
 		model.addAttribute("list",list);
-		return "/inquiry/lost";
+		return "inquiry/lost.tiles";
 	}
 	
 	//게시물 작성 페이지로 이동
 	@GetMapping("/lost/insert")
 	public String create() throws Exception {
-		return "/inquiry/lostCreate";
+		return "inquiry/lostCreate.tiles";
 	}
 	
 	//게시물 작성 Lost Post
@@ -48,7 +48,7 @@ public class InquiryLostController {
 	public String lostdetail(Model model, int seq) {
 		InquiryLostDto data = lostService.lostdetail(seq);
 		model.addAttribute("data",data);
-		return "/inquiry/lostdetail";
+		return "inquiry/lostdetail.tiles";
 	}
 	
 	//게시물 detail update 페이지로 이동
@@ -56,7 +56,7 @@ public class InquiryLostController {
 	public String lostupdate(int seq, Model model) throws Exception {
 		InquiryLostDto data = lostService.lostdetail(seq);
 		model.addAttribute("data",data);
-		return "inquiry/lostdetailupdate";
+		return "inquiry/lostdetailupdate.tiles";
 	}
 	
 	//게시물 업데이트(lost 수정)

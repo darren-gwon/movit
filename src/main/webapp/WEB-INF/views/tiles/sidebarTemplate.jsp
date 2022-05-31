@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" id="sidebarClose" class="closebtn side_menu" >&times;</a>
-  
   <a href="#" class="side_menu">마이페이지</a>
   <a href="#" class="side_menu">메인페이지</a>
   <a href="#" class="side_menu">공지사항</a>

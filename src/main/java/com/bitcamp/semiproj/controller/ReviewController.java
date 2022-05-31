@@ -30,7 +30,7 @@ public class ReviewController {
 	
 	@GetMapping("/home")
 	public String reviewHome() throws Exception {
-		return "/review/reviewhome";
+		return "review/reviewhome.tiles";
 	}
 
 	@GetMapping("/list")
@@ -59,7 +59,7 @@ public class ReviewController {
 			HttpSession session) {
 		session.setAttribute("user_id", "gimzee");
 		model.addAttribute("movieID", movieID);
-		return "/review/reviewform3";
+		return "review/reviewform.tiles";
 	}
 	
 	@PostMapping("/insert")

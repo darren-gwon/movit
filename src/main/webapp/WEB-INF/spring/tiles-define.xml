@@ -5,33 +5,33 @@
  
 <tiles-definitions>
 	<!-- 메인 페이지 레이아웃 -->
-	<definition name="main-layout-tiles" template="/WEB-INF/views/tiles/main-layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/tiles/headerTemplate.jsp" />
+	<definition name="tiles-layout" template="/WEB-INF/views/tiles/tiles-layout.jsp">
 		<put-attribute name="sidebar" value="/WEB-INF/views/tiles/sidebarTemplate.jsp" />
- 		<!-- <put-attribute name="left" value="/WEB-INF/views/tiles/sidebarTemplate.jsp" />  -->
-		<put-attribute name="mainContent" value="/WEB-INF/views/tiles/mainContentTemplate.jsp" />
-		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/WEB-INF/views/tiles/footerTemplate.jsp" />
-	</definition>
-	
-	<definition name="/*/*" extends="main-layout-tiles">
-		<!-- <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" /> -->
-		<put-attribute name="title" value="게시판" />
-	</definition>
-	
-	<!-- 공통 레이아웃 -->
-	<definition name="normal-layout-tiles" template="/WEB-INF/views/tiles/normal-layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/tiles/headerTemplate.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/tiles/sidebarTemplate.jsp" />
 		<put-attribute name="content" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footerTemplate.jsp" />
 	</definition>
-	
-	<definition name="/tiles/*/*" extends="normal-layout-tiles">
-		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
-		<put-attribute name="booking" value="영화예매" />
-		<put-attribute name="notice" value="공지사항" />
-		<put-attribute name="register" value="회원가입" />
-		<put-attribute name="movie" value="현재 상영중인 영화" />
+
+	<!-- tiles 적용 -->
+	<definition name="*.tiles" extends="tiles-layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
+	<definition name="*/*.tiles" extends="tiles-layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	<definition name="*/*/*.tiles" extends="tiles-layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+	
+	<!-- tiles 미 적용 -->
+	<definition name="normal-layout" template="/WEB-INF/views/layout/NormalLayout.jsp">
+		<put-attribute name="normal" value="" />
+	</definition>
+	<definition name="*.jsp" extends="normal-layout">
+		<put-attribute name="normal" value="/WEB-INF/jsp/{1}.jsp" />
+	</definition>
+	<definition name="*/*.jsp" extends="normal-layout">
+		<put-attribute name="normal" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+	</definition>
+	
 </tiles-definitions>

@@ -11,12 +11,11 @@ public class MovieHomeController {
 	@GetMapping("/moviehome")
 	public String moviewhome(){
 		
-	return "movie/movie";
+	return "movie/movie.tiles";
 	}
 	
 	@GetMapping("/moviedetail")
 	public String moviewdetail(){
-		
-	return "movie/movieDetail";
+	return "movie/movieDetail.tiles";
 	}
 }

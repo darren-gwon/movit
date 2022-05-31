@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!-- 공통변수 처리 -->
 <c:set var="CONTEXT_PATH" value="${pageContext.request.contextPath}" scope="application" />
@@ -17,11 +14,10 @@
 	var CONTEXT_PATH = "${CONTEXT_PATH}";
 	var RESOURCES_PATH = "${RESOURCES_PATH}";
 </script>
-<link rel="stylesheet" href="/css/common.css">
+<link href="/resources/css/common.css" rel='stylesheet' />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<title><tiles:insertAttribute name="movie" /></title>
 </head>
 
 <body>
@@ -32,7 +28,7 @@
 		<div class="header_wrap">
 			<tiles:insertAttribute name="header" />
 		</div>
-		<div class='content'>
+		<div class='content_wrap'>
 			<tiles:insertAttribute name="content" />
 		</div>
 		<div class="footer_wrap">

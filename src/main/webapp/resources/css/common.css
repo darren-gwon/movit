@@ -6,7 +6,6 @@
 }
 
 .wrap {
-	background-color: greenyellow;
 	width: 100%;
 	min-width: 1500px;
 	transition: margin-left .5s;
@@ -102,10 +101,16 @@
 	}
 }
 
-#sidebarBlock {
-	background-color: black;
+.content_wrap {
+    margin: 0 auto;
+    text-align: center;
+    width:100%;
+    min-width:1500px;
 }
 
+.content {
+	position:relative;
+}
 
 .footer{
 	width:100%;
