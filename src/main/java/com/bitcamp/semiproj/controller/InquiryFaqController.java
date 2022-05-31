@@ -28,13 +28,13 @@ public class InquiryFaqController {
 	public String SupportHome(Model model) throws Exception{
 		List<InquiryFaqDto> list =faqService.getFaqList();
 		model.addAttribute("list",list);
-		return "/inquiry/faq";
+		return "inquiry/faq.tiles";
 	}
 	
 	//게시물 작성 페이지로 이동
 	@GetMapping("/faq/insert")
 	public String create() throws Exception {
-		return "/inquiry/faqCreate";
+		return "inquiry/faqCreate.tiles";
 	}
 	
 	//게시물 작성 faq post
@@ -49,7 +49,7 @@ public class InquiryFaqController {
 	public String getdetail(Model model, int seq) {
 		InquiryFaqDto data = faqService.faqdetail(seq);
 		model.addAttribute("data",data);
-		return "/inquiry/faqdetail";
+		return "inquiry/faqdetail.tiles";
 	}
 	
 	//게시물 업데이트(faq 수정) faq 이동
@@ -57,7 +57,7 @@ public class InquiryFaqController {
 	public String getupdate(int seq, Model model) throws Exception {
 		InquiryFaqDto data = faqService.faqdetail(seq);
 		model.addAttribute("data",data);
-		return "inquiry/faqdetailupdate";
+		return "inquiry/faqdetailupdate.tiles";
 	}
 	
 	//게시물 업데이트(faq 수정)

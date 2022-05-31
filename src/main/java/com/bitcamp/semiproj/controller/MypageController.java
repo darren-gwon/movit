@@ -21,7 +21,7 @@ public class MypageController {
 	
 	@GetMapping("/home")
 	public String home() {
-		return "/mypage/mypagehome";
+		return "mypage/mypagehome.tiles";
 	}
 	
 	@GetMapping("/updateUserInfo")
@@ -63,7 +63,7 @@ public class MypageController {
 		
 		
 		
-		return "/mypage/updateUserInfo";
+		return "mypage/updateUserInfo.tiles";
 	}
 	
 	

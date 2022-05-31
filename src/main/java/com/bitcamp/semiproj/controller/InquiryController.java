@@ -27,13 +27,13 @@ public class InquiryController {
 	public String SupportHome(Model model) throws Exception{
 		List<InquiryDto> list = inquiryService.getInquiryList();
 		model.addAttribute("list",list);
-		return "/inquiry/inquiry";
+		return "inquiry/inquiry.tiles";
 	}
 	
 	//게시물 작성 페이지로 이동
 	@GetMapping("/list/insert")
 	public String create() throws Exception {
-		return "/inquiry/inquiryCreate";
+		return "inquiry/inquiryCreate.tiles";
 	}
 	
 	//게시물 작성 Lost Post
@@ -48,7 +48,7 @@ public class InquiryController {
 	public String inquirydetail(Model model, int seq) {
 		InquiryDto data = inquiryService.inquirydetail(seq);
 		model.addAttribute("data",data);
-		return "/inquiry/inquirydetail";
+		return "inquiry/inquirydetail.tiles";
 	}
 	
 	//게시물 detail update 페이지로 이동
@@ -56,7 +56,7 @@ public class InquiryController {
 	public String inquiryupdate(int seq, Model model) throws Exception {
 		InquiryDto data = inquiryService.inquirydetail(seq);
 		model.addAttribute("data",data);
-		return "inquiry/inquirydetailupdate";
+		return "inquiry/inquirydetailupdate.tiles";
 	}
 	
 	//게시물 업데이트(update detail 수정)
