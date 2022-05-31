@@ -25,7 +25,7 @@
 		<div class="sidebar_wrap">
 			<tiles:insertAttribute name="sidebar" />
 		</div>
-		<div class="header_wrap">
+		<div class="header_wrap fixed-top">
 			<tiles:insertAttribute name="header" />
 		</div>
 		<div class='content_wrap'>
