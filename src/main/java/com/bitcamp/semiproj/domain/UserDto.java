@@ -14,14 +14,37 @@ public class UserDto {
 	private String gender;
 	private String birthday;
 	private String key;
+	private String sns_type;
+	private String sns_email;
+	private String sns_name;
+	private Timestamp register_date;
+	private Timestamp modified_date;
+	
+	public String getSns_type() {
+		return sns_type;
+	}
+	public void setSns_type(String sns_type) {
+		this.sns_type = sns_type;
+	}
+	public String getSns_email() {
+		return sns_email;
+	}
+	public void setSns_email(String sns_email) {
+		this.sns_email = sns_email;
+	}
+	public String getSns_name() {
+		return sns_name;
+	}
+	public void setSns_name(String sns_name) {
+		this.sns_name = sns_name;
+	}
 	public String getKey() {
 		return key;
 	}
 	public void setKey(String key) {
 		this.key = key;
 	}
-	private Timestamp register_date;
-	private Timestamp modified_date;
+
 	
 	public int getSeq() {
 		return seq;
@@ -91,7 +114,16 @@ public class UserDto {
 	}
 	@Override
 	public String toString() {
-		return "UserDto [seq=" + seq + ", user_id="+ user_id +", name=" + name + ", nickname=" + nickname + ", email="
-				+ email + ", phone=" + phone + ", gender=" + gender + ", birthday="+birthday+", register_date="+register_date+"]";
+		return "UserDto [seq=" + seq + ", user_id=" + user_id + ", password=" + password + ", name=" + name
+				+ ", nickname=" + nickname + ", email=" + email + ", phone=" + phone + ", gender=" + gender
+				+ ", birthday=" + birthday + ", key=" + key + ", sns_type=" + sns_type + ", sns_email=" + sns_email
+				+ ", sns_name=" + sns_name + ", register_date=" + register_date + ", modified_date=" + modified_date
+				+ ", getSns_type()=" + getSns_type() + ", getSns_email()=" + getSns_email() + ", getSns_name()="
+				+ getSns_name() + ", getKey()=" + getKey() + ", getSeq()=" + getSeq() + ", getUser_id()=" + getUser_id()
+				+ ", getPassword()=" + getPassword() + ", getName()=" + getName() + ", getNickname()=" + getNickname()
+				+ ", getEmail()=" + getEmail() + ", getPhone()=" + getPhone() + ", getGender()=" + getGender()
+				+ ", getBirthday()=" + getBirthday() + ", getRegister_date()=" + getRegister_date()
+				+ ", getModified_date()=" + getModified_date() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 }

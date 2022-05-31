@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page import="java.net.URLEncoder" %>
-<%@ page import="java.security.SecureRandom" %>
-<%@ page import="java.math.BigInteger" %>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
 <c:set var="pass" value="<%=request.getContextPath()%>" />
 
 <!DOCTYPE html>
@@ -13,29 +12,21 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://kit.fontawesome.com/5d8badcf1a.js"
-	crossorigin="anonymous"></script>
-	<title>MOVIT, 무빗</title>
-	<!--  카카오 스크립트-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/5d8badcf1a.js" crossorigin="anonymous"></script>
+<title>MOVIT, 무빗</title>
+<!--  카카오 스크립트-->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<!--  네이버 스크립트-->
+<!--  네이버 스크립트-->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-	
+
 
 <style>
-
 * {
 	margin: 0;
 	padding: 0;
@@ -277,7 +268,9 @@
 
 <!--
 loginmodal
+
  
+
 css--
 >
 @import
@@ -524,27 +517,22 @@ h6 span {
 		<div id="contents_wrap">
 			<div id="header_wrap" class=" fixed-top">
 				<div class="header_container ">
-					<span style="font-size: 30px; cursor: pointer" onclick="openNav()"
-						class="menuBtn">&#9776;</span> <span class="logo">;Movit</span>
+					<span style="font-size: 30px; cursor: pointer" onclick="openNav()" class="menuBtn">&#9776;</span> <span class="logo">;Movit</span>
 					<c:set var="user_id" value="${sessionScope.user_id}" />
 					<c:set var="kakaoN" value="${sessionScope.kakaoN}" />
 
 
 					<c:if test="${user_id==null && kakaoN==null}">
-						<span class="loginBtn"> <a data-bs-toggle="modal"
-							data-bs-target="#loginview">LogIn</a> <a href=${pass}/user/reg>회원가입</a>
+						<span class="loginBtn"> <a data-bs-toggle="modal" data-bs-target="#loginview">LogIn</a> <a href=${pass}/user/reg>회원가입</a>
 						</span>
 					</c:if>
 
-					<c:if test="${sessionScope.user_id!=null}">
-						<span class="loginBtn"> <b>${sessionScope.loginname}(${sessionScope.user_id})님</b>
-							&nbsp; &nbsp; <a onclick="logout()">Logout</a>
+					<c:if test="${sessionScope.user_id!=null && kakaoN==null}">
+						<span class="loginBtn"> <b>${sessionScope.loginname}(${sessionScope.user_id})님</b> &nbsp; &nbsp; <a onclick="logout()">Logout</a>
 						</span>
 					</c:if>
 					<c:if test="${sessionScope.kakaoN!=null}">
-						<span class="loginBtn"> <b>${sessionScope.kakaoN}(${sessionScope.kakaoE})님</b>
-							&nbsp; &nbsp;<a	href="https://kauth.kakao.com/oauth/logout?client_id=1ae5e64fdf23e2e6840b736262379606&logout_redirect_uri=http://localhost:9005/kakaologout"
-							onclick="logouts()">Logout</a>
+						<span class="loginBtn"> <b>${sessionScope.loginname}(${sessionScope.user_id})님</b> &nbsp; &nbsp;<a href="https://kauth.kakao.com/oauth/logout?client_id=1ae5e64fdf23e2e6840b736262379606&logout_redirect_uri=http://localhost:9005/kakaologout" onclick="logouts()">Logout</a>
 
 						</span>
 					</c:if>
@@ -552,8 +540,7 @@ h6 span {
 			</div>
 			<div id="banner_wrap">
 				<div class="banner_container">
-					<div id="carouselExampleControls" class="carousel slide"
-						data-bs-ride="carousel">
+					<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 						<div class="carousel-inner">
 							<div class="carousel-item active">
 								<img src="img/banner-1.jpg" class="d-block w-100" alt="...">
@@ -562,39 +549,27 @@ h6 span {
 								<img src="img/banner-2.jpg" class="d-block w-100" alt="...">
 							</div>
 						</div>
-						<button class="carousel-control-prev" type="button"
-							data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
 						</button>
-						<button class="carousel-control-next" type="button"
-							data-bs-target="#carouselExampleControls" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
 						</button>
 					</div>
 					<div class="movie_card_wrap">
 						<div class="movie_card first">
-							<span> <img
-								src="https://img.megabox.co.kr/SharedImg/2022/05/04/4OFqLBLmda67a6BPXjaXCVM5wun7FAtb_420.jpg"
-								class="poster">
+							<span> <img src="https://img.megabox.co.kr/SharedImg/2022/05/04/4OFqLBLmda67a6BPXjaXCVM5wun7FAtb_420.jpg" class="poster">
 							</span>
 						</div>
 						<div class="movie_card second">
-							<span> <img
-								src="https://img.megabox.co.kr/SharedImg/2022/04/29/Sj4v7jaCicFTLrGgxM5D0lRsrL3kgu8g_420.jpg"
-								class="poster">
+							<span> <img src="https://img.megabox.co.kr/SharedImg/2022/04/29/Sj4v7jaCicFTLrGgxM5D0lRsrL3kgu8g_420.jpg" class="poster">
 							</span>
 						</div>
 						<div class="movie_card third">
-							<span> <img
-								src="https://img.megabox.co.kr/SharedImg/2022/04/06/7YDE8KC4uv7RH6F57pTYUhS7IygSxYTF_420.jpg"
-								class="poster">
+							<span> <img src="https://img.megabox.co.kr/SharedImg/2022/04/06/7YDE8KC4uv7RH6F57pTYUhS7IygSxYTF_420.jpg" class="poster">
 							</span>
 						</div>
-						<span class="movie_card fourth"> <span> <img
-								src="https://img.megabox.co.kr/SharedImg/2022/03/25/p02Tj8NeXivFyhGgMGm3DD0kdeogGkkA_420.jpg"
-								class="poster">
+						<span class="movie_card fourth"> <span> <img src="https://img.megabox.co.kr/SharedImg/2022/03/25/p02Tj8NeXivFyhGgMGm3DD0kdeogGkkA_420.jpg" class="poster">
 						</span>
 					</div>
 				</div>
@@ -606,32 +581,27 @@ h6 span {
 		<div id="nav_wrap">
 			<div class="nav_container">
 				<div class="icon_wrap">
-					<i class="bi bi-person nav_icon_sm"> <br>
-					<span>마이페이지</span>
+					<i class="bi bi-person nav_icon_sm"> <br> <span>마이페이지</span>
 					</i>
 
 				</div>
 				<div class="icon_wrap">
-					<i class="bi bi-gift nav_icon_lg"> <br>
-					<span>이벤트</span>
+					<i class="bi bi-gift nav_icon_lg"> <br> <span>이벤트</span>
 					</i>
 
 				</div>
 				<div class="icon_wrap">
-					<i class="bi bi-ticket-perforated nav_icon_sm"> <br>
-					<span>예매하기</span>
+					<i class="bi bi-ticket-perforated nav_icon_sm"> <br> <span>예매하기</span>
 					</i>
 
 				</div>
 				<div class="icon_wrap">
-					<i class="bi bi-camera-reels nav_icon_lg"> <br>
-					<span>현재 상영작</span>
+					<i class="bi bi-camera-reels nav_icon_lg"> <br> <span>현재 상영작</span>
 					</i>
 
 				</div>
 				<div class="icon_wrap">
-					<i class="bi bi-chat-left-text nav_icon_lg"> <br>
-					<span>문의사항</span>
+					<i class="bi bi-chat-left-text nav_icon_lg"> <br> <span>문의사항</span>
 					</i>
 
 				</div>
@@ -660,7 +630,9 @@ h6 span {
 
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="#">About</a> <a href="#">Services</a> <a href="#">Clients</a>
+		<a href="#">About</a>
+		<a href="#">Services</a>
+		<a href="#">Clients</a>
 		<a href="#">Contact</a>
 	</div>
 
@@ -682,13 +654,11 @@ h6 span {
 												<span class="glyphicon glyphicon-lock"></span> LogIn
 											</h4>
 											<div class="form-group">
-												<input type="text" name="user_id" class="form-style"
-													placeholder="Your ID" id="logemail" autocomplete="off">
+												<input type="text" name="user_id" class="form-style" placeholder="Your ID" id="logemail" autocomplete="off">
 												<i class="input-icon uil uil-at"></i>
 											</div>
 											<div class="form-group mt-2">
-												<input type="password" name="password" class="form-style"
-													placeholder="Your Password" id="logpass" autocomplete="off">
+												<input type="password" name="password" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
 											<br>
@@ -701,25 +671,17 @@ h6 span {
 											<p class="regtext ">
 												<a href="${pass}/user/reg" class="link">아직 회원이 아니십니까?</a>
 											</p>
-									
-												<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=1ae5e64fdf23e2e6840b736262379606&redirect_uri=http://localhost:9005/kakaologin&response_type=code">
-											
-												<img src="./image/kakao_login_medium_narrow.png"
-												style="height: 40px">
-											</a> <br> 
-													<!-- 네이버 로그인 버튼 생성 위치 -->
-											   <%
-    String clientId = "wmxTFuijyRLQbSXlc64_";//애플리케이션 클라이언트 아이디값";
-    String redirectURI = URLEncoder.encode("http://localhost:9005/naverlogin", "UTF-8");
-    SecureRandom random = new SecureRandom();
-    String state = new BigInteger(130, random).toString();
-    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-    apiURL += "&client_id=" + clientId;
-    apiURL += "&redirect_uri=" + redirectURI;
-    apiURL += "&state=" + state;
-    session.setAttribute("state", state);
- %>
-  <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+
+											<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=1ae5e64fdf23e2e6840b736262379606&redirect_uri=http://localhost:9005/kakaologin&response_type=code">
+
+												<img src="./image/kakao_login_medium_narrow.png" style="height: 40px">
+											</a>
+											<!-- 네이버 로그인 버튼 생성 위치 -->
+											<a href="logins">
+												<img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG" />
+											</a>
+
+
 											<br>
 											<div c lass="text-center"></div>
 										</div>
@@ -743,17 +705,11 @@ h6 span {
 								<div class="center-wrap">
 									<div class="section text-center">
 										<div>
-											<div style="margin-bottom: 10px;"
-												class="custom-control custom-radio custom-control-inline">
-												<input type="radio" class="custom-control-input"
-													id="search_1" name="search_total" onclick="search_check(1)"
-													checked="checked"> <label
-													class="custom-control-label font-weight-bold text-white"
-													for="search_1">아이디 찾기</label> <input type="radio"
-													class="custom-control-input" id="search_2"
-													name="search_total" onclick="search_check(2)"> <label
-													class="custom-control-label font-weight-bold text-white"
-													for="search_2">비밀번호 찾기</label>
+											<div style="margin-bottom: 10px;" class="custom-control custom-radio custom-control-inline">
+												<input type="radio" class="custom-control-input" id="search_1" name="search_total" onclick="search_check(1)" checked="checked">
+												<label class="custom-control-label font-weight-bold text-white" for="search_1">아이디 찾기</label>
+												<input type="radio" class="custom-control-input" id="search_2" name="search_total" onclick="search_check(2)">
+												<label class="custom-control-label font-weight-bold text-white" for="search_2">비밀번호 찾기</label>
 											</div>
 										</div>
 										<div id="searchId">
@@ -763,22 +719,17 @@ h6 span {
 													<span class="glyphicon glyphicon-lock"></span> 아이디 찾기
 												</h4>
 
-												<input type="text" name="inputname" class="form-style"
-													placeholder="Your Name" id="inputname" autocomplete="off">
+												<input type="text" name="inputname" class="form-style" placeholder="Your Name" id="inputname" autocomplete="off">
 												<i class="input-icon uil uil-at"></i>
 											</div>
 											<div class="form-group mt-2">
-												<input type="email" name="inputemail" class="form-style"
-													placeholder="Your Email" id="inputemail" autocomplete="off">
+												<input type="email" name="inputemail" class="form-style" placeholder="Your Email" id="inputemail" autocomplete="off">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
 											<br>
-											<button id="searchBtn" type="button"
-												onclick="idSearch_click()" class="btnlogin" value="check">ID
-												찾기</button>
+											<button id="searchBtn" type="button" onclick="idSearch_click()" class="btnlogin" value="check">ID 찾기</button>
 
-											<a class="btn btn-danger btn-block" id="Idfindviewclose"
-												style="text-decoration: none; border-radius: 20px;">로그인하러가기</a>
+											<a class="btn btn-danger btn-block" id="Idfindviewclose" style="text-decoration: none; border-radius: 20px;">로그인하러가기</a>
 										</div>
 
 
@@ -788,48 +739,37 @@ h6 span {
 													<span class="glyphicon glyphicon-lock"></span> 비밀번호 찾기
 												</h4>
 												<div class="form-group">
-													<input type="text" name="inputId" class="form-style"
-														placeholder="Your Id" id="inputId" autocomplete="off">
+													<input type="text" name="inputId" class="form-style" placeholder="Your Id" id="inputId" autocomplete="off">
 													<i class="input-icon uil uil-at"></i>
 												</div>
 												<div class="form-group mt-2">
-													<input type="email" name="inputemail2" class="form-style"
-														placeholder="Your Email" id="inputemail2"
-														autocomplete="off"> <i
-														class="input-icon uil uil-lock-alt"></i>
+													<input type="email" name="inputemail2" class="form-style" placeholder="Your Email" id="inputemail2" autocomplete="off">
+													<i class="input-icon uil uil-lock-alt"></i>
 												</div>
 												<div class="form-group mt-2">
-													<div class="mail_check_input_box"
-														id="mail_check_input_box_false">
-														<input id="certi" type="text" name="certi" title="인증번호 입력"
-															disabled required />
+													<div class="mail_check_input_box" id="mail_check_input_box_false">
+														<input id="certi" type="text" name="certi" title="인증번호 입력" disabled required />
 													</div>
 
-													<button type="button"
-														class="btn btn-outline-danger btn-sm px-3" id="emailChk"
-														class="doubleChk">
+													<button type="button" class="btn btn-outline-danger btn-sm px-3" id="emailChk" class="doubleChk">
 														<i class="fa fa-envelope"></i>&nbsp;인증번호 보내기
 													</button>
 													&nbsp;
-													<button type="button"
-														class="btn btn-outline-info btn-sm px-3" id="emailChk2"
-														class="doubleChk">
+													<button type="button" class="btn btn-outline-info btn-sm px-3" id="emailChk2" class="doubleChk">
 														<i class="fa fa-envelope"></i>&nbsp;확인
 													</button>
-													&nbsp;<br> <input type="hidden" id="emailDoubleChk" />
-													<span class="point successEmailChk" style="color: red;">이메일
-														입력후 인증번호 보내기를 해주십시오.</span> <input type="hidden"
-														id="emailDoubleChk" />
+													&nbsp;<br>
+													<input type="hidden" id="emailDoubleChk" />
+													<span class="point successEmailChk" style="color: red;">이메일 입력후 인증번호 보내기를 해주십시오.</span>
+													<input type="hidden" id="emailDoubleChk" />
 													<div class="check_font" id="email_check"></div>
 													<br>
 
 
 												</div>
 											</div>
-											<button type="button" class="btnlogin" id="searchBtn2"
-												onclick="passwordSerch_click()">Password 찾기</button>
-											<a class="btn btn-danger btn-block" id="passfindviewclose"
-												style="text-decoration: none; border-radius: 20px;">로그인하러가기</a>
+											<button type="button" class="btnlogin" id="searchBtn2" onclick="passwordSerch_click()">Password 찾기</button>
+											<a class="btn btn-danger btn-block" id="passfindviewclose" style="text-decoration: none; border-radius: 20px;">로그인하러가기</a>
 										</div>
 
 									</div>
@@ -847,10 +787,8 @@ h6 span {
 			<div class="modal-content">
 				<div class="section text-center">
 					<div class="modal-header">
-						<h5 class="modal-title" id="Idtitle" style="color: white;">ID
-							찾기</h5>
-						<a class="btn-close" id="Idresultviewclose" aria-label="Close"
-							style="color: white;"></a>
+						<h5 class="modal-title" id="Idtitle" style="color: white;">ID 찾기</h5>
+						<a class="btn-close" id="Idresultviewclose" aria-label="Close" style="color: white;"></a>
 					</div>
 					<h4>
 						<b style="color: white;">ID 찾기 안내</b>
@@ -858,10 +796,8 @@ h6 span {
 					<br>
 					<h2 id="id_value" style="color: white;"></h2>
 					<br>
-					<button type="button" id="pwSearch_btn"
-						class="btn peach-gradient btn-rounded waves-effect">
-						<i class="fa fa-envelope" style="color: white;"></i><b
-							style="color: white;">비밀번호 찾기</b>
+					<button type="button" id="pwSearch_btn" class="btn peach-gradient btn-rounded waves-effect">
+						<i class="fa fa-envelope" style="color: white;"></i><b style="color: white;">비밀번호 찾기</b>
 					</button>
 				</div>
 			</div>
@@ -875,8 +811,7 @@ h6 span {
 				<div class="section text-center">
 					<div class="modal-header">
 						<h5 class="modal-title" id="Idtitle" style="color: white;">비밀번호찾기</h5>
-						<a class="btn-close" id="passlogins" aria-label="Close"
-							style="color: white; border: white;"></a>
+						<a class="btn-close" id="passlogins" aria-label="Close" style="color: white; border: white;"></a>
 					</div>
 					<h4>
 						<b style="color: white;">임시 비밀번호로 변경완료되었습니다..</b>
@@ -896,10 +831,8 @@ h6 span {
 			<div class="modal-content">
 				<div class="section text-center">
 					<div class="modal-header">
-						<h5 class="modal-title" id="Idtitle" style="color: white;">정보
-							입력 오류</h5>
-						<a class="btn-close" id="passloginA" aria-label="Close"
-							style="color: white; border: white;"></a>
+						<h5 class="modal-title" id="Idtitle" style="color: white;">정보 입력 오류</h5>
+						<a class="btn-close" id="passloginA" aria-label="Close" style="color: white; border: white;"></a>
 					</div>
 					<h4>
 						<b style="color: white;">올바른 정보 및 인증을 완료해주세요!</b>

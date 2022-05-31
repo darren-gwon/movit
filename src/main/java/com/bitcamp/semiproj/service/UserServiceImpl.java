@@ -130,30 +130,7 @@ public class UserServiceImpl  implements UserService{
 
 	}
 
-	@Override
-	public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson) {
-		// TODO Auto-generated method stub
-
-
-		return userdao.naverConnectionCheck(apiJson);
-
-	}
-
-	@Override
-	public Map<String, Object> userNaverLoginPro(Map<String, Object> apiJson) {
-		// TODO Auto-generated method stub
-
-		return userdao.naverLoginPro(apiJson);
-	}
-
-
-	@Override
-	public int setNaverConnection(Map<String, Object> apiJson) {
-		// TODO Auto-generated method stub
-
-		return userdao.naverConnection(apiJson);
-	}
-
+	//카카오 토큰 얻기 
 	@Override
 	public String getAccessToken(String authorize_code) {
 		String access_Token = "";
@@ -214,7 +191,7 @@ public class UserServiceImpl  implements UserService{
 	}
 
 
-
+	//카카오 유저정보 얻기
 	public KakaoDto getUserInfo(String access_Token) {
 
 		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언

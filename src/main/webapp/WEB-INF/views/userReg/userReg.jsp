@@ -54,7 +54,7 @@ html {
 }
 
 .content input, button {
-	width: 80%;
+	width: 100%;
 	height: 40px;
 }
 
@@ -190,9 +190,10 @@ button {
 			<h1 id="title">회원가입</h1>
 			<form id=frm>
 				<div>
-					<div>
-						<p>회원가입에 오신걸환영합니다.</p>
+					<center><div>
+						<p style="font-size: 25px;">;Movit 회원가입에 오신걸환영합니다.</p></center>			
 						<div>
+						<br>	
 							<h4>아이디</h4>
 							<div style="margin-bottom: 0px;" id="hiddenid">
 								<p style="float: left;" id="msgid"></p>
@@ -302,14 +303,14 @@ button {
 							</div>
 
 							<button type="button" class="btn btn-outline-danger btn-sm px-3" id="emailChk" class="doubleChk">
-								<i class="fa fa-envelope"></i>&nbsp;인증번호 보내기
+								<i class="bi bi-envelope-check"></i>&nbsp;인증번호 보내기
 							</button>
 							&nbsp;
 							<button type="button" class="btn btn-outline-info btn-sm px-3" id="emailChk2" class="doubleChk">
-								<i class="fa fa-envelope"></i>&nbsp;확인
+								<i class="bi bi-envelope-check"></i>&nbsp;확인
 							</button>
 							&nbsp;
-							<input type="hidden" id="emailDoubleChk" />
+							<input type="hidden" id="emailDoubleChk" /><br>
 							<span class="point successEmailChk" style="color: red;">이메일 입력후 인증번호 보내기를 해주십시오.</span>
 							<input type="hidden" id="emailDoubleChk" />
 							<p class="tip" style="color: red;">아이디 비밀번호 분실시 필요한 정보이므로, 정확하게 기입해 주십시오.</p>
@@ -343,12 +344,13 @@ button {
 			</div> 	
 			</div>  -->
 
-						<div>
+						<center><div>
 							<button type="button" class="btn btn-primary btn-block" style="background: #5673bd; border-radius: 25px;" id="RegSuccess">가입하기</button>
+							<br>
 							<a href="login" class="text-center">이미 회원이십니까?</a>
 							<br>
 							<br>
-						</div>
+						</div></center>
 			</form>
 		</div>
 	</div>
