@@ -76,7 +76,7 @@
 		<hr>
 		<br><br>
 		<button type="submit" style="width: 100px; height: 50px; margin-left: 10px">등록</button>
-		<button type="button" style="width: 100px; height: 50px; margin-left: 10px"><a href="/semiproj/inquiry/lost">돌아가기</a></button>
+		<button type="button" style="width: 100px; height: 50px; margin-left: 10px"><a href="/inquiry/lost">돌아가기</a></button>
 		</form>
 
 </body>

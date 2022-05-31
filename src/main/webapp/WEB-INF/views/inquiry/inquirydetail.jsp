@@ -50,8 +50,8 @@
 		</td>
 	</tr>
 </table>
-	<a href="/semiproj/inquiry/list/update?seq=${data.seq}" role="button">수정</a>
-	<a href="/semiproj/inquiry/list/delete?seq=${data.seq}" role="button">삭제</a>
-	<button type="button" style="width: 100px; height: 50px; margin-left: 10px"><a href="/semiproj/inquiry/list">돌아가기</a></button>
+	<a href="/inquiry/list/update?seq=${data.seq}" role="button">수정</a>
+	<a href="/inquiry/list/delete?seq=${data.seq}" role="button">삭제</a>
+	<button type="button" style="width: 100px; height: 50px; margin-left: 10px"><a href="/inquiry/list">돌아가기</a></button>
 </body>
 </html>

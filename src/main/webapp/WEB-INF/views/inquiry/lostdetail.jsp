@@ -61,8 +61,8 @@
 </table>
 
 
-	<a href="/semiproj/inquiry/lost/update?seq=${data.seq}" role="button">수정</a>
-	<a href="/semiproj/inquiry/lost/delete?seq=${data.seq}" role="button">삭제</a>
-	<button type="button" style="width: 100px; height: 50px; margin-left: 10px"><a href="/semiproj/inquiry/lost">돌아가기</a></button>
+	<a href="/inquiry/lost/update?seq=${data.seq}" role="button">수정</a>
+	<a href="/inquiry/lost/delete?seq=${data.seq}" role="button">삭제</a>
+	<button type="button" style="width: 100px; height: 50px; margin-left: 10px"><a href="/inquiry/lost">돌아가기</a></button>
 </body>
 </html>

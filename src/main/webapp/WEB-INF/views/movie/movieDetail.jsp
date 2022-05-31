@@ -23,10 +23,10 @@
 		<div class="row row-cols-1 row-cols-md-3 g-4">
 			<div class="col">
 				<img src="../image/movie_detail.jpeg"
-					style="width: 1300px; height: 400px; object-fit: cover;">
+					style="width: 1300px; height: 550px; object-fit: cover;">
 			</div>
 		</div>
-		<br> <br>
+		<br> <br><br>
 	</div>
 
 	<div class="container" style="text-align: center;">
@@ -71,23 +71,23 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-1"></div>
+			<div class="col-xl-1"></div>
 			<div class="col">
 				<ul class="nav nav-tabs">
-					<li class="nav-item" style="width: 300px"><a
+					<li class="nav-item" style="width: 200px"><a
 						class="nav-link active" href="#">영화정보</a></li>
-					<li class="nav-item" style="width: 300px"><a
+					<li class="nav-item" style="width: 200px"><a
 						class="nav-link active" aria-current="page" href="#">평점 및 관람평</a>
 					</li>
 	
 				</ul>
 			</div>
-			<div class="col-sm-1"></div>
+			<div class="col-xl-1"></div>
 		</div>
 		<br> <br>
 		<div class="container" style="text-align: center;">
 			<div class="row">
-				<div class="col-sm-1"></div>
+				<div class="col-xl-1"></div>
 				<div class="col">
 					<div class="movielist" style="text-align: left;">
 						<h3>“느낌 오지? 이 놈 잡아야 하는 거”</h3>
@@ -106,7 +106,7 @@
 
 				<div class="col">
 					<div class="movielist" style="text-align: left;">
-						<br> <br> <br>
+						<br>  <br>
 
 					</div>
 				</div>
@@ -118,7 +118,7 @@
 		<div class="row">
 			<div class="col">
 				<ul class="nav nav-tabs">
-					<li class="nav-item" style="width: 300px"><a
+					<li class="nav-item" style="width: 200px"><a
 						class="nav-link active" href="#">트레일러</a></li>
 				</ul>
 			</div>
@@ -159,7 +159,7 @@
 		<div class="row">
 			<div class="col">
 				<ul class="nav nav-tabs">
-					<li class="nav-item" style="width: 300px"><a
+					<li class="nav-item" style="width: 200px"><a
 						class="nav-link active" href="#">스틸컷</a></li>
 				</ul>
 			</div>
@@ -173,7 +173,7 @@
 			<div class="col-2"></div>
 			<div class="col-4">
 				<div id="carouselExampleIndicators" class="carousel slide"
-					style="width: 800px;" data-bs-ride="carousel">
+					style="width: 900px;" data-bs-ride="carousel">
 					<div class="carousel-indicators">
 						<button type="button" data-bs-target="#carouselExampleIndicators"
 							data-bs-slide-to="0" class="active" aria-current="true"
@@ -214,7 +214,7 @@
 			</div>
 		</div>
 	</div>
-
+	<br><br><br><br>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

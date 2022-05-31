@@ -68,8 +68,9 @@ public class InquiryController {
 	}
 	//게시물 삭제	
 	@GetMapping("/list/delete")
-	public String lostdelete(@RequestParam String seq) throws Exception	{
+	public String delete(@RequestParam String seq) throws Exception	{
 		inquiryService.inquirydelete(seq);
+		
 		
 		return "redirect:/inquiry/list";
 	}
@@ -80,6 +81,7 @@ public class InquiryController {
 			
 			String[] ajaxMsg = request.getParameterValues("valueArr");
 			int size = ajaxMsg.length;
+			//System.out.println("Dfdf");
 			for(int i=0; i<size; i++) {
 				inquiryService.inquirydelete(ajaxMsg[i]);
 			}

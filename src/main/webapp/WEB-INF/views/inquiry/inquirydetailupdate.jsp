@@ -73,7 +73,7 @@
 		<div>
 			<input type="submit" value="완료"/>
 			<input type="reset" value="리셋"/>
-			<button type="button" style="width: 100px; height: 50px; margin-left: 10px"><a href="/semiproj/inquiry/list">돌아가기</a></button>
+			<button type="button" style="width: 100px; height: 50px; margin-left: 10px"><a href="/inquiry/list">돌아가기</a></button>
 		</div>
 		</form>
 </body>
