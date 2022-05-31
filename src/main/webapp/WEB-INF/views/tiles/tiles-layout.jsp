@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
-<!-- 공통변수 처리 -->
-<c:set var="CONTEXT_PATH" value="${pageContext.request.contextPath}" scope="application" />
-<c:set var="RESOURCES_PATH" value="${CONTEXT_PATH}/resources" scope="application" />
+
 <!DOCTYPE html>
 <html>
 <head>

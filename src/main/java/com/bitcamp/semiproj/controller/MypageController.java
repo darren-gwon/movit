@@ -71,7 +71,7 @@ public class MypageController {
 		model.addAttribute("email1", email1);
 		model.addAttribute("email2", email2);
 		
-		return "/mypage/updateUserInfo";
+		return "/mypage/updateUserInfo.tiles";
 	}
 	
 	@PostMapping("/updateMypage")
@@ -98,7 +98,7 @@ public class MypageController {
 	
 	@GetMapping("/pwUpdateView")
 	public String pwUpdateView() throws Exception{
-		return "/mypage/changepassword";
+		return "/mypage/changepassword.tiles";
 	}
 	
 	@PostMapping("/pwCheck")
@@ -123,7 +123,6 @@ public class MypageController {
 	}
 	
 	@PostMapping("/pwUpdate")
-	@ResponseBody
 	public String pwUpdate(
 			@RequestParam String user_id,
 			@RequestParam String changepwd1,

@@ -622,6 +622,7 @@ button {
 										url : "mailCheck?email=" + email,
 										success : function(data) {
 											let checkEmail = "${checkEmail}";
+											
 											if (data == "error") {
 												alert("이메일 주소가 올바르지 않습니다. 유효한 이메일 주소를 입력해주세요.");
 												$("#email").attr("autofocus",

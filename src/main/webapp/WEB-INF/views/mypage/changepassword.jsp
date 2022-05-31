@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>   
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <style>
-  #wrap {
+  .content {
 	    width:500px;
 	    margin : 0 auto ;
 	    border: 0px solid #000;
@@ -40,24 +40,36 @@
 	}
 	
 	table.type09 td {
-	width: 350px;
-	padding: 10px;
-	vertical-align: top;
-	border-bottom: 1px solid #ccc;
+		width: 350px;
+		padding: 10px;
+		vertical-align: top;
+		border-bottom: 1px solid #ccc;
+	}
+	
+	button[type="submit"] {
+		font-size:1.5em;
+		padding:0.25em;
+		box-sizing: border-box;
+		width:100%;
+		border: none;
+		color: #000;
 	}
 </style>
 <script type="text/javascript">
 $(function(){
 	//비번체크
 	$("#pass2").keyup(function(){
+		$("#pwdmsg").val("");
 		var p1 = $("#pass1").val();
 		var p2 = $(this).val();
 		if(p1==p2){
-			$("#pwdmsg").html("OK!").css("color","blue");
+			$("#pwdmsg").html("비밀번호가 일치합니다.").css("color","blue");
 		} else {
-			$("#pwdmsg").html("Fail!!").css("color","red");
+			$("#pwdmsg").html("비밀번호가 일치하지 않습니다.").css("color","red");
+			
 		}
 	});
+	
 	//현재비밀번호 check
 	$("#pass0").keyup(function(){
 		var data = {
@@ -72,12 +84,19 @@ $(function(){
 			data:data,
 			success:function(data){
 				console.log(data);
-				if(data==1){$("#pwdmsg2").html("OK!").css("color","blue");}
-				else {$("#pwdmsg2").html("Fail!!").css("color","red");}
+				if(data==1){
+					$("#pwdmsg2").html("OK!").css("color","blue");
+					
+				}
+				else {
+					$("#pwdmsg2").html("Fail!!").css("color","red");
+					
+				}
 				
 			}
 		});
 	});
+	
 	//비밀번호 변경
 	$("#pwdbtn").click(function(){
 		var data = {
@@ -94,11 +113,51 @@ $(function(){
 	});
 	
 });
+
+//비밀번호 유효성검사(정규식)
+function chkPW() {
+    let id = $("#user_id").val();
+    let pw = $("#pass1").val();
+    let number = pw.search(/[0-9]/g);
+    let english = pw.search(/[a-z]/ig);
+    let spece = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+    let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+    if (false === reg.test(pw)) {
+        $("#pwdmsg").text('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.').css("color","red");
+        $("#pass1").val("");
+        $("#pass1").focus();
+        return false;
+    } else {
+    	$("#pwdmsg").text('비밀번호가 정상입력되었습니다.').css("color","blue");
+        return true;
+    }
+
+}
+
+//onsubmit 버튼이벤트
+function chkSubmit() {
+	if($("#pwdmsg2").text() != "OK!") {
+		alert("현재 비밀번호가 일치하지 않습니다.");
+		$("#pass0").val('');
+		$("#pass0").focus();
+		return false;
+	} else if($("#pwdmsg").html() != "비밀번호가 일치합니다.") {
+		alert("변경 비밀번호가 일치하지 않습니다.")
+		$("#pass1").val('');
+		$("#pass2").val("");
+		$("#pass1").focus();
+		return false;
+	} else {
+		return true;
+	}
+}
+
 </script>
 </head>
 <body>
-	<div id="wrqp">
-		<form action="pwUpdate" id="pwUpdate" method="post">
+	<div class="content">
+		<form action="pwUpdate" id="pwUpdate" method="post" onsubmit="return chkSubmit()">
 		<table class="type09">
 			<thead>
 				<tr>
@@ -106,19 +165,19 @@ $(function(){
 					<th></th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody> 
 				<tr>
 					<th>현재비밀번호</th>
 					<td>
-						<input type="text" class="form-control" name="user_id" value="${sessionScope.user_id }"><br>
-						<input type="text" class="form-control" name="currentpwd" id="pass0" value="${dto.password }">
-						<div style="border:1px solid black;height:25px;" id="pwdmsg2"></div>
+						<input type="hidden" class="form-control" name="user_id" id="user_id" value="${sessionScope.user_id }"><br>
+						<input type="password" class="form-control" name="currentpwd" id="pass0" value="${dto.password }">
+						<div style="display:none;border:1px solid black;height:25px;" id="pwdmsg2"></div>
 					</td> 
 				</tr>
 				<tr>
 					<th>변경비밀번호</th>
 					<td>
-						<input type="password" class="form-control" name="changepwd1" id="pass1" value=""><br>
+						<input type="password" class="form-control" name="changepwd1" id="pass1" onblur="chkPW(this.value)"><br>
 					</td>
 				</tr>
 				<tr>
@@ -128,8 +187,11 @@ $(function(){
 					</td>
 				</tr>
 			</tbody>
+			<tr>
+				<td colspan="2"><button type="submit">제출</button></td>
+			</tr>
 		</table>
-		<button type="submit" id="pwdbtn">제출</button>
+		
 		</form>
 	</div>
 </body>
