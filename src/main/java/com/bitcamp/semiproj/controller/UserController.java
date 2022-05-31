@@ -39,11 +39,18 @@ public class UserController {
 	@Autowired
 	UserDao userdao;
 
-	// 회원가입창
+	// 회원가입 전 동의 창
 	@RequestMapping(value = "user/reg", method = RequestMethod.GET)
-	public String UserRegs(UserDto userdto) {
+	public String agree(UserDto userdto) {
 
-		return "userReg/userReg";
+		 return "/userReg/accept_terms.tiles";
+	}
+	
+	// 회원가입 전 동의 창
+	@RequestMapping(value = "user/reg", method = RequestMethod.GET)
+	public String UserReg(UserDto userdto) {
+
+		return "/userReg/accept_terms.tiles";
 	}
 
 	// 회원가입 완료

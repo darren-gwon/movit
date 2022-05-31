@@ -188,7 +188,7 @@ button {
 	<div class="container">
 		<div class="content">
 			<h1 id="title">회원가입</h1>
-			<form id=frm>
+			<form id=frm style="width:80%;">
 				<div>
 					<center><div>
 						<p style="font-size: 25px;">;Movit 회원가입에 오신걸환영합니다.</p></center>			
@@ -274,7 +274,7 @@ button {
 							<tr>
 								<td colspan="3">
 									<input type="hidden" id="phone" name="phone" class=int>
-									<select id="phone1" name="phone1" style="width: 60px" class=int>
+									<select id="phone1" name="phone1" style="width: 80px; padding: 10px;" class=int>
 										<option value="010">010</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
@@ -283,7 +283,7 @@ button {
 										<option value="019">019</option>
 									</select>
 									&nbsp;&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;&nbsp;
-									<input name="phone2" id="phone2" maxlength="4" type="input" style="width: 100px">
+									<input name="phone2" id="phone2" maxlength="4" type="input" style="width: 100px;">
 									&nbsp;&nbsp;&nbsp;<b>-</b> &nbsp;&nbsp;&nbsp;&nbsp;
 									<input name="phone3" id="phone3" maxlength="4" type="input" style="width: 100px" onblur="isPhone(this.value)">
 								</td>
@@ -316,33 +316,6 @@ button {
 							<p class="tip" style="color: red;">아이디 비밀번호 분실시 필요한 정보이므로, 정확하게 기입해 주십시오.</p>
 							<div class="check_font" id="email_check"></div>
 						</div>
-
-						<fieldset class="fieldarea f2">
-							<legend>
-								<span>이용</span>약관
-							</legend>
-							<p class="agreeText">
-								<label for="agreement1">아래 사항에 동의 합니다.</label>
-								<input id="agreement1" type="checkbox" name="agreement1" />
-								<textarea id="text1" readonly> 이용약관 </textarea>
-							</p>
-						</fieldset>
-						<fieldset class="fieldarea f3">
-							<legend>
-								<span>개인정보</span>취급방침
-							</legend>
-							<p class="agreeText">
-								<label for="agreement2">아래 사항에 동의 합니다.</label>
-								<input id="agreement2" type="checkbox" name="agreement2" />
-								<textarea id="text2" readonly> 개인정보 방침 및 안내 </textarea>
-							</p>
-						</fieldset>
-
-						<!-- 			<div>
-				<input type="checkbox" id="agreeTerms" name="terms" value="agree"> 
-				<label for="agreeTerms"> 약관에  <a href="#">동의합니다.</a> </label> 
-			</div> 	
-			</div>  -->
 
 						<center><div>
 							<button type="button" class="btn btn-primary btn-block" style="background: #5673bd; border-radius: 25px;" id="RegSuccess">가입하기</button>

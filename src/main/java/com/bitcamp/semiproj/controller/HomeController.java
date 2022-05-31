@@ -9,4 +9,12 @@ public class HomeController {
 	public String home() {
 		return "main/main.tiles";	
 	}
+	@GetMapping("/test")
+	public String homes() {
+		return "/userReg/accept_terms.tiles";	
+	}
+	@GetMapping("/user/regs")
+	public String homess() {
+		return "/userReg/userReg.tiles";	
+	}
 }
