@@ -31,8 +31,17 @@
 	</update>
 	<!-- 게시글 수정 -->
 	<update id="updateform" parameterType="EventDto" >
-		update event set title = #{title}, content = #{content}, 
-		start_date = #{start_date},end_date = #{end_date} where seq = #{seq}
+		update event 
+		<set>
+			<if test="title!=null">title=#{title}</if>
+			<if test="content!=null">,content=#{content}</if>
+			<if test="start_date!=null">,start_date=#{start_date}</if>
+			<if test="end_date!=null">,end_date=#{end_date}</if>
+			<if test="main_img!=null">,main_img=#{main_img}</if>
+			<if test="thumbnail_img!=null">,thumbnail_img=#{thumbnail_img}</if>
+		</set>
+		where seq = #{seq}
+		
 	</update>
 	<!-- 게시글 삭제 -->
 	<delete id="delete" >

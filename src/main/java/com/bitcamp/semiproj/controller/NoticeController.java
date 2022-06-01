@@ -19,20 +19,20 @@ public class NoticeController {
 	@Autowired
 	private NoticeService service;
 	
-	//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void list(Model model, @RequestParam(defaultValue = "1")Integer num,@
+	//°Ô½Ã¹° ¸ñ·Ï
+	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	public String list(Model model, @RequestParam(defaultValue = "1")Integer num,@
 			RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
 			) throws Exception{
 
 			
-			int postcount=service.postcount(); //ï¿½Ô½Ã¹ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½
-			int postnum = 10; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
-			int pagenum = (int)Math.ceil((double)postcount/postnum); //ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
-			int displaypost = (num-1) * postnum; //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½
-			int pagecount = 5; // ï¿½Ñ¹ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½
-			int endpagenum = (int)(Math.ceil((double)num/(double)pagecount)*pagecount);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-			int startpagenum = endpagenum - (pagecount - 1); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ Ã¹ï¿½ï¿½Â°
+			int postcount=service.postcount(); //°Ô½Ã¹° ÃÑ°¹¼ö
+			int postnum = 10; //ÇÑÆäÀÌÁö¿¡ Ãâ·ÂÇÒ °Ô½Ã¹° °¹¼ö
+			int pagenum = (int)Math.ceil((double)postcount/postnum); //ÇÏ´Ü ÆäÀÌÁö ¹øÈ£
+			int displaypost = (num-1) * postnum; //Ãâ·ÂÇÒ °Ô½Ã¹°
+			int pagecount = 5; // ÇÑ¹ø¿¡ Ç¥½ÃÇÒ ÆäÀÌÁö ¹øÈ£ °¹¼ö
+			int endpagenum = (int)(Math.ceil((double)num/(double)pagecount)*pagecount);// ÆäÀÌÁö ¹øÈ£ Áß ¸¶Áö¸·
+			int startpagenum = endpagenum - (pagecount - 1); //ÆäÀÌÁö ¹øÈ£ Áß Ã¹¹øÂ°
 			
 			int endpagenum_re = (int)(Math.ceil((double)postcount / (double)pagecount));
 			
@@ -47,36 +47,37 @@ public class NoticeController {
 			model.addAttribute("list",list);
 			model.addAttribute("pagenum", pagenum);
 			
-			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È£
+			//½ÃÀÛ ¹× ³¡¹øÈ£
 			model.addAttribute("startpagenum", startpagenum);
 			model.addAttribute("endpagenum", endpagenum);
 			
-			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//ÀÌÀü ¹× ´ÙÀ½
 			model.addAttribute("prev",prev);
 			model.addAttribute("next",next);
 			
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//ÇöÀçÆäÀÌÁö
 			model.addAttribute("select",num);
 			
-			//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//°Ô½Ã¹° ÃÑ °¹¼ö
 			model.addAttribute("postcount",postcount);
+			return "board/list.tiles";
 	}
 	
 
 
 	
-	//ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ ï¿½Ìµï¿½
+		//°Ô½Ã¹° ÀÛ¼º Æû ÀÌµ¿
 		@RequestMapping(value = "/writeform", method = RequestMethod.GET)
 		public String write() throws Exception {
 				return "board/writeform.tiles";
 		}
-		// ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½ POST
+		// °Ô½Ã¹° ÀÛ¼º POST
 		@RequestMapping(value="/create", method=RequestMethod.POST)
 		public String postcreate(NoticeDto dto) throws Exception{
 			service.create(dto);
-			return "redirect:list";
+			return "redirect:notice";
 		}
-		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
+		//°Ô½Ã¹° »ó¼¼ÆäÀÌÁö ÀÌµ¿
 		@RequestMapping(value="/detail", method=RequestMethod.GET)
 		public String getdetail(Model model,int num) {
 			NoticeDto dto=service.detail(num);	
@@ -84,7 +85,7 @@ public class NoticeController {
 			model.addAttribute("dto",dto);
 			return "board/detail.tiles";
 		}
-		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
+		//°Ô½Ã¹° ¼öÁ¤
 		@RequestMapping(value="/updateform",method=RequestMethod.GET)
 			public String getupdate(Model model, int num) throws Exception{
 			NoticeDto dto=service.detail(num);
@@ -92,19 +93,19 @@ public class NoticeController {
 			
 			return "board/updateform.tiles";
 		}
-		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ post
+		//°Ô½Ã¹° ¼öÁ¤ post
 		@RequestMapping(value="/updateform",method=RequestMethod.POST)
 			public String postupdate(NoticeDto dto) throws Exception {
 			//System.out.println(dto);
 			service.updateform(dto);
-				return "redirect:list";
+				return "redirect:notice";
 		}
-		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
+		//°Ô½Ã¹° »èÁ¦
 		@RequestMapping(value="/delete",method=RequestMethod.GET)
 			public String getdelete(int num) throws Exception {
 			//System.out.println(num);
 			service.delete(num);
-				return "redirect:list";
+				return "redirect:notice";
 		}
 
 

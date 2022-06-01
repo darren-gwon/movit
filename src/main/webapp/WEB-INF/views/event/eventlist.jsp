@@ -6,13 +6,14 @@
 
 
 <div class="content">
+	<h2 class="title">EVENT</h2>
 	<div class="slidebox">
 		<input type="radio" name="slide" id="slide01" checked> <input type="radio" name="slide" id="slide02"> <input type="radio" name="slide" id="slide03"> <input type="radio" name="slide" id="slide04">
 		<ul class="slidelist">
-			<li class="slideitem"><a><img src="../resources/cssimg/img1.jpg"></a></li>
-			<li class="slideitem"><a><img src="../resources/cssimg/img2.jpg"></a></li>
-			<li class="slideitem"><a><img src="../resources/cssimg/img3.jpg"></a></li>
 			<li class="slideitem"><a><img src="../resources/cssimg/img4.jpg"></a></li>
+			<li class="slideitem"><a><img src="../resources/cssimg/img3.jpg"></a></li>
+			<li class="slideitem"><a><img src="../resources/cssimg/img2.jpg"></a></li>
+			<li class="slideitem"><a><img src="../resources/cssimg/img1.jpg"></a></li>
 		</ul>
 		<div class="slide-control">
 			<div class="control01">
@@ -48,59 +49,54 @@
 			</ul>
 			<button type="button" id="morelist" class="btnmore">더보기</button>
 			<div class="btn">
-				<button type="button" class="btn btn-primary" style="width: 100px;" onclick="location.href='${root}/event/eventwriteform'">관리자 글쓰기</button>
+				<button type="button" class="btn btn-primary" style="width: 100px;" onclick="location.href='${root}/event/eventwriteform'">관리자<br>글쓰기</button>
 			</div>
 		</div>
 	</form>
 </div>
 	<script>
 		let startnum = 0;
-		$("#morelist")
-				.click(
-						function() {
-							startnum += 8;
-							var data = {
-								"startnum" : startnum
-							};
+		$("#morelist").click(
+		function() {
+			startnum += 8;
+			var data = {
+				"startnum" : startnum
+				};
 
-							$
-									.ajax({
-										url : "list",
-										type : "post",
-										contentType : "application/json; charset=utf-8",
-										data : JSON.stringify({
-											"startnum" : startnum
-										}),
-										success : function(data) {
-											var s = "";
-											$(data)
-													.each(
-															function(i, d) {
-																s += "<li>";
-																s += "<a href='../event/eventdetail?num="
-																		+ d.seq
-																		+ "'>";
-																s += "<img src='../resources/thumimg/"+d.thumbnail_img+"'>";
-																s += "<br>"
-																		+ "<br>"
-																s += "<b>";
-																s += d.title;
-																s += "</b>";
-																s += "<br>"
-																		+ "<br>"
-																s += "<p>";
-																s += "기  간 : ";
-																s += d.start_date;
-																s += " ~ ";
-																s += d.end_date;
-																s += "</p>";
-																s += "</a>";
-																s += "</li>";
-
-															});
-											$("#newlist").append(s);
-
-										}
-									});
-						});
-	</script>
+				$.ajax({
+				url : "list",
+				type : "post",
+				contentType : "application/json; charset=utf-8",
+				data : JSON.stringify({
+					"startnum" : startnum
+				}),
+				success : function(data) {
+					var s = "";
+					$(data).each(
+					function(i, d) {
+						s += "<li>";
+						s += "<a href='../event/eventdetail?num="
+								+ d.seq
+								+ "'>";
+						s += "<img src='../resources/thumimg/"+d.thumbnail_img+"'>";
+						s += "<br>"
+								+ "<br>"
+						s += "<b>";
+						s += d.title;
+						s += "</b>";
+						s += "<br>"
+								+ "<br>"
+						s += "<p>";
+						s += "기  간 : ";
+						s += d.start_date;
+						s += " ~ ";
+						s += d.end_date;
+						s += "</p>";
+						s += "</a>";
+						s += "</li>";
+					});
+					$("#newlist").append(s);
+				}
+			});
+		});
+</script>
