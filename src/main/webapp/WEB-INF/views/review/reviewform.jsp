@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/css/reviewform.css"/>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>   
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <style>
@@ -17,6 +18,20 @@ $(function(){
 	//처음 로딩시 댓글 출력
 	list();
 	//댓글 저장 이벤트
+	
+	$("#afrm").click(function(){
+		if(${sessionScope.user_id == null}){
+			var result = confirm("로그인이 필요한 서비스입니다. \n로그인화면으로 이동하시겠습니까?");
+			if(result){
+				location.href="../";
+			} else {
+				return;
+			} 
+		} else {
+			return;
+		}
+	});
+	
 	$("#save").click(function(){
 	    if($.trim($("#content").val())=='') {
 			alert("메세지를 입력해주세요.");
@@ -84,19 +99,11 @@ $(function(){
 					s+=" ⭐ "+d.rating;
 					s+="<pre><span id='reviewContent_"+d.reviewID+"'>"+d.content+"</span></pre>";
 					s+="<span style='color:#868e96;'>"+d.write_date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
-					s+="<img src='../image/heart-empty.png' width='20' data-reviewid='"+d.reviewID+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
+					s+="<img src='/resources/review_img/heart-empty.png' width='20' data-reviewid='"+d.reviewID+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
 					s+="<span id='totalLikesCnt'></span>";
 					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='updateReview' style='cursor:pointer'>";
 					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='deleteReview' style='cursor:pointer'></li>";
 					s+="<hr>";
-					//로그인세션과 유저아이디가 일치하면 좋아요 빨간색
-					/* var checkId = ${sessionScope.user_id == d.user_id};
-					console.log(checkId);
-					if(checkId) {
-						$(".idcheck"+d.reviewID+d.user_id).removeClass("fc");
-					} else {
-						$(".idcheck"+d.reviewID+d.user_id).addClass("fc");
-					} */
 				});
 				$("div.review").append(s);
 				
@@ -129,7 +136,7 @@ $(function(){
 					s+=" ⭐ "+d.rating;
 					s+="<pre><span id='reviewContent_"+d.reviewID+"'>"+d.content+"</span></pre>";
 					s+="<span style='color:#868e96;'>"+d.write_date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
-					s+="<img src='../image/heart-empty.png' width='20' data-reviewid='"+d.reviewID+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
+					s+="<img src='/resources/review_img/heart-empty.png' width='20' data-reviewid='"+d.reviewID+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
 					s+="<span id='totalLikesCnt'></span>";
 					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='updateReview' style='cursor:pointer'>";
 					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='deleteReview' style='cursor:pointer'></li>";
@@ -189,19 +196,6 @@ $(function(){
 		s += "<option value=10>10점</option>";
 		s += "</select>";
 		s += "<span style='width:40px;height:100px;cursor:pointer;background-color:#febd1a' id='updatebtn'>수정완료</span>";
-			
-			/* "<fieldset name='myform2' id='myform2'>"
-			+"<input type='radio' name='rating' value='10' id='rate1'><label class='label2' for='rate1'>⭐</label>"
-			+"<input type='radio' name='rating' value='9' id='rate2'><label class='label2' for='rate2'>⭐</label>"
-			+"<input type='radio' name='rating' value='8' id='rate3'><label class='label2' for='rate3'>⭐</label>"
-			+"<input type='radio' name='rating' value='7' id='rate4'><label class='label2' for='rate4'>⭐</label>"
-			+"<input type='radio' name='rating' value='6' id='rate5'><label class='label2' for='rate5'>⭐</label>"
-			+"<input type='radio' name='rating' value='5' id='rate6'><label class='label2' for='rate6'>⭐</label>"
-			+"<input type='radio' name='rating' value='4' id='rate7'><label class='label2' for='rate7'>⭐</label>"
-			+"<input type='radio' name='rating' value='3' id='rate8'><label class='label2' for='rate8'>⭐</label>"
-			+"<input type='radio' name='rating' value='2' id='rate9'><label class='label2' for='rate9'>⭐</label>"
-			+"<input type='radio' name='rating' value='1' id='rate10'><label class='label2' for='rate10'>⭐</label>"
-			+"</fieldset></form>"; */
 		$("#reviewContent_"+data).html(s);
 	});
 	
@@ -276,10 +270,10 @@ $(document).on("click","#addLike", function(){
 		success:function(data){
 			if(data==1) {
 				//$(this).css("color","red");
-				$(this).attr("src","../image/heart.png");
+				$(this).attr("src","/resources/review_img/heart.png");
 			} else {
 				//$(this).css("color","black");
-				$(this).attr("src","../image/heart-empty.png");
+				$(this).attr("src","/resources/review_img/heart-empty.png");
 			}
 			totalLikes();
 		}
@@ -304,7 +298,7 @@ function checkUser(){
 			$(result).each(function(idx, data){
 				//유저별 하트찾기
 				const likebtn = $(".userReview").filter("[data-review_id='"+data.reviewID+"']").children("#addLike");
-				likebtn.attr("src","../image/heart.png");
+				likebtn.attr("src","/resources/review_img/heart.png");
 			})
 		}
 	});
@@ -337,10 +331,10 @@ function checkUserReview(){
 			$(result).each(function(idx, data){
 				//수정식별코드
 				const checkUser1 = $(".userReview").filter("[data-review_id='"+data.reviewID+"']").children("#updateReview");
-				checkUser1.attr("src","../image/edit.png");
+				checkUser1.attr("src","/resources/review_img/edit.png");
 				//삭제식별코드
 				const checkUser2 = $(".userReview").filter("[data-review_id='"+data.reviewID+"']").children("#deleteReview");
-				checkUser2.attr("src","../image/trash-bin.png");
+				checkUser2.attr("src","/resources/review_img/trash-bin.png");
 			})
 		}
 	});
@@ -351,7 +345,7 @@ function checkUserReview(){
 </head>
 <body>
 	<h1>Comments(login_id : ${sessionScope.user_id})</h1>
-	<form action="insert" id="afrm" method="post" onsubmit="return doAction();">
+	<form action="insert" id="afrm" method="post">
 	<input type="hidden" name="movieID" class="form-control" value="${movieID }">
 		<table class="table table-bordered" style="width:500;">
 			<tr>
@@ -369,7 +363,7 @@ function checkUserReview(){
 				<td>
 					<textarea style="width:100%;height:100px;" id="content" name="content" class="form-control" placeholder="평점 및 관람평을 작성해 보세요. &#13;&#10;주제와 무관한 리뷰 또는 스포일러는 삭제되실수 있습니다"></textarea>
 				</td>
-				<td bgcolor="#495057" id="save" class="btn btn-default save" style="text-align:center;width:100px;color:white;cursor:pointer;">관람평 작성</td>
+				<!-- <td bgcolor="#495057" id="save" class="btn btn-default save" style="text-align:center;width:100px;color:white;cursor:pointer;">관람평 작성</td> -->
 			</tr>
 			<tr>
 				<th>평점</th>
@@ -388,11 +382,11 @@ function checkUserReview(){
 				    </fieldset>
 				</td>
 			</tr>
-			<!-- <tr>
+			<tr>
 				<td colspan="2" align="center">
 					<button type="button" id="save" class="btn btn-default save" style="width:100px;">글저장</button>
 				</td>
-			</tr> -->
+			</tr>
 		</table>
 	</form>
 	

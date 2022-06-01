@@ -1,0 +1,76 @@
+@charset "UTF-8";
+#mypageHeader{
+	background-color: #071a4c;
+	height: 250px;
+	padding-top: 80px;
+	
+}
+
+li a{
+	text-decoration: none;
+	color: gray;
+	font-size: 20px;
+}
+
+li a:hover{
+	text-decoration:underline;
+	color: white;
+}
+
+#mypageHome{
+	color: white;
+	font-size: 50px;
+	padding-right: 700px;
+	text-decoration: none;
+}
+
+#menu {
+	padding-top:50px;
+	padding-left: 400px;
+}
+
+ul li {
+	float:left;
+	list-style-type: none;
+	margin-left: 50px;
+	
+}
+
+#mypageFooter{
+	background-color: #e9ecef;
+	height: 500px;
+}
+#welcome {
+	/* padding-top: 30px;
+	padding-right: 800px; */
+	font-size: 25px;
+}
+#reg_date{
+	padding-right: 750px;
+	color: #adb5bd;
+}
+/* #mypageCard {
+	position: relative;
+	top:10px;
+	border: 0px solid black;
+	width: 1200px;
+	height: 200px;
+    margin: 0 auto 35px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 5px 0px;
+    background-color: #FFF;
+    text-align:left;
+    padding: 10px 10px;
+    font-size: 30px;
+} */
+
+#card1{
+	border: 0px solid black;
+	margin: 0 auto 35px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 5px 0px;
+    background-color: #FFF;
+    width: 300px;
+	height: 200px;
+	text-align: center;
+}

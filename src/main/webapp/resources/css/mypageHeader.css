@@ -1,0 +1,36 @@
+@charset "UTF-8";
+#mypageHeader{
+	background-color: #071a4c;
+	height: 250px;
+	padding-top: 80px;
+	
+}
+li a{
+	text-decoration: none;
+	color: gray;
+	font-size: 20px;
+}
+
+li a:hover{
+	text-decoration:underline;
+	color: white;
+}
+
+#mypageHome{
+	color: white;
+	font-size: 50px;
+	padding-right: 700px;
+	text-decoration: none;
+}
+
+#menu {
+	padding-top:50px;
+	padding-left: 400px;
+}
+
+ul li {
+	float:left;
+	list-style-type: none;
+	margin-left: 50px;
+	
+}

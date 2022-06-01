@@ -62,12 +62,8 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Override
 	public int findSumReviewRating(int movieID) {
-		Integer sum = dao.findSumReviewRating(movieID);
-		if(sum == null) {
-			return sum = 0;
-		} else {
+		int sum = dao.findSumReviewRating(movieID);
 			return sum;
-		}
 	}
 
 	@Override
