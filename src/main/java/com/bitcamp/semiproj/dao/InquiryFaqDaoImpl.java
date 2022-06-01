@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bitcamp.semiproj.domain.InquiryFaqDto;
 
-@Repository
+@Repository("faqDAO")
 public class InquiryFaqDaoImpl implements InquiryFaqDao {
 
 	@Autowired

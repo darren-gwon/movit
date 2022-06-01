@@ -40,4 +40,5 @@ public class InquiryFaqServiceImpl implements InquiryFaqService{
 	public void delete(String seq) {
 		faqDao.delete(seq);
 	}
+	
 }
