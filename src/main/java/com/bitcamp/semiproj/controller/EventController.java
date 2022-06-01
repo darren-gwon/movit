@@ -39,7 +39,7 @@ import util.FileUtil;
 		@Autowired
 		EventDao dao;
 		
-		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½
+		//°Ô½Ã¹° ¸ñ·Ï
 		@RequestMapping(value = "/eventlist", method = RequestMethod.GET)
 		public String eventlist(Model model) throws Exception{ 
 			int startnum = 0;
@@ -52,7 +52,7 @@ import util.FileUtil;
 			return "event/eventlist.tiles";
 		}
 		
-		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½
+		//°Ô½Ã¹° ¸ñ·Ï
 		@RequestMapping(value = "/list", method = RequestMethod.POST)
 		@ResponseBody
 		public List<EventDto> list(@RequestBody Map<String,Integer> map) throws Exception{ 
@@ -63,21 +63,13 @@ import util.FileUtil;
 			return list;
 		}
 
-		//ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ ï¿½Ìµï¿½
+		//°Ô½Ã¹° ÀÛ¼º Æû ÀÌµ¿
 		@RequestMapping(value = "/eventwriteform", method = RequestMethod.GET)
 		public String write() throws Exception {
 			   return "event/eventwriteform.tiles";
 				}
 		
-		/*// ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½ POST
-		@RequestMapping(value="/eventwriteform", method=RequestMethod.POST)
-		public String postcreate(@ModelAttribute EventDto dto, @RequestParam MultipartFile upload,
-				HttpServletRequest request,HttpSession session,Model model) throws Exception{
-			
-			 service.eventwriteform(dto);
-				return "redirect:eventlist";*/
-		 
-		// ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½ POST
+		// °Ô½Ã¹° ÀÛ¼º POST
 		@RequestMapping(value="/eventwriteform", method=RequestMethod.POST)
 		public String postcreate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
 				HttpServletRequest request,HttpSession session) throws Exception{
@@ -102,7 +94,6 @@ import util.FileUtil;
 		               e.printStackTrace();
 		            }
 		         }
-		         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 		         photo=photo.substring(0,photo.length()-1);
 		         System.out.println(photo);
 		         dto.setMain_img(photo);
@@ -124,7 +115,6 @@ import util.FileUtil;
 		               e.printStackTrace();
 		            }
 		         }
-		         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 		         subphoto=subphoto.substring(0,subphoto.length()-1);
 		         System.out.println(subphoto);
 		         dto.setthumbnail_img(subphoto);
@@ -134,7 +124,7 @@ import util.FileUtil;
 			return "redirect:eventlist";
 		}
 
-		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
+		//°Ô½Ã¹° »ó¼¼ÆäÀÌÁö ÀÌµ¿
 		@RequestMapping(value="/eventdetail", method=RequestMethod.GET)
 				public String getdetail(Model model,int num) {
 					EventDto dto=service.detail(num);	
@@ -142,18 +132,18 @@ import util.FileUtil;
 					model.addAttribute("dto",dto);
 					return "event/eventdetail.tiles";
 				}
-		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
-				@RequestMapping(value="/updateform",method=RequestMethod.GET)
-					public String getupdate(Model model, int num) throws Exception{
+		//°Ô½Ã¹° ¼öÁ¤
+		@RequestMapping(value="/updateform",method=RequestMethod.GET)
+				public String getupdate(Model model, int num) throws Exception{
 					EventDto dto=service.detail(num);
 					model.addAttribute("dto",dto);
 					
 					return "event/updateform.tiles";
 				}
-		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ post
-				@RequestMapping(value="/updateform",method=RequestMethod.POST)
-					public String postupdate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
-							HttpServletRequest request,HttpSession session) throws Exception {
+		//°Ô½Ã¹° ¼öÁ¤ post
+		@RequestMapping(value="/updateform",method=RequestMethod.POST)
+			public String postupdate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
+					HttpServletRequest request,HttpSession session) throws Exception {
 					
 					String savepath = request.getServletContext().getRealPath("resources/main_img/");
 					 String savepath2 = request.getServletContext().getRealPath("resources/thumnail_img/");
@@ -174,7 +164,6 @@ import util.FileUtil;
 				               e.printStackTrace();
 				            }
 				         }
-				         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 				         photo=photo.substring(0,photo.length()-1);
 				         System.out.println(photo);
 				         dto.setMain_img(photo);
@@ -195,7 +184,6 @@ import util.FileUtil;
 				               e.printStackTrace();
 				            }
 				         }
-				         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 				         subphoto=subphoto.substring(0,subphoto.length()-1);
 				         //System.out.println(subphoto);
 				         dto.setthumbnail_img(subphoto);

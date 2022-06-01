@@ -6,6 +6,7 @@
 
 
 <div class="content">
+	<h2 class="title">EVENT</h2>
 	<div class="slidebox">
 		<input type="radio" name="slide" id="slide01" checked> <input type="radio" name="slide" id="slide02"> <input type="radio" name="slide" id="slide03"> <input type="radio" name="slide" id="slide04">
 		<ul class="slidelist">
@@ -48,7 +49,7 @@
 			</ul>
 			<button type="button" id="morelist" class="btnmore">더보기</button>
 			<div class="btn">
-				<button type="button" class="btn btn-primary" style="width: 100px;" onclick="location.href='${root}/event/eventwriteform'">관리자 글쓰기</button>
+				<button type="button" class="btn btn-primary" style="width: 100px;" onclick="location.href='${root}/event/eventwriteform'">관리자<br>글쓰기</button>
 			</div>
 		</div>
 	</form>

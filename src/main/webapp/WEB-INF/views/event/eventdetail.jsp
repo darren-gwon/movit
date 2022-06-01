@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link href="/resources/css/eventdetail.css" rel='stylesheet' />
 
 <!DOCTYPE html>
 <html>
@@ -21,87 +22,11 @@
 	});
 </script>
 
-<style>
-.event-detail{
-	width: 1500px;
-	margin: 0 auto;
-	background-color:green;
-	
-}
-.tit{
-	float: left;
-	margin-left:200px;
-	margin-top:100px;
-	font-size:1.8666em;
-	font-weight:400;
-	letter-spacing:-1px;
-	line-height:1.1;
-	color:#222;
-}
-.event-detail .event-date{
-	float: left;
-	margin-left:200px;
-	margin-top:20px;
-	border-bottom: 1px solid #555;
-	padding: 0px 0 15px 0;
-	margin-bottom:30px;
-}
-.cnt{
-	margin-left:770px;
-	}
-div.btn-wrap{
-	margin-top:50px;
-	margin-left:200px;
-	width:1500px;
-	height:100px;	
-}
-div.btn-admin{
-	margin-left:1300px;
-	margin-bottom:30px;
-}
-.btn-update {
-	display: inline-block;
-    width: 80px;
-    height: 30px;
-	text-decoration: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: #ffffff !important;
-    background-color: #414141;
-    text-aling:center;
-    line-height: 25px;
-    border-radius: 5px;
-}
-#del{
-display: inline-block;
-    width: 80px;
-    height: 30px;
-	text-decoration: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: #ffffff !important;
-    background-color: #414141;
-    text-aling:center;
-    line-height: 25px;
-    border-radius: 5px;
-}
-a.btn-list{
-	display: inline-block;
-    width: 130px;
-    height: 50px;
-	text-decoration: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: #ffffff !important;
-    background-color: #414141;
-    text-aling:center;
-    line-height: 48px;
-    border-radius: 5px;
-}
-</style>
+
 </head>
 <body>
 		<div class="content">
+			<h2 class="title">EVENT</h2>
 			<div class="event-detail">
 				<h2 class="tit">${dto.title}</h2>
 				<br>

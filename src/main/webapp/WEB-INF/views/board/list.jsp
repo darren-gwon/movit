@@ -23,12 +23,18 @@
  };
 </script>
 <style>
-div.title h2{
-	float:left;
-	margin-left:250px;
-	margin-top:50px;
-	margin-bottom:50px;
-
+.content {
+	position: relative;
+}
+div.title{
+	margin-top:150px;
+	width:1500px;
+}
+.title h2{
+position: absolute;
+	float: left;
+	margin-left:320px;
+	font-weight:bold;
 }
 .tbl_list {
 	text-align: center;
@@ -40,11 +46,11 @@ thead th {
 	border-top: 2px solid gray;
 	border-bottom: 2px solid gray;
 	background-color: #ffdfdc;
-	height: 50px;
 	text-align: center;
 }
 tbody td {
 	text-align: center;
+	height:47px;
 }
 
 .text1 a {
@@ -53,55 +59,15 @@ tbody td {
 	text-decoration: none;
 	color: black;
 }
-div #keyword {
-	height: 40px;
-	width: 200px;
-	border: 2px solid grey;
-	margin-top: 50px;
-	margin-left: 900px;
-	border-radius: 25px;
-	padding-left: 30px;
-	font-size: 15px;
-	margin-bottom:30px;
+td.text1{
+	text-align: left; 
 }
-
-#search {
-	overflow: hidden;
-	margin: 0px;
-	height: 55px;
-	width: 55px;
-	background-color: transparent;
-	position: absolute;
-	margin-left: -50px;
-	margin-top: 35px;
-	border: 0px;
-	cursor: pointer;
-}
-
-div.total {
-	float:left;
-	font-size: 16px;
-	margin-left:400px;
-	margin-top: 0px;
-	margin-bottom: 10px;
-	color: gray;
-	font-weight: bold;
-}
-
 ul {
 	list-style: none;
 	float: left;
 	display: inline;
 	text-align: center;
 }
-
-/*  ul li {
-	float: left;
-	margin: 20px 0px;
-	margin-left: 800px;
-	margin-bottom: 300px;
-	padding: 0 50px;
-}  */
 div.paging	{
 	text-align: center;
 	width:840px;
@@ -122,13 +88,51 @@ ul a {
 div.bu1{
 	margin-left:1500px;
 }
+div #keyword {
+	height: 40px;
+	width: 200px;
+	border: 2px solid grey;
+	margin-top: 130px;
+	margin-left:1100px;
+	border-radius: 25px;
+	padding-left: 30px;
+	font-size: 15px;
+	margin-bottom:10px;
+}
+
+#search {
+	overflow: hidden;
+	margin: 0px;
+	height: 55px;
+	width: 55px;
+	background-color: transparent;
+	position: absolute;
+	margin-left: -50px;
+	margin-top: 120px;
+	border: 0px;
+	cursor: pointer;
+}
+
+div.total {
+	position: absolute;
+	float:left;
+	font-size: 16px;
+	margin-left:330px;
+	margin-top: 130px;
+	margin-bottom: 10px;
+	color: gray;
+	font-weight: bold;
+}
+
+
 </style>
 </head>
 <body>
 	<div class="content">
 	<div class="title">
 	<h2>공지사항</h2></div>
-	<div class="searchtap">
+	
+		<div class="total"> 총 ${postcount}건</div>
 		<input type="text" id="keyword" />
 		<button type="button" id="search" onclick="search()">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -136,7 +140,7 @@ div.bu1{
   			<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 	</svg>
 		</button>
-	</div>
+
 
 	<div class="container">
 		<div class="row">
@@ -184,20 +188,20 @@ div.bu1{
 		<ul>
 			<li><c:if test="${prev}">
 
-					<a href="../board/list?num=${startpagenum - 1}">〈</a>
+					<a href="../board/notice?num=${startpagenum - 1}">〈</a>
 
 				</c:if> <c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
 
 					<c:if test="${select !=num}">
-						<a href="../board/list?num=${num}">${num}</a>
+						<a href="../board/notice?num=${num}">${num}</a>
 					</c:if>
 
 					<c:if test="${select ==num}">
-						<a href="../board/list?num=${num}">${num}</a>
+						<a href="../board/notice?num=${num}">${num}</a>
 					</c:if>
 
 				</c:forEach> <c:if test="${next}">
-					<a href="../board/list?num=${endpagenum + 1}">〉</a>
+					<a href="../board/notice?num=${endpagenum + 1}">〉</a>
 				</c:if></li>
 		</ul>
 		</div>
