@@ -33,11 +33,11 @@ public interface UserService {
 	String get_searchPassword(Map<String, String> map);
 	// 회원 임시 비밀번호 변경 메서드
 	void temporaryPassword(Map<String, String> map); 
-	//naver 이메일 연결 체크
-	Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson);
-	Map<String, Object> userNaverLoginPro(Map<String, Object> apiJson);
-	int setNaverConnection(Map<String, Object> apiJson);
-	// 카카오로그인
+	// 카카오토큰얻기
 	public String getAccessToken(String authorize_code);
+	// 카카오 유저정보 얻기
 	public KakaoDto getUserInfo(String access_Token);
+	//sns 비번 난수
+	public String getKey(boolean lowerCheck, int size);
 }
+

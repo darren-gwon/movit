@@ -17,10 +17,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 import java.util.Map;
-
-
-
-
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
@@ -44,8 +41,6 @@ public class UserServiceImpl  implements UserService{
 	@Autowired
 	UserDao userdao;
 
-
-
 	//회원가입
 	@Override
 	public int userReg_service(UserDto userdto) {
@@ -60,7 +55,7 @@ public class UserServiceImpl  implements UserService{
 		}	
 		return resultCnt;
 	}
-
+	
 	//아이디 중복확인
 	@Override
 	public int userIdCheck(String user_id) {
@@ -130,30 +125,7 @@ public class UserServiceImpl  implements UserService{
 
 	}
 
-	@Override
-	public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson) {
-		// TODO Auto-generated method stub
-
-
-		return userdao.naverConnectionCheck(apiJson);
-
-	}
-
-	@Override
-	public Map<String, Object> userNaverLoginPro(Map<String, Object> apiJson) {
-		// TODO Auto-generated method stub
-
-		return userdao.naverLoginPro(apiJson);
-	}
-
-
-	@Override
-	public int setNaverConnection(Map<String, Object> apiJson) {
-		// TODO Auto-generated method stub
-
-		return userdao.naverConnection(apiJson);
-	}
-
+	//카카오 토큰 얻기 
 	@Override
 	public String getAccessToken(String authorize_code) {
 		String access_Token = "";
@@ -214,7 +186,7 @@ public class UserServiceImpl  implements UserService{
 	}
 
 
-
+	//카카오 유저정보 얻기
 	public KakaoDto getUserInfo(String access_Token) {
 
 		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
@@ -250,7 +222,27 @@ public class UserServiceImpl  implements UserService{
 
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
-
+			
+			String password = getKey(false, 6)+"!@";
+			String kakao_email ="Kakao"+email;
+			Map<String, String> map = new HashMap<>();
+			map.put("user_id", "Kakao"+email);
+			map.put("password",password);
+			map.put("name",nickname);
+			map.put("nickname","Kakao"+email);
+			map.put("email","Kakao"+email);
+			map.put("phone","Kakao");
+			map.put("gender","Kakao");
+			map.put("birthday","1111-11-11");
+			if(userdao.getCheckEmail(kakao_email)==1)
+			{
+				
+			}
+			else {
+				userdao.snsregUser(map);
+			}
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -260,7 +252,9 @@ public class UserServiceImpl  implements UserService{
 		System.out.println("S:" + result);
 		if(result==null) {
 			// result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
+		
 			userdao.kakaoinsert(userInfo);
+
 			// 위 코드가 정보를 저장하기 위해 Repository로 보내는 코드임.
 			return userdao.findkakao(userInfo);
 			// 위 코드는 정보 저장 후 컨트롤러에 정보를 보내는 코드임.
@@ -271,5 +265,43 @@ public class UserServiceImpl  implements UserService{
 		}
 
 	}
+	
+	//sns 비번등록을 위한 난수 생성
+	@Autowired
+	private String init() {
+		Random ran = new Random();
+		StringBuffer sb = new StringBuffer();
+		int num = 0;
+
+		do {
+			num = ran.nextInt(75) + 48;
+			if ((num >= 48 && num <= 57) || (num >= 65 && num <= 90) || (num >= 97 && num <= 122)) {
+				sb.append((char) num);
+			} else {
+				continue;
+			}
+
+		} while (sb.length() < size);
+		if (lowerCheck) {
+			return sb.toString().toLowerCase();
+		}
+		return sb.toString();
+	}
+
+
+	// 난수를 이용한 키 생성
+	
+	private boolean lowerCheck;
+	
+	private int size;
+
+	@Override
+	public String getKey(boolean lowerCheck, int size) {
+		// TODO Auto-generated method stub
+		this.lowerCheck = lowerCheck;
+		this.size = size;
+		return init();
+	}
+	
 
 }

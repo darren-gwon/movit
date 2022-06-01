@@ -14,346 +14,162 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://kit.fontawesome.com/5d8badcf1a.js" crossorigin="anonymous"></script>
-
+<link href="/resources/css/userReg.css" rel='stylesheet' />
 <c:set var="root" value="<%=request.getContextPath()%>" />
 </head>
-<style>
-html {
-	background-color: #f5f6f7;
-}
-
-.container {
-	display: flex;
-	justify-content: center;
-	margin-top: 50px;
-}
-
-.content * {
-	margin: 3px 0px 7px 0px;
-	font-family: 'Nanum Gothic';
-	font-weight: 600;
-	font-size: 1rem;
-}
-
-@media screen and (min-width: 800px) {
-	.content {
-		width: 500px;
-	}
-}
-
-@media screen and (max-width: 800px) {
-	.content {
-		width: 60%;
-	}
-}
-
-@media screen and (max-width: 330px) {
-	.container {
-		width: 330px;
-	}
-}
-
-.content input, button {
-	width: 80%;
-	height: 40px;
-}
-
-.content>form>div {
-	margin-top: 20px;
-}
-
-button {
-	color: #fff;
-	background-color: #03c75a;
-	border: 1px rgba(0, 0, 0, .08);
-	height: 50px;
-	cursor: pointer;
-	width: 100%;
-}
-
-#msg {
-	text-align: center;
-	color: red;
-	font-weight: 500;
-	height: 10px;
-	margin-top: 5px;
-}
-
-#msgid {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 10px;
-}
-
-#msgpassword {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-#msgpasswordcheck {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-#msgbirthday {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-#msgname {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-#msgnickname {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-#msgnickname {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-#msggender {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-#msgphone {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-#msgemail {
-	color: red;
-	font-weight: 100;
-	height: 8px;
-	margin-top: 2px;
-	margin-right: auto;
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-#title {
-	font-size: 50px;
-	text-align: center;
-}
-</style>
 <body>
 	<div class="container">
-		<div class="content">
-			<h1 id="title">회원가입</h1>
-			<form id=frm>
-				<div>
+		<div class="content" style="margin-top: 5%;">
+			<center>
+				<h1 id="title">회원가입</h1>
+				<form id=frm style="width: 80%;" class="form-inlie">
 					<div>
-						<p>회원가입에 오신걸환영합니다.</p>
-						<div>
-							<h4>아이디</h4>
-							<div style="margin-bottom: 0px;" id="hiddenid">
-								<p style="float: left;" id="msgid"></p>
+						<center>
+							<div>
+								<p style="font-size: 25px;">
+									;Movit 회원가입에 <br>오신걸환영합니다.
+								</p>
 							</div>
-							<input type="text" name="user_id" id="user_id" class="int" placeholder="아아디" onblur="isId(this.value)" required="required">
-							<input type="hidden" id="idcheck">
+							<div>
+								<br>
+								<h4>아이디</h4>
+								<div style="margin-bottom: 0px;" id="hiddenid">
+									<p style="float: left;" id="msgid"></p>
+								</div>
+								<input type="text" name="user_id" id="user_id" class="int" placeholder="아아디" onblur="isId(this.value)" required="required">
+								<input type="hidden" id="idcheck">
 
-						</div>
-
-						<div>
-							<h4>비밀번호</h4>
-							<div style="margin-bottom: 0px;" id="hiddenpass">
-								<p style="float: left;" id="msgpassword"></p>
-							</div>
-							<input type="password" class="int" name="password" id="password" placeholder="비밀번호" onkeyup="isPassword(this.value)" required="required">
-							<span class="glyphicon glyphicon-lock"></span>
-							<input type="hidden" id="passcheck">
-						</div>
-
-						<div>
-							<h4>비밀번호 확인</h4>
-							<div style="margin-bottom: 0px;" id="hiddenpasscheck">
-								<p style="float: left;" id="msgpasswordcheck"></p>
-							</div>
-							<input type="password" class="int" id="passwordCheck" placeholder="비밀번호 확인" onkeyup="isPasswordEqual()" required="required">
-							<input type="hidden" id=passcheck1>
-						</div>
-
-						<div>
-							<h4>생년월일</h4>
-							<div style="margin-bottom: 0px;" id="hiddenbirthday">
-								<p style="float: left;" id="msgbirthday"></p>
-							</div>
-							<input type="date" class="int" name="birthday" id="birthday" onblur="isBirthday(this.value)" required="required">
-							<input type="hidden" id="birthdaycheck">
-						</div>
-
-						<div>
-							<h4>이름</h4>
-							<div style="margin-bottom: 0px;" id="hiddenname">
-								<input type="hidden" id=namecheck class="chk">
-								<p style="float: left;" id="msgname"></p>
-							</div>
-							<input type="text" name="name" class="int" name="name" id="name" placeholder="이름" onblur="isName(this.value)" required="required">
-							<input type="hidden" id="namecheck">
-						</div>
-
-						<div>
-							<h4>별명</h4>
-							<div style="margin-bottom: 0px;" id="hiddennickname">
-								<p style="float: left;" id="msgnickname"></p>
-							</div>
-							<input type="text" class="int" name="nickname" id="nickname" placeholder="별명" onblur="isNickname(this.value)" required="required">
-							<span class="glyphicon glyphicon-user"></span>
-							<input type="hidden" id="nicknamecheck">
-						</div>
-
-						<div>
-							<h4>성별</h4>
-							<div style="margin-bottom: 0px;" id="hiddengender">
-								<p style="float: left;" id="msggender"></p>
-							</div>
-							<select id="genderselect" class="int" name="gender" onblur="isGender(this.value)" required="required">
-								<option value=미정 selected="selected">구분</option>
-								<option value=남자>남자</option>
-								<option value=여자>여자</option>
-							</select>
-							<input type="hidden" id="gendercheck">
-						</div>
-
-						<h4>휴대폰번호</h4>
-						<input type="hidden" id="phonecheck">
-						<div style="margin-bottom: 0px;" id="hiddenphone">
-							<p style="float: left;" id="msgphone"></p>
-						</div>
-
-						<div style="margin-bottom: 0px;" id=hiddenphone>
-							<tr>
-								<td colspan="3">
-									<input type="hidden" id="phone" name="phone" class=int>
-									<select id="phone1" name="phone1" style="width: 60px" class=int>
-										<option value="010">010</option>
-										<option value="011">011</option>
-										<option value="016">016</option>
-										<option value="017">017</option>
-										<option value="018">018</option>
-										<option value="019">019</option>
-									</select>
-									&nbsp;&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;&nbsp;
-									<input name="phone2" id="phone2" maxlength="4" type="input" style="width: 100px">
-									&nbsp;&nbsp;&nbsp;<b>-</b> &nbsp;&nbsp;&nbsp;&nbsp;
-									<input name="phone3" id="phone3" maxlength="4" type="input" style="width: 100px" onblur="isPhone(this.value)">
-								</td>
-							</tr>
-						</div>
-
-						<div>
-							<h4>이메일</h4>
-							<div style="margin-bottom: 0px;" id=hiddenemail>
-								<p style="float: left;" id="msgemail"></p>
 							</div>
 
-							<input type="hidden" id=emailcheck>
-							<input type="text" class="form-control int" name="email" id="email" placeholder="E-mail" onblur="isEmail(this.value)" title="이메일 주소를 입력해주세요." required="required">
-							<div class="mail_check_input_box" id="mail_check_input_box_false">
-								<input id="certi" type="text" name="certi" title="인증번호 입력" disabled required />
+							<div>
+								<h4>비밀번호</h4>
+								<div style="margin-bottom: 0px;" id="hiddenpass">
+									<p style="float: left;" id="msgpassword"></p>
+								</div>
+								<input type="password" class="int" name="password" id="password" placeholder="비밀번호" onkeyup="isPassword(this.value)" required="required">
+								<span class="glyphicon glyphicon-lock"></span>
+								<input type="hidden" id="passcheck">
 							</div>
 
-							<button type="button" class="btn btn-outline-danger btn-sm px-3" id="emailChk" class="doubleChk">
-								<i class="fa fa-envelope"></i>&nbsp;인증번호 보내기
-							</button>
-							&nbsp;
-							<button type="button" class="btn btn-outline-info btn-sm px-3" id="emailChk2" class="doubleChk">
-								<i class="fa fa-envelope"></i>&nbsp;확인
-							</button>
-							&nbsp;
-							<input type="hidden" id="emailDoubleChk" />
-							<span class="point successEmailChk" style="color: red;">이메일 입력후 인증번호 보내기를 해주십시오.</span>
-							<input type="hidden" id="emailDoubleChk" />
-							<p class="tip" style="color: red;">아이디 비밀번호 분실시 필요한 정보이므로, 정확하게 기입해 주십시오.</p>
-							<div class="check_font" id="email_check"></div>
-						</div>
+							<div>
+								<h4>비밀번호 확인</h4>
+								<div style="margin-bottom: 0px;" id="hiddenpasscheck">
+									<p style="float: left;" id="msgpasswordcheck"></p>
+								</div>
+								<input type="password" class="int" id="passwordCheck" placeholder="비밀번호 확인" onkeyup="isPasswordEqual()" required="required">
+								<input type="hidden" id=passcheck1>
+							</div>
 
-						<fieldset class="fieldarea f2">
-							<legend>
-								<span>이용</span>약관
-							</legend>
-							<p class="agreeText">
-								<label for="agreement1">아래 사항에 동의 합니다.</label>
-								<input id="agreement1" type="checkbox" name="agreement1" />
-								<textarea id="text1" readonly> 이용약관 </textarea>
-							</p>
-						</fieldset>
-						<fieldset class="fieldarea f3">
-							<legend>
-								<span>개인정보</span>취급방침
-							</legend>
-							<p class="agreeText">
-								<label for="agreement2">아래 사항에 동의 합니다.</label>
-								<input id="agreement2" type="checkbox" name="agreement2" />
-								<textarea id="text2" readonly> 개인정보 방침 및 안내 </textarea>
-							</p>
-						</fieldset>
+							<div>
+								<h4>생년월일</h4>
+								<div style="margin-bottom: 0px;" id="hiddenbirthday">
+									<p style="float: left;" id="msgbirthday"></p>
+								</div>
+								<input type="date" class="int" name="birthday" id="birthday" onblur="isBirthday(this.value)" required="required">
+								<input type="hidden" id="birthdaycheck">
+							</div>
 
-						<!-- 			<div>
-				<input type="checkbox" id="agreeTerms" name="terms" value="agree"> 
-				<label for="agreeTerms"> 약관에  <a href="#">동의합니다.</a> </label> 
-			</div> 	
-			</div>  -->
+							<div>
+								<h4>이름</h4>
+								<div style="margin-bottom: 0px;" id="hiddenname">
+									<input type="hidden" id=namecheck class="chk">
+									<p style="float: left;" id="msgname"></p>
+								</div>
+								<input type="text" name="name" class="int" name="name" id="name" placeholder="이름" onblur="isName(this.value)" required="required">
+								<input type="hidden" id="namecheck">
+							</div>
 
-						<div>
-							<button type="button" class="btn btn-primary btn-block" style="background: #5673bd; border-radius: 25px;" id="RegSuccess">가입하기</button>
-							<a href="login" class="text-center">이미 회원이십니까?</a>
-							<br>
-							<br>
-						</div>
+							<div>
+								<h4>별명</h4>
+								<div style="margin-bottom: 0px;" id="hiddennickname">
+									<p style="float: left;" id="msgnickname"></p>
+								</div>
+								<input type="text" class="int" name="nickname" id="nickname" placeholder="별명" onblur="isNickname(this.value)" required="required">
+								<span class="glyphicon glyphicon-user"></span>
+								<input type="hidden" id="nicknamecheck">
+							</div>
+
+							<div>
+								<h4>성별</h4>
+								<div style="margin-bottom: 0px;" id="hiddengender">
+									<p style="float: left;" id="msggender"></p>
+								</div>
+								<select id="genderselect" class="int" name="gender" onblur="isGender(this.value)" required="required">
+									<option value=미정 selected="selected">구분</option>
+									<option value=남자>남자</option>
+									<option value=여자>여자</option>
+								</select>
+								<input type="hidden" id="gendercheck">
+							</div>
+
+							<h4>휴대폰번호</h4>
+							<input type="hidden" id="phonecheck">
+							<div style="margin-bottom: 0px;" id="hiddenphone">
+								<p style="float: left;" id="msgphone"></p>
+							</div>
+
+							<div style="margin-bottom: 0px;" id=hiddenphone>
+								<tr>
+									<td colspan="3">
+										<input type="hidden" id="phone" name="phone" class=int>
+										<select id="phone1" name="phone1" style="width: 80px; padding: 10px;" class=int>
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="018">018</option>
+											<option value="019">019</option>
+										</select>
+										&nbsp;&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;&nbsp;
+										<input name="phone2" id="phone2" maxlength="4" type="input" style="width: 100px;">
+										&nbsp;&nbsp;&nbsp;<b>-</b> &nbsp;&nbsp;&nbsp;&nbsp;
+										<input name="phone3" id="phone3" maxlength="4" type="input" style="width: 100px" onblur="isPhone(this.value)">
+									</td>
+								</tr>
+							</div>
+
+							<div>
+								<h4>이메일</h4>
+								<div style="margin-bottom: 0px;" id=hiddenemail>
+									<p style="float: left;" id="msgemail"></p>
+								</div>
+
+								<input type="hidden" id=emailcheck>
+								<input type="text" class="form-control int" name="email" id="email" placeholder="E-mail" onblur="isEmail(this.value)" title="이메일 주소를 입력해주세요." required="required">
+								<div class="mail_check_input_box" id="mail_check_input_box_false">
+									<input id="certi" type="text" name="certi" title="인증번호 입력" disabled required />
+								</div>
+
+								<button type="button" class="btn btn-outline-danger btn-sm px-3" id="emailChk" class="doubleChk">
+									<i class="bi bi-envelope-check"></i>&nbsp;인증번호 보내기
+								</button>
+								&nbsp;
+								<button type="button" class="btn btn-outline-info btn-sm px-3" id="emailChk2" class="doubleChk">
+									<i class="bi bi-envelope-check"></i>&nbsp;확인
+								</button>
+								&nbsp;
+								<input type="hidden" id="emailDoubleChk" />
+								<br> <span class="point successEmailChk" style="color: red;">이메일 입력후 인증번호 보내기를 해주십시오.</span>
+								
+								<p class="tip" style="color: red;">아이디 비밀번호 분실시 필요한 정보이므로, 정확하게 기입해 주십시오.</p>
+								<div class="check_font" id="email_check"></div>
+							</div>
+					</div>
+					<div>
+						<button type="button" class="btn btn-primary btn-block" style="background: #5673bd; border-radius: 25px;" id="RegSuccess">가입하기</button>
+						<br>
+						<a href="login" class="text-center">이미 회원이십니까?</a>
+						<br> <br>
+					</div>
+			
 			</form>
+			</center>
 		</div>
 	</div>
 
 	<script>
+	
+	
 		function showMsg(message) {
 			const msg = document.getElementById("msg");
 			msg.innerHTML = message;
@@ -419,8 +235,7 @@ button {
 		function isId(asValue) {
 			var user_id = $('#user_id').val();
 			var regExp = /^[a-z]+[a-z0-9_]{5,20}$/g;
-			$
-					.ajax({
+			$.ajax({
 						url : '${pageContext.request.contextPath}/user/idCheck?userId='
 								+ user_id,
 						type : 'post',
@@ -435,7 +250,7 @@ button {
 							} else {
 								if (!regExp.test(asValue)) {
 									$('#hiddenid').attr('style',
-											'margin-bottom:55px;');
+											'margin-bottom:50px;');
 									showMsgid("아이디는 영문으로 시작하는 5~20자의<br>영문 소문자, 숫자와 특수기호(_)만 사용 가능합니다.");
 									$('#idcheck').attr('value', 'false');
 									return false;

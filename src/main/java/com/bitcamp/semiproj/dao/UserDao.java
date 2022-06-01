@@ -11,13 +11,16 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitcamp.semiproj.domain.KakaoDto;
+import com.bitcamp.semiproj.domain.NaverDto;
 import com.bitcamp.semiproj.domain.UserDto;
 
 public interface UserDao {
  
 	/*유저정보관련*/
 	//회원가입
-	int regUser(UserDto userdto) throws SQLException; //유저 회원가입 메서드
+	int regUser(UserDto userdto) throws SQLException; 
+	// sns 회원가입
+	int snsregUser(Map<String, String> map); 
 	//로그인 확인
 	int login(Map<String, String> map);
 	//아이디 중복확인
@@ -33,9 +36,15 @@ public interface UserDao {
 	//회원 임시 비밀번호 변경
 	void temporaryPassword(Map<String, String> map);
 	
-	public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson); 
-	public Map<String, Object> naverLoginPro(Map<String, Object> apiJson);
-	public int naverConnection(Map<String, Object> apiJson);
+    //카카오 db저장
 	public void kakaoinsert(HashMap<String, Object> userInfo);
+	//카카오 유저검색
 	public KakaoDto findkakao(HashMap<String, Object> userInfo);
+	// 네이버 db 저장
+	public void naverinsert(HashMap<String, Object> userInfo); 
+	// 네이버 유저 검색
+	public NaverDto findnaver(HashMap<String, Object> userInfo);
+	
+	/* public void naverUserReg(HashMap<String, Object> naver); */
+	
 }
