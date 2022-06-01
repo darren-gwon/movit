@@ -57,7 +57,6 @@ public class ReviewController {
 			@RequestParam int movieID, 
 			Model model, 
 			HttpSession session) {
-		session.setAttribute("user_id", "gimzee");
 		model.addAttribute("movieID", movieID);
 		return "review/reviewform.tiles";
 	}
