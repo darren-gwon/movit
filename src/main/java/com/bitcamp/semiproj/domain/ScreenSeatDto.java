@@ -5,6 +5,7 @@ public class ScreenSeatDto {
 	private Integer row_qty;
 	private Integer column_qty;
 	private Integer total_seat_qty;
+	private Integer left_seat_qty;
 	
 	public Integer getScreenID() {
 		return screenID;
@@ -26,6 +27,14 @@ public class ScreenSeatDto {
 	}
 	public Integer getTotal_seat_qty() {
 		return row_qty*column_qty;
+	}
+	
+	public void setLeft_seat_qty(Integer takenSeats) {
+		this.left_seat_qty = total_seat_qty-takenSeats;
+	}
+	
+	public Integer getLeft_seat_qty() {
+		return left_seat_qty;
 	}
 	
 	@Override
