@@ -10,10 +10,10 @@
 	<div class="slidebox">
 		<input type="radio" name="slide" id="slide01" checked> <input type="radio" name="slide" id="slide02"> <input type="radio" name="slide" id="slide03"> <input type="radio" name="slide" id="slide04">
 		<ul class="slidelist">
-			<li class="slideitem"><a><img src="../resources/cssimg/img1.jpg"></a></li>
-			<li class="slideitem"><a><img src="../resources/cssimg/img2.jpg"></a></li>
-			<li class="slideitem"><a><img src="../resources/cssimg/img3.jpg"></a></li>
 			<li class="slideitem"><a><img src="../resources/cssimg/img4.jpg"></a></li>
+			<li class="slideitem"><a><img src="../resources/cssimg/img3.jpg"></a></li>
+			<li class="slideitem"><a><img src="../resources/cssimg/img2.jpg"></a></li>
+			<li class="slideitem"><a><img src="../resources/cssimg/img1.jpg"></a></li>
 		</ul>
 		<div class="slide-control">
 			<div class="control01">
