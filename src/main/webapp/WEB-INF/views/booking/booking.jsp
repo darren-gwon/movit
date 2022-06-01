@@ -1,144 +1,97 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 
 <head>
+<link href="/resources/css/booking.css" rel='stylesheet' />
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">  -->
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
-    <style>
-        table {
-            border: 1px solid black;
-            width: 900px;
-            height: 500px;
-            text-align: center;
-        }
-
-        th,
-        td {
-            border: 1px solid black;
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 0px;
-            cursor: pointer;
-        }
-
-        .active {
-            font-weight: bold;
-        }
-
-        .available {}
-
-        .taken {
-            color: grey;
-            font-weight: bold;
-        }
-
-        .unavailable {}
-
-        .selected {
-            color: red;
-            font-weight: bold;
-        }
-
-        .seatIdx {
-            width: 30px;
-            height: 30px;
-            display: inline-block;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        #kakaopayBtn {
-            cursor: pointer;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>MOVIT 예매하기</title>
 </head>
 
 <body>
-    BOOKING VIEW
-    <br>
-    <table class="table scheduleTable">
-        <tr>
-            <th colspan="2">영화관</th>
-            <th>영화</th>
-            <th>날짜</th>
-            <th>상영시간</th>
+	<div class="content">
+		<div class="booking">
+			<br>
+			<div class="booking_table scheduleTable">
+				<div class="table_heading">
+					<div class="head theater_head">영화관</div>
+					<div class="head theater_movie">영화</div>
+					<div class="head theater_date">날짜</div>
+					<div class="head theater_schedule">상영시간</div>
+				</div>
+				<div class="table_body">
+					<div class="table_row">
+						<div class="cell theater_cell">
+							<div class="region">
+								<ul>
+									<c:forEach var="r" items="${region}">
+										<li name="regionValue" class="regionValue" data-regionid="${r.regionID}">${r.name}</li>
+									</c:forEach>
+								</ul>
+							</div>
+							<div class="theater"></div>
+						</div>
+						<div class="cell movie_cell"></div>
+						<div class="cell date_cell"></div>
+						<div class="cell schedule_cell"></div>
+					</div>
+				</div>
+			</div>
 
-        </tr>
-        <tr>
-            <td class="region">
-                <c:forEach var="r" items="${region}">
-                    <ul name="regionValue" class="regionValue" data-regionid="${r.regionID}">${r.name}</ul>
-                </c:forEach>
-            </td>
-            <td class="theater">상영관</td>
-            <td class="movieTitle">제목</td>
-            <td class="date"><br></td>
-            <td class="schedule">시간</td>
-        </tr>
-    </table>
-    <table class="table seatTable" style="display: none;">
-        <tr>
-            <td>좌석선택</td>
-            <td>구매 정보</td>
-        </tr>
-        <tr>
-            <td class="seat-count">
-                <div class="cell">
-                    성인: <button type="button" class="decreaseBtn" class="cntBtn">-</button>
-                    <input id="adultCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
-                    <button type="button" class="increaseBtn" class="cntBtn">+</button>
-                </div>
-                <div class="cell">
-                    청소년: <button type="button" class="decreaseBtn" class="cntBtn">-</button>
-                    <input id="youthCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
-                    <button type="button" class="increaseBtn" class="cntBtn">+</button>
-                </div>
-                <div class="cell">
-                    우대: <button type="button" class="decreaseBtn" class="cntBtn">-</button>
-                    <input id="specialCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
-                    <button type="button" class="increaseBtn" class="cntBtn">+</button>
-                </div>
-            </td>
-            <td rowspan="2" class="seat-result">
-                최종결제금액: <span id="totalPrice" class="totalPrice">0</span>원<br>
-                <button type="button" id="doPayment">결제하기</button>
-            </td>
-        </tr>
-        <tr>
-            <td class="seat-layout">
-                좌석 선택 영역
-            </td>
-        </tr>
-    </table>
-    <table class="table payTable" style="display: none;">
-        <tr>
-            <td>좌석선택</td>
-            <td>결제</td>
-        </tr>
-        <tr>
-            <td>
 
-            </td>
-            <td>
-                <span>간편결제</span>
-                <img src="https://developers.kakao.com/tool/resource/static/img/button/pay/payment_icon_yellow_medium.png"
-                    id="kakaopayBtn">
-            </td>
-        </tr>
-    </table>
-    <br>
-    <br>
-    <hr>
-    ${theater2}
-    <script>
+
+			<table class="table seatTable" style="display: none;">
+				<tr>
+					<td>좌석선택</td>
+					<td>구매 정보</td>
+				</tr>
+				<tr>
+					<td class="seat-count">
+						<div class="cell">
+							성인:
+							<button type="button" class="decreaseBtn" class="cntBtn">-</button>
+							<input id="adultCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
+							<button type="button" class="increaseBtn" class="cntBtn">+</button>
+						</div>
+						<div class="cell">
+							청소년:
+							<button type="button" class="decreaseBtn" class="cntBtn">-</button>
+							<input id="youthCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
+							<button type="button" class="increaseBtn" class="cntBtn">+</button>
+						</div>
+						<div class="cell">
+							우대:
+							<button type="button" class="decreaseBtn" class="cntBtn">-</button>
+							<input id="specialCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
+							<button type="button" class="increaseBtn" class="cntBtn">+</button>
+						</div>
+					</td>
+					<td rowspan="2" class="seat-result">최종결제금액: <span id="totalPrice" class="totalPrice">0</span>원<br>
+						<button type="button" id="doPayment">결제하기</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="seat-layout">좌석 선택 영역</td>
+				</tr>
+			</table>
+			<table class="table payTable" style="display: none;">
+				<tr>
+					<td>좌석선택</td>
+					<td>결제</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><span>간편결제</span> <img src="https://developers.kakao.com/tool/resource/static/img/button/pay/payment_icon_yellow_medium.png" id="kakaopayBtn"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+	<script>
         dateList();
 
         $(".regionValue").click(function () {
@@ -154,17 +107,18 @@
                 url: "booking/getTheaterList",
                 success: function (result) {
                     const theaters = result;//JSON.parse(result);
-                    let tmp = "";
+                    let tmp = "<ul>";
                     for (let i = 0; i < theaters.length; i++) {
-                        tmp += "<ul name='theaterValue' class='theaterValue' data-theaterid=" + theaters[i].theaterID + ">" + theaters[i].name + "</ul>";
+                        tmp += "<li name='theaterValue' class='theaterValue' data-theaterid=" + theaters[i].theaterID + ">" + theaters[i].name + "</li>";
                     }
+                    tmp+="</ul>"
                     $(".theater").html(tmp);
                 }
             });
             getScheduleList();
         });
 
-        $("td.theater").on("click", "ul.theaterValue", function () {
+        $("div.theater").on("click", "li.theaterValue", function () {
             $(this).siblings().removeClass("active");
             $(this).addClass("active");
             const theaterID = $(this).attr("data-theaterid");
@@ -178,47 +132,74 @@
                     $.each(result, function (i, m) {
                         movies.set(m.movieID, m);
                     });
-                    let tmp = "";
+                    let tmp = "<ul>";
                     for (const [key, value] of movies) {
-                        tmp += "<ul name='movieValue' class='movieValue' data-age_group="+ value.age_group +" data-movieid=" + key + ">" + "<span class='age_group'	>(" + (value.age_group == 0 ? '전체' : value.age_group) + ")</span><span class='title'>" + value.title + "</span></ul>";
+                        tmp += "<li name='movieValue' class='movieValue' data-age_group="+ value.age_group +" data-movieid=" + key + ">" + "<img class='age_group'	src='" + (value.age_group == 0 ? "/resources/img/movie_ages/txt-age-all" : "/resources/img/movie_ages/txt-age-"+value.age_group) + ".png'></img><span class='title'>"+ value.title + "</span></li>";
                     }
-                    $(".movieTitle").html(tmp);
+                    tmp+="</ul>"
+                    $(".movie_cell").html(tmp);
                 }
             });
             getScheduleList();
         });
 
-        $("td.movieTitle").on("click", "ul.movieValue", function () {
+        $("div.movie_cell").on("click", "li.movieValue", function () {
             $(this).siblings().removeClass("active");
             $(this).addClass("active");
+            $(this).siblings().css("box-shadow","");
+
+            //CHECK이미지 본인에게만 추가
+            $(this).children().siblings("img.movieChk").remove();
+            $(this).siblings().children().siblings("img.movieChk").remove();
+            $(this).children("span.title").after("<img class='movieChk' src='/resources/img/booking/check.png'>")
+            $(this).css("box-shadow","0 0 0 2px #000 inset")
             getScheduleList();
-            /* 	$.ajax({
-                    type:"POST",
-                    data:"theaterID="+theaterID,
-                    url:"booking/getMovieList",
-                    success:function(result){
-                        const movies = new Map();
-                        $.each(result, function(i, m){
-                            movies.set(m.movieID, m.title);
-                        });
-                        let tmp = "";
-                        for (const [key, value] of movies) {
-                            tmp += "<ul name='movieValue' class='movieValue' data-movieID='"+key+"'>"+value+"</ul>";
-                        }
-                        $(".movieTitle").html(tmp);
-                    }
-                }); */
+            
         });
 
-        $("td.date").on("click", "ul.dateValue", function () {
+        $("div.date_cell").on("click", "li.dateValue", function () {
             $(this).siblings().removeClass("active");
             $(this).addClass("active");
+
             getScheduleList();
         });
+        
+        //상영시간표 출력
+        function getScheduleList() {
+
+            const regionID = $(".regionValue.active").attr("data-regionid");
+            const theaterID = $(".theaterValue.active").attr("data-theaterid");;
+            const movieID = $(".movieValue.active").attr("data-movieid");
+            const date = $(".dateValue.active").attr("data-date");
+
+            if (regionID != undefined && theaterID != undefined && movieID != undefined && date != undefined) {
+                $.ajax({
+                    type: "POST",
+                    //data: "regionID=" + regionID + "&theaterID=" + theaterID + "&movieID=" + movieID + "&date=" + date,
+                    headers:{"content-type":"application/json"},
+                    data: JSON.stringify({"regionID":regionID, "theaterID":theaterID, "movieID":movieID, "date":date}),
+                    url: "booking/getScheduleList",
+                    success: function (result) {
+                        let tmp = "<ul>";
+                        $(result).each(function (idx, info) {
+                            tmp += "<li><span name='scheduleValue' class='scheduleValue' data-screenid=" + info.screenDto.screenID;
+                            tmp += " data-scheduleid=" + info.scheduleID + " data-movieid=" + info.movieID + " data-screen_date=" + info.screen_date;
+                            tmp += " data-theaterid=" + info.theaterID + " data-start_time=" + info.start_time + " data-end_time=" + info.end_time;
+                            tmp += " data-classid=" + info.screenDto.screenClass.classID + " data-classtype=" + info.screenDto.screenClass.class_type;
+                            tmp += " data-row_qty=" + info.screenDto.seatDto.row_qty + " data-column_qty=" + info.screenDto.seatDto.column_qty;
+                            tmp += " data-total_seat_qty=" + info.screenDto.seatDto.total_seat_qty + ">" + info.screenDto.screenClass.class_type + " | " + info.screenDto.screen_name;
+                            tmp += " | " + info.start_time + "~" + info.end_time + " | " + info.screenDto.seatDto.total_seat_qty + "</span></li>";
+                        });
+                        tmp+="</ul>"
+                        $(".schedule_cell").html(tmp);
+                    }
+                });
+            }
+        }
 
         //상영 일정 클릭 이벤트
-        $("td.schedule").on("click", "span.scheduleValue", function () {
-            $("span.scheduleValue").removeClass("active");
+        $("div.schedule_cell").on("click", "span.scheduleValue", function () {
+        	$(this).removeClass("active");
             $(this).addClass("active");
             seatList();
             $("table.scheduleTable").css("display", "none");
@@ -420,50 +401,20 @@
 
         //오늘 날짜를 기준으로 7일을 출력
         function dateList() {
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = today.getMonth() + 1;
-            const day = today.getDate();
-            console.log(year + "/" + month + "/" + day);
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
 
-            let tmp = "";
+            let tmp = "<ul>";
             for (let i = 0; i < 7; i++) {
-                tmp += "<ul name='dateValue' class='dateValue' data-date='" + year + "-" + month + "-" + (day + i) + "' onclick=''>" + (day + i) + "일" + "</ul>"
+                tmp += "<li name='dateValue' class='dateValue' data-date='" + date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "' onclick=''>" + date.getDate() + "일" + "</li>"
+    			date.setDate(date.getDate()+1);
             }
-            $(".date").html(tmp);
+            tmp+="</ul>"
+            $(".date_cell").html(tmp);
         }
 
-        //상영시간표 출력
-        function getScheduleList() {
 
-            const regionID = $(".regionValue.active").attr("data-regionid");
-            const theaterID = $(".theaterValue.active").attr("data-theaterid");;
-            const movieID = $(".movieValue.active").attr("data-movieid");
-            const date = $(".dateValue.active").attr("data-date");
-
-            if (regionID != undefined && theaterID != undefined && movieID != undefined && date != undefined) {
-                $.ajax({
-                    type: "POST",
-                    //data: "regionID=" + regionID + "&theaterID=" + theaterID + "&movieID=" + movieID + "&date=" + date,
-                    headers:{"content-type":"application/json"},
-                    data: JSON.stringify({"regionID":regionID, "theaterID":theaterID, "movieID":movieID, "date":date}),
-                    url: "booking/getScheduleList",
-                    success: function (result) {
-                        let tmp = "";
-                        $(result).each(function (idx, info) {
-                            tmp += "<ul><span name='scheduleValue' class='scheduleValue' data-screenid=" + info.screenDto.screenID;
-                            tmp += " data-scheduleid=" + info.scheduleID + " data-movieid=" + info.movieID + " data-screen_date=" + info.screen_date;
-                            tmp += " data-theaterid=" + info.theaterID + " data-start_time=" + info.start_time + " data-end_time=" + info.end_time;
-                            tmp += " data-classid=" + info.screenDto.screenClass.classID + " data-classtype=" + info.screenDto.screenClass.class_type;
-                            tmp += " data-row_qty=" + info.screenDto.seatDto.row_qty + " data-column_qty=" + info.screenDto.seatDto.column_qty;
-                            tmp += " data-total_seat_qty=" + info.screenDto.seatDto.total_seat_qty + ">" + info.screenDto.screenClass.class_type + " | " + info.screenDto.screen_name;
-                            tmp += " | " + info.start_time + "~" + info.end_time + " | " + info.screenDto.seatDto.total_seat_qty + "</span></ul>";
-                        });
-                        $(".schedule").html(tmp);
-                    }
-                });
-            }
-        }
 
         function getPriceByType(classType, ticketType) {
             if (classType == '2D') {
@@ -516,7 +467,6 @@
             const scheduleID = $("span.scheduleValue.active").attr("data-scheduleid");
             const movieID = $("span.scheduleValue.active").attr("data-movieid");
             const screen_date = $("span.scheduleValue.active").attr("data-screen_date");
-
 
             $.ajax({
                 type: "POST",	

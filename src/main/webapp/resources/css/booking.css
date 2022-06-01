@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+.booking {
+	margin-top: 35px;
+}
+
+/* DivTable.com */
+.booking_table {
+	display: table;
+	width: 1300px;
+	height: 450px;
+	border-top: 60px solid #303842;
+	border-bottom: 60px solid #303842;
+	border-right: 1px solid #303842;
+	border-left: 1px solid #303842;
+	margin: 70px auto;
+}
+
+.table_heading {
+	background-color: #EEE;
+	display: table-header-group;
+	height: 40px;
+}
+
+
+
+.table_heading .head, .table_body .cell {
+	display: table-cell;
+}
+.table_heading .head{
+	vertical-align: middle;
+}
+
+.table_heading .theater_head {
+	width: 300px;
+}
+
+.table_heading .theater_movie {
+	width: 500px;
+}
+
+.table_heading .theater_date {
+	width: 100px;
+}
+
+.table_heading .theater_schedule {
+	width: 400px;
+}
+
+.table_body {
+	display: table-row-group;
+}
+
+.table_row {
+	position: relative;
+	display: table-row;
+}
+
+.table_row .cell li {
+	height: 48px;
+	line-height:40px;
+}
+
+.theater_cell {
+	vertical-align: top;
+}
+
+
+.theater_cell .region {
+	display: inline-block;
+	width: 100px;
+	vertical-align: top;
+	
+}
+
+.theater_cell .theater {
+	display: inline-block;
+	width: 150px;
+}
+
+.cell.movie_cell {
+	vertical-align: top;
+}
+
+.movieValue{
+	position:relative;
+	height: 48px;
+	line-height: 45px;
+	font-size: 18px;
+}
+
+.movieValue .title{
+}
+
+img.movieChk{
+	position:absolute;
+	right:14px;
+	top:14px;
+}
+ 
+/* 
+.movie_cell li.active > li::after {
+	content: "";
+	background-image:
+		url("/resources/img/booking/check.png");
+	background-size: 18px 14px no-repeat;
+	width: 18px;
+	height: 14px;
+	display: inline-block;
+	margin-left: 5px;
+	position:absolute;
+	right: 10px;
+	top:15px;
+}
+ */
+
+
+
+.cell .date_cell {
+	display: inline-block;
+	width: 150px;
+	vertical-align: center;
+}
+
+.cell .date_cell li {
+	vertical-align: center;
+}
+
+.cell .schedule_cell {
+	vertical-align: top;
+}
+
+.booking_table ul, li {
+	list-style: none;
+	padding-left: 0px;
+	cursor: pointer;
+}
+
+.cell li {
+	display: block;
+}
+
+
+img.age_group{
+		
+}
+
+
+.table {
+	border: 1px solid black;
+	width: 900px;
+	height: 500px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+th, td {
+	border: 1px solid black;
+}
+
+.active {
+	font-weight: bold;
+}
+
+.available {
+	
+}
+
+.taken {
+	color: grey;
+	font-weight: bold;
+}
+
+.unavailable {
+	
+}
+
+.selected {
+	color: red;
+	font-weight: bold;
+}
+
+.seatIdx {
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+}
+
+#kakaopayBtn {
+	cursor: pointer;
+}

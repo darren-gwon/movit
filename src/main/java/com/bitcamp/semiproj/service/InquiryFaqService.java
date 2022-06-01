@@ -17,4 +17,6 @@ public interface InquiryFaqService {
 	public void update(InquiryFaqDto dto);
 	public void delete(String seq);
 
+
+	
 }

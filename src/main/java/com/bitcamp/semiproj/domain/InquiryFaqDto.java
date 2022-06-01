@@ -2,7 +2,7 @@ package com.bitcamp.semiproj.domain;
 
 import java.sql.Timestamp;
 
-public class InquiryFaqDto {
+public class InquiryFaqDto{
 	private int seq;
 	private String inquiry_type;
 	private String title;
@@ -39,11 +39,11 @@ public class InquiryFaqDto {
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
+	
 	@Override
 	public String toString() {
 		return "InquiryFaqDto [seq=" + seq + ", inquiry_type=" + inquiry_type + ", title=" + title + ", content="
 				+ content + ", write_date=" + write_date + "]";
 	}
-
 
 }

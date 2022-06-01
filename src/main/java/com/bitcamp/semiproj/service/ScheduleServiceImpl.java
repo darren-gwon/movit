@@ -26,7 +26,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 	@Override
 	public List<ScheduleDto> getScheduleInfo(Map<String, String> map) {
-		// TODO Auto-generated method stub
+		List<ScheduleDto> list = scheduleDao.selectScheduleInfo(map);
+		for(int i = 0; i<list.size(); i++) {
+			list.get(0);
+		}
 		return scheduleDao.selectScheduleInfo(map);
 	}
 }
