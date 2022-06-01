@@ -11,6 +11,14 @@
 		WHERE own.scheduleID=#{scheduleID}<!--  AND shw.movieID=#{movieID} AND shw.screenID=#{screenID}; -->
 	</select>
     
+    <select id="selectOwnSeatCount" parameterType="Map" resultType="int" >
+        SELECT count(*)
+		FROM ownseat AS own
+		JOIN show_schedule AS shw
+		ON shw.scheduleID = own.scheduleID
+		WHERE own.scheduleID=#{scheduleID};
+	</select>
+    
     <select id="selectSeatPrice" parameterType="Map" resultType="PriceDto">
     	SELECT * FROM price
     	WHERE classID=#{classID} and age_group=#{age_group};
