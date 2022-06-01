@@ -6,12 +6,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,24 +31,22 @@ public class UserController {
 	@Autowired
 	private MailSendService mailService;
 	
-	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	UserDao userdao;
 
 	// 회원가입 전 동의 창
-	@RequestMapping(value = "user/reg", method = RequestMethod.GET)
+	@RequestMapping(value = "user/agree", method = RequestMethod.GET)
 	public String agree(UserDto userdto) {
 
-		 return "/userReg/accept_terms.tiles";
+		 return "/userReg/agree.tiles";
 	}
 	
-	// 회원가입 전 동의 창
+	// 회원가입 창
 	@RequestMapping(value = "user/reg", method = RequestMethod.GET)
 	public String UserReg(UserDto userdto) {
 
-		return "/userReg/accept_terms.tiles";
+		return "/userReg/userReg.tiles";
 	}
 
 	// 회원가입 완료
@@ -63,7 +59,7 @@ public class UserController {
 		userdto.setPassword(password);	
 		userService.userReg_service(userdto);
 		
-		return "/test";
+		return "redirect:/";
 
 	}
 
@@ -75,26 +71,19 @@ public class UserController {
 		return userService.userIdCheck(user_id);
 	}
 	
-	// 로그인하러가기
-	@RequestMapping(value = "user/login", method = RequestMethod.GET)
-	public String UserRegs() {
-
-		return "testmain";
-	}
-    // 아이디 찾기 페이지 이동
-	@RequestMapping(value = "finduser", method = RequestMethod.GET)
-	public String findIdView() {
-		return "Login/find_id_pass";
-	}	
 	// 아이디 찾기
 	@RequestMapping(value = "userSearch", method = RequestMethod.POST)
 	@ResponseBody
 	public String userIdSearch(@RequestParam("name") String name, 
-			@RequestParam("email") String email) {
+			@RequestParam("email") String email,RedirectAttributes rattr) {
 		Map<String, String> map =new HashMap<>();
 		map.put("name",name);
 		map.put("email",email);
 		String result=userService.get_searchId(map);
+		String chk=result;
+		if(chk!=null) {
+				rattr.addFlashAttribute("checkfail", 1);
+		}
 
 		return result;
 	}

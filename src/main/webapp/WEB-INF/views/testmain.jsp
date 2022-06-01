@@ -923,7 +923,7 @@ h6 span {
 
 		///이메일 인증 발송
 		var code = "code";
-		$("#emailChk")
+		$("#emailChks")
 				.click(
 						function() {
 							var email = $("#inputemail2").val();

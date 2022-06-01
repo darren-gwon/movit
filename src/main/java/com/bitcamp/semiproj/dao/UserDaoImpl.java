@@ -2,6 +2,7 @@ package com.bitcamp.semiproj.dao;
 
 
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -104,6 +105,15 @@ public class UserDaoImpl implements UserDao {
 		return session.selectOne(namespace+"findnaver", naver);
 
 	}
+	@Override
+	public int snsregUser(Map<String, String> map){
+		// TODO Auto-generated method stub
+		return session.insert(namespace+"snsregUser",map);
+	}
+	/*
+	 * @Override public void naverUserReg(HashMap<String, Object> naver) { // TODO
+	 * Auto-generated method stub session.insert(namespace+"naverUserReg",naver); }
+	 */
 
 
 

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link href="/resources/css/accept_terms.css" rel='stylesheet' />
+<link href="/resources/css/agree.css" rel='stylesheet' />
 <!------ Include the above in your HEAD tag ---------->
 <div class="content">
 <center>
 	<div class="container">
 
 
-		<table width=960px align=center>
+		<table width=960px align=center style="margin-top: 10%">
 			<tr>
 				<td>
 					<h1>;Movit회원가입</h1>
@@ -400,7 +400,7 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
 <script>
 $("#agree").click(function(){
 	if($(".check").is(":checked")){
-		location.href="/user/regs";
+		location.href="/user/reg";
 	}else{
 		alert("약관 동의를 해주세요");
 	}	

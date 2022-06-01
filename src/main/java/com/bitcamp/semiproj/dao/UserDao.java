@@ -18,7 +18,9 @@ public interface UserDao {
  
 	/*유저정보관련*/
 	//회원가입
-	int regUser(UserDto userdto) throws SQLException; //유저 회원가입 메서드
+	int regUser(UserDto userdto) throws SQLException; 
+	// sns 회원가입
+	int snsregUser(Map<String, String> map); 
 	//로그인 확인
 	int login(Map<String, String> map);
 	//아이디 중복확인
@@ -42,5 +44,7 @@ public interface UserDao {
 	public void naverinsert(HashMap<String, Object> userInfo); 
 	// 네이버 유저 검색
 	public NaverDto findnaver(HashMap<String, Object> userInfo);
+	
+	/* public void naverUserReg(HashMap<String, Object> naver); */
 	
 }

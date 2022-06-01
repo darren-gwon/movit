@@ -39,7 +39,7 @@ public class LoginController {
 
 
 	// 로그인 버튼 누르면 로그인 완료
-	@RequestMapping(value = "/success", method = RequestMethod.POST)
+	@RequestMapping(value = "success", method = RequestMethod.POST)
 	public String loginProcess(@RequestParam String user_id, @RequestParam String password,
 			@RequestParam(required = false) String chkid, HttpServletRequest request, HttpServletResponse response,
 			HttpSession session, RedirectAttributes rattr) {
@@ -76,9 +76,9 @@ public class LoginController {
 	public String logout(HttpSession session,HttpServletRequest request) {
 		// 세션에서 loginok 삭제
 		session.removeAttribute("user_id");
-		System.out.println(session);
 		session.invalidate(); 
-		return "redirect:/test";
+		String old_url = request.getHeader("referer");
+		return "redirect:" + old_url;
 	}
 	 
 	@RequestMapping(value = "/kakaologout", method = RequestMethod.GET)
@@ -86,7 +86,7 @@ public class LoginController {
 		// 세션에서 loginok 삭제
 		session.invalidate(); 
 		
-		return "redirect:/test";
+		return "redirect:/" ;
 	}
 
 	// 아이디 중복확인

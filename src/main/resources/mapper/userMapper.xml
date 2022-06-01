@@ -41,17 +41,27 @@
 	<select id="findkakao" parameterType="java.util.HashMap" resultType="KakaoDto">
 		select * from kakao_table where k_name=#{nickname} and k_email=#{email}
 	</select>
-	<!-- 카카오 회원가입정보 저장 -->
+	<!-- 카카오 회원정보 얻기 -->
 	<insert id="kakaoInsert" parameterType="java.util.HashMap">
 		INSERT INTO kakao_table (k_name,k_email) VALUES (#{nickname},#{email});
 	</insert>
- 			<!-- 정보 찾기 -->
+	<!--sns 회원정보 가입 -->
+	<insert id="snsregUser" parameterType="Map">
+		insert into user (user_id, password, name, nickname, gender , phone, email, birthday, register_date) 
+		values (#{user_id},#{password},#{name},#{nickname},#{gender},#{phone},#{email},#{birthday},now());
+	</insert>
+ 	<!-- 정보 찾기 -->
 	<select id="findnaver" parameterType="java.util.HashMap" resultType="NaverDto">
 		select * from naver_table where n_email=#{n_email}
 	</select>
-		<!--네이버 회원가입정보 저장-->
+		<!--네이버 회원정보 얻기-->
 	<insert id="naverInsert" parameterType="java.util.HashMap">
 		INSERT INTO naver_table(n_name, n_birthday, n_email, n_gender, n_nickname, n_phone, n_birthyear) 
 		VALUES (#{n_name},#{n_birthday},#{n_email},#{n_gender},#{n_nickname},#{n_phone},#{n_birthyear});
 	</insert> 
+
+<!-- 	<insert id="naverregUser" parameterType="java.util.HashMap">
+		INSERT INTO user(user_id, password, name, nickname, gender , phone, email, birthday, register_date) 
+		VALUES ('naver'+'#{n_email}','@@@@@@@','naver'+'#{n_email}','#{n_gender}','#{n_nickname}','#{n_phone}');
+	</insert>  -->
 </mapper>
