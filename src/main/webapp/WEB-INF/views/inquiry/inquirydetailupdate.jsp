@@ -14,11 +14,12 @@
 <meta charset="UTF-8">
 </head>
 <body>
+<div class= "content">
 	<div class="container">
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col" style="text-align: center;">
-				<img src="../../image/inquirytop.png" width="1200px;">
+				<img src="/resources/image/inquirytop.png" width="1200px;">
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -118,5 +119,6 @@
 
 		<br> <br> <br><br><br><br>
 	</form>
+</div>
 </body>
 </html>

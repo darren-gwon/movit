@@ -43,12 +43,7 @@ public class InquiryLostDto {
 		this.item_type = item_type;
 	}
 	
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
+	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -90,6 +85,12 @@ public class InquiryLostDto {
 	}
 	public void setWrite_date(Timestamp write_date) {
 		this.write_date = write_date;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

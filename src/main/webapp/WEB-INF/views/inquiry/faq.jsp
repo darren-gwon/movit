@@ -40,9 +40,8 @@ table.table-hover td {
 	border-bottom: 1px solid #ccc;
 }
 
-.container a
-{
-  text-decoration: none;
+.container a {
+	text-decoration: none;
 }
 </style>
 <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
@@ -107,88 +106,105 @@ table.table-hover td {
 </head>
 
 <body>
-	<form name="userForm">
-		<div class="container">
-			<div class="row">
-				<div class="col-1"></div>
+	<div class="content">
+		<form name="userForm">
+			<div class="container">
+				<div class="row">
+					<div class="col-1"></div>
 					<div class="col" style="text-align: center;">
-						<img src="../image/InquiryFAQ_TOP.png" width="1200px;">
+						<img src="/resources/image/InquiryFAQ_TOP.png" width="1200px;">
 					</div>
-				<div class="col-1"></div>
-			</div>
-		</div>
-		<br> <br>
-
-		<div class="container" style="text-align: right;">
-			<div class="row" style="font-size: 15px;">
-				<div class="col-5"></div>
-				<div class="col-6" style="text-align: right;">
-					<input type="search" class="form-control" placeholder="키워드 입력"
-						aria-label="Search" style="text-align: center;">
-				</div>
-
-				<div class="col-1" style="text-align: right;">
-					<button type="button" style="width: 100px; height: 38px;"
-						class="btn btn-outline-dark">
-						<p class=font-monospace>검색하기</p>
-					</button>
+					<div class="col-1"></div>
 				</div>
 			</div>
-		</div>
+			<br> <br>
+
+			<div class="container" style="text-align: right;">
+				<div class="row" style="font-size: 15px;">
+					<div class="col-5"></div>
+					<div class="col-6" style="text-align: right;">
+						<input type="search" class="form-control" placeholder="키워드 입력"
+							aria-label="Search" style="text-align: center;">
+					</div>
+
+					<div class="col-1" style="text-align: right;">
+						<button type="button" style="width: 100px; height: 38px;"
+							class="btn btn-outline-dark">
+							<p class=font-monospace>검색하기</p>
+						</button>
+					</div>
+				</div>
+			</div>
 
 
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<table class="table table-hover"
-						style="text-align: center; font-size: 15px;">
-						<thead>
-							<tr>
-								<th><input id="allCheck" type="checkbox" name="allCheck" /></th>
-								<th>번호</th>
-								<th>문의유형</th>
-								<th>제목</th>
-								<th>문의날짜</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${list}" var="faq">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<table class="table table-hover"
+							style="text-align: center; font-size: 15px;">
+							
 								<tr>
-									<td><input name="RowCheck" type="checkbox"
-										value="${faq.seq}" /></td>
-									<td>${faq.seq}&nbsp;</td>
-									<td>${faq.inquiry_type}&nbsp;</td>
-									<td style="width: 900px;"><a
-										href="faq/detail?seq=${faq.seq}">${faq.title}&nbsp;</a></td>
-									<td><fmt:formatDate value="${faq.write_date}"
-											pattern="yyyy/MM/dd" /></td>
+									<th><input id="allCheck" type="checkbox" name="allCheck" /></th>
+									<th>번호</th>
+									<th>문의유형</th>
+									<th>제목</th>
+									<th>문의날짜</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach items="${list}" var="faq">
+									<tr>
+										<td><input name="RowCheck" type="checkbox"
+											value="${faq.seq}" /></td>
+										<td>${faq.seq}&nbsp;</td>
+										<td>${faq.inquiry_type}&nbsp;</td>
+										<td style="width: 900px;"><a
+											href="faq/detail?seq=${faq.seq}">${faq.title}&nbsp;</a></td>
+										<td><fmt:formatDate value="${faq.write_date}"
+												pattern="yyyy/MM/dd" /></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col" style="text-align: left;">
-					<a href="<c:url value='/inquiry/home'/>" role="button"
-						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
-				</div>
-				<div class="col" style="text-align: right;">
-					<a href="<c:url value='/inquiry/faq/insert'/>" role="button"
-						class="btn btn-outline-dark" style="width: 100px;">글쓰기</a> 
-						
-						<input
-						type="button" class="btn btn-outline-danger" style="width: 100px;"
-						value="선택삭제" onclick="deleteValue();">
-				</div>
+			
+			
+			
+			<div>
+			
+				<c:forEach var="i" begin="1" end="${totalPage }">
+				
+				${i }
+				
+				</c:forEach>
+			
+			
 			</div>
+			
+			
+			
+			
+			
+			<div class="container">
+				<div class="row">
+					<div class="col" style="text-align: left;">
+						<a href="<c:url value='/inquiry/home'/>" role="button"
+							class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
+					</div>
+					<div class="col" style="text-align: right;">
+						<a href="<c:url value='/inquiry/faq/insert'/>" role="button"
+							class="btn btn-outline-dark" style="width: 100px;">글쓰기</a> <input
+							type="button" class="btn btn-outline-danger"
+							style="width: 100px;" value="선택삭제" onclick="deleteValue();">
+					</div>
+				</div>
 
-			<br> <br> <br> <br> <br> <br>
-		</div>
-
-	</form>
+				<br> <br> <br> <br> <br> <br>
+			</div>
+		</form>
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

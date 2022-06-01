@@ -34,10 +34,6 @@
 	</delete>
 	
 	
-	
-	
-	
-	
 	<!-- LOST 게시글 목록 -->
 	<select id="selectLostAll" resultType="InquiryLostDto">
 		select
@@ -64,7 +60,7 @@
 	<update id="lostupdate" parameterType="InquiryLostDto">
 		update inquiry_lost
 		
-		set theaterID = #{theaterID}, title = #{title}, content = #{content},
+		set theaterID = #{theaterID}, title = #{title}, content = #{content}, lost_date = #{lost_date}, status = #{status},
 		write_date = NOW()
 		
 		where seq = #{seq}

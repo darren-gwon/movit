@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -16,12 +17,13 @@
 <meta charset="UTF-8">
 </head>
 <body>
+<div class= "content">
 	<form action="insert" method="post">
 		<div class="container">
 			<div class="row">
 				<div class="col-1"></div>
 				<div class="col" style="text-align: center;">
-					<img src="../../image/lostTop.png" width="1200px;">
+					<img src="/resources/image/lostTop.png" width="1200px;">
 				</div>
 				<div class="col-1"></div>
 			</div>
@@ -38,7 +40,6 @@
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
 							aria-label="Floating label select example" name="theaterID">
-							<option value=""></option>
 							<option value="01">1</option>
 							<option value="02">2</option>
 							<option value="03">3</option>
@@ -75,7 +76,7 @@
 
 					<div class="input-group mb-3">
 						<span class="input-group-text">분실 날짜必</span> <input type="date"
-							name="lost_date" id="lost_date" style="width: 300px;">
+							name="lost_date" id="lost_date" value="2022-01-01" style="width: 300px;">
 					</div>
 
 					<div class="input-group mb-3">
@@ -83,9 +84,8 @@
 						<div class="form-floating">
 							<select class="form-select" id="floatingSelect"
 								aria-label="Floating label select example" name="status" style="width: 300px;">
-								<option value=""></option>
-								<option value="01">1</option>
-								<option value="02">2</option>
+								<option value="01">미답변</option>
+								<option value="02">답변완료</option>
 							</select><label for="floatingSelect">Status Select</label>
 						</div>
 					</div>
@@ -120,5 +120,6 @@
 		<br>
 
 	</form>
+	</div>
 </body>
 </html>

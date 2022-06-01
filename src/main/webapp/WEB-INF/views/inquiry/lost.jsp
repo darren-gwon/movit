@@ -115,97 +115,107 @@ table.table-hover td {
 	border-bottom: 1px solid #ccc;
 }
 
-.container a
-{
-  text-decoration: none;
+.container a {
+	text-decoration: none;
 }
 </style>
 <body>
-	<form name="userForm">
-		<div class="container">
-			<div class="row">
-				<div class="col-1"></div>
-				<div class="col" style="text-align: center;">
-					<img src="../image/lostTop.png" width="1200px;">
-				</div>
-				<div class="col-1"></div>
-			</div>
-		</div>
-		<br> <br>
-
-		<div class="container" style="text-align: right;">
-			<div class="row" style="font-size: 15px;">
-				<div class="col-5"></div>
-				<div class="col-6" style="text-align: right;">
-					<input type="search" class="form-control" placeholder="키워드 입력"
-						aria-label="Search" style="text-align: center;">
-				</div>
-
-				<div class="col-1" style="text-align: right;">
-					<button type="button" style="width: 100px; height: 38px;"
-						class="btn btn-outline-dark">
-						<p class=font-monospace>검색하기</p>
-					</button>
+	<div class="content">
+		<form name="userForm">
+			<div class="container">
+				<div class="row">
+					<div class="col-1"></div>
+					<div class="col" style="text-align: center;">
+						<img src="/resources/image/lostTop.png" width="1200px;">
+					</div>
+					<div class="col-1"></div>
 				</div>
 			</div>
-		</div>
+			<br> <br>
+
+			<div class="container" style="text-align: right;">
+				<div class="row" style="font-size: 15px;">
+					<div class="col-5"></div>
+					<div class="col-6" style="text-align: right;">
+						<input type="search" class="form-control" placeholder="키워드 입력"
+							aria-label="Search" style="text-align: center;">
+					</div>
+
+					<div class="col-1" style="text-align: right;">
+						<button type="button" style="width: 100px; height: 38px;"
+							class="btn btn-outline-dark">
+							<p class=font-monospace>검색하기</p>
+						</button>
+					</div>
+				</div>
+			</div>
 
 
 
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<table class="table table-hover"
-						style="text-align: center; font-size: 15px;">
-						<thead>
-							<tr>
-								<th><input id="allCheck" type="checkbox" name="allCheck" /></th>
-								<th>번호</th>
-								<th>영화관</th>
-								<th>제목</th>
-								<th>접수상태</th>
-								<th>등록일</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<c:forEach items="${list}" var="lost">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<table class="table table-hover"
+							style="text-align: center; font-size: 15px;">
+							<thead>
 								<tr>
-									<td class="text_ct"><input name="RowCheck" type="checkbox"
-										value="${lost.seq}" /></td>
-									<td class="text_ct">${lost.seq}&nbsp;</td>
-									<td class="text_ct">${lost.theaterID}&nbsp;</td>
-									<td class="text_ct"><a href="lost/detail?seq=${lost.seq}">${lost.title}&nbsp;</a></td>
-									<td class="text_ct">${lost.status}&nbsp;</td>
-									<td class="text_ct"><fmt:formatDate
-											value="${lost.write_date}" pattern="yyyy/MM/dd" /></td>
+									<th><input id="allCheck" type="checkbox" name="allCheck" /></th>
+									<th>번호</th>
+									<th>영화관</th>
+									<th>제목</th>
+									<th>접수상태</th>
+									<th>등록일</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+
+							<tbody>
+								
+										<c:forEach items="${list}" var="lost">
+											<tr>
+												<td><input name="RowCheck" type="checkbox"
+													value="${lost.seq}" /></td>
+												<td>${lost.seq}&nbsp;</td>
+												<td>${lost.theaterID}&nbsp;</td>
+												
+												<td style="width: 900px;"><a
+													href="lost/detail?seq=${lost.seq}">${lost.title}&nbsp;</a></td>
+	
+												<c:set var="accept" value="${lost.status}"></c:set>
+												
+													<td><c:if test="${accept=='1'}">미답변&nbsp;</c:if><c:if test="${accept=='2'}">답변완료&nbsp;</c:if></td>
+												
+												
+												<td><fmt:formatDate value="${lost.write_date}"
+														pattern="yyyy/MM/dd" /></td>
+											</tr>
+										</c:forEach>
+
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="container">
-			<div class="row">
-				<div class="col" style="text-align: left;">
-					<a href="<c:url value='/inquiry/home'/>" role="button"
-						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
+			<div class="container">
+				<div class="row">
+					<div class="col" style="text-align: left;">
+						<a href="<c:url value='/inquiry/home'/>" role="button"
+							class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
+					</div>
+					<div class="col" style="text-align: right;">
+						<a href="<c:url value='/inquiry/lost/insert'/>" role="button"
+							class="btn btn-outline-dark" style="width: 100px;">글쓰기</a> <input
+							type="button" class="btn btn-outline-danger"
+							style="width: 100px;" value="선택삭제" onclick="deleteValue();">
+					</div>
 				</div>
-				<div class="col" style="text-align: right;">
-					<a href="<c:url value='/inquiry/lost/insert'/>" role="button"
-						class="btn btn-outline-dark" style="width: 100px;">글쓰기</a> <input
-						type="button" class="btn btn-outline-danger" style="width: 100px;"
-						value="선택삭제" onclick="deleteValue();">
-				</div>
+
+				<br> <br> <br> <br> <br> <br>
 			</div>
 
-			<br> <br> <br> <br> <br> <br>
-		</div>
 
-
-	</form>
+		</form>
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

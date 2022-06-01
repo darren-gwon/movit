@@ -15,12 +15,13 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<div class= "content">
 
 	<div class="container">
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col" style="text-align: center;">
-				<img src="../../image/lostTop.png" width="1200px;">
+				<img src="/resources/image/lostTop.png" width="1200px;">
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -53,12 +54,12 @@
 						<td>${data.lost_date}</td>
 					</tr>
 					<tr>
-						<td><b>글제목</b></td>
+						<td><b>제목</b></td>
 						<td>${data.title}</td>
 					</tr>
-					<tr>
-						<td><b>글내용</b></td>
-						<td>${data.content}</td>
+					<tr style="vertical-align: middle;">
+						<td><b>내용</b></td>
+						<td><pre>${data.content}</pre></td>
 					</tr>
 					<tr>
 						<td><b>첨부파일</b></td>
@@ -66,7 +67,8 @@
 					</tr>
 					<tr>
 						<td><b>접수상태</b></td>
-						<td>${data.status}</td>
+						<c:set var="accept" value="${data.status}"></c:set>
+						<td><c:if test="${accept=='1'}">미답변&nbsp;</c:if><c:if test="${accept=='2'}">답변완료&nbsp;</c:if></td>
 					</tr>
 					<tr>
 						<td style="display: none;">문의날짜</td>
@@ -102,6 +104,7 @@
 	<br>
 	<br>
 	<br>
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

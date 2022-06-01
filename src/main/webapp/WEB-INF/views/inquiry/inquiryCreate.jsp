@@ -15,12 +15,13 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<div class= "content">
 	<form action="insert" method="post">
 		<div class="container">
 			<div class="row">
 				<div class="col-1"></div>
 				<div class="col" style="text-align: center;">
-					<img src="../../image/inquirytop.png" width="1200px;">
+					<img src="/resources/image/inquirytop.png" width="1200px;">
 				</div>
 				<div class="col-1"></div>
 			</div>
@@ -34,7 +35,6 @@
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
 							name="inquiry_type" aria-label="Floating label select example">
-							<option value=""></option>
 							<option value="일반문의">일반문의</option>
 							<option value="칭찬">칭찬</option>
 							<option value="불만사항">불만사항</option>
@@ -84,7 +84,7 @@
 		</div>
 <br><br><br><br><br><br>
 	</form>
-
+</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
