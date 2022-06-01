@@ -32,11 +32,13 @@
 		</div>
 		<div id="mypageFooter">
 			<span id="welcome"><strong style="font-size:1.2em;">"닉네임"</strong>님 환영합니다.</span><span id="reg_date">&nbsp;&nbsp;가입일 "2020-12-12"</span>
-			<div id="card1">
-				지금까지 본 영화 0편
-			</div>
-			<div id="card2">
-				내가 쓴 평점
+			<div id="cardBox">	
+				<div class="card" id="card1">
+					지금까지 본 영화 0편
+				</div>
+				<div class="card" id="card2">
+					내가 쓴 평점
+				</div>
 			</div>
 		</div>
 	</div>
