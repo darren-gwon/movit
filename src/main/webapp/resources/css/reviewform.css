@@ -33,20 +33,12 @@ fieldset {
 	text-shadow: 0 0 0 #febd1a; /* 마우스 클릭 체크 */
 }
 
-#rawsave {
-	line-height: 300px;
-	height: 300px;
-	border: 1px solid black;
+.save{
+	text-align: center;
+	width: 100px;
+	color: white;
 	cursor: pointer;
-}
-
-table.reviewList {
-	border: 0px solid black;
-	width: 600px;
-}
-
-.fc {
-	color: red;
+	background-color: #495057;
 }
 
 .save:hover {
@@ -55,4 +47,8 @@ table.reviewList {
 
 li {
 	list-style: none;
+}
+
+#afrm{
+	margin: 100px;
 }
