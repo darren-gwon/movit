@@ -107,7 +107,6 @@ public class PaymentController {
 			OrderInfoDto orderInfo = objMapper.readValue(jsonObj, OrderInfoDto.class);
 			
 			System.out.println(orderInfo);
-			session.setAttribute("user_id", "asdf1234");
 			session.setAttribute("orderInfoDto", orderInfo);
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
