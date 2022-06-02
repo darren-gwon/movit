@@ -175,6 +175,7 @@ public class MypageController {
 		model.addAttribute("dto", dto);
 		List<InquiryDto> list = service.getUserInquiry(user_id);
 		model.addAttribute("list", list);
+		model.addAttribute("count", list.size());
 		return "/mypage/userInquiryList.tiles";
 	}
 	
@@ -185,6 +186,7 @@ public class MypageController {
 		model.addAttribute("dto", dto);
 		List<InquiryLostDto> list = service.getUserLost(user_id);
 		model.addAttribute("list", list);
+		model.addAttribute("count", list.size());
 		return "/mypage/userLostInquiryList.tiles";
 	}
 	
@@ -195,6 +197,7 @@ public class MypageController {
 		model.addAttribute("dto", dto);
 		List<BookingDto> list = service.myMovieList(user_id);
 		model.addAttribute("list", list);
+		model.addAttribute("count", list.size());
 		return "/mypage/myMovieList.tiles";
 	}
 }

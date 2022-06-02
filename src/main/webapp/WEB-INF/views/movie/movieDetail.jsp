@@ -576,9 +576,6 @@ function checkUserReview(){
 					<div class="listopener" style="padding-top:30px;clear:both">
 						<button type="button" class="btn btn-primary">펼쳐보기</button>
 					</div>
-					
-					
-					
 				</div>
 		</div>
 	</div>
