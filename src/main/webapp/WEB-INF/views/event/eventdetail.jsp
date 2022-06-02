@@ -36,7 +36,7 @@
 				<b class="cnt">조회수 : ${dto.view_cnt}</b></p>
 				
 				<div class="body">
-				<img src="../resources/img/event_main/${dto.main_img}">${dto.content}
+				<img src="/resources/img/event_main/${dto.main_img}">${dto.content}
 				</div>
 			</div>
 		</div>
