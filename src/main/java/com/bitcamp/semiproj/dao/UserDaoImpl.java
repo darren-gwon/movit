@@ -112,7 +112,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void snsReguser(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		session.insert(namespace + "kakaoregUser", map);
+		session.insert(namespace + "snsregUser", map);
 
 	}
 
