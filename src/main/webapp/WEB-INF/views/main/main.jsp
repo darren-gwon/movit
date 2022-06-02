@@ -35,19 +35,24 @@
 	</div>
 	<div class="nav_wrap">
 		<div class="nav mypage">
-			<img src="/resources/img/main/nav/mypage.png" id="mypage_img" class="nav_img"> <span class="nav_name">마이페이지</span>
+			<a href="mypage/home"> <img src="/resources/img/main/nav/mypage.png" id="mypage_img" class="nav_img"> <span class="nav_name">마이페이지</span>
+			</a>
 		</div>
 		<div class="nav event">
-			<img src="/resources/img/main/nav/event.png" id="event_img" class="nav_img"> <span class="nav_name">이벤트</span>
+			<a href="event/eventlist"> <img src="/resources/img/main/nav/event.png" id="event_img" class="nav_img"> <span class="nav_name">이벤트</span>
+			</a>
 		</div>
 		<div class="nav booking">
-			<img src="/resources/img/main/nav/booking.png" id="booking_img" class="nav_img"> <span class="nav_name">예매</span>
+			<a href="booking"> <img src="/resources/img/main/nav/booking.png" id="booking_img" class="nav_img"> <span class="nav_name">예매</span>
+			</a>
 		</div>
 		<div class="nav movies">
-			<img src="/resources/img/main/nav/movies.png" id="movies_img" class="nav_img"> <span class="nav_name">현재상영작</span>
+			<a href="movie"> <img src="/resources/img/main/nav/movies.png" id="movies_img" class="nav_img"> <span class="nav_name">현재상영작</span>
+			</a>
 		</div>
 		<div class="nav support last">
-			<img src="/resources/img/main/nav/support.png" id="support_img" class="nav_img"> <span class="nav_name">고객센터</span>
+			<a href="inquiry/home"> <img src="/resources/img/main/nav/support.png" id="support_img" class="nav_img"> <span class="nav_name">고객센터</span>
+			</a>
 		</div>
 	</div>
 	<div class="event_wrap">event</div>

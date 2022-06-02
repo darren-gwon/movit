@@ -33,6 +33,21 @@
 		where seq = #{seq}
 	</delete>
 	
+		<!-- faq 게시물 총 개수 -->
+	<select id="faqcount" resultType="int">
+		select count(seq) from inquiry_faq
+	</select>
+	
+		<!-- faq 게시물 목록 + 페이징 -->
+	<select id="faqlistPage" parameterType="hashMap" resultType="InquiryFaqDto">
+		select seq, inquiry_type, title, content, write_date
+		from inquiry_faq
+		order by seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	
+	
 	
 	<!-- LOST 게시글 목록 -->
 	<select id="selectLostAll" resultType="InquiryLostDto">
@@ -45,8 +60,8 @@
 	
 	<!-- LOST 게시물 등록 --> 
 	<insert id="lostcreate" parameterType="InquiryLostDto">
-		insert into inquiry_lost (theaterID, item_type, title, content, status, lost_date, write_date)
-		values (#{theaterID}, #{item_type}, #{title}, #{content}, #{status}, #{lost_date}, NOW())
+		insert into inquiry_lost (theaterID, item_type, title, content, status, lost_date, user_id, write_date)
+		values (#{theaterID}, #{item_type}, #{title}, #{content}, #{status}, #{lost_date}, #{user_id}, NOW())
 	</insert>
 
 	<!-- Lost 게시물 상세 정보 -->
@@ -80,19 +95,25 @@
 	<!-- Inquiry 게시판-->
 	<select id="selectinquiryAll" resultType="InquiryDto">
 		select
-			seq, theaterID, inquiry_type, title, content, write_date, view_cnt, fileID
+			seq, theaterID, inquiry_type, title, content, write_date, view_cnt, fileID, user_id
 		from inquiry
 	</select>
 	
 	<!-- Inquiry 게시물 등록 --> 
 	<insert id="inquirycreate" parameterType="InquiryDto">
-		insert into inquiry (theaterID, inquiry_type, title, content, write_date)
-						values (#{theaterID}, #{inquiry_type}, #{title}, #{content}, NOW())
+		insert into inquiry (theaterID, inquiry_type, title, content, user_id, write_date,view_cnt)
+						values (#{theaterID}, #{inquiry_type}, #{title}, #{content}, #{user_id}, NOW(),#{view_cnt})
 	</insert>
-
+	
+	<!-- 조회수 증가 -->
+	<update id="inquiryreadcount" parameterType="InquiryDto">
+		update inquiry set view_cnt=view_cnt+1 where seq=#{seq}
+	</update>
+	
+	
 	<!-- Inquiry 게시물 상세 정보 -->
-	<select id="inquirydetail" resultType="InquiryDto">
-		select seq, theaterID, inquiry_type, title, content, write_date, view_cnt, fileID
+	<select id="inquirydetail" parameterType="int" resultType="InquiryDto">
+		select seq, theaterID, inquiry_type, title, content, write_date, view_cnt, user_id, fileID
 		from inquiry where seq = #{seq}
 	</select>
 	
@@ -103,6 +124,7 @@
 		write_date = NOW()
 		
 		where seq = #{seq}
+		
 	</update>
 	
 	<!-- Inquiry 게시글 삭제 -->
@@ -110,6 +132,19 @@
 		delete from inquiry
 		where seq = #{seq}
 	</delete>
+	
+	<!-- 게시물 총 개수 -->
+	<select id="count" resultType="int">
+		select count(seq) from inquiry
+	</select>
+	
+		<!-- 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="InquiryDto">
+		select seq, view_cnt, theaterID, title, write_date, inquiry_type, user_id from inquiry
+		where title	LIKE concat ('%',#{keyword},'%')
+		order by seq desc limit #{startnum}, #{postnum}
+	
+	</select>
 </mapper>
 	
 

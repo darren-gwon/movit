@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col" style="text-align: center;">
-				<img src="/resources/image/inquirytop.png" width="1200px;">
+				<img src="/resources/image/inquirytop.png" width="1300px;">
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -33,23 +33,22 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col">
 					<br> <br>
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
 							aria-label="Floating label select example" name="theaterID">
 							<option value="${data.theaterID}">${data.theaterID}</option>
-							<option value="01">1</option>
-							<option value="02">2</option>
-							<option value="03">3</option>
-							<option value="04">4</option>
-							<option value="05">5</option>
-							<option value="06">6</option>
-							<option value="07">7</option>
+							<option value="강남점">강남점</option>
+							<option value="홍대점">홍대점</option>
+							<option value="성남점">성남점</option>
+							<option value="동탄점">동탄점</option>
+							<option value="향남점">향남점</option>
+							<option value="인천터미널점">인천터미널점</option>
+							<option value="원주무실점">원주무실점</option>
 						</select><label for="floatingSelect">Theater Place Select</label>
 					</div>
-
+		
 					<br>
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
@@ -89,20 +88,16 @@
 						<fmt:formatDate value="${data.write_date}" pattern="yyyy-MM-dd" />
 					</div>
 				<br>
-				<hr>
-				<br>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 
 
 <div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col" style="text-align: left;">
 
-					<a href="<c:url value="/inquiry/list"/>" role="button"
+					<a onclick="history.back()" role="button"
 						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 				</div>
 
@@ -113,7 +108,6 @@
 					<button type="reset" class="btn btn-outline-dark"
 						style="width: 100px;">리셋</button>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 

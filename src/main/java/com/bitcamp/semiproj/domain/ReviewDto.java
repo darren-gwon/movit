@@ -4,6 +4,21 @@ import java.sql.Timestamp;
 
 
 public class ReviewDto {
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setWrite_date(String write_date) {
+		this.write_date = write_date;
+	}
+	public int getTotal_likes() {
+		return total_likes;
+	}
+	public void setTotal_likes(int total_likes) {
+		this.total_likes = total_likes;
+	}
 	@Override
 	public String toString() {
 		return "ReviewDto [start=" + start + ", perPage=" + perPage + ", totalReviewCount=" + totalReviewCount
@@ -39,7 +54,8 @@ public class ReviewDto {
 	private String rating;
 	private int likes;
 	private String write_date;
-	
+	private int total_likes;
+	private String title;
 	public int getReviewID() {
 		return reviewID;
 	}

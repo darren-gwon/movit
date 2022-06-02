@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>   
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <style>
-  .content {
+  #changepwd {
 	    width:500px;
 	    margin : 0 auto ;
 	    border: 0px solid #000;
@@ -28,6 +28,7 @@
 		vertical-align: top;
 		color: #369;
 		border-bottom: 3px solid #036;
+		font-size: 1.3em;
 	}
 	
 	table.type09 tbody th {
@@ -52,7 +53,8 @@
 		box-sizing: border-box;
 		width:100%;
 		border: none;
-		color: #000;
+		background-color: #193170;
+		color: white;
 	}
 </style>
 <script type="text/javascript">
@@ -156,7 +158,13 @@ function chkSubmit() {
 </script>
 </head>
 <body>
-	<div class="content">
+	<jsp:include page="mypageHeader.jsp"/>
+	<c:if test="${sessionScope.user_id ==null }">
+		<br><br>
+		<h3>로그인이 필요한 서비스입니다.</h3>
+		<br><br>
+	</c:if>
+	<div class="content" id="changepwd">
 		<form action="pwUpdate" id="pwUpdate" method="post" onsubmit="return chkSubmit()">
 		<table class="type09">
 			<thead>

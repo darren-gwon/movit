@@ -1,13 +1,17 @@
 package com.bitcamp.semiproj.dao;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bitcamp.semiproj.domain.BookingDto;
+import com.bitcamp.semiproj.domain.InquiryDto;
+import com.bitcamp.semiproj.domain.InquiryLostDto;
 import com.bitcamp.semiproj.domain.MypageDto;
+import com.bitcamp.semiproj.domain.ReviewDto;
 
 @Repository
 public class MypageDaoImpl implements MypageDao {
@@ -35,5 +39,35 @@ public class MypageDaoImpl implements MypageDao {
 	@Override
 	public void pwUpdate(Map<String, String> map) {
 		session.update(namespace + "pwUpdate", map);
+	}
+	
+	@Override
+	public void deleteAccount(String user_id) {
+		session.delete(namespace + "deleteAccount", user_id);
+	}
+	
+	@Override
+	public int checkNickName(String nickname) {
+		return session.selectOne(namespace + "checkNickName", nickname);
+	}
+	
+	@Override
+	public List<ReviewDto> getUserReviewList(String user_id) {
+		return session.selectList(namespace + "getUserReviewList", user_id);
+	}
+	
+	@Override
+	public List<InquiryDto> getUserInquiry(String user_id) {
+		return session.selectList(namespace + "getUserInquiry", user_id);
+	}
+	
+	@Override
+	public List<InquiryLostDto> getUserLost(String user_id) {
+		return session.selectList(namespace + "getUserLost", user_id);
+	}
+	
+	@Override
+	public List<BookingDto> myMovieList(String user_id) {
+		return session.selectList(namespace + "myMovieList", user_id);
 	}
 }

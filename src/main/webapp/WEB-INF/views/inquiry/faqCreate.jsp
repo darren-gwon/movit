@@ -20,7 +20,7 @@
 			<div class="row">
 				<div class="col-1"></div>
 					<div class="col" style="text-align: center;">
-						<img src="/resources/image/InquiryFAQ_TOP.png" width="1200px;">
+						<img src="/resources/image/InquiryFAQ_TOP.png" width="1300px;">
 					</div>
 				<div class="col-1"></div>
 			</div>
@@ -28,13 +28,11 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col">
 					<br> <br>
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
 							aria-label="Floating label select example" name="inquiry_type">
-							<option value=""></option>
 							<option value="영화예매">영화예매</option>
 							<option value="할인혜택">할인혜택</option>
 							<option value="결제수단">결제수단</option>
@@ -64,7 +62,6 @@
 					<hr>
 					<br>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 		
@@ -73,17 +70,16 @@
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col" style="text-align: left;">
 
-					<a href="<c:url value='/inquiry/faq'/>" role="button"
-						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
+					<a onclick="history.back()" role="button"
+						class="btn btn-outline-dark" style="width: 100px; text-align: left;">뒤로가기</a>
 				</div>
-				<div class="col" style="text-align: right;">
+				<div class="col" style="text-align: right;"><a href="http://localhost:9005/inquiry/faqlistpage?num=1">
 					<button type="submit" class="btn btn-outline-dark"
-						style="width: 100px;">등록</button>
+						style="width: 100px;">등록</button></a>
 				</div>
-				<div class="col-1"></div>
+				
 			</div>
 		</div>
 <br><br><br><br><br><br>

@@ -21,8 +21,8 @@ public class NoticeController {
 	
 	//게시물 목록
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)
-	public String list(Model model, @RequestParam(defaultValue = "1")Integer num,@
-			RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
+	public String list(Model model, @RequestParam(defaultValue = "1")Integer num,
+			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
 			) throws Exception{
 
 			
@@ -34,18 +34,22 @@ public class NoticeController {
 			int endpagenum = (int)(Math.ceil((double)num/(double)pagecount)*pagecount);// 페이지 번호 중 마지막
 			int startpagenum = endpagenum - (pagecount - 1); //페이지 번호 중 첫번째
 			
-			int endpagenum_re = (int)(Math.ceil((double)postcount / (double)pagecount));
+			int endpagenum_re = (int)(Math.ceil((double)postcount / (double)postnum));
 			
 			if(endpagenum > endpagenum_re) {
 				endpagenum = endpagenum_re;
 			}
 			boolean prev = startpagenum == 1? false:true;
-			boolean next = endpagenum * pagecount >= postcount ? false:true;
+			boolean next = endpagenum * postnum >= postcount ? false:true;
+			
+			
 			
 		
 		    List<NoticeDto> list = service.listpage(displaypost, postnum, keyword);
 			model.addAttribute("list",list);
 			model.addAttribute("pagenum", pagenum);
+			
+			model.addAttribute("displaypost",displaypost);
 			
 			//시작 및 끝번호
 			model.addAttribute("startpagenum", startpagenum);

@@ -126,7 +126,7 @@ table.table-hover td {
 				<div class="row">
 					<div class="col-1"></div>
 					<div class="col" style="text-align: center;">
-						<img src="/resources/image/lostTop.png" width="1200px;">
+						<img src="/resources/image/lostTop.png" width="1300px;">
 					</div>
 					<div class="col-1"></div>
 				</div>
@@ -150,7 +150,7 @@ table.table-hover td {
 				</div>
 			</div>
 
-
+				<br>
 
 			<div class="container">
 				<div class="row">
@@ -169,26 +169,27 @@ table.table-hover td {
 							</thead>
 
 							<tbody>
-								
-										<c:forEach items="${list}" var="lost">
-											<tr>
-												<td><input name="RowCheck" type="checkbox"
-													value="${lost.seq}" /></td>
-												<td>${lost.seq}&nbsp;</td>
-												<td>${lost.theaterID}&nbsp;</td>
-												
-												<td style="width: 900px;"><a
-													href="lost/detail?seq=${lost.seq}">${lost.title}&nbsp;</a></td>
-	
-												<c:set var="accept" value="${lost.status}"></c:set>
-												
-													<td><c:if test="${accept=='1'}">미답변&nbsp;</c:if><c:if test="${accept=='2'}">답변완료&nbsp;</c:if></td>
-												
-												
-												<td><fmt:formatDate value="${lost.write_date}"
-														pattern="yyyy/MM/dd" /></td>
-											</tr>
-										</c:forEach>
+
+								<c:forEach items="${list}" var="lost">
+									<tr>
+										<td><input name="RowCheck" type="checkbox"
+											value="${lost.seq}" /></td>
+										<td>${lost.seq}&nbsp;</td>
+										<td>${lost.theaterID}&nbsp;</td>
+
+										<td style="width: 900px;"><a
+											href="lost/detail?seq=${lost.seq}">${lost.title}&nbsp;</a></td>
+
+										<c:set var="accept" value="${lost.status}"></c:set>
+
+										<td><c:if test="${accept=='1'}">미답변&nbsp;</c:if>
+											<c:if test="${accept=='2'}">답변완료&nbsp;</c:if></td>
+
+
+										<td><fmt:formatDate value="${lost.write_date}"
+												pattern="yyyy/MM/dd" /></td>
+									</tr>
+								</c:forEach>
 
 							</tbody>
 						</table>
@@ -196,6 +197,8 @@ table.table-hover td {
 				</div>
 			</div>
 
+			<br>
+		
 			<div class="container">
 				<div class="row">
 					<div class="col" style="text-align: left;">

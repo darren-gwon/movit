@@ -10,7 +10,7 @@ fieldset {
 }
 
 #myform label {
-	font-size: 2em; /* 이모지 크기 */
+	font-size: 1.2em; /* 이모지 크기 */
 	color: transparent; /* 기존 이모지 컬러 제거 */
 	text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
 }
@@ -45,8 +45,15 @@ fieldset {
 	background-color: #febd1a;
 }
 
-li {
+ul.reviewList li {
 	list-style: none;
+	width:90%;
+	text-align:left;
+	margin-left:30px;
+	float:left;
+	border-bottom:1px solid #ced4da;
+	padding-bottom: 10px;
+	padding-top: 5px;
 }
 
 #afrm{

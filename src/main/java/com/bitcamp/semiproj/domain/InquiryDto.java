@@ -2,9 +2,12 @@ package com.bitcamp.semiproj.domain;
 
 import java.sql.Timestamp;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("InquiryDto")
 public class InquiryDto {
 	private int seq;
-	private	int theaterID;
+	private	String theaterID;
 	private String inquiry_type;
 	private String user_id;
 	private	int guestID;
@@ -12,22 +15,19 @@ public class InquiryDto {
 	private String content;
 	private Timestamp write_date;
 	private int view_cnt;
-	
-	
-	
+	private	int fileID;
 	public int getSeq() {
 		return seq;
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
-	public int getTheaterID() {
+	public String getTheaterID() {
 		return theaterID;
 	}
-	public void setTheaterID(int theaterID) {
+	public void setTheaterID(String theaterID) {
 		this.theaterID = theaterID;
 	}
-	
 	public String getInquiry_type() {
 		return inquiry_type;
 	}
@@ -76,5 +76,13 @@ public class InquiryDto {
 	public void setFileID(int fileID) {
 		this.fileID = fileID;
 	}
-	private	int fileID;
+	@Override
+	public String toString() {
+		return "InquiryDto [seq=" + seq + ", theaterID=" + theaterID + ", inquiry_type=" + inquiry_type + ", user_id="
+				+ user_id + ", guestID=" + guestID + ", title=" + title + ", content=" + content + ", write_date="
+				+ write_date + ", view_cnt=" + view_cnt + ", fileID=" + fileID + "]";
+	}
+	
+	
+	
 }

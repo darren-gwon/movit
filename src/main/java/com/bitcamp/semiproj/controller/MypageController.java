@@ -1,5 +1,7 @@
 package com.bitcamp.semiproj.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bitcamp.semiproj.domain.BookingDto;
+import com.bitcamp.semiproj.domain.InquiryDto;
+import com.bitcamp.semiproj.domain.InquiryLostDto;
 import com.bitcamp.semiproj.domain.MypageDto;
+import com.bitcamp.semiproj.domain.ReviewDto;
 import com.bitcamp.semiproj.service.MypageService;
 import com.bitcamp.semiproj.service.UserSha256;
 
@@ -25,7 +31,10 @@ public class MypageController {
 	MypageService service;
 	
 	@GetMapping("/home")
-	public String home(HttpSession session) {
+	public String home(HttpSession session, Model model) {
+		String user_id = (String)session.getAttribute("user_id");
+		MypageDto dto = service.getUserData(user_id);
+		model.addAttribute("dto", dto);
 		return "mypage/mypagehome.tiles";
 	}
 	
@@ -38,10 +47,7 @@ public class MypageController {
 	public String updateForm(
 			Model model, 
 			HttpSession session) {
-		
 		String user_id = (String)session.getAttribute("user_id");
-		
-		System.out.println("user_id = "+user_id);
 		MypageDto dto = service.getUserData(user_id);
 		model.addAttribute("dto", dto);
 		
@@ -80,19 +86,16 @@ public class MypageController {
 			@RequestParam String email2,
 			@RequestParam String phone1,
 			@RequestParam String phone2,
-			@RequestParam String phone3,
-			@RequestParam String currentpwd,
-			@RequestParam String changepwd1,
-			@RequestParam String changepwd2
+			@RequestParam String phone3
 			) {
 		dto.setPhone(phone1+"-"+phone2+"-"+phone3);
 		dto.setEmail(email1+"@"+email2);
 		//System.out.println("email1 = "+email1+", email2 = "+email2);
-		//System.out.println(dto);
+		System.out.println(dto);
 		
 		
 		service.updateMypage(dto);
-		return "/mypage/mypageupdatesuccess";
+		return "redirect:/mypage/home";
 	}
 	
 	@GetMapping("/pwUpdateView")
@@ -108,10 +111,7 @@ public class MypageController {
 			) {
 		int result = 0;
 		String memberPw = service.pwCheck(dto.getUser_id());
-		System.out.println("user_id = "+dto.getUser_id());
 		String cpwd = UserSha256.encrypt(currentpwd);
-		System.out.println("currentpwd = "+currentpwd);
-		System.out.println("memberPw = "+memberPw+", cpwd = "+cpwd);
 		
 		if(memberPw.equals(cpwd)) {
 			result = 1;
@@ -135,5 +135,66 @@ public class MypageController {
 		//rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
 		//로그인화면으로 나중에 전환필요
 		return "redirect:home";
+	}
+	
+	@GetMapping("/deleteAccountView")
+	public String deleteAccountView() {
+		return "/mypage/deleteAccount.tiles";
+	}
+	
+	@GetMapping("/deleteAccount")
+	public String deleteAccount(String user_id, HttpSession session) {
+		service.deleteAccount(user_id);
+		session.invalidate();
+		return "redirect:/";
+	}
+	
+	@GetMapping("/checkNickName")
+	@ResponseBody
+	public int checkNickName(String nickname) {
+		int result = service.checkNickName(nickname);
+		System.out.println("result = "+result);
+		System.out.println("nickname = "+nickname);
+		return result;
+	}
+	
+	@GetMapping("/userReviewList")
+	public String userReviewList(HttpSession session, Model model) {
+		String user_id = (String)session.getAttribute("user_id");
+		MypageDto dto = service.getUserData(user_id);
+		model.addAttribute("dto", dto);
+		List<ReviewDto> list = service.getUserReviewList(user_id);
+		model.addAttribute("list", list);
+		return "/mypage/userReviewList.tiles";
+	}
+	
+	@GetMapping("/userInquiryList")
+	public String userInquiryList(HttpSession session, Model model) {
+		String user_id = (String)session.getAttribute("user_id");
+		MypageDto dto = service.getUserData(user_id);
+		model.addAttribute("dto", dto);
+		List<InquiryDto> list = service.getUserInquiry(user_id);
+		model.addAttribute("list", list);
+		return "/mypage/userInquiryList.tiles";
+	}
+	
+	@GetMapping("/userLostInquiryList")
+	public String userLostInquiryList(HttpSession session, Model model) {
+		String user_id = (String)session.getAttribute("user_id");
+		MypageDto dto = service.getUserData(user_id);
+		model.addAttribute("dto", dto);
+		List<InquiryLostDto> list = service.getUserLost(user_id);
+		model.addAttribute("list", list);
+		return "/mypage/userLostInquiryList.tiles";
+	}
+	
+	@GetMapping("/myMovieList")
+	public String myMovieList(HttpSession session, Model model) {
+		String user_id = (String)session.getAttribute("user_id");
+		MypageDto dto = service.getUserData(user_id);
+		model.addAttribute("dto", dto);
+		List<BookingDto> list = service.myMovieList(user_id);
+		model.addAttribute("list", list);
+		return "/mypage/myMovieList.tiles";
 	}
 }

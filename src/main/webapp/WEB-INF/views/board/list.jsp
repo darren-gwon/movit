@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<link href="/resources/css/noticelist.css" rel='stylesheet' />
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,113 +20,9 @@
   keyword = document.getElementById("keyword").value;
   
   console.log(keyword)
-  location.href = "../board/list?num&keyword=" + keyword;
+  location.href = "../board/notice?num&keyword=" + keyword;
  };
 </script>
-<style>
-.content {
-	position: relative;
-}
-div.title{
-	margin-top:150px;
-	width:1500px;
-}
-.title h2{
-position: absolute;
-	float: left;
-	margin-left:320px;
-	font-weight:bold;
-}
-.tbl_list {
-	text-align: center;
-	border-collapse: collapse;
-	margin-top: 20px;
-}
-thead th {
-	font-weight: bold;
-	border-top: 2px solid gray;
-	border-bottom: 2px solid gray;
-	background-color: #ffdfdc;
-	text-align: center;
-}
-tbody td {
-	text-align: center;
-	height:47px;
-}
-
-.text1 a {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	text-decoration: none;
-	color: black;
-}
-td.text1{
-	text-align: left; 
-}
-ul {
-	list-style: none;
-	float: left;
-	display: inline;
-	text-align: center;
-}
-div.paging	{
-	text-align: center;
-	width:840px;
-	margin-left: 800px;
-}
-
-ul a {
-	float: left;
-	padding: 4px;
-	margin-right: 3px;
-	width: 50px;
-	color: #000;
-	font: bold 12px tahoma;
-	border: 0px solid #eee;
-	text-decoration: none;
-	text-align: center;
-}
-div.bu1{
-	margin-left:1500px;
-}
-div #keyword {
-	height: 40px;
-	width: 200px;
-	border: 2px solid grey;
-	margin-top: 130px;
-	margin-left:1100px;
-	border-radius: 25px;
-	padding-left: 30px;
-	font-size: 15px;
-	margin-bottom:10px;
-}
-
-#search {
-	overflow: hidden;
-	margin: 0px;
-	height: 55px;
-	width: 55px;
-	background-color: transparent;
-	position: absolute;
-	margin-left: -50px;
-	margin-top: 120px;
-	border: 0px;
-	cursor: pointer;
-}
-
-div.total {
-	position: absolute;
-	float:left;
-	font-size: 16px;
-	margin-left:330px;
-	margin-top: 130px;
-	margin-bottom: 10px;
-	color: gray;
-	font-weight: bold;
-}
-
-
-</style>
 </head>
 <body>
 	<div class="content">
@@ -144,6 +41,7 @@ div.total {
 
 	<div class="container">
 		<div class="row">
+		
 			<div class="col">
 				<!-- <table class="tbl_list"> -->
 				<table class="table table-hover">
@@ -166,8 +64,10 @@ div.total {
 					</thead>
 					<tbody>
 						<c:forEach items="${list}" var="list" varStatus="i" >
+						
 							<tr>
-								<td><c:out value="${i.count}" /></td>
+								<td><c:out value="${displaypost+i.count}" /></td>
+
 								<td>${list.type}</td>
 								<td class="text1"><a href="../board/detail?num=${list.seq}">${list.title}</a></td>
 								<fmt:parseDate value="${list.write_date}" var="dateValue"
@@ -190,17 +90,17 @@ div.total {
 
 					<a href="../board/notice?num=${startpagenum - 1}">〈</a>
 
-				</c:if> <c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
+				</c:if> 
+				<c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
 
-					<c:if test="${select !=num}">
+					<c:if test="${num!=select}">
 						<a href="../board/notice?num=${num}">${num}</a>
 					</c:if>
-
-					<c:if test="${select ==num}">
-						<a href="../board/notice?num=${num}">${num}</a>
+					<c:if test="${num==select}">
+						<b><a href="../board/notice?num=${num}">${num}</a></b>
 					</c:if>
-
-				</c:forEach> <c:if test="${next}">
+				</c:forEach>
+				<c:if test="${next}">
 					<a href="../board/notice?num=${endpagenum + 1}">〉</a>
 				</c:if></li>
 		</ul>

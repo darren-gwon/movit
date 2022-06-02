@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="col-1"></div>
 				<div class="col" style="text-align: center;">
-					<img src="/resources/image/lostTop.png" width="1200px;">
+					<img src="/resources/image/lostTop.png" width="1300px;">
 				</div>
 				<div class="col-1"></div>
 			</div>
@@ -34,7 +34,6 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col">
 					<br> <br>
 					<div class="form-floating">
@@ -93,13 +92,11 @@
 					<hr>
 					<br>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col" style="text-align: left;">
 
 					<a href="<c:url value='/inquiry/lost'/>" role="button"
@@ -109,7 +106,6 @@
 					<button type="submit" class="btn btn-outline-dark"
 						style="width: 100px;">등록</button>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 		<br>

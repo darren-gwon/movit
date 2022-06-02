@@ -30,62 +30,60 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 @RequestMapping("/pay")
 public class PaymentController {
-	
+
 	@Autowired
 	private SeatService seatService;
-	@Autowired 
+	@Autowired
 	private KakaoPayService kakaoPayService;
 	@Autowired
 	private BookingService bookingService;
-		
+
 	@PostMapping("/valid")
 	public ResponseEntity<String> validPrice(HttpServletRequest requset, @RequestBody Map<String, String> tickets) {
 		System.out.println(tickets);
 		int realPrice = seatService.isValidPrice(tickets);
 		int totalPrice = Integer.valueOf(tickets.get("totalPrice"));
-		
-		if(realPrice==totalPrice) {
+
+		if (realPrice == totalPrice) {
 			return new ResponseEntity<String>("성공", HttpStatus.OK);
 		} else {
 			return new ResponseEntity<String>("데이터가 없습니다.", HttpStatus.SERVICE_UNAVAILABLE);
 		}
 	}
-	
 
 	@GetMapping("/kakaoPayFail")
 	public String payFail() {
 		return "pay/fail.tiles";
 	}
-	
+
 	@GetMapping("/kakaoPayCancel")
 	public String payCandel() {
 		return "pay/cancel.tiles";
 	}
-	
+
 	@GetMapping("/kakaoPaySuccess")
 	public String kakaoPaySuccess(String pg_token, Model model, HttpSession session) {
-		OrderInfoDto info = (OrderInfoDto)session.getAttribute("orderInfoDto");
-		
-		KakaoPayApprovalDto kPayApprovalDto= kakaoPayService.payInfo(pg_token, session);
-		if(kPayApprovalDto!=null) {
+		OrderInfoDto info = (OrderInfoDto) session.getAttribute("orderInfoDto");
+
+		KakaoPayApprovalDto kPayApprovalDto = kakaoPayService.payInfo(pg_token, session);
+		if (kPayApprovalDto != null) {
 			BookingDto bookingDto = info.getBookingDto();
 			bookingDto.setPay_tid(kPayApprovalDto.getTid());
-			bookingDto.setUser_id((String)session.getAttribute("user_id"));
+			bookingDto.setUser_id((String) session.getAttribute("user_id"));
 			bookingDto.setBookingID(bookingService.generateBookingID());
-			
+
 			System.out.println(info);
 
-			
 			System.out.println(bookingDto);
 			bookingService.insertBooking(bookingDto);
-			
-			model.addAttribute("payInfo",kPayApprovalDto);
+
+			model.addAttribute("payInfo", kPayApprovalDto);
 			return "pay/success.tiles";
 		}
-		
+
 		return "pay/fail.tiles";
 	}
-	
+
 	/*
 	 * @PostMapping("/kakaoPay")
 	 * 
@@ -94,18 +92,18 @@ public class PaymentController {
 	 * "asdf1234"); session.setAttribute("orderInfoDto", orderInfo); return
 	 * kakaoPayService.ready(session); }
 	 */
-	
+
 	@PostMapping("/kakaoPay")
 	@ResponseBody
 	public String kakaopayReady(@RequestBody String jsonObj, HttpSession session) {
-		
+
 		System.out.println(jsonObj);
 		ObjectMapper objMapper = new ObjectMapper();
 		objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
 		try {
 			OrderInfoDto orderInfo = objMapper.readValue(jsonObj, OrderInfoDto.class);
-			
+
 			System.out.println(orderInfo);
 			session.setAttribute("orderInfoDto", orderInfo);
 		} catch (JsonMappingException e) {

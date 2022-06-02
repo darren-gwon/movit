@@ -20,18 +20,14 @@
 <body>
 	<div class="content">
 		<div id="mypageHeader">
-			<a id="mypageHome" href="home">My Page</a>
+			<a id="mypageTitle" href="home">My Page</a>
 			<ul id="menu">
-				<li><a href="mypageUserInfo">개인정보변경</a></li>
-				<li><a href="#">회워정보탈퇴</a></li>
-				<li><a href="#">나의 문의내역</a></li>
-				<li><a href="#">1:1문의</a></li>
-				<li><a href="#">분실물문의</a></li>
+				<li><a href="mypageUserInfo">회원정보변경</a></li>
+				<li><a href="deleteAccountView">회원정보탈퇴</a></li>
+				<li><a href="userInquiryList">나의 문의내역(1:1문의)</a></li>
+				<li><a href="userLostInquiryList">분실물문의</a></li>
 				<li><a href="#">예매내역</a></li>
 			</ul>
-		</div>
-		<div id="mypageFooter">
-		
 		</div>
 	</div>
 </body>
