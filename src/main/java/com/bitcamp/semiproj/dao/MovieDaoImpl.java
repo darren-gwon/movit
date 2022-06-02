@@ -23,4 +23,10 @@ public class MovieDaoImpl implements MovieDao  {
 	public MovieDto selectMovieByMovieID(int movieID) {
 		return session.selectOne(namespace + "selectMovieByMovieID", movieID);
 	}
+	public List<MovieDto> selectAllMovies() {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+"selectAllMovies");
+	}
+
+	
 }

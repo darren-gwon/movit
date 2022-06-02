@@ -21,4 +21,10 @@ public class MovieServiceImpl implements MovieService {
 	public MovieDto selectMovieByMovieID(int movieID) {
 		return movieDao.selectMovieByMovieID(movieID);
 	}
+	
+	@Override
+	public List<MovieDto> selectAllMovies() {
+		// TODO Auto-generated method stub
+		return movieDao.selectAllMovies();
+	}
 }

@@ -15,9 +15,13 @@ import com.bitcamp.semiproj.service.MovieService;
 public class MovieHomeController {
 
 	@Autowired
-	MovieService service;
+	MovieService movieService;
+	
 	@GetMapping("")
-	public String moviewhome(){
+	public String moviewhome(Model m){
+		List<MovieDto> movieDto = movieService.selectAllMovies();
+	
+		m.addAttribute("movieDto", movieDto);
 		
 	return "movie/movie.tiles";
 	}

@@ -17,4 +17,7 @@
     <select id="selectMovieByMovieID" parameterType="int" resultType="MovieDto">
     	SELECT * FROM movie where movieID=#{movieID};
     </select>
+    <select id="selectAllMovies" resultType="MovieDto">
+    	SELECT * FROM movie where on_show=1 order by total_audience desc;
+    </select>
 </mapper>

@@ -8,4 +8,5 @@ public interface MovieService {
 
 	public List<MovieDto> selectMovieByTheaterID(int theaterID);
 	public MovieDto selectMovieByMovieID(int movieID);
+	public List<MovieDto> selectAllMovies();
 }
