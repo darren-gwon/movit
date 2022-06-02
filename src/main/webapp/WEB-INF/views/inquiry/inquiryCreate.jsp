@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,7 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 <div class= "content">
@@ -21,7 +23,7 @@
 			<div class="row">
 				<div class="col-1"></div>
 				<div class="col" style="text-align: center;">
-					<img src="/resources/image/inquirytop.png" width="1200px;">
+					<img src="/resources/image/inquirytop.png" width="1300px;">
 				</div>
 				<div class="col-1"></div>
 			</div>
@@ -29,7 +31,6 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col">
 					<br> <br>
 					<div class="form-floating">
@@ -44,7 +45,22 @@
 							<option value="기타">기타</option>
 						</select><label for="floatingSelect">Inquiry Type Select</label>
 					</div>
-
+						
+					<br>
+					
+					<div class="form-floating">
+						<select class="form-select" id="floatingSelect"
+							aria-label="Floating label select example" name="theaterID">
+							<option value="01">1</option> <c:set var="name" value="1" /><c:if test="${name eq '1'}">강남점<c:out value="${str}"/></c:if>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+						</select><label for="floatingSelect">Theater Place Select</label>
+					</div>	
+				
 					<br>
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="inputGroup-sizing-default">문의글 제목</span> <input type="text" class="form-control" name="title"
@@ -62,7 +78,6 @@
 					<hr>
 					<br>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 
@@ -72,14 +87,13 @@
 				
 				<div class="col" style="text-align: left;">
 
-					<a href="<c:url value='/inquiry/list'/>" role="button"
+					<a onclick="history.back()" role="button"
 						class="btn btn-outline-dark" style="width: 100px; text-align: left;">뒤로가기</a>
 				</div>
-				<div class="col" style="text-align: right;">
+				<div class="col" style="text-align: right;" ><a href="http://localhost:9005/inquiry/listpage?seq=1">
 					<button type="submit" class="btn btn-outline-dark"
-						style="width: 100px;">등록</button>
+						style="width: 100px;">등록</button></a>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 <br><br><br><br><br><br>

@@ -43,6 +43,26 @@ table.table-hover td {
 .container a {
 	text-decoration: none;
 }
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
 </style>
 <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript">
@@ -89,7 +109,7 @@ table.table-hover td {
 					success : function(jdata) {
 						if (jdata = 1) {
 							alert("삭제 성공");
-							location.replace("faq") //faq로 맵핑 페이지 새로고침
+							location.replace("faqpage?seq=1") //faq로 맵핑 페이지 새로고침
 						} else {
 							alert("삭제 실패");
 						}
@@ -112,7 +132,7 @@ table.table-hover td {
 				<div class="row">
 					<div class="col-1"></div>
 					<div class="col" style="text-align: center;">
-						<img src="/resources/image/InquiryFAQ_TOP.png" width="1200px;">
+						<img src="/resources/image/InquiryFAQ_TOP.png" width="1300px;">
 					</div>
 					<div class="col-1"></div>
 				</div>
@@ -135,14 +155,15 @@ table.table-hover td {
 					</div>
 				</div>
 			</div>
-
+			
+			<br>
 
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<table class="table table-hover"
 							style="text-align: center; font-size: 15px;">
-							
+							<thead>
 								<tr>
 									<th><input id="allCheck" type="checkbox" name="allCheck" /></th>
 									<th>번호</th>
@@ -160,6 +181,7 @@ table.table-hover td {
 										<td>${faq.inquiry_type}&nbsp;</td>
 										<td style="width: 900px;"><a
 											href="faq/detail?seq=${faq.seq}">${faq.title}&nbsp;</a></td>
+										
 										<td><fmt:formatDate value="${faq.write_date}"
 												pattern="yyyy/MM/dd" /></td>
 									</tr>
@@ -174,16 +196,11 @@ table.table-hover td {
 			
 			<div>
 			
-				<c:forEach var="i" begin="1" end="${totalPage }">
-				
-				${i }
-				
-				</c:forEach>
 			
 			
 			</div>
 			
-			
+			<br>
 			
 			
 			
@@ -193,10 +210,20 @@ table.table-hover td {
 						<a href="<c:url value='/inquiry/home'/>" role="button"
 							class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 					</div>
+					
+					<div class="col">
+						<c:forEach begin="1" end="${pageNum}" var="num">
+							<span> <a class="btn btn-outline-dark"
+								href="/inquiry/faqlistpage?num=${num}">${num}</a>
+							</span>
+						</c:forEach>
+					</div>
+					
 					<div class="col" style="text-align: right;">
 						<a href="<c:url value='/inquiry/faq/insert'/>" role="button"
-							class="btn btn-outline-dark" style="width: 100px;">글쓰기</a> <input
-							type="button" class="btn btn-outline-danger"
+							class="btn btn-outline-dark" style="width: 100px;">글쓰기</a> 
+							
+							<input type="button" class="btn btn-outline-danger"
 							style="width: 100px;" value="선택삭제" onclick="deleteValue();">
 					</div>
 				</div>

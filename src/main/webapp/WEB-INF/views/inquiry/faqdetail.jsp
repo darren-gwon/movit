@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -20,7 +19,7 @@
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col" style="text-align: center;">
-				<img src="/resources/image/InquiryFAQ_TOP.png" width="1200px;">
+				<img src="/resources/image/InquiryFAQ_TOP.png" width="1300px;">
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -30,7 +29,6 @@
 	<br>
 	<div class="container">
 		<div class="row">
-			<div class="col-1"></div>
 			<div class="col">
 				<table class="table table-hover"
 					style="text-align: center; font-size: 15px;">
@@ -57,24 +55,24 @@
 					</tr>
 				</table>
 			</div>
-			<div class="col-1"></div>
 		</div>
 	</div>
+	<br>
 	<div class="container">
 		<div class="row">
-			<div class="col-1"></div>
 			<div class="col" style="text-align: left;">
 
-				<a href="<c:url value='/inquiry/faq'/>" role="button"
+				<a href="/inquiry/faqlistpage?num=1" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 			</div>
 			<div class="col" style="text-align: right;">
 				<a href="/inquiry/faq/update?seq=${data.seq}" role="button"
-					class="btn btn-outline-dark" style="width: 100px;">수정</a> <a
+					class="btn btn-outline-dark" style="width: 100px;">수정</a>
+					
+					<a
 					href="/inquiry/faq/delete?seq=${data.seq}" role="button"
 					class="btn btn-outline-danger" style="width: 100px;">삭제</a>
 			</div>
-			<div class="col-1"></div>
 		</div>
 	</div>
 	<br>

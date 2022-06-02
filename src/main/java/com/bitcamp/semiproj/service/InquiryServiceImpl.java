@@ -34,12 +34,22 @@ public class InquiryServiceImpl implements InquiryService {
 	public void inquiryupdate(InquiryDto dto) {
 		inquiryDao.inquiryupdate(dto);
 	}
-
+	
+	//게시물 삭제
 	@Override
 	public void inquirydelete(String seq) {
-		// TODO Auto-generated method stub
 		inquiryDao.inquirydelete(seq);
-		
 	}
 
+	
+	@Override
+	public int count() throws Exception {
+		return inquiryDao.count();
+	}
+	//게시물 목록 + 페이징 추가
+	@Override
+	public List<InquiryDto> listPage(int displayPost, int postNum) throws Exception {
+		return inquiryDao.listPage(displayPost, postNum);
+	}
+	
 }

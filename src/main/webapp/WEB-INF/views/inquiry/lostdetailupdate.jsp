@@ -20,7 +20,7 @@
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col" style="text-align: center;">
-				<img src="/resources/image/lostTop.png" width="1200px;">
+				<img src="/resources/image/lostTop.png" width="1300px;">
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -102,9 +102,7 @@
 						</div>
 					</div>
 
-					<br>
-					<hr>
-					<br>
+					
 				</div>
 				<div class="col-1"></div>
 			</div>

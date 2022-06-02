@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col" style="text-align: center;">
-				<img src="/resources/image/inquirytop.png" width="1200px;">
+				<img src="/resources/image/inquirytop.png" width="1300px;">
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -33,7 +33,6 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col">
 					<br> <br>
 					<div class="form-floating">
@@ -49,7 +48,7 @@
 							<option value="07">7</option>
 						</select><label for="floatingSelect">Theater Place Select</label>
 					</div>
-
+		
 					<br>
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
@@ -89,20 +88,16 @@
 						<fmt:formatDate value="${data.write_date}" pattern="yyyy-MM-dd" />
 					</div>
 				<br>
-				<hr>
-				<br>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 
 
 <div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col" style="text-align: left;">
 
-					<a href="<c:url value="/inquiry/list"/>" role="button"
+					<a onclick="history.back()" role="button"
 						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 				</div>
 
@@ -113,7 +108,6 @@
 					<button type="reset" class="btn btn-outline-dark"
 						style="width: 100px;">리셋</button>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 

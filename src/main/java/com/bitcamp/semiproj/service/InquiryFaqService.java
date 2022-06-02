@@ -2,11 +2,7 @@ package com.bitcamp.semiproj.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import com.bitcamp.semiproj.dao.InquiryFaqDao;
-import com.bitcamp.semiproj.dao.TheaterDao;
 import com.bitcamp.semiproj.domain.InquiryFaqDto;
 
 public interface InquiryFaqService {
@@ -16,7 +12,6 @@ public interface InquiryFaqService {
 	public InquiryFaqDto faqdetail(int seq);
 	public void update(InquiryFaqDto dto);
 	public void delete(String seq);
-
-
-	
+	public int count() throws Exception;
+	public List<InquiryFaqDto> listPage(int displayPost, int postNum) throws Exception;
 }

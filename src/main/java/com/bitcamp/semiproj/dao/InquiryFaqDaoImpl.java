@@ -1,5 +1,6 @@
 package com.bitcamp.semiproj.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -44,4 +45,24 @@ public class InquiryFaqDaoImpl implements InquiryFaqDao {
 	public void delete(String seq) {
 			session.delete(namespace +"faqdelete",seq);
 	}
-}
+
+	//게시물 총 개수
+	@Override
+	public int count() throws Exception {
+		return session.selectOne(namespace + "faqcount");
+	}
+			
+	//게시물 목록 + 페이징
+	// 매개변수인 displayPost, postNum들 해시맵을 이용하여 하나로 그룹지어주고 매퍼로 전송됩니다.
+	@Override
+	public List<InquiryFaqDto> listPage(int displayPost, int postNum) throws Exception{
+				
+	HashMap<Object, Object> data = new HashMap<>();
+				
+	data.put("displayPost", displayPost);
+	data.put("postNum", postNum);
+				
+		return session.selectList(namespace + "faqlistPage", data);
+				
+			}
+	}
