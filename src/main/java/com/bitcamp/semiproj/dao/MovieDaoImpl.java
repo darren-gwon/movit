@@ -19,5 +19,8 @@ public class MovieDaoImpl implements MovieDao  {
 		return session.selectList(namespace+"selectMovieByTheaterID", theaterID);
 	}
 
-	
+	@Override
+	public MovieDto selectMovieByMovieID(int movieID) {
+		return session.selectOne(namespace + "selectMovieByMovieID", movieID);
+	}
 }

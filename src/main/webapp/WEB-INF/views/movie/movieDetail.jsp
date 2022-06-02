@@ -224,6 +224,7 @@ $(function(){
 
 //좋아요 저장 이벤트(onclick)
 $(document).on("click","#addLike", function(){
+	if(${sessionScope.user_id == null}){alert("로그인이 필요한 서비스입니다."); return}
 	var data = {
 			"reviewID": $(this).attr("data-reviewid"),
 			"user_id": "${sessionScope.user_id}",
@@ -336,7 +337,7 @@ function checkUserReview(){
 			<div class="col-sm-3">
 				<div class="movielist">
 					<figure>
-						<img src="/resources/movie_poster_image/movie_list1.jpg">
+						<img style="width:293px;" src="${dto.poster_img }">
 					</figure>
 				</div>
 			</div>
@@ -345,19 +346,19 @@ function checkUserReview(){
 
 			<div class="col-sm-4">
 				<div class="movielist"
-					style="text-align: left; font-family: monospace;">
-					<h3>범죄도시2</h3>
+					style="text-align: left; font-family: monospace; width:800px;">
+					<h3>${dto.title }</h3>
 					<hr>
-					<h5>장르&nbsp;&nbsp;</h5>
-					<h5>감독&nbsp;&nbsp;</h5>
-					<h5>출연&nbsp;&nbsp;</h5>
-					<h5>나라&nbsp;&nbsp;</h5>
-					<h5>개봉일&nbsp;&nbsp;</h5>
-					<h5>배급사&nbsp;&nbsp;</h5>
-					<h5>RunningTime&nbsp;&nbsp;</h5>
+					<h5>장르&nbsp;&nbsp;${dto.genre }</h5>
+					<h5>감독&nbsp;&nbsp;${dto.director }</h5>
+					<h5>출연&nbsp;&nbsp;${dto.casts }</h5>
+					<h5>국적&nbsp;&nbsp;${dto.country }</h5>
+					<h5>개봉일&nbsp;&nbsp;${dto.opendate }</h5>
+					<h5>배급사&nbsp;&nbsp;${dto.distributor }</h5>
+					<h5>RunningTime&nbsp;&nbsp;${dto.runningtime }분</h5>
 					<br><br>
 					<button type="button" class="btn btn-outline-danger"
-						style="width: 250px; height: 80px; font-size: 30px;">예매하기</button>
+						style="width: 250px; height: 80px; font-size: 30px;" onclick="href='../booking'">예매하기</button>
 				</div>
 			</div>
 
@@ -384,10 +385,7 @@ function checkUserReview(){
 			<div class="row">
 				<div class="col">
 					<div class="movielist" style="text-align: left;">
-						<h3>“느낌 오지? 이 놈 잡아야 하는 거”</h3>
-						<br>
-						<h5>가리봉동 소탕작전 후 4년 뒤, 금천서 강력반은 베트남으로</h5>
-						<h5>도주한 용의자를 인도받아 오라는 미션을 받는다.</h5>
+						<pre>${dto.summary }</pre>
 					</div>
 				</div>
 			</div>

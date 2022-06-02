@@ -13,5 +13,5 @@ import com.bitcamp.semiproj.domain.ScheduleDto;
 public interface MovieDao  {
 
 	public List<MovieDto> selectMovieByTheaterID(int theaterID);
-	
+	public MovieDto selectMovieByMovieID(int movieID);
 }

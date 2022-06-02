@@ -3,6 +3,12 @@ package com.bitcamp.semiproj.domain;
 import java.sql.Date;
 
 public class MovieDto {
+	public String getStill_cut() {
+		return still_cut;
+	}
+	public void setStill_cut(String still_cut) {
+		this.still_cut = still_cut;
+	}
 	private Integer seq;
 	private String movieID;
 	private String title;
@@ -19,7 +25,7 @@ public class MovieDto {
 	private String poster_img;
 	private String trailer_url;
 	private Integer on_show;
-	
+	private String still_cut;
 	public Integer getSeq() {
 		return seq;
 	}

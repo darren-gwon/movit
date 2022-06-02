@@ -16,4 +16,9 @@ public class MovieServiceImpl implements MovieService {
 	public List<MovieDto> selectMovieByTheaterID(int theaterID){
 		return movieDao.selectMovieByTheaterID(theaterID);
 	}
+	
+	@Override
+	public MovieDto selectMovieByMovieID(int movieID) {
+		return movieDao.selectMovieByMovieID(movieID);
+	}
 }
