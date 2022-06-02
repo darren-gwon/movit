@@ -61,6 +61,13 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:if test="${count==0 }">
+				<tr>
+					<td style="text-align:center;width:300px">
+						등록하신 문의내역이 없습니다.
+					</td>
+				</tr>
+				</c:if>
 			<c:forEach var="list" items="${list }">
 				<tr>
 					<th>유형</th>

@@ -19,21 +19,13 @@
 </head>
 <body>
 	<div class="content">
-		<div id="mypageHeader">
-			<a id="mypageTitle" href="home">My Page</a>
-			<c:if test="${sessionScope.user_id ==null }">
-				<br><br>
-				<h3>로그인이 필요한 서비스입니다.</h3>
-				<br><br>
-			</c:if>
-			<ul id="menu">
-				<li><a href="mypageUserInfo">회원정보변경</a></li>
-				<li><a href="deleteAccountView">회원정보탈퇴</a></li>
-				<li><a href="userInquiryList">나의 문의내역(1:1문의)</a></li>
-				<li><a href="userLostInquiryList">분실물문의</a></li>
-				<li><a href="#">예매내역</a></li>
-			</ul>
-		</div>
+	<jsp:include page="mypageHeader.jsp"/>
+	<c:if test="${sessionScope.user_id ==null }">
+		<br><br>
+		<h3>로그인이 필요한 서비스입니다.</h3>
+		<br><br>
+	</c:if>
+	<c:if test="${sessionScope.user_id != null }">
 		<div id="mypageFooter">
 			<span id="welcome"><strong style="font-size:1.2em;">"${dto.nickname }"</strong>님 환영합니다.</span><span id="reg_date">&nbsp;&nbsp;가입일 "2020-12-12"</span>
 			<div id="cardBox">	
@@ -47,6 +39,7 @@
 				</div>
 			</div>
 		</div>
+	</c:if>
 	</div>
 </body>
 </html>

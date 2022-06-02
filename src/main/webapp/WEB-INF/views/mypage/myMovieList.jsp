@@ -61,6 +61,13 @@
 				</tr>
 			</thead>
 			<tbody>
+			<c:if test="${count==0 }">
+				<tr>
+					<td style="text-align:center;width:300px">
+						관람하신 영화가 아직 없습니다.
+					</td>
+				</tr>
+			</c:if>
 			<c:forEach var="list" items="${list }">
 				<tr>
 					<th>영화제목</th>
