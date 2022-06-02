@@ -1,5 +1,7 @@
 package com.bitcamp.semiproj.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,7 @@ public class MovieHomeController {
 	
 	@GetMapping("/detail")
 	public String moviewdetail(@RequestParam int movieID, Model model){
-		MovieDto dto = service.selectMovieByMovieID(movieID);
+		MovieDto dto = movieService.selectMovieByMovieID(movieID);
 		String [] trailer_url = dto.getTrailer_url().split(",");
 		for(int i=0; i<trailer_url.length; i++) {
 			model.addAttribute("trailer_url"+(i+1), trailer_url[i]);
