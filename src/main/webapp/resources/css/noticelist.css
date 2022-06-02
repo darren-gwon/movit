@@ -12,7 +12,7 @@ div.title{
 .title h2{
 	position: absolute;
 	float: left;
-	margin-left:300px;
+	margin-left:410px;
 	font-weight:bold;
 }
 .tbl_list {
@@ -29,7 +29,8 @@ thead th {
 }
 tbody td {
 	text-align: center;
-	height:47px;
+	height:60px;
+	vertical-align:middle;
 }
 
 .text1 a {
@@ -49,9 +50,15 @@ ul {
 }
 div.paging	{
 	text-align: center;
-	width:840px;
-	margin-left: 800px;
+	width:1300px;
+	height:100px;
+	margin-left: 300px;
 	color:green;
+	margin-top:30px;
+}
+div.paging ul{
+	margin:0 auto;
+	margin-left: 600px;	
 }
 
 ul a {
@@ -103,7 +110,7 @@ div.total {
 	position: absolute;
 	float:left;
 	font-size: 16px;
-	margin-left:310px;
+	margin-left:410px;
 	margin-top: 130px;
 	margin-bottom: 10px;
 	color: gray;

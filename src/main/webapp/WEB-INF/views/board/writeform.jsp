@@ -26,9 +26,15 @@
 		</tr>
 		<tr>
 		<th style="width:100px;">구분</th>
-		<td>
-			<input type="text" name="type" class="form-control" required="required" autofocus="autofocus"
-					></td>
+		<td colspan="5">
+			<!-- <input type="text" name="type" class="form-control" required="required" autofocus="autofocus"> -->
+			<select name="type" style="width:500px;">
+			 <option value="">--선택--</option>
+			 <option value="전체공지">전체공지</option>
+			 <option value="지점공지">지점공지</option>
+			</select>
+					</td>
+					
 		</tr>
 	
 	<tr>
