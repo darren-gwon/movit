@@ -52,6 +52,4 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeDto> listpage(int startnum, int postnum, String keyword) {
 	 return dao.listpage(startnum, postnum, keyword);
 	}
-
-
 }

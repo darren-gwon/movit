@@ -23,7 +23,7 @@
 		from notice where seq=#{seq}
 	</select>
 	<!-- 조회수 증가 -->
-	<update id="readcount" parameterType="int">
+	<update id="readcount" parameterType="int">	
 		update notice set view_cnt=view_cnt+1 where seq=#{seq}
 	</update>
 	<!-- 게시글 수정 -->
@@ -39,5 +39,4 @@
  	<select id="postcount" resultType="int">
  		select count(seq) from notice
  	</select>
-
  </mapper>
