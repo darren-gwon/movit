@@ -10,13 +10,8 @@
 			</div>
 		</div>
 		<br> <br>
-		<div class="row" style="text-align: left; font-size: 17px;"><button type="button" class="btn btn-outline-secondary" style="width: 130px;">상세보기</button>
-			<div class="col">
-				<h1 class="font-monospace">Movie Chart</h1>
-				<br> <br>
-			</div>
-			<hr>
-			<br>
+		<div class="row" style="text-align: left; font-size: 17px;">
+		
 		</div>
 	</div>
 

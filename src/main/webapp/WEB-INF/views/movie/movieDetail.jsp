@@ -311,6 +311,7 @@ function checkUserReview(){
 </script>
 
 
+
 </head>
 
 <body>
@@ -322,24 +323,9 @@ function checkUserReview(){
 
 
 
-			<div class="col-sm-4">
-				<div class="movielist" style="text-align: left; font-family: monospace;">
-					<h3>범죄도시2</h3>
-					<hr>
-					<h5>장르&nbsp;&nbsp;</h5>
-					<h5>감독&nbsp;&nbsp;</h5>
-					<h5>출연&nbsp;&nbsp;</h5>
-					<h5>나라&nbsp;&nbsp;</h5>
-					<h5>개봉일&nbsp;&nbsp;</h5>
-					<h5>배급사&nbsp;&nbsp;</h5>
-					<h5>RunningTime&nbsp;&nbsp;</h5>
-					<br> <br>
-					<button type="button" class="btn btn-outline-danger" style="width: 250px; height: 80px; font-size: 30px;">예매하기</button>
-				</div>
-			</div>
+			
 
-			<div class="col-sm-5"></div>
-
+			
 		</div>
 		<br> <br><br>
 	</div>
@@ -350,7 +336,7 @@ function checkUserReview(){
 			<div class="col-sm-3">
 				<div class="movielist">
 					<figure>
-						<img src="../movie_poster_image/movie_list1.jpg">
+						<img src="/resources/movie_poster_image/movie_list1.jpg">
 					</figure>
 				</div>
 			</div>
@@ -386,21 +372,16 @@ function checkUserReview(){
 
 	<div class="container">
 		<div class="row">
-			<div class="col-xl-1"></div>
 			<div class="col">
 				<ul class="nav nav-tabs">
 					<li class="nav-item" style="width: 200px"><a class="nav-link active" href="#">영화정보</a></li>
-					<li class="nav-item" style="width: 200px"><a
-						class="nav-link active" aria-current="page" href="#">평점 및 관람평</a>
-					</li>
+					
 				</ul>
 			</div>
-			<div class="col-xl-1"></div>
 		</div>
 		<br> <br>
 		<div class="container" style="text-align: center;">
 			<div class="row">
-				<div class="col-xl-1"></div>
 				<div class="col">
 					<div class="movielist" style="text-align: left;">
 						<h3>“느낌 오지? 이 놈 잡아야 하는 거”</h3>
@@ -499,17 +480,17 @@ function checkUserReview(){
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<img
-								src="../movie_detail_bottom_slide/the_roundup_bottom_slide_0.jpg"
+								src="/resources/movie_detail_bottom_slide/the_roundup_bottom_slide_0.jpg"
 								class="d-block w-100" alt="...">
 						</div>
 						<div class="carousel-item">
 							<img
-								src="../movie_detail_bottom_slide/the_roundup_bottom_slide_1.jpg"
+								src="/resources/movie_detail_bottom_slide/the_roundup_bottom_slide_1.jpg"
 								class="d-block w-100" alt="...">
 						</div>
 						<div class="carousel-item">
 							<img
-								src="../movie_detail_bottom_slide/the_roundup_bottom_slide_2.jpg"
+								src="/resources/movie_detail_bottom_slide/the_roundup_bottom_slide_2.jpg"
 								class="d-block w-100" alt="...">
 						</div>
 					</div>
@@ -527,26 +508,35 @@ function checkUserReview(){
 			</div>
 		</div>
 	</div>
-	<br> <br>
+	
 
+	<br><br>
 	<div class="container">
 		<div class="row">
 			<div class="col"></div>
 				
 			<ul class="nav nav-tabs">
 				<li class="nav-item" style="width: 200px"><a class="nav-link active" href="#">영화리뷰</a></li>
+				
 			</ul>
 				
+		
+				
 			<div id="godDamnReview">
-					<br>
+					<br><br><br><br><br>
 					<span id="totAvg"></span><br>
 					<span style="color:gray">영화관람 후 관람평을 작성하시면<br>vit.point를 적립해 드립니다.</span>
+					
+					
+					<div class="container">
+					<div class="row">
+					<div class="col" style="text-align: center;">
 					<form action="insert" id="afrm" method="post" onsubmit="return chkSubmit()">
 					<input type="hidden" name="movieID" value="${movieID }">
 						<table style="border:0.5px solid gray;border-radius:30;">
 							<tr>
-								<td width="400">
-									<span id="star_rating" style="font-size:25px;">별점</span><br>
+								<td width="500" style="height: 150px;">
+									<span id="star_rating" style="font-size:25px;" >별점</span><br>
 									<fieldset name="myform" id="myform">
 										<input type="radio" name="rating" value="10" id="rate1"><label class="label1" for="rate1">⭐</label>
 										<input type="radio" name="rating" value="9" id="rate2"><label class="label1" for="rate2">⭐</label>
@@ -563,12 +553,15 @@ function checkUserReview(){
 								<td width="400">
 									<input type="hidden" id="user_id" name="user_id" class="form-control" value="${sessionScope.user_id}">
 									<input type="hidden" id="movieID" name="movieID" class="form-control" value="${movieID}">
-									<textarea style="width:100%;height:100px;" id="content" name="content" class="form-control" placeholder="평점 및 관람평을 작성해 보세요. &#13;&#10;주제와 무관한 리뷰 또는 스포일러는 삭제되실수 있습니다."></textarea>
+									
+									<textarea style="width:100%; height: 100%; width:500px; height: 150px; "id="content" name="content" class="form-control" placeholder="평점 및 관람평을 작성해 보세요. &#13;&#10;주제와 무관한 리뷰 또는 스포일러는 삭제되실수 있습니다."></textarea>
+									
 								</td>
-								<td width="120" rowspan="2" bgcolor="#495057" id="save" class="save">관람평 등록</td>
+								<td width="200" rowspan="2" bgcolor="#495057" id="save" class="save">관람평 등록</td>
 							</tr>
 						</table>
 					</form>
+					</div></div></div>
 					<span id="tot" style="float:left"></span><br><hr>
 					<div class="review">
 					</div>
@@ -576,9 +569,6 @@ function checkUserReview(){
 					<div class="listopener" style="padding-top:30px;clear:both">
 						<button type="button" class="btn btn-primary">펼쳐보기</button>
 					</div>
-					
-					
-					
 				</div>
 		</div>
 	</div>
