@@ -11,15 +11,9 @@ $(function(){
 	
 	$("#afrm").click(function(){
 		if(${sessionScope.user_id == null}){
-			var result = confirm("로그인이 필요한 서비스입니다. \n로그인화면으로 이동하시겠습니까?");
-			if(result){
-				location.href="../";
-			} else {
-				return;
-			} 
-		} else {
+			alert("로그인이 필요한 서비스입니다.");
 			return;
-		}
+		} 
 	});
 	
 	$("#save").click(function(){
@@ -395,7 +389,7 @@ function checkUserReview(){
 			<div class="row">
 				<div class="col">
 					<div class="movielist" style="text-align: left;">
-						<pre>${dto.summary }</pre>
+						<pre style="font-size:1.2em;">${dto.summary }</pre>
 					</div>
 				</div>
 			</div>

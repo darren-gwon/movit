@@ -87,7 +87,7 @@ public class InquiryController {
 		InquiryDto data = inquiryService.inquirydetail(seq);
 		inquiryService.inquiryreadcount(data);
 		model.addAttribute("data", data);
-		System.out.println(data);
+		System.out.println("data = "+data);
 		return "inquiry/inquirydetail.tiles";
 	}
 
