@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <link href="/resources/css/eventupdate.css" rel='stylesheet' />
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,7 @@
 <body>
 
 <form name="updateform" method="post" enctype="multipart/form-data" action="../event/updateform?num=${dto.seq}"> 
+<div class="content">
 <table class="table table-bordered boardform" style="width:500px;">
 	<tr>
 		<th style="width:100px;">제	목</th>
@@ -60,15 +62,20 @@
 				</td>
 			</tr>
 	<tr>
-	<td>
+	<tr>
+	<td colspan="5">
 	<button type="submit" class="btn btn-default" style="width:100px;">저장</button>
-	
-	<button type="button" class="btn btn-default" style="width:100px;">
-	<a href="list">돌아가기</a></button>
+	</td>
+	</tr>
+	<tr>
+	<td colspan="5">
+	<button type="button" class="btn btn-default" style="width:100px;"
+	onclick="location.href='eventlist'">돌아가기</button>
 	</td>
 	</tr>
 	
 </table>
+</div>
 </form>
 <img src="../main_img/${dto.main_img}" id="main_img">
 </body>
