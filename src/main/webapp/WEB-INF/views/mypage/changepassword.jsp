@@ -28,6 +28,7 @@
 		vertical-align: top;
 		color: #369;
 		border-bottom: 3px solid #036;
+		font-size: 1.3em;
 	}
 	
 	table.type09 tbody th {
@@ -158,6 +159,11 @@ function chkSubmit() {
 </head>
 <body>
 	<jsp:include page="mypageHeader.jsp"/>
+	<c:if test="${sessionScope.user_id ==null }">
+		<br><br>
+		<h3>로그인이 필요한 서비스입니다.</h3>
+		<br><br>
+	</c:if>
 	<div class="content" id="changepwd">
 		<form action="pwUpdate" id="pwUpdate" method="post" onsubmit="return chkSubmit()">
 		<table class="type09">
