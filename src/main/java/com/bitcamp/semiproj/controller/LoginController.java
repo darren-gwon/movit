@@ -74,7 +74,7 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping(value = "out", method = RequestMethod.GET)
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session,HttpServletRequest request) {
 		// 세션에서 loginok 삭제
 		session.removeAttribute("user_id");
