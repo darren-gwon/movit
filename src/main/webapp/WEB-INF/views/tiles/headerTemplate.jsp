@@ -8,7 +8,7 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <c:set var="pass" value="<%=request.getContextPath()%>" />
 <div class="header">
-	<span id="sidebarOpen">&#9776;</span> <span class="logo">;Movit</span>
+	<span id="sidebarOpen">&#9776;</span> <a style="text-decoration: none;" href="/"><span class="logo">;Movit</span></a>
 	<div class="loginBtnDiv">
 		<c:set var="user_id" value="${sessionScope.user_id}" />
 		<c:set var="kakaoN" value="${sessionScope.kakaoN}" />
