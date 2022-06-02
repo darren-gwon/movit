@@ -41,7 +41,7 @@
 		<!-- faq 게시물 목록 + 페이징 + 검색 -->
 	<select id="faqlistPage" parameterType="hashMap" resultType="InquiryFaqDto">
 		select seq, inquiry_type, title, content, write_date from inquiry_faq
-		where title	LIKE concat ('%',#{keyword},'%')
+		where inquiry_type	LIKE concat ('%',#{keyword},'%')
 		order by seq desc limit #{startnum}, #{postnum}
 	</select>
 
