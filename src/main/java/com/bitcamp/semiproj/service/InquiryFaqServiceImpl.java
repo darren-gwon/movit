@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.semiproj.dao.InquiryFaqDao;
+import com.bitcamp.semiproj.domain.InquiryDto;
 import com.bitcamp.semiproj.domain.InquiryFaqDto;
 
 @Service
@@ -39,6 +40,15 @@ public class InquiryFaqServiceImpl implements InquiryFaqService{
 	@Override
 	public void delete(String seq) {
 		faqDao.delete(seq);
+	}
+	@Override
+	public int count() throws Exception {
+		return faqDao.count();
+	}
+	//게시물 목록 + 페이징 추가
+	@Override
+	public List<InquiryFaqDto> listPage(int displayPost, int postNum) throws Exception {
+		return faqDao.listPage(displayPost, postNum);
 	}
 	
 }

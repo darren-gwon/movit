@@ -8,6 +8,8 @@ public class InquiryFaqDto{
 	private String title;
 	private String content;
 	private Timestamp write_date;
+	private int postNum;
+	private int displayPost;
 
 	public String getInquiry_type() {
 		return inquiry_type;
@@ -39,7 +41,18 @@ public class InquiryFaqDto{
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
-	
+	public int getPostNum() {
+		return postNum;
+	}
+	public void setPostNum(int postNum) {
+		this.postNum = postNum;
+	}
+	public int getDisplayPost() {
+		return displayPost;
+	}
+	public void setDisplayPost(int displayPost) {
+		this.displayPost = displayPost;
+	}
 	@Override
 	public String toString() {
 		return "InquiryFaqDto [seq=" + seq + ", inquiry_type=" + inquiry_type + ", title=" + title + ", content="

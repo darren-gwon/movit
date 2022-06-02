@@ -33,6 +33,21 @@
 		where seq = #{seq}
 	</delete>
 	
+		<!-- faq 게시물 총 개수 -->
+	<select id="count" resultType="int">
+		select count(seq) from inquiry_faq
+	</select>
+	
+		<!-- faq 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="InquiryDto">
+		select seq, inquiry_type, title, content, write_date
+		from inquiry_faq
+		order by seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	
+	
 	
 	<!-- LOST 게시글 목록 -->
 	<select id="selectLostAll" resultType="InquiryLostDto">
