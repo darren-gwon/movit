@@ -1,6 +1,11 @@
 package com.bitcamp.semiproj.controller;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import com.bitcamp.semiproj.dao.UserDao;
-//import com.bitcamp.semiproj.loginapi.NaverLoginBO;
+import com.bitcamp.semiproj.domain.NaverLoginBO;
 import com.bitcamp.semiproj.service.UserService;
 import com.bitcamp.semiproj.service.UserSha256;
 
@@ -35,6 +40,7 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 
+	private NaverLoginBO naverLoginBO;
 
 	// 로그인 버튼 누르면 로그인 완료
 	@RequestMapping(value = "success", method = RequestMethod.POST)
@@ -47,7 +53,6 @@ public class LoginController {
 		Map<String, String> map = new HashMap<>();
 		map.put("user_id", user_id);
 		map.put("password", secretpassword);
-		System.out.println(map);
 		int n = userService.login(map);
 
 		if (n == 1) {
@@ -58,7 +63,6 @@ public class LoginController {
 			// 로그인한 사람의 이름
 			String name = userService.getSearchName(user_id);
 			session.setAttribute("loginname", name);
-			session.setAttribute("saveid", chkid == null ? "no" : "yes");
 			String old_url = request.getHeader("referer");
 			return "redirect:" + old_url; // 성공후 이전페이지이동 
 		} else {
@@ -70,7 +74,7 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping(value = "/out", method = RequestMethod.GET)
+	@RequestMapping(value = "out", method = RequestMethod.GET)
 	public String logout(HttpSession session,HttpServletRequest request) {
 		// 세션에서 loginok 삭제
 		session.removeAttribute("user_id");
@@ -79,13 +83,22 @@ public class LoginController {
 		return "redirect:" + old_url;
 	}
 	 
-	@RequestMapping(value = "/kakaologout", method = RequestMethod.GET)
-	public String logouts(HttpSession session) {
+	@RequestMapping(value = "kakaologout", method = RequestMethod.GET)
+	public String kakaologouts(HttpSession session) {
 		// 세션에서 loginok 삭제
 		session.invalidate(); 
 		
 		return "redirect:/" ;
 	}
+	@RequestMapping(value = "naverlogout", method = RequestMethod.GET)
+	public String naverlogout(HttpSession session) {
+		// 세션에서 loginok 삭제
+		session.invalidate(); 
+		
+		return "redirect:/" ;
+	}
+
+	
 
 	// 아이디 중복확인
 	@GetMapping("/idcheck")

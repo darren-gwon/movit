@@ -33,7 +33,7 @@ public class InquiryController {
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) throws Exception {
 
 		int postcount = inquiryService.count(); // 총 갯수
-		int postnum = 3; // 10개씩 출력
+		int postnum = 10; // 10개씩 출력
 		int pagenum = (int) Math.ceil((double) postcount / postnum); // 페이지 번호 소수점 무조건 올림
 		int displaypost = (num - 1) * postnum; //
 		int pagecount = 5; //
@@ -128,27 +128,4 @@ public class InquiryController {
 
 		return "redirect:/inquiry/list?num=1";
 	}
-
-	// 게시물 목록 + 페이징 추가
-	/*
-	 * @RequestMapping(value = "/listpage", method = RequestMethod.GET) public
-	 * String getListPage(Model model, @RequestParam("num") int num) throws
-	 * Exception { List<InquiryDto> list = inquiryService.getInquiryList();
-	 * model.addAttribute("list",list); //게시물 총 개수 int count =
-	 * inquiryService.count();
-	 * 
-	 * // 한페이지에 출력할 게시물의 개수 int postNum = 5;
-	 * 
-	 * // 하단 페이징 번호 ([게시물 총 개수 / 한 페이지에 출력할 개수]의 올림) int pageNum =
-	 * (int)Math.ceil((double)count/postNum);
-	 * 
-	 * //출력할 게시물 int displayPost = (num - 1) * postNum;
-	 * 
-	 * List<InquiryDto> list = null; list = inquiryService.listPage(displayPost,
-	 * postNum);
-	 * 
-	 * model.addAttribute("list", list); model.addAttribute("pageNum", pageNum);
-	 * 
-	 * return "inquiry/inquiry.tiles"; }
-	 */
 }

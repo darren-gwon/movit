@@ -18,11 +18,11 @@
 <c:set var="root" value="<%=request.getContextPath()%>" />
 </head>
 <body>
-	<div class="container">
-		<div class="content" style="margin-top: 5%;">
+	<div class="container2">
+		<div class="content2" style="margin-top: 5%;">
 			<center>
 				<h1 id="title">kakao 유저 회원가입</h1>
-				<form id=frm style="width: 80%;" class="form-inlie">
+				<form id=frm style="width: 75%;" class="form-inlie">
 					<div>
 						<center>
 							<div>
@@ -32,24 +32,24 @@
 							</div>
 							<div>
 								<h4>생년월일</h4>
-								<div style="margin-bottom: 0px;" id="hiddenbirthday">
+								<div style="margin-bottom: 0px;" id="hiddenbirthday" class="int">
 									<p style="float: left;" id="msgbirthday"></p>
 								</div>
 								<input type="date" class="int" name="birthday" id="birthday" onblur="isBirthday(this.value)" required="required">
-								<input type="hidden" id="birthdaycheck">
+								<input type="hidden" id="birthdaycheck" class="int">
 							</div>
 							<div>
 								<h4>별명</h4>
-								<div style="margin-bottom: 0px;" id="hiddennickname">
+								<div style="margin-bottom: 0px;" id="hiddennickname" class="int">
 									<p style="float: left;" id="msgnickname"></p>
 								</div>
 								<input type="text" class="int" name="nickname" id="nickname" placeholder="별명" onblur="isNickname(this.value)" required="required">
 								<span class="glyphicon glyphicon-user"></span>
-								<input type="hidden" id="nicknamecheck">
+								<input type="hidden" id="nicknamecheck" class="int">
 							</div>
 							<div>
 								<h4>성별</h4>
-								<div style="margin-bottom: 0px;" id="hiddengender">
+								<div style="margin-bottom: 0px;" id="hiddengender" class="int">
 									<p style="float: left;" id="msggender"></p>
 								</div>
 								<select id="genderselect" class="int" name="gender" onblur="isGender(this.value)" required="required">
@@ -57,18 +57,18 @@
 									<option value=남자>남자</option>
 									<option value=여자>여자</option>
 							</select>
-								<input type="hidden" id="gendercheck">
+								<input type="hidden" id="gendercheck" class="int">
 							</div>
 							<h4>휴대폰번호</h4>
 							<input type="hidden" id="phonecheck">
-							<div style="margin-bottom: 0px;" id="hiddenphone">
+							<div style="margin-bottom: 0px;" id="hiddenphone" class="int">
 								<p style="float: left;" id="msgphone"></p>
 							</div>
 							<div style="margin-bottom: 0px;" id=hiddenphone>
 								<tr>
 									<td colspan="3">
 										<input type="hidden" id="phone" name="phone" class=int>
-										<select id="phone1" name="phone1" style="width: 80px; padding: 10px;" class=int>
+										<select id="phone1" name="phone1" style="width: 80px; padding: 5px;" class=int>
 											<option value="010">010</option>
 											<option value="011">011</option>
 											<option value="016">016</option>
@@ -77,15 +77,15 @@
 											<option value="019">019</option>
 										</select>
 										&nbsp;&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;&nbsp;
-										<input name="phone2" id="phone2" maxlength="4" type="input" style="width: 100px;">
+										<input name="phone2" id="phone2" maxlength="4" type="input" style="width: 80px;">
 										&nbsp;&nbsp;&nbsp;<b>-</b> &nbsp;&nbsp;&nbsp;&nbsp;
-										<input name="phone3" id="phone3" maxlength="4" type="input" style="width: 100px" onblur="isPhone(this.value)">
+										<input name="phone3" id="phone3" maxlength="4" type="input" style="width: 80px" onblur="isPhone(this.value)">
 									</td>
 								</tr>
 							</div>
 					</div>
 					<div>
-						<button type="button" class="btn btn-primary btn-block" style="background: #5673bd; border-radius: 25px;" id="RegSuccess">가입하기</button>
+						<button type="button" class="btn btn-primary btn-block reg" style="background: #5673bd; border-radius: 25px; font-size: 18px; font-weight: bold;width: 100%; height: 55px;" id="RegSuccess">가입하기</button>
 						<br>
 						<br> <br>
 					</div>
@@ -232,8 +232,8 @@
 								form.setAttribute("method", "post");
 								form.submit();
 
-								alert($('#user_id').val()
-										+ "님 환영합니다. 선택해주셔서 감사합니다 :)");
+								alert(
+										(${sessionScope.kakaoN}+"님 환영합니다. 선택해주셔서 감사합니다 ");
 
 							} else {
 								alert("회원가입을 완료할 수 없습니다. 다시한번 확인해주십시오.");

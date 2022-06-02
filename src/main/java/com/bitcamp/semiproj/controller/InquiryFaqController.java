@@ -24,10 +24,42 @@ public class InquiryFaqController {
 	@Autowired
 	private InquiryFaqService faqService;
 
-	@GetMapping("/faq")
-	public String SupportHome(Model model) throws Exception {
-		List<InquiryFaqDto> list = faqService.getFaqList();
+	@GetMapping("/faq/list")
+	public String SupportHome(Model model, @RequestParam(defaultValue = "1") Integer num,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) throws Exception {
+			
+		int postcount = faqService.count(); // 총 갯수
+		int postnum = 10; // 10개씩 출력
+		int pagenum = (int) Math.ceil((double) postcount / postnum); // 페이지 번호 소수점 무조건 올림
+		int displaypost = (num - 1) * postnum; //
+		int pagecount = 5; //
+		int endpagenum = (int) (Math.ceil((double) num / (double) pagecount) * pagecount);//
+		int startpagenum = endpagenum - (pagecount - 1); //
+
+		int endpagenum_re = (int) (Math.ceil((double) postcount / (double) postnum));
+
+		if (endpagenum > endpagenum_re) {
+			endpagenum = endpagenum_re;
+		}
+		boolean prev = startpagenum == 1 ? false : true;
+		boolean next = endpagenum * postnum >= postcount ? false : true;
+		
+		
+		List<InquiryFaqDto> list = faqService.faqlistPage(displaypost,postnum,keyword);
 		model.addAttribute("list", list);
+		model.addAttribute("pagenum", pagenum);
+
+		model.addAttribute("displaypost", displaypost);
+
+		model.addAttribute("startpagenum", startpagenum);
+		model.addAttribute("endpagenum", endpagenum);
+
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
+
+		model.addAttribute("select", num);
+		model.addAttribute("postcount", postcount);
+		
 		return "inquiry/faq.tiles";
 	}
 
@@ -41,7 +73,7 @@ public class InquiryFaqController {
 	@PostMapping("/faq/insert")
 	public String postcreate(InquiryFaqDto dto) throws Exception {
 		faqService.create(dto);
-		return "redirect:/inquiry/faqlistpage?num=1";
+		return "redirect:/inquiry/faq/list?num=1";
 	}
 
 	// 게시물 faq 상세페이지로 이동
@@ -62,18 +94,18 @@ public class InquiryFaqController {
 
 	// 게시물 업데이트(faq 수정)
 	@PostMapping("/faq/update")
-	public String postupdate(InquiryFaqDto dto, @RequestParam("seq") int num) throws Exception {
+	public String postupdate(InquiryFaqDto dto, @RequestParam("seq") int seq) throws Exception {
 		faqService.update(dto);
 
-		return "redirect:/inquiry/faq/detail?seq" + num;
+		return "redirect:/inquiry/faq/detail?seq=" + seq;
 	}
 
 	// 게시물 삭제 (faq 글 삭제)
 	@GetMapping("/faq/delete")
-	public String getdelete(@RequestParam String seq) throws Exception {
+	public String getdelete(String seq) throws Exception {
 		faqService.delete(seq);
-
-		return "redirect:/inquiry/faqpage?seq=1";
+		System.out.println("sd"+seq);
+		return "redirect:/inquiry/faq/list?num=1";
 	}
 
 	// 게시물 선택 삭제
@@ -87,32 +119,9 @@ public class InquiryFaqController {
 			faqService.delete(ajaxMsg[i]);
 		}
 
-		return "redirect:/inquiry/faqpage?seq=1";
+		return "redirect:/inquiry/faq/list?num=1";
 	}
 
-	// 게시물 목록 + 페이징 추가
-/*	@RequestMapping(value = "/faqlistpage", method = RequestMethod.GET)
-	public String getListPage(Model model, @RequestParam("num") int num) throws Exception {
-		
-		*/
-		/*
-		 * List<InquiryFaqDto> list = faqService.getFaqList();
-		 * model.addAttribute("list",list); //게시물 총 개수 int faqcount =
-		 * faqService.count();
-		 * 
-		 * // 한페이지에 출력할 게시물의 개수 int postNum = 5;
-		 * 
-		 * // 하단 페이징 번호 ([게시물 총 개수 / 한 페이지에 출력할 개수]의 올림) int pageNum =
-		 * (int)Math.ceil((double)faqcount/postNum);
-		 * 
-		 * //출력할 게시물 int displayPost = (num - 1) * postNum;
-		 * 
-		 * List<InquiryFaqDto> list = null; list = faqService.listPage(displayPost,
-		 * postNum);
-		 * 
-		 * model.addAttribute("list", list); model.addAttribute("pageNum", pageNum);
-		 * 
-		 * return "inquiry/faq.tiles";
-		 // }*/
+
 
 }

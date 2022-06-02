@@ -374,7 +374,7 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
 						</tr>
 						<tr>
 							<td>
-								<input type="checkbox" class="check">
+								<input type="checkbox" class="check2">
 								개인정보 수집 및 이용에 대한 안내에 동의합니다.
 							</td>
 						</tr>
@@ -402,7 +402,8 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
 
 <script>
 $("#agree").click(function(){
-	if($(".check").is(":checked")){
+	if($(".check,chek").is(":checked") && 
+			$(".check2").is(":checked")){
 		location.href="/user/reg";
 	}else{
 		alert("약관 동의를 해주세요");

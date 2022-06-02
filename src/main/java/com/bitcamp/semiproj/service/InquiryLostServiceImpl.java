@@ -42,4 +42,16 @@ public class InquiryLostServiceImpl implements InquiryLostService {
 		
 	}
 
+	@Override
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return lostDao.count();
+	}
+
+	@Override
+	public List<InquiryLostDto> listPage(int startnum, int postnum, String keyword) throws Exception {
+		// TODO Auto-generated method stub
+		return lostDao.listPage(startnum, postnum, keyword);
+	}
+
 }

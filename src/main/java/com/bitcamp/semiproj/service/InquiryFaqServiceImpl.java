@@ -46,8 +46,8 @@ public class InquiryFaqServiceImpl implements InquiryFaqService{
 	}
 	//게시물 목록 + 페이징 추가
 	@Override
-	public List<InquiryFaqDto> listPage(int displayPost, int postNum) throws Exception {
-		return faqDao.listPage(displayPost, postNum);
+	public List<InquiryFaqDto> faqlistPage(int startnum, int postnum, String keyword) throws Exception {
+		return faqDao.faqlistPage(startnum, postnum, keyword);
 	}
 	
 }

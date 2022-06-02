@@ -2,9 +2,11 @@ package com.bitcamp.semiproj.domain;
 
 import java.io.IOException;
 import java.util.UUID;
- 
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tiles.request.Request;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
  
@@ -22,8 +24,9 @@ public class NaverLoginBO {
     //response_type: 인증 과정에 대한 구분값. code로 값이 고정돼 있습니다.
     //redirect_uri: 네이버 로그인 인증의 결과를 전달받을 콜백 URL(URL 인코딩). 애플리케이션을 등록할 때 Callback URL에 설정한 정보입니다.
     //state: 애플리케이션이 생성한 상태 토큰
-    private final static String CLIENT_ID = "wmxTFuijyRLQbSXlc64_";
-    private final static String CLIENT_SECRET = "Xp2SjtKPMR";
+
+	private final static String CLIENT_ID = "wmxTFuijyRLQbSXlc64_";
+	private final static String CLIENT_SECRET = "Xp2SjtKPMR";
     private final static String REDIRECT_URI = "http://localhost:9005/naverlogin";
     private final static String SESSION_STATE = "oauth_state";
     /* 프로필 조회 API URL */
@@ -32,7 +35,7 @@ public class NaverLoginBO {
 
 
 	/* 네이버 아이디로 인증  URL 생성  Method */
-	public String getAuthorizationUrl(HttpSession session) {
+	public String getAuthorizationUrl(HttpSession session ) {
 		
 		/* 세션 유효성 검증을 위하여 난수를 생성 */
 		String state = generateRandomString();
