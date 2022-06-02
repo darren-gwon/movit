@@ -14,22 +14,6 @@
 	  
 </style>
 <script type="text/javascript">
-/* $(function(){
-	$("#realdelete").click(function(){
-		var ans = confirm("정말로 탈퇴를 원하시면 [확인]을 눌러주세요.");
-		if(ans){
-			$.ajax({
-				type:"get",
-				url:"deleteAccount",
-				dataType:"json",
-				data:{"user_id":"${sessionScope.user_id}"},
-				success:function(){
-					location.href="/";
-				}
-			});
-		}
-	});
-}); */
 //onsubmit 버튼이벤트
 function chkSubmit() {
 	var ans = confirm("정말로 탈퇴를 원하시면 [확인]을 눌러주세요.");
@@ -43,6 +27,12 @@ function chkSubmit() {
 </head>
 <body>
 	<jsp:include page="mypageHeader.jsp"/>
+	<c:if test="${sessionScope.user_id ==null }">
+		<br><br>
+		<h3>로그인이 필요한 서비스입니다.</h3>
+		<br><br>
+	</c:if>
+	<c:if test="${sessionScope.user_id != null }">
 	<form action="deleteAccount" id="frm" method="get" onsubmit="return chkSubmit()">
 	<input type="hidden" name="user_id" value="${sessionScope.user_id }">
 		<div class="content">
@@ -58,6 +48,7 @@ function chkSubmit() {
 		</button>
 		<button type="submit" id="realdelete"class="btn btn-danger">회원탈퇴</button>
 	</form>
+	</c:if>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

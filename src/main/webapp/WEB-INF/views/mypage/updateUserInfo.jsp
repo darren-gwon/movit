@@ -29,6 +29,7 @@
 		vertical-align: top;
 		color: #369;
 		border-bottom: 3px solid #036;
+		font-size: 1.3em;
 	}
 	
 	table.type09 tbody th {
@@ -73,13 +74,13 @@ $(function(){
 	$("#auth").hide();
 	
 	//한번 건드린건 false적용
-	$("#nickname").change(function(){
+	$("#nickname").keyup(function(){
 		$("#certNick").val("false");
 	});
-	$("#email1").change(function(){
+	$("#email1").keyup(function(){
 		$("#certEmail").val("false");
 	});
-	$("#email2").change(function(){
+	$("#email2").keyup(function(){
 		$("#certEmail").val("false");
 	});
 	
@@ -185,7 +186,7 @@ function chkSubmit() {
 	var email = $("#certEmail").val();
 	var nick = $("#certNick").val();
 	console.log(email, nick)
-	if(email != "false" && nick == "false") {
+	if(email == "false" || nick == "false") {
 		alert("중복확인이 필요합니다.");
 		return false;
 	} else {
@@ -198,6 +199,12 @@ function chkSubmit() {
 </head>
 <body>
 	<jsp:include page="mypageHeader.jsp"/>
+	<c:if test="${sessionScope.user_id ==null }">
+		<br><br>
+		<h3>로그인이 필요한 서비스입니다.</h3>
+		<br><br>
+	</c:if>
+	<c:if test="${sessionScope.user_id != null }">
 	<form action="updateMypage" method="post" onsubmit="return chkSubmit()">
 	<div class="content" id="userinfo">
 		<table class="type09">
@@ -294,5 +301,6 @@ function chkSubmit() {
 		&nbsp;&nbsp;&nbsp;<button type="button" id="cancle" onclick="history.back()">취소</button>
 	</div>
 	</form>
+	</c:if>
 </body>
 </html>
