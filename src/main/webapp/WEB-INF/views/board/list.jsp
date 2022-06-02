@@ -20,7 +20,7 @@
   keyword = document.getElementById("keyword").value;
   
   console.log(keyword)
-  location.href = "../board/list?num&keyword=" + keyword;
+  location.href = "../board/notice?num&keyword=" + keyword;
  };
 </script>
 </head>
