@@ -77,7 +77,7 @@
 		<div class="row">
 			<div class="col" style="text-align: left;">
 
-				<a href="/inquiry/faqlistpage?num=1" role="button"
+				<a href="/inquiry/faq/list?num=1" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 			</div>
 			<div class="col" style="text-align: right;">

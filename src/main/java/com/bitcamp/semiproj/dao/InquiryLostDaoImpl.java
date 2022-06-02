@@ -1,5 +1,6 @@
 package com.bitcamp.semiproj.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -43,5 +44,23 @@ public class InquiryLostDaoImpl implements InquiryLostDao {
 	@Override
 	public void lostdelete(String seq) {
 		sessionLost.delete(namespace +"lostdelete",seq);
+	}
+
+	@Override
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return sessionLost.selectOne(namespace +"lostcount");
+	}
+
+	@Override
+	public List<InquiryLostDto> listPage(int startnum, int postnum, String keyword) throws Exception {
+		// TODO Auto-generated method stub
+		
+		HashMap<Object, Object> data = new HashMap<>();
+		
+		data.put("startnum", startnum);
+		data.put("postnum", postnum);
+		 data.put("keyword", keyword);
+		return sessionLost.selectList(namespace + "lostPage", data);
 	}
 }
