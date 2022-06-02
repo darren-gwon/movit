@@ -94,6 +94,7 @@ public class SnsController {
 			userService.snsReg(map);
 			
 			session.invalidate();
+			session.setAttribute("name",map.get("name"));
 			session.setAttribute("user_id",map.get("user_id"));
 			session.setAttribute("kakaoN","kakao");
 			
