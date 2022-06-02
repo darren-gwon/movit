@@ -15,7 +15,7 @@ public interface InquiryFaqDao {
 	public int count() throws Exception;
 				
 	//게시물 목록 + 페이징
-	public List<InquiryFaqDto> listPage(int displayPost, int postNum) throws Exception;
+	public List<InquiryFaqDto> faqlistPage(int startnum, int postnum, String keyword) throws Exception;
 	}
 
 

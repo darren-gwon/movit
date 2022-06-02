@@ -52,17 +52,17 @@ public class InquiryFaqDaoImpl implements InquiryFaqDao {
 		return session.selectOne(namespace + "faqcount");
 	}
 			
-	//게시물 목록 + 페이징
-	// 매개변수인 displayPost, postNum들 해시맵을 이용하여 하나로 그룹지어주고 매퍼로 전송됩니다.
+	//게시물 목록 + 페이징 + 키워드 검색기능 
 	@Override
-	public List<InquiryFaqDto> listPage(int displayPost, int postNum) throws Exception{
+	public List<InquiryFaqDto> faqlistPage(int startnum, int postnum, String keyword) throws Exception{
 				
 	HashMap<Object, Object> data = new HashMap<>();
 				
-	data.put("displayPost", displayPost);
-	data.put("postNum", postNum);
+	data.put("startnum", startnum);
+	data.put("postnum", postnum);
+	 data.put("keyword", keyword);
 				
 		return session.selectList(namespace + "faqlistPage", data);
 				
-			}
+	}
 	}

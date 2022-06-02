@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bitcamp.semiproj.domain.InquiryDto;
 import com.bitcamp.semiproj.domain.InquiryLostDto;
 import com.bitcamp.semiproj.service.InquiryLostService;
 
@@ -24,9 +25,41 @@ public class InquiryLostController {
 	
 	
 	@GetMapping("/lost")
-	public String SupportHome(Model model) throws Exception{
-		List<InquiryLostDto> list = lostService.getLostList();
+	public String SupportHome(Model model, @RequestParam(defaultValue = "1") Integer num,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) throws Exception{
+
+		
+		int postcount = lostService.count(); // 총 갯수
+		int postnum = 10; // 10개씩 출력
+		int pagenum = (int) Math.ceil((double) postcount / postnum); // 페이지 번호 소수점 무조건 올림
+		int displaypost = (num - 1) * postnum; //
+		int pagecount = 5; //
+		int endpagenum = (int) (Math.ceil((double) num / (double) pagecount) * pagecount);//
+		int startpagenum = endpagenum - (pagecount - 1); //
+
+		int endpagenum_re = (int) (Math.ceil((double) postcount / (double) postnum));
+
+		if (endpagenum > endpagenum_re) {
+			endpagenum = endpagenum_re;
+		}
+		boolean prev = startpagenum == 1 ? false : true;
+		boolean next = endpagenum * postnum >= postcount ? false : true;
+
+		List<InquiryLostDto> list = lostService.listPage(displaypost,postnum,keyword);
 		model.addAttribute("list",list);
+		model.addAttribute("pagenum", pagenum);
+
+		model.addAttribute("displaypost", displaypost);
+
+		model.addAttribute("startpagenum", startpagenum);
+		model.addAttribute("endpagenum", endpagenum);
+
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
+
+		model.addAttribute("select", num);
+		model.addAttribute("postcount", postcount);
+		
 		return "inquiry/lost.tiles";
 	}
 	

@@ -109,7 +109,7 @@ table.table-hover td {
 					success : function(jdata) {
 						if (jdata = 1) {
 							alert("삭제 성공");
-							location.replace("faqpage?seq=1") //faq로 맵핑 페이지 새로고침
+							location.replace("/inquiry/faq/list?seq=1") //faq로 맵핑 페이지 새로고침
 						} else {
 							alert("삭제 실패");
 						}
@@ -118,6 +118,14 @@ table.table-hover td {
 			}
 		}
 	}
+	
+	 function search() {
+		  
+		  keyword = document.getElementById("keyword").value;
+		  
+		  console.log(keyword)
+		  location.href = "/inquiry/faq/list?num&keyword=" + keyword;
+		 };
 </script>
 
 
@@ -143,12 +151,12 @@ table.table-hover td {
 				<div class="row" style="font-size: 15px;">
 					<div class="col-5"></div>
 					<div class="col-6" style="text-align: right;">
-						<input type="search" class="form-control" placeholder="키워드 입력"
+						<input type="search" class="form-control" placeholder="키워드 입력" id="keyword"
 							aria-label="Search" style="text-align: center;">
 					</div>
 
 					<div class="col-1" style="text-align: right;">
-						<button type="button" style="width: 100px; height: 38px;"
+						<button type="button" style="width: 100px; height: 38px;" onclick="search()"
 							class="btn btn-outline-dark">
 							<p class=font-monospace>검색하기</p>
 						</button>
@@ -173,14 +181,14 @@ table.table-hover td {
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${list}" var="faq">
+								<c:forEach items="${list}" var="faq" varStatus="i">
 									<tr>
 										<td><input name="RowCheck" type="checkbox"
-											value="${faq.seq}" /></td>
-										<td>${faq.seq}&nbsp;</td>
+											value="${faq.seq}" /></td>										
+										<td><c:out value="${displaypost+i.count}" /></td>
 										<td>${faq.inquiry_type}&nbsp;</td>
 										<td style="width: 900px;"><a
-											href="faq/detail?seq=${faq.seq}">${faq.title}&nbsp;</a></td>
+											href="detail?seq=${faq.seq}">${faq.title}&nbsp;</a></td>
 										
 										<td><fmt:formatDate value="${faq.write_date}"
 												pattern="yyyy/MM/dd" /></td>
@@ -191,40 +199,43 @@ table.table-hover td {
 					</div>
 				</div>
 			</div>
-			
-			
-			
-			<div>
-			
-			
-			
-			</div>
-			
-			<br>
-			
-			
-			
+	
+
+
+
+
+
 			<div class="container">
 				<div class="row">
 					<div class="col" style="text-align: left;">
-						<a href="<c:url value='/inquiry/home'/>" role="button"
-							class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
+						<a href="<c:url value='/inquiry/home'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 					</div>
-					
+
 					<div class="col">
-						<c:forEach begin="1" end="${pageNum}" var="num">
-							<span> <a class="btn btn-outline-dark"
-								href="/inquiry/faqlistpage?num=${num}">${num}</a>
+						<c:if test="${prev}">
+
+							<a class="btn btn-outline-dark" href="/inquiry/fqq/list?num=${startpagenum - 1}">〈</a>
+
+						</c:if>
+						<c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
+							<span> <c:if test="${num!=select}">
+									<a class="btn btn-outline-dark" href="/inquiry/faq/list?num=${num}">${num}</a>
+								</c:if>
+							</span>
+							<span> <c:if test="${num==select}">
+									<b><a class="btn btn-outline-dark" href="/inquiry/faq/list?num=${num}">${num}</a></b>
+								</c:if>
 							</span>
 						</c:forEach>
+						<c:if test="${next}">
+							<a class="btn btn-outline-dark" href="/inquiry/faq/list?num=${endpagenum + 1}">〉</a>
+						</c:if>
 					</div>
-					
+
 					<div class="col" style="text-align: right;">
-						<a href="<c:url value='/inquiry/faq/insert'/>" role="button"
-							class="btn btn-outline-dark" style="width: 100px;">글쓰기</a> 
-							
-							<input type="button" class="btn btn-outline-danger"
-							style="width: 100px;" value="선택삭제" onclick="deleteValue();">
+						<a href="<c:url value='/inquiry/faq/insert'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">글쓰기</a>
+
+						<input type="button" class="btn btn-outline-danger" style="width: 100px;" value="선택삭제" onclick="deleteValue();">
 					</div>
 				</div>
 

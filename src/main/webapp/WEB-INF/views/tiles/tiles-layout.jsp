@@ -419,7 +419,7 @@
 
 		});
 		// 2. 모달창 닫기 버튼
-		$('.close').on('click', (function() {
+		$('.close').on('click', function() {
 			/* $('#Idresultview').hide(); */
 			$('.modal').hide();
 		});
