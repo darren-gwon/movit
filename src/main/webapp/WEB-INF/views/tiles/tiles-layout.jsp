@@ -294,7 +294,7 @@
 			$.ajax({
 				type : "get",
 				dataType : "json",
-				url : "out",
+				url : "logout",
 				success : function() {
 
 				}
