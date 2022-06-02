@@ -15,7 +15,7 @@
 <style type="text/css">
 		body
 		{
-			border: 1px solid black;
+			/* border: 1px solid black; */
 			width: 800px;
 			height: 1100px;
 		}
@@ -80,6 +80,7 @@
 				<a href="/inquiry/faq/list?num=1" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 			</div>
+			<c:if test="${sessionScope.user_id == 'admin' }">
 			<div class="col" style="text-align: right;">
 				<a href="/inquiry/faq/update?seq=${data.seq}" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">수정</a>
@@ -88,6 +89,7 @@
 					href="/inquiry/faq/delete?seq=${data.seq}" role="button"
 					class="btn btn-outline-danger" style="width: 100px;">삭제</a>
 			</div>
+			</c:if>
 		</div>
 	</div>
 	<br>
