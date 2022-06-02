@@ -1,8 +1,39 @@
 @charset "UTF-8";
 
-#circle {
-	width: 100px;
-	height: 100px;
-	background: pink;
-	border-radius: 50%
+.content{
+	width:1500px;
+	margin: 120px auto;
+}
+
+
+.poster_img {
+	width: 300px;
+	height: 429px;
+}
+
+/* 각각 영화 포스터 영역 */
+li.movie_list {
+	
+	float: left;
+	margin-right: 60px;
+	margin-bottom: 60px;
+	width: fit-content;
+}
+
+
+.movie_title {
+	display: block;
+	width: 300px;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+ul{
+	list-style:none;
+}
+
+.btn {
+	width: 130px;
 }

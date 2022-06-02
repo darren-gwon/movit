@@ -19,5 +19,11 @@ public class MovieDaoImpl implements MovieDao  {
 		return session.selectList(namespace+"selectMovieByTheaterID", theaterID);
 	}
 
+	@Override
+	public List<MovieDto> selectAllMovies() {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+"selectAllMovies");
+	}
+
 	
 }
