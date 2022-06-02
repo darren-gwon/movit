@@ -11,6 +11,7 @@ public class NaverDto {
 	private String n_name;
 	private String n_nickName;
 	private String n_birthyear;
+	private String n_phone;
 	public long getN_number() {
 		return n_number;
 	}
@@ -53,12 +54,19 @@ public class NaverDto {
 	public void setN_birthyear(String n_birthyear) {
 		this.n_birthyear = n_birthyear;
 	}
+
+	public String getN_phone() {
+		return n_phone;
+	}
+	public void setN_phone(String n_phone) {
+		this.n_phone = n_phone;
+	}
 	@Override
 	public String toString() {
 		return "NaverDto [n_number=" + n_number + ", n_birthday=" + n_birthday + ", n_email=" + n_email + ", n_gender="
-				+ n_gender + ", n_name=" + n_name + ", n_nickName=" + n_nickName + ", n_birthyear=" + n_birthyear + "]";
+				+ n_gender + ", n_name=" + n_name + ", n_nickName=" + n_nickName + ", n_birthyear=" + n_birthyear
+				+ ", n_phone=" + n_phone + "]";
 	}
-	
 	
 	
 	

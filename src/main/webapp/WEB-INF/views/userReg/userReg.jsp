@@ -13,13 +13,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://kit.fontawesome.com/5d8badcf1a.js" crossorigin="anonymous"></script>
+
 <link href="/resources/css/userReg.css" rel='stylesheet' />
 <c:set var="root" value="<%=request.getContextPath()%>" />
 </head>
 <body>
-	<div class="container">
-		<div class="content" style="margin-top: 5%;">
+	<div class="container2">
+		<div class="content2" style="margin-top: 5%;">
 			<center>
 				<h1 id="title">회원가입</h1>
 				<form id=frm style="width: 80%;" class="form-inlie">
@@ -36,8 +36,8 @@
 								<div style="margin-bottom: 0px;" id="hiddenid">
 									<p style="float: left;" id="msgid"></p>
 								</div>
-								<input type="text" name="user_id" id="user_id" class="int" placeholder="아아디" onblur="isId(this.value)" required="required">
-								<input type="hidden" id="idcheck">
+								<input type="text" name="user_id" id="user_id" class="int" placeholder="아이디" onblur="isId(this.value)" required="required">
+								<input type="hidden" id="idcheck" class="int">
 
 							</div>
 
@@ -48,7 +48,7 @@
 								</div>
 								<input type="password" class="int" name="password" id="password" placeholder="비밀번호" onkeyup="isPassword(this.value)" required="required">
 								<span class="glyphicon glyphicon-lock"></span>
-								<input type="hidden" id="passcheck">
+								<input type="hidden" id="passcheck" class="int">
 							</div>
 
 							<div>
@@ -57,7 +57,7 @@
 									<p style="float: left;" id="msgpasswordcheck"></p>
 								</div>
 								<input type="password" class="int" id="passwordCheck" placeholder="비밀번호 확인" onkeyup="isPasswordEqual()" required="required">
-								<input type="hidden" id=passcheck1>
+								<input type="hidden" id=passcheck1 class="int">
 							</div>
 
 							<div>
@@ -66,7 +66,7 @@
 									<p style="float: left;" id="msgbirthday"></p>
 								</div>
 								<input type="date" class="int" name="birthday" id="birthday" onblur="isBirthday(this.value)" required="required">
-								<input type="hidden" id="birthdaycheck">
+								<input type="hidden" id="birthdaycheck" class="int">
 							</div>
 
 							<div>
@@ -76,7 +76,7 @@
 									<p style="float: left;" id="msgname"></p>
 								</div>
 								<input type="text" name="name" class="int" name="name" id="name" placeholder="이름" onblur="isName(this.value)" required="required">
-								<input type="hidden" id="namecheck">
+								<input type="hidden" id="namecheck" class="int">
 							</div>
 
 							<div>
@@ -86,7 +86,7 @@
 								</div>
 								<input type="text" class="int" name="nickname" id="nickname" placeholder="별명" onblur="isNickname(this.value)" required="required">
 								<span class="glyphicon glyphicon-user"></span>
-								<input type="hidden" id="nicknamecheck">
+								<input type="hidden" id="nicknamecheck" class="int">
 							</div>
 
 							<div>
@@ -99,11 +99,11 @@
 									<option value=남자>남자</option>
 									<option value=여자>여자</option>
 								</select>
-								<input type="hidden" id="gendercheck">
+								<input type="hidden" id="gendercheck" class="int">
 							</div>
 
 							<h4>휴대폰번호</h4>
-							<input type="hidden" id="phonecheck">
+							<input type="hidden" id="phonecheck" class="int">
 							<div style="margin-bottom: 0px;" id="hiddenphone">
 								<p style="float: left;" id="msgphone"></p>
 							</div>
@@ -121,9 +121,9 @@
 											<option value="019">019</option>
 										</select>
 										&nbsp;&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;&nbsp;
-										<input name="phone2" id="phone2" maxlength="4" type="input" style="width: 100px;">
+										<input name="phone2" id="phone2" maxlength="4" type="input" style="width: 100px;" class="int">
 										&nbsp;&nbsp;&nbsp;<b>-</b> &nbsp;&nbsp;&nbsp;&nbsp;
-										<input name="phone3" id="phone3" maxlength="4" type="input" style="width: 100px" onblur="isPhone(this.value)">
+										<input name="phone3" id="phone3" maxlength="4" type="input" style="width: 100px" onblur="isPhone(this.value)" class="int">
 									</td>
 								</tr>
 							</div>
@@ -134,21 +134,21 @@
 									<p style="float: left;" id="msgemail"></p>
 								</div>
 
-								<input type="hidden" id=emailcheck>
+								<input type="hidden" id=emailcheck class="int">
 								<input type="text" class="form-control int" name="email" id="email" placeholder="E-mail" onblur="isEmail(this.value)" title="이메일 주소를 입력해주세요." required="required">
 								<div class="mail_check_input_box" id="mail_check_input_box_false">
-									<input id="certi" type="text" name="certi" title="인증번호 입력" disabled required />
+									<input class="int" id="certi" type="text" name="certi" title="인증번호 입력" placeholder="인증번호 보내기 후 인증번호를 입력해주세요" disabled required />
 								</div>
 
-								<button type="button" class="btn btn-outline-danger btn-sm px-3" id="emailChk" class="doubleChk">
-									<i class="bi bi-envelope-check"></i>&nbsp;인증번호 보내기
+								<button type="button" class="btn btn-outline-danger btn-sm px-3" id="emailChk" class="doubleChk" style="border-radius: 25px;">
+									<b style="font-size: 18px; font-weight: bold;"><i class="bi bi-envelope-check"></i>&nbsp;인증번호 보내기</b>
 								</button>
 								&nbsp;
-								<button type="button" class="btn btn-outline-info btn-sm px-3" id="emailChk2" class="doubleChk">
-									<i class="bi bi-envelope-check"></i>&nbsp;확인
+								<button type="button" class="btn btn-outline-info btn-sm px-3" id="emailChk2" class="doubleChk" style="border-radius: 25px;">
+									<b style="font-size: 18px; font-weight: bold;"><i class="bi bi-envelope-check"></i>&nbsp;확인</b>
 								</button>
 								&nbsp;
-								<input type="hidden" id="emailDoubleChk" />
+								<input type="hidden" id="emailDoubleChk" class="int"/>
 								<br> <span class="point successEmailChk" style="color: red;">이메일 입력후 인증번호 보내기를 해주십시오.</span>
 								
 								<p class="tip" style="color: red;">아이디 비밀번호 분실시 필요한 정보이므로, 정확하게 기입해 주십시오.</p>
@@ -156,9 +156,9 @@
 							</div>
 					</div>
 					<div>
-						<button type="button" class="btn btn-primary btn-block" style="background: #5673bd; border-radius: 25px;" id="RegSuccess">가입하기</button>
-						<br>
-						<a href="login" class="text-center">이미 회원이십니까?</a>
+						<button type="button" class="btn btn-primary btn-block reg" style="background: #5673bd; border-radius: 25px; font-size: 18px; font-weight: bold;width: 100%; height: 55px;" id="RegSuccess">가입하기</button>
+						<br><br>
+						<a href="/user/agree" class="text-center">이미 회원이십니까?</a>
 						<br> <br>
 					</div>
 			
@@ -240,17 +240,16 @@
 								+ user_id,
 						type : 'post',
 						success : function(data) {
-							console.log("1 = 중복o / 0 = 중복x : " + data);
 
 							if (data == 1) {
 								// 1 : 아이디가 중복되는 문구
 								$('#hiddenid').attr('style',
-										'margin-bottom:35px;');
+										'margin-bottom:40px;');
 								showMsgid("아이디가 이미 있습니다.");
 							} else {
 								if (!regExp.test(asValue)) {
 									$('#hiddenid').attr('style',
-											'margin-bottom:50px;');
+											'margin-bottom:55px;');
 									showMsgid("아이디는 영문으로 시작하는 5~20자의<br>영문 소문자, 숫자와 특수기호(_)만 사용 가능합니다.");
 									$('#idcheck').attr('value', 'false');
 									return false;
@@ -508,8 +507,8 @@
 								form.setAttribute("method", "post");
 								form.submit();
 
-								alert($('#user_id').val()
-										+ "님 환영합니다. 선택해주셔서 감사합니다 :)");
+								alert($('#name').val()
+										+ "님 환영합니다. 선택해주셔서 감사합니다. Movit에서 좋은 시간 보내세요.)");
 
 							} else {
 								alert("회원가입을 완료할 수 없습니다. 다시한번 확인해주십시오.");

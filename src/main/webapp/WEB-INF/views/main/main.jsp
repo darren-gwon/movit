@@ -35,7 +35,9 @@
 	</div>
 	<div class="nav_wrap">
 		<div class="nav mypage">
-			<img src="/resources/img/main/nav/mypage.png" id="mypage_img" class="nav_img"> <span class="nav_name">마이페이지</span>
+			<a href="mypage/home">
+				<img src="/resources/img/main/nav/mypage.png" id="mypage_img" class="nav_img"> <span class="nav_name">마이페이지</span>
+			</a>
 		</div>
 		<div class="nav event">
 			<img src="/resources/img/main/nav/event.png" id="event_img" class="nav_img"> <span class="nav_name">이벤트</span>
