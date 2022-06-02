@@ -29,7 +29,7 @@
 	</div>
 
 
-	<form name="update" method="post" action="update?seq=${data.seq}">
+	<form name="update" method="post" action="update?num=${data.seq}">
 		<input type="hidden" value="${data.seq}">
 
 		<div class="container">
@@ -89,7 +89,7 @@
 			<div class="row">
 				<div class="col" style="text-align: left;">
 
-					<a href="<c:url value='/inquiry/faq'/>" role="button"
+					<a onclick="history.back()" role="button"
 						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 				</div>
 

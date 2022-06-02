@@ -109,7 +109,7 @@ table.table-hover td {
 					success : function(jdata) {
 						if (jdata = 1) {
 							alert("삭제 성공");
-							location.replace("faq") //faq로 맵핑 페이지 새로고침
+							location.replace("faqpage?seq=1") //faq로 맵핑 페이지 새로고침
 						} else {
 							alert("삭제 실패");
 						}
@@ -214,7 +214,7 @@ table.table-hover td {
 					<div class="col">
 						<c:forEach begin="1" end="${pageNum}" var="num">
 							<span> <a class="btn btn-outline-dark"
-								href="/inquiry/faq?seq=${num}">${num}</a>
+								href="/inquiry/faqlistpage?num=${num}">${num}</a>
 							</span>
 						</c:forEach>
 					</div>

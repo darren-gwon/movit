@@ -49,7 +49,7 @@ public class InquiryFaqDaoImpl implements InquiryFaqDao {
 	//게시물 총 개수
 	@Override
 	public int count() throws Exception {
-		return session.selectOne(namespace + "count");
+		return session.selectOne(namespace + "faqcount");
 	}
 			
 	//게시물 목록 + 페이징
@@ -62,7 +62,7 @@ public class InquiryFaqDaoImpl implements InquiryFaqDao {
 	data.put("displayPost", displayPost);
 	data.put("postNum", postNum);
 				
-		return session.selectList(namespace + "listPage", data);
+		return session.selectList(namespace + "faqlistPage", data);
 				
 			}
 	}

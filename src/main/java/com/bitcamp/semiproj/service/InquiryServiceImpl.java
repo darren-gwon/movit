@@ -38,7 +38,6 @@ public class InquiryServiceImpl implements InquiryService {
 	//게시물 삭제
 	@Override
 	public void inquirydelete(String seq) {
-		// TODO Auto-generated method stub
 		inquiryDao.inquirydelete(seq);
 	}
 

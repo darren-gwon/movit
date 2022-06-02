@@ -108,7 +108,7 @@ public class InquiryController {
 			int displayPost = (num - 1) * postNum;
 			
 			/* List<InquiryDto> list = null; */
-			list = inquiryService.listPage(displayPost,  postNum);
+			list = inquiryService.listPage(displayPost, postNum);
 			
 			model.addAttribute("list", list);
 			model.addAttribute("pageNum", pageNum);
@@ -116,12 +116,6 @@ public class InquiryController {
 			return "inquiry/inquiry.tiles";
 		}
 }
-
-
-
-
-
-
 
 
 

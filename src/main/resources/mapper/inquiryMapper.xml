@@ -34,12 +34,12 @@
 	</delete>
 	
 		<!-- faq 게시물 총 개수 -->
-	<select id="count" resultType="int">
+	<select id="faqcount" resultType="int">
 		select count(seq) from inquiry_faq
 	</select>
 	
 		<!-- faq 게시물 목록 + 페이징 -->
-	<select id="listPage" parameterType="hashMap" resultType="InquiryDto">
+	<select id="faqlistPage" parameterType="hashMap" resultType="InquiryFaqDto">
 		select seq, inquiry_type, title, content, write_date
 		from inquiry_faq
 		order by seq desc

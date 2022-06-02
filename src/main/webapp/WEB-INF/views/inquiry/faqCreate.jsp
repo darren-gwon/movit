@@ -75,7 +75,7 @@
 					<a onclick="history.back()" role="button"
 						class="btn btn-outline-dark" style="width: 100px; text-align: left;">뒤로가기</a>
 				</div>
-				<div class="col" style="text-align: right;"><a href="http://localhost:9005/inquiry/faqpage?seq=1">
+				<div class="col" style="text-align: right;"><a href="http://localhost:9005/inquiry/faqlistpage?num=1">
 					<button type="submit" class="btn btn-outline-dark"
 						style="width: 100px;">등록</button></a>
 				</div>
