@@ -26,8 +26,9 @@
 }
 
 .movie_poster .poster_img {
-	width: 270px;
+	width: 280px;
 	border-radius: 10px;
+	
 }
 
 .movie_title {
@@ -140,6 +141,5 @@ table .date {
 	margin-top: 20px;
 	cursor: point;
 }
-
 
 }

@@ -5,7 +5,7 @@
 		<div id="movieSlide" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="/resources/img/main/banner/banner_1.jpg" class="d-block w-100" alt="...">
+					<a href="../movie/detail?movieID=20212855"> <img src="/resources/img/main/banner/banner_1.jpg" class="d-block w-100" alt="..."></a>
 				</div>
 				<div class="carousel-item">
 					<img src="/resources/img/main/banner/banner_2.jpg" class="d-block w-100" alt="...">
@@ -20,16 +20,16 @@
 		</div>
 		<div class="movie_poster_wrap">
 			<div class="movie_poster first">
-				<img src="https://img.megabox.co.kr/SharedImg/2022/05/04/4OFqLBLmda67a6BPXjaXCVM5wun7FAtb_420.jpg" class="poster_img"> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
+				<a href="../movie/detail?movieID=20212855"><img src="https://img.megabox.co.kr/SharedImg/2022/05/04/4OFqLBLmda67a6BPXjaXCVM5wun7FAtb_420.jpg" class="poster_img"></a> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
 			</div>
 			<div class="movie_poster">
-				<img src="https://img.megabox.co.kr/SharedImg/2022/04/29/Sj4v7jaCicFTLrGgxM5D0lRsrL3kgu8g_420.jpg" class="poster_img"> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
+				<a href="../movie/detail?movieID=20204548"><img src="https://img.megabox.co.kr/SharedImg/2022/05/23/oZfETtpEvKGpdY2JQo2Z6wFL0S4cpKy5_420.jpg" class="poster_img"></a> <span class="movie_title">범죄도시2</span>
 			</div>
 			<div class="movie_poster">
-				<img src="https://img.megabox.co.kr/SharedImg/2022/04/06/7YDE8KC4uv7RH6F57pTYUhS7IygSxYTF_420.jpg" class="poster_img"> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
+				<a href="../movie/detail?movieID=20206061"><img src="https://img.megabox.co.kr/SharedImg/2022/05/16/WApIttC9CrStYU7j7jzFRlc2HsIXBQtY_420.jpg" class="poster_img"></a> <span class="movie_title">쥬라기 월드: 도미니언</span>
 			</div>
 			<div class="movie_poster last">
-				<img src="https://img.megabox.co.kr/SharedImg/2022/03/25/p02Tj8NeXivFyhGgMGm3DD0kdeogGkkA_420.jpg" class="poster_img"> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
+				<a href="../movie/detail?movieID=20223278"><img src="https://img.megabox.co.kr/SharedImg/2022/02/17/djm7aYuL9bQGZRsxyUH75wATz9ub9ouk_420.jpg" class="poster_img"></a> <span class="movie_title">극장판 주술회전 0</span>
 			</div>
 		</div>
 	</div>
