@@ -4,13 +4,13 @@ html {
 	background-color: #f5f6f7;
 }
 
-.container {
+.container2 {
 	display: flex;
 	justify-content: center;
 	margin-top: 50px;
 }
 
-.content * {
+.content2 * {
 	margin: 3px 0px 7px 0px;
 	font-family: 'Nanum Gothic';
 	font-weight: 600;
@@ -18,33 +18,56 @@ html {
 }
 
 @media screen and (min-width: 800px) {
-	.content {
+	.content2 {
 		width: 500px;
 	}
 }
 
 @media screen and (max-width: 800px) {
-	.content {
+	.content2 {
 		width: 60%;
 	}
 }
 
 @media screen and (max-width: 330px) {
-	.container {
+	.container2 {
 		width: 330px;
 	}
 }
 
-.content input, button {
+.int {
 	width: 100%;
 	height: 40px;
 }
-
-.content>form>div {
-	margin-top: 20px;
+.btn btn-outline-danger btn-sm px-3 {
+	width: 100%;
+	height: 40px;
 }
+.btn btn-primary btn-block reg{
+	width: 100%;
+	height: 40px;
+}
+ .content2>form>div {
+	margin-top: 20px;
+} 
 
-button {
+/* button {
+	color: #fff;
+	background-color: #03c75a;
+	border: 1px rgba(0, 0, 0, .08);
+	height: 50px;
+	cursor: pointer;
+	width: 100%;
+} */
+.btn btn-outline-danger btn-sm px-3{
+	color: #fff;
+	background-color: #03c75a;
+	border: 1px rgba(0, 0, 0, .08);
+	height: 50px;
+	cursor: pointer;
+	width: 100%;
+}
+.btn btn-primary btn-block reg{
 	color: #fff;
 	background-color: #03c75a;
 	border: 1px rgba(0, 0, 0, .08);
