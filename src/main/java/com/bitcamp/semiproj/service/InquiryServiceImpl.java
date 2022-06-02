@@ -48,8 +48,15 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 	//게시물 목록 + 페이징 추가
 	@Override
-	public List<InquiryDto> listPage(int displayPost, int postNum) throws Exception {
-		return inquiryDao.listPage(displayPost, postNum);
+	public List<InquiryDto> listPage(int startnum, int postnum, String keyword) throws Exception {
+		return inquiryDao.listPage(startnum, postnum, keyword);
+	}
+	//조회수 증가
+	@Override
+	public void inquiryreadcount(InquiryDto inquirydto) {
+		
+		inquiryDao.inquiryreadcount(inquirydto);
+		
 	}
 	
 }

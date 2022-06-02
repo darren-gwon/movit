@@ -115,7 +115,7 @@ table.table-hover td {
 					success : function(jdata) {
 						if (jdata = 1) {
 							alert("삭제 성공");
-							location.replace("listpage?seq=1") //list로 맵핑 페이지 새로고침
+							location.replace("/inquiry/list?num=1"); //list로 맵핑 페이지 새로고침
 						} else {
 							alert("삭제 실패");
 						}
@@ -124,6 +124,13 @@ table.table-hover td {
 			}
 		}
 	}
+	 function search() {
+		  
+		  keyword = document.getElementById("keyword").value;
+		  
+		  console.log(keyword)
+		  location.href = "../inquiry/list?num&keyword=" + keyword;
+		 };
 </script>
 
 </head>
@@ -146,12 +153,12 @@ table.table-hover td {
 				<div class="row" style="font-size: 15px;">
 					<div class="col-5"></div>
 					<div class="col-6" style="text-align: right;">
-						<input type="search" class="form-control" placeholder="키워드 입력"
+						<input type="search" class="form-control" placeholder="키워드 입력" id="keyword" 
 							aria-label="Search" style="text-align: center;">
 					</div>
 
 					<div class="col-1" style="text-align: right;">
-						<button type="button" style="width: 100px; height: 38px;"
+						<button type="button" style="width: 100px; height: 38px;" onclick="search()"
 							class="btn btn-outline-dark">
 							<p class=font-monospace>검색하기</p>
 						</button>
@@ -173,23 +180,31 @@ table.table-hover td {
 									<th>문의유형</th>
 									<th>영화관</th>
 									<th>글제목</th>
-									<th>등록일</th>
+									<th>ID</th>
+									<th>등록일</th>								
+									<th>조회수</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${list}" var="inquiry">
+							
+								<c:forEach items="${list}" var="inquiry" varStatus="i">
+									
 									<tr>
+										
 										<td><input name="RowCheck" type="checkbox"
 											value="${inquiry.seq}" /></td>
-										<td>${inquiry.seq}&nbsp;</td>
+										<td><c:out value="${displaypost+i.count}" /></td>										
 										<td>${inquiry.inquiry_type}&nbsp;</td>
-
-										<td>${inquiry.theaterID}&nbsp;</td>
-										<td style="width: 900px;"><a
-											href="list/detail?seq=${inquiry.seq}">${inquiry.title}&nbsp;</a></td>
 										
+										<td>
+										
+										${inquiry.theaterID} </td>
+										<td style="width: 900px;"><a
+											href="${root}/inquiry/list/detail?seq=${inquiry.seq}">${inquiry.title}&nbsp;</a></td>
+										<td>${inquiry.user_id}</td>
 										<td class="text_ct"><fmt:formatDate
 												value="${inquiry.write_date}" pattern="yyyy/MM/dd" /></td>
+										<td>${inquiry.view_cnt}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -209,11 +224,25 @@ table.table-hover td {
 					</div>
 
 					<div class="col">
-						<c:forEach begin="1" end="${pageNum}" var="num">
-							<span> <a class="btn btn-outline-dark"
-								href="/inquiry/listpage?seq=${num}">${num}</a>
+					<c:if test="${prev}">
+
+					<a class="btn btn-outline-dark" href="/inquiry/list?num=${startpagenum - 1}">〈</a>
+
+					</c:if>
+						<c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
+							<span> <c:if test="${num!=select}">
+									<a class="btn btn-outline-dark" href="/inquiry/list?num=${num}">${num}</a>
+								</c:if>
+							</span>
+							<span> <c:if test="${num==select}">
+									<b><a class="btn btn-outline-dark"
+										href="/inquiry/list?num=${num}">${num}</a></b>
+								</c:if>
 							</span>
 						</c:forEach>
+						<c:if test="${next}">
+							<a class="btn btn-outline-dark" href="/inquiry/list?num=${endpagenum + 1}">〉</a>
+						</c:if>
 
 					</div>
 

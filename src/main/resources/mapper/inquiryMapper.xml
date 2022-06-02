@@ -101,12 +101,18 @@
 	
 	<!-- Inquiry 게시물 등록 --> 
 	<insert id="inquirycreate" parameterType="InquiryDto">
-		insert into inquiry (theaterID, inquiry_type, title, content, user_id, write_date)
-						values (#{theaterID}, #{inquiry_type}, #{title}, #{content}, #{user_id}, NOW())
+		insert into inquiry (theaterID, inquiry_type, title, content, user_id, write_date,view_cnt)
+						values (#{theaterID}, #{inquiry_type}, #{title}, #{content}, #{user_id}, NOW(),#{view_cnt})
 	</insert>
-
+	
+	<!-- 조회수 증가 -->
+	<update id="inquiryreadcount" parameterType="InquiryDto">
+		update inquiry set view_cnt=view_cnt+1 where seq=#{seq}
+	</update>
+	
+	
 	<!-- Inquiry 게시물 상세 정보 -->
-	<select id="inquirydetail" resultType="InquiryDto">
+	<select id="inquirydetail" parameterType="int" resultType="InquiryDto">
 		select seq, theaterID, inquiry_type, title, content, write_date, view_cnt, user_id, fileID
 		from inquiry where seq = #{seq}
 	</select>
@@ -134,10 +140,9 @@
 	
 		<!-- 게시물 목록 + 페이징 -->
 	<select id="listPage" parameterType="hashMap" resultType="InquiryDto">
-		select seq, theaterID, title, write_date, inquiry_type, user_id
-		from inquiry
-		order by seq desc
-			limit #{displayPost}, #{postNum}
+		select seq, view_cnt, theaterID, title, write_date, inquiry_type, user_id from inquiry
+		where title	LIKE concat ('%',#{keyword},'%')
+		order by seq desc limit #{startnum}, #{postnum}
 	
 	</select>
 </mapper>

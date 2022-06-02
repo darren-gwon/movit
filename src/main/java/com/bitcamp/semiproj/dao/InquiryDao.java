@@ -15,6 +15,13 @@ public interface InquiryDao {
 	public int count() throws Exception;
 			
 	//게시물 목록 + 페이징
-	public List<InquiryDto> listPage(int displayPost, int postNum) throws Exception;
-	}
+	public List<InquiryDto> listPage(int startnum, int postnum, String keyword) throws Exception;
+	
+	//조회수 증가
+	public void inquiryreadcount(InquiryDto inquirydto);
+
+
+}
+
+	
 

@@ -11,5 +11,6 @@ public interface InquiryService {
 	public void inquiryupdate(InquiryDto dto);
 	public void inquirydelete(String ajaxMsg);
 	public int count() throws Exception;
-	public List<InquiryDto> listPage(int displayPost, int postNum) throws Exception;
+	public List<InquiryDto> listPage(int startnum, int postnum, String keyword) throws Exception;
+	public void inquiryreadcount(InquiryDto inquirydto);
 }

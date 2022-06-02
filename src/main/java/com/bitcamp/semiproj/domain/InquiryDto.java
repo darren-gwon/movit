@@ -2,6 +2,9 @@ package com.bitcamp.semiproj.domain;
 
 import java.sql.Timestamp;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("InquiryDto")
 public class InquiryDto {
 	private int seq;
 	private	int theaterID;
@@ -12,28 +15,15 @@ public class InquiryDto {
 	private String content;
 	private Timestamp write_date;
 	private int view_cnt;
-	private int postNum;
-	private int displayPost;
+
 	
-	
+
+
 	@Override
 	public String toString() {
 		return "InquiryDto [seq=" + seq + ", theaterID=" + theaterID + ", inquiry_type=" + inquiry_type + ", user_id="
 				+ user_id + ", guestID=" + guestID + ", title=" + title + ", content=" + content + ", write_date="
-				+ write_date + ", view_cnt=" + view_cnt + ", postNum=" + postNum + ", displayPost=" + displayPost
-				+ ", fileID=" + fileID + "]";
-	}
-	public int getPostNum() {
-		return postNum;
-	}
-	public void setPostNum(int postNum) {
-		this.postNum = postNum;
-	}
-	public int getDisplayPost() {
-		return displayPost;
-	}
-	public void setDisplayPost(int displayPost) {
-		this.displayPost = displayPost;
+				+ write_date + ", view_cnt=" + view_cnt + ", fileID=" + fileID + "]";
 	}
 	public int getSeq() {
 		return seq;

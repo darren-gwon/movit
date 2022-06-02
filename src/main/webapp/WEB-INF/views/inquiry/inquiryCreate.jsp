@@ -33,6 +33,13 @@
 			<div class="row">
 				<div class="col">
 					<br> <br>
+					<c:set var="user_id" value="${sessionScope.user_id}" />
+					<c:if test="${user_id==null}">
+					<input type="hidden" name="user_id" value="비회원"/>
+					</c:if>
+					<c:if test="${user_id!=null}">
+					<input type="hidden" name="user_id" value="${sessionScope.user_id}"/>
+					</c:if>
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
 							name="inquiry_type" aria-label="Floating label select example">
@@ -51,13 +58,13 @@
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
 							aria-label="Floating label select example" name="theaterID">
-							<option value="01">1</option> <c:set var="name" value="1" /><c:if test="${name eq '1'}">강남점<c:out value="${str}"/></c:if>
-							<option value="02">2</option>
-							<option value="03">3</option>
-							<option value="04">4</option>
-							<option value="05">5</option>
-							<option value="06">6</option>
-							<option value="07">7</option>
+							<option value="강남점">강남점</option>
+							<option value="홍대점">홍대점</option>
+							<option value="성남점">성남점</option>
+							<option value="동탄점">동탄점</option>
+							<option value="향남점">향남점</option>
+							<option value="인천터미널점">인천터미널점</option>
+							<option value="원주무실점">원주무실점</option>
 						</select><label for="floatingSelect">Theater Place Select</label>
 					</div>	
 				
@@ -90,9 +97,9 @@
 					<a onclick="history.back()" role="button"
 						class="btn btn-outline-dark" style="width: 100px; text-align: left;">뒤로가기</a>
 				</div>
-				<div class="col" style="text-align: right;" ><a href="http://localhost:9005/inquiry/listpage?seq=1">
+				<div class="col" style="text-align: right;" >
 					<button type="submit" class="btn btn-outline-dark"
-						style="width: 100px;">등록</button></a>
+						style="width: 100px;">등록</button>
 				</div>
 			</div>
 		</div>

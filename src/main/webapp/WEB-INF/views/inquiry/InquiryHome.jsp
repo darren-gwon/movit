@@ -86,13 +86,13 @@
 
 			<div class="row" style="text-align: center; font-size: 20px;">
 				<div class="col-4">
-					<a href="/inquiry/faqlistpage?num=1"> <img src="/resources/image/inquiryfaq.png"
+					<a href="/inquiry/faqlist"> <img src="/resources/image/inquiryfaq.png"
 						width="110px"> <br>
 					<br>
 						<p class="font-monospace">FAQ ></p></a>
 				</div>
 				<div class="col-4">
-					<a href="/inquiry/listpage?seq=1"> <img src="/resources/image/inquirysupport.png"
+					<a href="/inquiry/list"> <img src="/resources/image/inquirysupport.png"
 						width="110px"> <br>
 					<br>
 						<p class="font-monospace">1:1 문의 ></p></a>
