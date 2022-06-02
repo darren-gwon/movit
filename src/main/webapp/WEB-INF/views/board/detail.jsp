@@ -44,11 +44,11 @@ $(function(){
 		<td><b>조회수</b>  ${dto.view_cnt}</td>
 		</tr>
 	<tr>
-		<td class="content-td" colspan="8">${dto.content}</td>
+		<td class="content-td" colspan="8"><pre>${dto.content}</pre></td>
 	</tr>
 	</table>
 
-	<button class="listbtn" onclick="location.href='list'">목록</button>
+	<button class="listbtn" onclick="location.href='notice'">목록</button>
 	<button class="update" onclick="location.href='../board/updateform?num=${dto.seq}'">수정</button>
 	<button type="button" id="del" class="del" >삭제</button>
 	
