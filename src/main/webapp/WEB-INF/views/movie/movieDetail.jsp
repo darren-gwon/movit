@@ -23,53 +23,54 @@ $(function(){
 	});
 	
 	$("#save").click(function(){
+		if(${sessionScope.user_id == null}) {
+			return;
+		}
 	    if($.trim($("#content").val())=='') {
 			alert("메세지를 입력해주세요.");
-			return false;
+			return;
 	    } 
 	    var star = $('input[name=rating]:checked').val();
 	    console.log(star);
 	    if(star==undefined){
 	    	alert("별점을 입력해주세요");
-	    	return false;
+	    	return;
 	    }
-	    
-		//전체 폼 데이타 읽기
-		var data = $("#afrm").serialize();//serialize 전체 폼(id=afrm의 form태그) 데이타중 속성name으로 된 값을 가져온다
-		//alert(data);
-		$.ajax({
-			type:"post",
-			dataType:"text",
-			url:"../review/insert",
-			data:data,
-			success:function(){
-				
-				list();
-				totalReviewCnt = 0;
-				$("#content").val("");
-				$("#rating1").val("");
-				$("#rating2").val("");
-				$("#rating3").val("");
-				$("#rating4").val("");
-				$("#rating5").val("");
-				$("#rating6").val("");
-				$("#rating7").val("");
-				$("#rating8").val("");
-				$("#rating9").val("");
-				$("#rating10").val("");
-				//저장버튼 누를 시, 고정된 별갯수 초기화
-				//체크해제할 라디오버튼 불러오기
-				var rating = document.getElementsByName("rating");
-		        for(var i=0;rating.length;i++){
-		             //체크되어 있다면 rating[i].checked == true
-		             //true -> false로 변환 ==> 체크해제
-		             if(rating[i].checked){
-		                 rating[i].checked = false;
-		             }
-		        }
-			}
-		});
-		
+			//전체 폼 데이타 읽기
+			var data = $("#afrm").serialize();//serialize 전체 폼(id=afrm의 form태그) 데이타중 속성name으로 된 값을 가져온다
+			//alert(data);
+			$.ajax({
+				type:"post",
+				dataType:"text",
+				url:"../review/insert",
+				data:data,
+				success:function(){
+					
+					list();
+					totalReviewCnt = 0;
+					$("#content").val("");
+					$("#rating1").val("");
+					$("#rating2").val("");
+					$("#rating3").val("");
+					$("#rating4").val("");
+					$("#rating5").val("");
+					$("#rating6").val("");
+					$("#rating7").val("");
+					$("#rating8").val("");
+					$("#rating9").val("");
+					$("#rating10").val("");
+					//저장버튼 누를 시, 고정된 별갯수 초기화
+					//체크해제할 라디오버튼 불러오기
+					var rating = document.getElementsByName("rating");
+			        for(var i=0;rating.length;i++){
+			             //체크되어 있다면 rating[i].checked == true
+			             //true -> false로 변환 ==> 체크해제
+			             if(rating[i].checked){
+			                 rating[i].checked = false;
+			             }
+			        }
+				} 
+			});
 	});
 	
 	$("div.listopener").click(function(){
@@ -107,9 +108,6 @@ $(function(){
 	});
 	
 	function list() {
-		/* var login = '${sessionScope.loginok}';
-		var loginid = '${sessionScope.loginid}';
-		console.log(login, loginid); */
 		$.ajax({
 			type:"get",
 			dataType:"json",
@@ -310,8 +308,6 @@ function checkUserReview(){
 		}
 	});
 }
-
-
 </script>
 
 
@@ -545,7 +541,7 @@ function checkUserReview(){
 					<br>
 					<span id="totAvg"></span><br>
 					<span style="color:gray">영화관람 후 관람평을 작성하시면<br>vit.point를 적립해 드립니다.</span>
-					<form action="insert" id="afrm" method="post">
+					<form action="insert" id="afrm" method="post" onsubmit="return chkSubmit()">
 					<input type="hidden" name="movieID" value="${movieID }">
 						<table style="border:0.5px solid gray;border-radius:30;">
 							<tr>

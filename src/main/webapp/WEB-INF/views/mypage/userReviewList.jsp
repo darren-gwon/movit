@@ -9,48 +9,15 @@
 <title>mypage</title>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>   
 <style>
-/* .reviewdiv{
-	float:left;
-}
-ul.reviewlist li {
-	list-style: none;
-	width:90%;
-	text-align:left;
-	margin-left:30px;
-	float:left;
-	padding-bottom: 10px;
-	padding-top: 5px;
-}
-
-ul.reviewlist{
-	border: 1px solid magenta;
-	width: 350px;
-	height: 200px;
-}
-span.writeday{
-	color: gray;
-	font-size: 0.7em;
-}
-
-div.reviewContent{
-	border: 1px solid black;
-	text-align:left;
-	/* left:350px;
-	margin-right:50%;
-}
-
-div pre{
-	clear:both;
-	margin-left: 350px;
-	margin-top: 100px;
-} */
-
-
-
 div.reviewdiv{
+	border-bottom: 1px solid #ced4da;
 	width: 1200px;
 	height:130px;
 	float: left;
+	padding-top: 30px;
+	padding-right:100px;
+	margin-left: 150px;
+	
 }
 ul.reviewlist{
 	margin-top: 10px;
@@ -64,9 +31,17 @@ pre {
 	display:inline-block;
 	padding-bottom: 150px;
 	width: 300px;
+	text-align: left;
+	padding-left: 50px;
 }
 
-
+.writeday {
+	font-size: 0.7em;
+	color: #ced4da;
+}
+strong{
+	font-size: 1.2em;
+}
 </style>
 <script type="text/javascript">
 
@@ -74,16 +49,22 @@ pre {
 </head>
 <body>
 	<jsp:include page="mypageHeader.jsp"/>
+	<c:if test="${sessionScope.user_id ==null }">
+		<br><br>
+		<h3>로그인이 필요한 서비스입니다.</h3>
+		<br><br>
+	</c:if>
+	<c:if test="${sessionScope.user_id != null }">
 	<div class="content">
 		<c:forEach var="list" items="${list }">
-			<div class="reviewdiv"><hr>
+			<div class="reviewdiv">
 				<ul class="reviewlist">
-					<li><strong>영화아이디:${list.movieID }</strong></li>
+					<li><strong>${list.title }</strong></li>
 					<li>
 						<span>${list.user_id }</span>
 						<span class="writeday">${list.write_date }</span>
 					</li>
-					<li><img style="width:15px;"src="/resources/review_img/heart.png">&nbsp;${list.total_likes }</li>
+					<li><span><img style="width:15px;"src="/resources/review_img/heart.png">&nbsp;${list.total_likes }</span></li>
 				</ul>
 			
 					<pre>${list.content }</pre>
@@ -91,5 +72,6 @@ pre {
 		</c:forEach>
 		
 	</div>
+	</c:if>
 </body>
 </html>

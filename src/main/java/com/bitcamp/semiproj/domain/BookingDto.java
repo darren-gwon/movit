@@ -4,6 +4,12 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class BookingDto {
+	public String getItem_name() {
+		return item_name;
+	}
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
+	}
 	private Integer seq;
 	private String bookingID;
 	private Integer scheduleID;
@@ -12,6 +18,7 @@ public class BookingDto {
 	private Integer quantity;
 	private Timestamp booking_time;
 	private List<OwnSeatDto> ownSeatList;
+	private String item_name;
 	
 	public Integer getSeq() {
 		return seq;
