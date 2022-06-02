@@ -207,12 +207,14 @@ public class SnsController {
 			userService.snsReg(add);
 			session.setAttribute("loginname",add.get("name"));
 			session.setAttribute("user_id", add.get("user_id"));
+			session.setAttribute("NaverN", "NaverN");
 			return "redirect:/";
 			}
 		//회원 등록된 일치하는 이메일 있으면 해당 ID로 로그인.
 		else {	
 		session.setAttribute("loginname", result.getN_name());
 		session.setAttribute("user_id", getuser_id);
+		session.setAttribute("NaverN", "NaverN");
 		return "redirect:/";
 		}
 

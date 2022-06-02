@@ -13,5 +13,5 @@ public interface InquiryFaqService {
 	public void update(InquiryFaqDto dto);
 	public void delete(String seq);
 	public int count() throws Exception;
-	public List<InquiryFaqDto> listPage(int displayPost, int postNum) throws Exception;
+	public List<InquiryFaqDto> faqlistPage(int startnum, int postnum, String keyword) throws Exception;
 }
