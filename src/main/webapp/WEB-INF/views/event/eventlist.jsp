@@ -48,9 +48,11 @@
 				</c:forEach>
 			</ul>
 			<button type="button" id="morelist" class="btnmore">더보기</button>
+			<c:if test="${user_id=='admin'}">
 			<div class="btn">
 				<button type="button" class="btn btn-primary" style="width: 100px;" onclick="location.href='${root}/event/eventwriteform'">관리자<br>글쓰기</button>
 			</div>
+			</c:if>
 		</div>
 	</form>
 </div>
