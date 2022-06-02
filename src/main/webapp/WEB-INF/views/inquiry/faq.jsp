@@ -173,7 +173,9 @@ table.table-hover td {
 							style="text-align: center; font-size: 15px;">
 							<thead>
 								<tr>
-									<th><input id="allCheck" type="checkbox" name="allCheck" /></th>
+									<c:if test="${sessionScope.user_id == 'admin' }">
+										<th><input id="allCheck" type="checkbox" name="allCheck" /></th>
+									</c:if>
 									<th>번호</th>
 									<th>문의유형</th>
 									<th>제목</th>
@@ -183,8 +185,9 @@ table.table-hover td {
 							<tbody>
 								<c:forEach items="${list}" var="faq" varStatus="i">
 									<tr>
+										<c:if test="${sessionScope.user_id == 'admin' }">
 										<td><input name="RowCheck" type="checkbox"
-											value="${faq.seq}" /></td>										
+											value="${faq.seq}" /></td></c:if>										
 										<td><c:out value="${displaypost+i.count}" /></td>
 										<td>${faq.inquiry_type}&nbsp;</td>
 										<td style="width: 900px;"><a
@@ -210,7 +213,7 @@ table.table-hover td {
 					<div class="col" style="text-align: left;">
 						<a href="<c:url value='/inquiry/home'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 					</div>
-
+					<center>
 					<div class="col">
 						<c:if test="${prev}">
 
@@ -231,12 +234,13 @@ table.table-hover td {
 							<a class="btn btn-outline-dark" href="/inquiry/faq/list?num=${endpagenum + 1}">〉</a>
 						</c:if>
 					</div>
-
+					</center>
+					<c:if test="${sessionScope.user_id == 'admin' }">
 					<div class="col" style="text-align: right;">
 						<a href="<c:url value='/inquiry/faq/insert'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">글쓰기</a>
 
 						<input type="button" class="btn btn-outline-danger" style="width: 100px;" value="선택삭제" onclick="deleteValue();">
-					</div>
+					</div></c:if>
 				</div>
 
 				<br> <br> <br> <br> <br> <br>
