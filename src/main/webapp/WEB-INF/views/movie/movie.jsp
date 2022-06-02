@@ -38,7 +38,7 @@
 					<div class="col" style="text-align: center;">
 						<button type="button" class="btn btn-outline-primary" style="width: 130px;">예매하기</button>
 
-						<button type="button" class="btn btn-outline-secondary" style="width: 130px;" onclick="location.href='moviedetail?movieID=1'">상세보기</button>
+						<button type="button" class="btn btn-outline-secondary" style="width: 130px;" onclick="location.href='movie/detail?movieID=1'">상세보기</button>
 					</div>
 					<br>
 				</div>

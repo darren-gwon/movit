@@ -14,4 +14,7 @@
 		WHERE shw.screen_date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-%d')
 			AND DATE_ADD(NOW(), INTERVAL 7 DAY) and t.theaterID=${theaterID};
     </select>
+    <select id="selectMovieByMovieID" parameterType="int" resultType="MovieDto">
+    	SELECT * FROM movie where movieID=#{movieID};
+    </select>
 </mapper>

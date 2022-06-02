@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bitcamp.semiproj.domain.BookingDto;
+import com.bitcamp.semiproj.domain.InquiryDto;
+import com.bitcamp.semiproj.domain.InquiryLostDto;
 import com.bitcamp.semiproj.domain.MypageDto;
 import com.bitcamp.semiproj.domain.ReviewDto;
 import com.bitcamp.semiproj.service.MypageService;
@@ -163,5 +166,35 @@ public class MypageController {
 		List<ReviewDto> list = service.getUserReviewList(user_id);
 		model.addAttribute("list", list);
 		return "/mypage/userReviewList.tiles";
+	}
+	
+	@GetMapping("/userInquiryList")
+	public String userInquiryList(HttpSession session, Model model) {
+		String user_id = (String)session.getAttribute("user_id");
+		MypageDto dto = service.getUserData(user_id);
+		model.addAttribute("dto", dto);
+		List<InquiryDto> list = service.getUserInquiry(user_id);
+		model.addAttribute("list", list);
+		return "/mypage/userInquiryList.tiles";
+	}
+	
+	@GetMapping("/userLostInquiryList")
+	public String userLostInquiryList(HttpSession session, Model model) {
+		String user_id = (String)session.getAttribute("user_id");
+		MypageDto dto = service.getUserData(user_id);
+		model.addAttribute("dto", dto);
+		List<InquiryLostDto> list = service.getUserLost(user_id);
+		model.addAttribute("list", list);
+		return "/mypage/userLostInquiryList.tiles";
+	}
+	
+	@GetMapping("/myMovieList")
+	public String myMovieList(HttpSession session, Model model) {
+		String user_id = (String)session.getAttribute("user_id");
+		MypageDto dto = service.getUserData(user_id);
+		model.addAttribute("dto", dto);
+		List<BookingDto> list = service.myMovieList(user_id);
+		model.addAttribute("list", list);
+		return "/mypage/myMovieList.tiles";
 	}
 }

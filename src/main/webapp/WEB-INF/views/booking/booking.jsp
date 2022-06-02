@@ -17,10 +17,10 @@
 			<br>
 			<div class="booking_table scheduleTable">
 				<div class="table_heading">
-					<div class="head theater_head">영화관</div>
-					<div class="head theater_movie">영화</div>
-					<div class="head theater_date">날짜</div>
-					<div class="head theater_schedule">상영시간</div>
+					<div class="head schedule_theater">영화관</div>
+					<div class="head schedule_movie">영화</div>
+					<div class="head schedule_date">날짜</div>
+					<div class="head schedule_schedule">상영시간</div>
 				</div>
 				<div class="table_body">
 					<div class="table_row">
@@ -41,65 +41,190 @@
 				</div>
 			</div>
 
-
-
-			<table class="table seatTable" style="display: none;">
-				<tr>
-					<td>좌석선택</td>
-					<td>구매 정보</td>
-				</tr>
-				<tr>
-					<td class="seat-count">
-						<div class="cell">
-							성인:
-							<button type="button" class="decreaseBtn" class="cntBtn">-</button>
-							<input id="adultCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
-							<button type="button" class="increaseBtn" class="cntBtn">+</button>
+			<div class="booking_table seatTable" style="display: none;">
+				<div class="table_heading">
+					<div class="head ticket_and_seat">인원/좌석 선택</div>
+				</div>
+				<div class="table_body">
+					<div class="table_row">
+						<div class="cell ticket_cell">
+							<div class="simple_movie_info">
+								<img src="" class="poster_img">
+								<div>
+									<img src="" class="age_group"><span class="m_title"></span> <span class="m_classtype"></span> <span class="m_screen_date"></span>
+								</div>
+							</div>
+							<div class="ticket_qty">
+								<div class="adult">
+									성인:
+									<button type="button" class="btn btn-outline-dark decreaseBtn cntBtn">-</button>
+									<input id="adultCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
+									<button type="button" class="btn btn-outline-dark increaseBtn cntBtn">+</button>
+								</div>
+								<div class="youth">
+									청소년:
+									<button type="button" class="btn btn-outline-dark decreaseBtn cntBtn">-</button>
+									<input id="youthCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
+									<button type="button" class="btn btn-outline-dark increaseBtn cntBtn">+</button>
+								</div>
+								<div class="special">
+									우대:
+									<button type="button" class="btn btn-outline-dark decreaseBtn cntBtn">-</button>
+									<input id="specialCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
+									<button type="button" class="btn btn-outline-dark increaseBtn cntBtn">+</button>
+								</div>
+							</div>
 						</div>
-						<div class="cell">
-							청소년:
-							<button type="button" class="decreaseBtn" class="cntBtn">-</button>
-							<input id="youthCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
-							<button type="button" class="increaseBtn" class="cntBtn">+</button>
+					</div>
+					<div class="table_row">
+						<div class="cell seat_cell">
+							<div class="temp_screen">S C R E E N</div>
+							<div class="seatAlignment"></div>
 						</div>
-						<div class="cell">
-							우대:
-							<button type="button" class="decreaseBtn" class="cntBtn">-</button>
-							<input id="specialCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
-							<button type="button" class="increaseBtn" class="cntBtn">+</button>
+					</div>
+					<div class="table_row">
+						<div class="cell orderInfo_cell">
+							<span class="total">총 합계 <span class="totalPrice" id="totalPrice">0</span>원
+							</span>
+							<div id="initPayment" class="initPayment">결제하기</div>
 						</div>
-					</td>
-					<td rowspan="2" class="seat-result">최종결제금액: <span id="totalPrice" class="totalPrice">0</span>원<br>
-						<button type="button" id="doPayment">결제하기</button>
-					</td>
-				</tr>
-				<tr>
-					<td class="seat-layout">좌석 선택 영역</td>
-				</tr>
-			</table>
-			<table class="table payTable" style="display: none;">
-				<tr>
-					<td>좌석선택</td>
-					<td>결제</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><span>간편결제</span> <img src="https://developers.kakao.com/tool/resource/static/img/button/pay/payment_icon_yellow_medium.png" id="kakaopayBtn"></td>
-				</tr>
-			</table>
-		</div>
-	</div>
+
+					</div>
+				</div>
+			</div>
 
 
-	<script>
-        dateList();
 
+
+			<div class="booking_table orderTable" style="display: none;">
+				<div class="table_heading">
+					<div class="head ticket_and_seat">인원/좌석 선택</div>
+				</div>
+				<div class="table_body">
+					<div class="table_row">
+						<div class="cell ticket_cell">
+							<div class="adult">
+								성인:
+								<button type="button" class="btn btn-outline-dark decreaseBtn cntBtn">-</button>
+								<input id="adultCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
+								<button type="button" class="btn btn-outline-dark increaseBtn cntBtn">+</button>
+							</div>
+							<div class="youth">
+								청소년:
+								<button type="button" class="btn btn-outline-dark decreaseBtn cntBtn">-</button>
+								<input id="youthCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
+								<button type="button" class="btn btn-outline-dark increaseBtn cntBtn">+</button>
+							</div>
+							<div class="special">
+								우대:
+								<button type="button" class="btn btn-outline-dark decreaseBtn cntBtn">-</button>
+								<input id="specialCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
+								<button type="button" class="btn btn-outline-dark increaseBtn cntBtn">+</button>
+							</div>
+
+						</div>
+					</div>
+					<div class="table_row">
+						<div class="cell seat_cell">
+							<div class="temp_screen">S C R E E N</div>
+							<div class="seatAlignment"></div>
+						</div>
+					</div>
+					<div class="table_row">
+						<div class="cell orderInfo_cell">
+							<span class="total">총 합계 <span class="totalPrice" id="totalPrice">0</span>원
+							</span>
+							<div id="initPayment" class="initPayment">결제하기</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="booking_table payTable" style="display: none;">
+				<div class="table_heading">
+					<div class="head booking_info">예매정보</div>
+					<div class="head payment_method">결제수단</div>
+				</div>
+				<div class="table_body">
+					<div class="table_row">
+						<div class="cell booking_detail">
+							<div class="info">
+								<img src="" class="poster"> <span><img src="" class="age_group">
+									<div class="title"></div></span>
+								<dl class="dlist_infor">
+									<dt>일시</dt>
+									<dd class="datetime">
+										상영시간
+									</dd>
+									<dt>영화관</dt>
+									<dd class="theater">영화관 지점</dd>
+									<!-- <dt>인원</dt>
+									<dd >성인1</dd> -->
+									<!-- <dt>인원</dt>
+									<dd >성인1</dd> -->
+								</dl>
+							</div>
+						</div>
+						<div class="cell payment">
+							<span>간편결제</span> <img src="https://developers.kakao.com/tool/resource/static/img/button/pay/payment_icon_yellow_medium.png" id="kakaopayBtn">
+
+						</div>
+					</div>
+					<div class="table_row">
+					ㅁㅁㅁㅁㅁㅁㅁ
+					</div>
+				</div>
+			</div>
+
+			<script>
+	initialize();
+	
+    
+    function initBookingInfo(){
+    	const movie_info = $(".movieValue.active");
+    	const schedule_info = $(".scheduleValue.active");
+    	const theater_info = $(".theaterValue.active");
+    	const t_info = theater_info.text() + " " + schedule_info.data("screen_name") + ", " + schedule_info.data("classtype");
+    	const date_info = schedule_info.data("screen_date") + " " + schedule_info.data("start_time").slice(0,-3) + " ~ " + schedule_info.data("end_time").slice(0,-3);
+    	
+    	$(".info .poster").attr("src", movie_info.data("poster_img"));
+    	$(".info .title").text(movie_info.text());
+    	$(".info .age_group").attr("src", "/resources/img/movie_ages/txt-age-"+movie_info.data("age_group")+".png");
+    	$(".info .theater").text(t_info);
+    	$(".info .datetime").text(date_info);
+
+    	
+    	
+    }
+    
+    //영화 요약
+    function setSimpleMovieInfo(){
+    	const m_info = $(".simple_movie_info");
+
+    	const poster_img = $(".movieValue.active").data("poster_img");
+    	const age_group = $(".movieValue.active").data("age_group");
+    	const movie_title = $(".movieValue.active").find(".title").text();
+    	const classtype = $(".scheduleValue.active").data("classtype");
+    	const screen_date = $(".scheduleValue.active").data("screen_date");
+    	
+    	m_info.find(".poster_img").attr("src",poster_img);  
+    	m_info.find(".age_group").attr("src","/resources/img/movie_ages/txt-age-"+age_group+".png");  
+    	m_info.find(".m_title").text(movie_title);  
+    	m_info.find(".m_classtype").text(classtype);  
+    	m_info.find(".m_screen_date").text(screen_date);  
+    }
+        
         $(".regionValue").click(function () {
             $(this).siblings().removeClass("active");
             $(this).addClass("active");
             const regionID = $(this).attr("data-regionid");
+            getTheaterList(regionID);
+            getScheduleList();
+        });
 
-            $.ajax({
+        function getTheaterList(regionID){
+        	$.ajax({
                 type: "POST",
                 //dataType:"text",
                 //headers: {'content-type': 'application/json'},
@@ -112,18 +237,22 @@
                         tmp += "<li name='theaterValue' class='theaterValue' data-theaterid=" + theaters[i].theaterID + ">" + theaters[i].name + "</li>";
                     }
                     tmp+="</ul>"
-                    $(".theater").html(tmp);
+                    $("div.theater").html(tmp);
                 }
             });
-            getScheduleList();
-        });
-
+        }
+        
         $("div.theater").on("click", "li.theaterValue", function () {
             $(this).siblings().removeClass("active");
             $(this).addClass("active");
             const theaterID = $(this).attr("data-theaterid");
 
-            $.ajax({
+            getMovieList(theaterID);
+            getScheduleList();
+        });
+        
+        function getMovieList(theaterID){
+        	$.ajax({
                 type: "POST",
                 data: "theaterID=" + theaterID,
                 url: "booking/getMovieList",
@@ -134,14 +263,15 @@
                     });
                     let tmp = "<ul>";
                     for (const [key, value] of movies) {
-                        tmp += "<li name='movieValue' class='movieValue' data-age_group="+ value.age_group +" data-movieid=" + key + ">" + "<img class='age_group'	src='" + (value.age_group == 0 ? "/resources/img/movie_ages/txt-age-all" : "/resources/img/movie_ages/txt-age-"+value.age_group) + ".png'></img><span class='title'>"+ value.title + "</span></li>";
+                        tmp += "<li name='movieValue' class='movieValue' data-age_group="+ value.age_group +" data-movieid=" + key + " data-poster_img="+value.poster_img+">"
+                        	+ "<img class='age_group' src='/resources/img/movie_ages/txt-age-"+value.age_group+".png'>"
+                        	+ "<span class='title'>"+ value.title + "</span></li>";
                     }
                     tmp+="</ul>"
                     $(".movie_cell").html(tmp);
                 }
             });
-            getScheduleList();
-        });
+        }
 
         $("div.movie_cell").on("click", "li.movieValue", function () {
             $(this).siblings().removeClass("active");
@@ -187,7 +317,7 @@
                             tmp += " data-theaterid=" + info.theaterID + " data-start_time=" + info.start_time + " data-end_time=" + info.end_time;
                             tmp += " data-classid=" + info.screenDto.screenClass.classID + " data-classtype=" + info.screenDto.screenClass.class_type;
                             tmp += " data-row_qty=" + info.screenDto.seatDto.row_qty + " data-column_qty=" + info.screenDto.seatDto.column_qty;
-                            tmp += " data-total_seat_qty=" + info.screenDto.seatDto.total_seat_qty + ">" + info.screenDto.screenClass.class_type + " | " + info.screenDto.screen_name;
+                            tmp += " data-total_seat_qty=" + info.screenDto.seatDto.total_seat_qty + " data-screen_name="+info.screenDto.screen_name+">" + info.screenDto.screenClass.class_type + " | " + info.screenDto.screen_name;
                             tmp += " | " + info.start_time + "~" + info.end_time + " | " + info.screenDto.seatDto.total_seat_qty + "</span></li>";
                         });
                         tmp+="</ul>"
@@ -198,28 +328,30 @@
         }
 
         //상영 일정 클릭 이벤트
-        $("div.schedule_cell").on("click", "span.scheduleValue", function () {
+        $("div.schedule_cell").on("click", ".scheduleValue", function () {
         	$(this).removeClass("active");
             $(this).addClass("active");
             seatList();
-            $("table.scheduleTable").css("display", "none");
-            $("table.seatTable").css("display", "");
+            setSimpleMovieInfo();
+            $(".booking_table.scheduleTable").css("display", "none");
+            $(".booking_table.seatTable").css("display", "");
         });
 
         //좌석 클릭 이벤트
-        $("td.seat-layout").on("click", "span.seatIdx", function () {
+        $(".seatAlignment").on("click", ".seat", function () {
             if ($(this).hasClass("taken")) {
                 return;
             }
 
+
             const adultCnt = parseInt($("#adultCnt").val());
             const youthCnt = parseInt($("#youthCnt").val());
             const specialCnt = parseInt($("#specialCnt").val());
-
+            
             const totalCnt = adultCnt + youthCnt + specialCnt;
             const selectedCnt = $(this).siblings(".selected").length;
 
-            let totalPrice = parseInt($(".totalPrice").text());
+            let totalPrice = parseInt($("#totalPrice").text());
             let price = 0;
             const classType = $(".scheduleValue.active").attr("data-classtype");
 
@@ -227,7 +359,8 @@
                 alert("관람하실 인원을 먼저 선택해주세요.");
                 return;
             }
-
+            
+        	
             if (selectedCnt < adultCnt) {
                 price = getPriceByType(classType, '성인');
             } else if (selectedCnt < adultCnt + youthCnt) {
@@ -238,14 +371,14 @@
 
             //선택한 좌석 다시 눌렀을 때 선택 취소시키기
             if ($(this).hasClass("selected")) {
-                $(this).removeClass("selected")
+                $(this).toggleClass("selected empty")
                 totalPrice -= price;
                 $(".totalPrice").text(totalPrice);
                 return;
             }
 
-            if (totalCnt > $("span.seatIdx.selected").length) {
-                $(this).addClass("selected")
+            if (totalCnt > $(".seat.selected").length) {
+                $(this).toggleClass("empty selected")
                 totalPrice += price;
 
                 $(".totalPrice").text(totalPrice);
@@ -258,12 +391,12 @@
         //-버튼 이벤트
         $(".decreaseBtn").click(function () {
             const myCnt = $(this).siblings("input[name='inputCnt']").val();
-            if ($("span.seatIdx.selected").length >= 1) {
+            if ($(".seat.selected").length >= 1) {
                 const reset = confirm("선택하신 좌석을 모두 취소하고 다시 선택하시겠습니까?");
                 if (reset) {
                     $("input[name='inputCnt']").val(0);
-                    $("span.seatIdx.selected").removeClass("selected");
-                    $(".totalPrice").text(0);
+                    $(".seat.selected").toggleClass("selected empty");
+                    $("#totalPrice").text(0);
                     return;
                 }
             }
@@ -277,6 +410,7 @@
 
         //+버튼 이벤트
         $(".increaseBtn").click(function () {
+        	
             const totalCnt = parseInt($("#adultCnt").val()) + parseInt($("#youthCnt").val()) + parseInt($("#specialCnt").val());
             if (totalCnt < 8) {
                 const inputCnt = $(this).siblings("input[name='inputCnt']");
@@ -295,16 +429,16 @@
             const specialCnt = parseInt($("#specialCnt").val());
             const totalPrice = parseInt($("#totalPrice").text());
 
-            const movieID = $("span.scheduleValue.active").attr("data-movieid");
-            const scheduleID = $("span.scheduleValue.active").attr("data-scheduleid");
-            const screenID = $("span.scheduleValue.active").attr("data-screenid");
-            const classID = $("span.scheduleValue.active").attr("data-classid");
+            const movieID = $(".scheduleValue.active").attr("data-movieid");
+            const scheduleID = $(".scheduleValue.active").attr("data-scheduleid");
+            const screenID = $(".scheduleValue.active").attr("data-screenid");
+            const classID = $(".scheduleValue.active").attr("data-classid");
             
             const title = $(".movieValue.active .title").text();
             const quantity = (adultCnt + youthCnt + specialCnt);
 
         let ownSeatList = "[";
-        $(".seatIdx.selected").each(function(idx, el){
+        $(".seat.selected").each(function(idx, el){
         	//ownSeatList+=JSON.stringify($(el).data())+",";
         	ownSeatList+=JSON.stringify($(el).data())+",";
 
@@ -354,8 +488,9 @@
         });
 
         //결제 페이지 넘어가기 전 가격 유효성체크
-        $(".seat-result").on("click", "#doPayment", function () {
+        $(".cell.orderInfo_cell").on("click", "#initPayment", function () {
             isValidPrice();
+            initBookingInfo()
         })
 
         function isValidPrice() {
@@ -367,17 +502,30 @@
             const specialCnt = parseInt($("#specialCnt").val());
             const totalPrice = parseInt($("#totalPrice").text());
 
-            const movieID = $("span.scheduleValue.active").attr("data-movieid");
-            const scheduleID = $("span.scheduleValue.active").attr("data-scheduleid");
-            const screenID = $("span.scheduleValue.active").attr("data-screenid");
-            const classID = $("span.scheduleValue.active").attr("data-classid");
+            const movieID = $(".scheduleValue.active").attr("data-movieid");
+            const scheduleID = $(".scheduleValue.active").attr("data-scheduleid");
+            const screenID = $(".scheduleValue.active").attr("data-screenid");
+            const classID = $(".scheduleValue.active").attr("data-classid");
 
-            if (adultCnt + youthCnt + specialCnt > $("span.seatIdx.selected").length) {
+        	
+            if (adultCnt + youthCnt + specialCnt > $(".seat.selected").length) {
                 alert("좌석을 모두 선택해주시기바랍니다.");
                 return;
             }
             
-            
+            if(specialCnt>=1){
+        		alert("우대 요금으로 예매하신 고객님께서는\n"
+        				+"상영관 입장 시 증빙서류를 제시해 주시기 바랍니다.\n"
+        				+"(미지참 시 입장 제한)\n\n"
+        				+"- 장애인: 1~6급 (복지카드)\n"
+        				+"- 국가유공자: (국가유공자증)\n"
+        				+"- 경로: 만 65세 이상 (신분증)\n\n"
+        				+"위 기재된 사항 외 우대 적용 대상 고객님께서는\n"
+        				+"현장 매표소에서 우대 발권이 가능합니다.\n"
+        				+"우대 요금 선택 시 추가 할인이 제한될 수 있습니다.\n"
+        				+"※일부 지점의 경우 경로 우대요금 미운영");
+        	}
+        	
 
             $.ajax({
                 type: "POST",
@@ -445,28 +593,32 @@
         }
 
         function seatList() {
-            const row_qty = $("span.scheduleValue.active").attr("data-row_qty");
-            const column_qty = $("span.scheduleValue.active").attr("data-row_qty");
+            const row_qty = $(".scheduleValue.active").attr("data-row_qty");
+            const column_qty = $(".scheduleValue.active").attr("data-row_qty");
 
             let tmp = "";
-            tmp += "<span>" + "----- SCREEN -----" + "</span><br><br>"
-            for (let i = 0; i < row_qty; i++) {
-                tmp += "<span>[행:" + i + "]</span>";
-                for (let j = 0; j < column_qty; j++) {
-                    tmp += "<span class='seatIdx available' data-row_no=" + i + " data-column_no=" + j + ">" + j + "</span>";
+            for (let i = 1; i <= row_qty; i++) {
+                tmp += "<span class='seat_row'>"+String.fromCharCode(i+64)+"</span>";
+                for (let j = 1; j <= column_qty; j++) {
+                	tmp += "<div class='seat empty' data-row_no=" + i + " data-column_no=" + j + ">"+ j +"</div>";
+                    //tmp += "<span class='seatIdx available' data-row_no=" + i + " data-column_no=" + j + ">" + j + "</span>";
                 }
-                tmp += "<br>";
+                tmp+="<br>";
+                if(i%4==0){
+                	tmp+="<br>";
+                }
+                
             }
-            $(".seat-layout").html(tmp);
+            $(".seatAlignment").html(tmp);
             takenSeatList();
         }
 
+        
         function takenSeatList() {
-
-            const screenID = $("span.scheduleValue.active").attr("data-screenid");
-            const scheduleID = $("span.scheduleValue.active").attr("data-scheduleid");
-            const movieID = $("span.scheduleValue.active").attr("data-movieid");
-            const screen_date = $("span.scheduleValue.active").attr("data-screen_date");
+            const screenID = $(".scheduleValue.active").attr("data-screenid");
+            const scheduleID = $(".scheduleValue.active").attr("data-scheduleid");
+            const movieID = $(".scheduleValue.active").attr("data-movieid");
+            const screen_date = $(".scheduleValue.active").attr("data-screen_date");
 
             $.ajax({
                 type: "POST",	
@@ -475,14 +627,20 @@
                 data: JSON.stringify({ "screenID": screenID, "scheduleID": scheduleID, "movieID": movieID, "screen_date": screen_date }),
                 success: function (result) {
                     $(result).each(function (idx, ownSeat) {
-                        const takenSeat = $(".seatIdx").filter("[data-row_no='" + ownSeat.row_no + "']").filter("[data-column_no='" + ownSeat.column_no + "']");
+                        const takenSeat = $(".seat").filter("[data-row_no='" + ownSeat.row_no + "']").filter("[data-column_no='" + ownSeat.column_no + "']");
+                        takenSeat.toggleClass("empty taken");
                         takenSeat.text("X");
-                        takenSeat.removeClass("available");
-                        takenSeat.addClass("taken");
                     })
                 }
             });
         }
+        
+        function initialize(){
+            dateList();
+            getTheaterList(1);
+            getMovieList(1);
+        }
+
     </script>
 </body>
 
