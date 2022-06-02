@@ -2,14 +2,14 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" id="sidebarClose" class="closebtn side_menu" >&times;</a>
   <a href="/" class="side_menu">HOME</a>
-  <a href="/mypage/home" class="side_menu">마이페이지</a>
-  <a href="#" class="side_menu">공지사항</a>
-  <a href="#" class="side_menu">이벤트</a>
+  <a href="../mypage/home" class="side_menu">마이페이지</a>
+  <a href="../board/notice" class="side_menu">공지사항</a>
+  <a href="../event/eventlist" class="side_menu">이벤트</a>
   
-  <a href="#" class="side_menu">현재상영작</a>
-  <a href="#" class="side_menu">예매하기</a>
+  <a href="../movie" class="side_menu">현재상영작</a>
+  <a href="../booking" class="side_menu">예매하기</a>
 
-  <a href="#" class="side_menu">고객센터</a>
+  <a href="../inquiry/home" class="side_menu">고객센터</a>
 </div>
 <div id="sidebarBlock"></div>
 

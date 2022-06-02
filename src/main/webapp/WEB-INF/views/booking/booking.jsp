@@ -51,9 +51,7 @@
 							<div class="simple_movie_info">
 								<img src="" class="poster_img">
 								<div>
-									<img src="" class="age_group"><span class="m_title"></span>
-									<span class="m_classtype"></span>
-									<span class="m_screen_date"></span>
+									<img src="" class="age_group"><span class="m_title"></span> <span class="m_classtype"></span> <span class="m_screen_date"></span>
 								</div>
 							</div>
 							<div class="ticket_qty">
@@ -98,7 +96,7 @@
 
 
 
-			<div class="booking_table payTable" style="display: none;">
+			<div class="booking_table orderTable" style="display: none;">
 				<div class="table_heading">
 					<div class="head ticket_and_seat">인원/좌석 선택</div>
 				</div>
@@ -143,59 +141,63 @@
 				</div>
 			</div>
 
-			<!--  
-			<table class="table seatTable" style="display: '';">
-				<tr>
-					<td>좌석선택</td>
-					<td>구매 정보</td>
-				</tr>
-				<tr>
-					<td class="seat-count">
-						<div class="cell">
-							성인:
-							<button type="button" class="btn btn-outline-dark decreaseBtn cntBtn">-</button>
-							<input id="adultCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
-							<button type="button" class="btn btn-outline-dark increaseBtn cntBtn">+</button>
+			<div class="booking_table payTable" style="display: none;">
+				<div class="table_heading">
+					<div class="head booking_info">예매정보</div>
+					<div class="head payment_method">결제수단</div>
+				</div>
+				<div class="table_body">
+					<div class="table_row">
+						<div class="cell booking_detail">
+							<div class="info">
+								<img src="" class="poster"> <span><img src="" class="age_group">
+									<div class="title"></div></span>
+								<dl class="dlist_infor">
+									<dt>일시</dt>
+									<dd class="datetime">
+										상영시간
+									</dd>
+									<dt>영화관</dt>
+									<dd class="theater">영화관 지점</dd>
+									<!-- <dt>인원</dt>
+									<dd >성인1</dd> -->
+									<!-- <dt>인원</dt>
+									<dd >성인1</dd> -->
+								</dl>
+							</div>
 						</div>
-						<div class="cell">
-							청소년:
-							<button type="button" class="btn btn-outline-dark decreaseBtn cntBtn">-</button>
-							<input id="youthCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
-							<button type="button" class="btn btn-outline-dark increaseBtn cntBtn">+</button>
-						</div>
-						<div class="cell">
-							우대:
-							<button type="button" class="btn btn-outline-dark decreaseBtn cntBtn" >-</button>
-							<input id="specialCnt" name="inputCnt" class="inputCnt" type="text" value="0" />
-							<button type="button" class="btn btn-outline-dark increaseBtn cntBtn">+</button>
-						</div>
-					</td>
-					<td rowspan="2" class="seat-result">최종결제금액: <span id="totalPrice" class="totalPrice">0</span>원<br>
-						<button type="button" id="doPayment">결제하기</button>
-					</td>
-				</tr>
-				<tr>
-					<td class="seat-layout"></td>
-				</tr>
-			</table>
-			-->
-			<table class="table payTable" style="display: none;">
-				<tr>
-					<td>좌석선택</td>
-					<td>결제</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><span>간편결제</span> <img src="https://developers.kakao.com/tool/resource/static/img/button/pay/payment_icon_yellow_medium.png" id="kakaopayBtn"></td>
-				</tr>
-			</table>
-		</div>
+						<div class="cell payment">
+							<span>간편결제</span> <img src="https://developers.kakao.com/tool/resource/static/img/button/pay/payment_icon_yellow_medium.png" id="kakaopayBtn">
 
-	</div>
-	</div>
+						</div>
+					</div>
+					<div class="table_row">
+					ㅁㅁㅁㅁㅁㅁㅁ
+					</div>
+				</div>
+			</div>
 
-	<script>
+			<script>
 	initialize();
+	
+    
+    function initBookingInfo(){
+    	const movie_info = $(".movieValue.active");
+    	const schedule_info = $(".scheduleValue.active");
+    	const theater_info = $(".theaterValue.active");
+    	const t_info = theater_info.text() + " " + schedule_info.data("screen_name") + ", " + schedule_info.data("classtype");
+    	const date_info = schedule_info.data("screen_date") + " " + schedule_info.data("start_time").slice(0,-3) + " ~ " + schedule_info.data("end_time").slice(0,-3);
+    	
+    	$(".info .poster").attr("src", movie_info.data("poster_img"));
+    	$(".info .title").text(movie_info.text());
+    	$(".info .age_group").attr("src", "/resources/img/movie_ages/txt-age-"+movie_info.data("age_group")+".png");
+    	$(".info .theater").text(t_info);
+    	$(".info .datetime").text(date_info);
+
+    	
+    	
+    }
+    
     //영화 요약
     function setSimpleMovieInfo(){
     	const m_info = $(".simple_movie_info");
@@ -235,7 +237,7 @@
                         tmp += "<li name='theaterValue' class='theaterValue' data-theaterid=" + theaters[i].theaterID + ">" + theaters[i].name + "</li>";
                     }
                     tmp+="</ul>"
-                    $(".theater").html(tmp);
+                    $("div.theater").html(tmp);
                 }
             });
         }
@@ -488,6 +490,7 @@
         //결제 페이지 넘어가기 전 가격 유효성체크
         $(".cell.orderInfo_cell").on("click", "#initPayment", function () {
             isValidPrice();
+            initBookingInfo()
         })
 
         function isValidPrice() {
@@ -637,6 +640,7 @@
             getTheaterList(1);
             getMovieList(1);
         }
+
     </script>
 </body>
 

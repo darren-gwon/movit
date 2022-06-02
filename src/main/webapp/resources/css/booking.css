@@ -141,6 +141,8 @@ img.movieChk {
 
 .date_cell {
 	border-right: 1px solid #303842;
+	background-color: #f5f5f5;
+
 }
 
 .cell .date_cell li {
@@ -347,24 +349,47 @@ div.seat.taken {
 	padding: 0;
 }
 
-.table {
-	border: 1px solid black;
-	width: 900px;
-	height: 500px;
-	text-align: center;
-	margin: 0 auto;
+.booking_detail{
+	border-left: 1px solid #303842;
 }
-
-th, td {
-	border: 1px solid black;
+.info {
+	width: fit-content;
+	margin: 50px auto;
 }
-
-.seatIdx {
-	width: 30px;
-	height: 30px;
+.info .poster{
 	display: inline-block;
-	text-align: center;
-	cursor: pointer;
+	width:175px;
+}
+
+.info .age_group{
+	display: inline-block;
+}
+
+.info .title{
+	display: inline-block;
+	font-weight: bold;
+	font-size: 17px;
+}
+
+.info span{
+	display:block;
+	margin-top: 10px;
+}
+
+.dlist_infor{
+	padding-top:15px;
+	width:270px;
+	font-size:15px;
+	text-align: left;
+}
+
+.dlist_infor dt{
+	float: left;
+	width: 65px;
+}
+
+.dlist_infor dd {
+    text-align: left;
 }
 
 #kakaopayBtn {

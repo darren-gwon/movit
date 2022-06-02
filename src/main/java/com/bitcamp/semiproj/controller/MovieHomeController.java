@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/movie")
 public class MovieHomeController {
 
-	@GetMapping("/moviehome")
+	@GetMapping("")
 	public String moviewhome(){
 		
 	return "movie/movie.tiles";
 	}
 	
-	@GetMapping("/moviedetail")
+	@GetMapping("/detail")
 	public String moviewdetail(@RequestParam int movieID, Model model){
 		model.addAttribute("movieID",movieID);
 	return "movie/movieDetail.tiles";
