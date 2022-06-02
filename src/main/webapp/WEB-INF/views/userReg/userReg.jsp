@@ -34,7 +34,7 @@
 								<br>
 								<h4>아이디</h4>
 								<div style="margin-bottom: 0px;" id="hiddenid">
-									<p style="float: left;" id="msgid"></p>
+									<p style="text-align: center;" id="msgid" class="int"></p>
 								</div>
 								<input type="text" name="user_id" id="user_id" class="int" placeholder="아이디" onblur="isId(this.value)" required="required">
 								<input type="hidden" id="idcheck" class="int">
@@ -43,8 +43,8 @@
 
 							<div>
 								<h4>비밀번호</h4>
-								<div style="margin-bottom: 0px;" id="hiddenpass">
-									<p style="float: left;" id="msgpassword"></p>
+								<div style="margin-bottom: 0px;" id="hiddenpass" class="int">
+									<p style="text-align: center;" id="msgpassword"></p>
 								</div>
 								<input type="password" class="int" name="password" id="password" placeholder="비밀번호" onkeyup="isPassword(this.value)" required="required">
 								<span class="glyphicon glyphicon-lock"></span>
@@ -53,8 +53,8 @@
 
 							<div>
 								<h4>비밀번호 확인</h4>
-								<div style="margin-bottom: 0px;" id="hiddenpasscheck">
-									<p style="float: left;" id="msgpasswordcheck"></p>
+								<div style="margin-bottom: 0px;" id="hiddenpasscheck" class="int">
+									<p style="text-align: center;" id="msgpasswordcheck"></p>
 								</div>
 								<input type="password" class="int" id="passwordCheck" placeholder="비밀번호 확인" onkeyup="isPasswordEqual()" required="required">
 								<input type="hidden" id=passcheck1 class="int">
@@ -62,8 +62,8 @@
 
 							<div>
 								<h4>생년월일</h4>
-								<div style="margin-bottom: 0px;" id="hiddenbirthday">
-									<p style="float: left;" id="msgbirthday"></p>
+								<div style="margin-bottom: 0px;" id="hiddenbirthday" class="int">
+									<p style="text-align: center;" id="msgbirthday"></p>
 								</div>
 								<input type="date" class="int" name="birthday" id="birthday" onblur="isBirthday(this.value)" required="required">
 								<input type="hidden" id="birthdaycheck" class="int">
@@ -71,9 +71,9 @@
 
 							<div>
 								<h4>이름</h4>
-								<div style="margin-bottom: 0px;" id="hiddenname">
+								<div style="margin-bottom: 0px;" id="hiddenname" class="int">
 									<input type="hidden" id=namecheck class="chk">
-									<p style="float: left;" id="msgname"></p>
+									<p style="text-align: center;" id="msgname"></p>
 								</div>
 								<input type="text" name="name" class="int" name="name" id="name" placeholder="이름" onblur="isName(this.value)" required="required">
 								<input type="hidden" id="namecheck" class="int">
@@ -81,8 +81,8 @@
 
 							<div>
 								<h4>별명</h4>
-								<div style="margin-bottom: 0px;" id="hiddennickname">
-									<p style="float: left;" id="msgnickname"></p>
+								<div style="margin-bottom: 0px;" id="hiddennickname" class="int">
+									<p style="text-align: center;" id="msgnickname"></p>
 								</div>
 								<input type="text" class="int" name="nickname" id="nickname" placeholder="별명" onblur="isNickname(this.value)" required="required">
 								<span class="glyphicon glyphicon-user"></span>
@@ -91,8 +91,8 @@
 
 							<div>
 								<h4>성별</h4>
-								<div style="margin-bottom: 0px;" id="hiddengender">
-									<p style="float: left;" id="msggender"></p>
+								<div style="margin-bottom: 0px;" id="hiddengender" class="int">
+									<p style="text-align: center;" id="msggender"></p>
 								</div>
 								<select id="genderselect" class="int" name="gender" onblur="isGender(this.value)" required="required">
 									<option value=미정 selected="selected">구분</option>
@@ -105,7 +105,7 @@
 							<h4>휴대폰번호</h4>
 							<input type="hidden" id="phonecheck" class="int">
 							<div style="margin-bottom: 0px;" id="hiddenphone">
-								<p style="float: left;" id="msgphone"></p>
+								<p style="text-align: center;" id="msgphone"></p>
 							</div>
 
 							<div style="margin-bottom: 0px;" id=hiddenphone>
@@ -130,8 +130,8 @@
 
 							<div>
 								<h4>이메일</h4>
-								<div style="margin-bottom: 0px;" id=hiddenemail>
-									<p style="float: left;" id="msgemail"></p>
+								<div style="margin-bottom: 0px;" id=hiddenemail class="int">
+									<p style="text-align: center;" id="msgemail"></p>
 								</div>
 
 								<input type="hidden" id=emailcheck class="int">
@@ -269,7 +269,7 @@
 		function isPassword(asValue) {
 			var regExp = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
 			if (!regExp.test(asValue)) {
-				$('#hiddenpass').attr('style', 'margin-bottom:55px;');
+				$('#hiddenpass').attr('style', 'margin-bottom:30px;');
 				$('#passcheck').attr('value', 'false');
 				showMsgpassword("비밀번호는 8~16자 영문 대 소문자, 숫자<br> 최소 하나 이상의 특수문자를 사용하세요.");
 				return false;
@@ -287,7 +287,7 @@
 			const pwd2 = document.getElementById("passwordCheck").value;
 
 			if (pwd != pwd2) {
-				$('#hiddenpasscheck').attr('style', 'margin-bottom:55px;');
+				$('#hiddenpasscheck').attr('style', 'margin-bottom:30px;');
 				$('#passcheck1').attr('value', 'false');
 
 				showMsgpasswordcheck("비밀번호가 일치하지 않습니다.");
@@ -302,7 +302,7 @@
 		function isBirthday(asValue) {
 			var birthday = document.getElementById("birthday").value;
 			if (birthday == null || birthday == '') {
-				$('#hiddenbirthday').attr('style', 'margin-bottom:55px;');
+				$('#hiddenbirthday').attr('style', 'margin-bottom:30px;');
 				$('#birthdaycheck').attr('value', 'false');
 				showMsgbirthday("생일을 입력해주세요.");
 				return false;
@@ -318,7 +318,7 @@
 		function isName(asValue) {
 			var regExp = /^[가-힣a-zA-Z]/g;
 			if (!regExp.test(asValue)) {
-				$('#hiddenname').attr('style', 'margin-bottom:55px;');
+				$('#hiddenname').attr('style', 'margin-bottom:30px;');
 				$('#namecheck').attr('value', 'false');
 				showMsgname("이름을 한글과 영문 대 소문자를 사용하세요.<br>(특수기호, 공백 사용 불가)");
 				return false;
@@ -333,7 +333,7 @@
 		function isNickname(asValue) {
 			var regExp = /^[가-힣a-zA-Z0-9$`~!@$!%*#^?&\\(\\)\-_=+]/g;
 			if (!regExp.test(asValue)) {
-				$('#hiddennickname').attr('style', 'margin-bottom:55px;');
+				$('#hiddennickname').attr('style', 'margin-bottom:30px;');
 				$('#nicknamecheck').attr('value', 'false');
 				showMsgnickname("별명을 한글과 영문 대 소문자 영어 숫자만 사용하세요.<br>(특수기호, 공백 사용 불가)");
 				return false;
@@ -348,7 +348,7 @@
 		function isGender(asValue) {
 			var gender = document.getElementById("genderselect").value;
 			if (gender == "미정" || gender == null) {
-				$('#hiddengender').attr('style', 'margin-bottom:55px;');
+				$('#hiddengender').attr('style', 'margin-bottom:30px;');
 				$('#gendercheck').attr('value', 'false');
 				showMsggender("성별을 입력해주세요.");
 				return false;
@@ -370,7 +370,7 @@
 
 			if ($("#phone").val() == "" || $("#phone").val().length != 11
 					|| isNaN($("#phone").val())) {
-				$('#hiddenphone').attr('style', 'margin-bottom:55px;');
+				$('#hiddenphone').attr('style', 'margin-bottom:30px;');
 				$('#phonecheck').attr('value', 'false');
 				showMsgphone("휴대폰번호를 정확히 입력해 주세요");
 
@@ -378,7 +378,7 @@
 			}
 
 			else if (isNaN($("#phone").val())) {
-				$('#hiddenphone').attr('style', 'margin-bottom:55px;');
+				$('#hiddenphone').attr('style', 'margin-bottom:30px;');
 				$('#phonecheck').attr('value', 'false');
 				showMsgphone("휴대폰번호를 숫자로만 입력해 주세요");
 
@@ -412,7 +412,7 @@
 		function isEmail(asValue) {
 			var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 			if (!regExp.test(asValue)) {
-				$('#hiddenemail').attr('style', 'margin-bottom:55px;');
+				$('#hiddenemail').attr('style', 'margin-bottom:30px;');
 				$('#emailcheck').attr('value', 'false');
 				showMsgemail("이메일 주소를 다시 확인해주세요.");
 				return false;
