@@ -3,7 +3,7 @@ l, li {
 }
 
 .slidebox {
-	max-width: 530px;
+	width: 800px;
 	margin: 0 auto;
 	position: relative;
 }
@@ -30,8 +30,8 @@ l, li {
 }
 
 .slidebox .slidelist .slideitem>a img {
-	width: 530px;
-	height: 245;
+	width: 700px;
+	height: 245px;
 }
 
 .slidebox .slide-control [class*="control"] label {
@@ -45,13 +45,13 @@ l, li {
 }
 
 .slidebox .slide-control [class*="control"] label.prev {
-	left: -50px;
+	left: 10px;
 	background: #333 url('../cssimg/left-arrow.png') center center/50%
 		no-repeat;
 }
 
 .slidebox .slide-control [class*="control"] label.next {
-	right: -50px;
+	right: -20px;
 	background: #333 url('../cssimg/right-arrow.png') center center/50%
 		no-repeat;
 }
@@ -95,14 +95,20 @@ l, li {
 #slide04:checked ~ .slide-control .control04 {
 	display: block;
 }
-
+h2.title{
+	margin-right:1000px;
+	margin-bottom:90px;
+	font-weight:bold;
+}
 .content {
 	position: relative;
+	margin-top:100px;
 }
 
 div.eventlist {
 	width: 1500px;
 	margin: 0 auto;
+	margin-top:-10px;
 }
 
 ul {
@@ -141,6 +147,10 @@ ul {
 	cursor: pointer;
 	margin-left: 40px;
 }
+.btnmore:hover{
+	background-color:#071a4c;
+	color:white;
+}
 
 .eventlist ul li img {
 	border-top-left-radius: 10px;
@@ -160,8 +170,9 @@ ul {
 
 div.total {
 	font-size: 16px;
-	margin-left: 50px;
-	margin-top: 100px;
+	margin-top:110px;
+	margin-bottom:-30px;
+	margin-right:1000px;
 	color: gray;
 	font-weight: bold;
 }

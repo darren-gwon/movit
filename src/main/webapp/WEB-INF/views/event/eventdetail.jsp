@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <script>
 	$(function() {
 		$("#del").click(function() {
@@ -18,7 +19,7 @@
 			if (de) {
 				return location.href = "../event/delete?num=" + ${dto.seq}
 			}
-				});
+		});
 	});
 </script>
 
@@ -35,7 +36,7 @@
 				<b class="cnt">조회수 : ${dto.view_cnt}</b></p>
 				
 				<div class="body">
-				<img src="../resources/main_img/${dto.main_img}">${dto.content}
+				<img src="../resources/img/event_main/${dto.main_img}">${dto.content}
 				</div>
 			</div>
 		</div>

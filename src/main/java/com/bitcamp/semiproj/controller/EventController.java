@@ -74,9 +74,9 @@ import util.FileUtil;
 		public String postcreate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
 				HttpServletRequest request,HttpSession session) throws Exception{
 			
-			 String savepath = "C:\\Dev219\\git\\movit_proj\\src\\main\\webapp\\resources\\main_imgg";
-			 String savepath2 = "C:\\Dev219\\git\\movit_proj\\src\\main\\webapp\\resources\\thumnail_img";
-			 //System.out.println(savepath);
+			 String savepath = request.getServletContext().getRealPath("resources/img/event_main/");
+			 String savepath2 = request.getServletContext().getRealPath("resources/img/event_thumnail/");
+			 System.out.println(savepath);
 			 if(mainupload.get(0).getOriginalFilename().equals("")) {
 		         dto.setMain_img("no");
 		      }else {
@@ -196,7 +196,7 @@ import util.FileUtil;
 					public String getdelete(@ModelAttribute EventDto dto,
 							HttpServletRequest request,HttpSession session,int num) throws Exception {
 					
-					   String path="C:\\Dev219\\git\\movit_proj\\src\\main\\webapp\\resources\\main_img";
+					   String path=request.getServletContext().getRealPath("resources/img/main_img/");
 					  
 					   String photo=service.detail(num).getMain_img();
 					   System.out.println("===="+service.detail(num));

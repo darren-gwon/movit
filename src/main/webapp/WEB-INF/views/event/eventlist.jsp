@@ -36,7 +36,7 @@
 			<div class="total">전체 ${totalcount}건</div>
 			<ul id="newlist">
 				<c:forEach items="${list}" var="list">
-					<li><a href="../event/eventdetail?num=${list.seq}"> <img src="../resources/thumnail_img/${list.thumbnail_img}"> <br> <br> <b>${list.title}</b> <br> <br>
+					<li><a href="../event/eventdetail?num=${list.seq}"> <img src="../resources/img/event_thumnail/${list.thumbnail_img}"> <br> <br> <b>${list.title}</b> <br> <br>
 							<p>
 								기 간 :
 								<fmt:parseDate value="${list.start_date}" var="dateValue" pattern="yyyy-MM-dd" />
@@ -78,7 +78,7 @@
 						s += "<a href='../event/eventdetail?num="
 								+ d.seq
 								+ "'>";
-						s += "<img src='../resources/thumimg/"+d.thumbnail_img+"'>";
+						s += "<img src='../resources/img/event_thumnail/"+d.thumbnail_img+"'>";
 						s += "<br>"
 								+ "<br>"
 						s += "<b>";
