@@ -39,13 +39,13 @@
 						<select class="form-select" id="floatingSelect"
 							aria-label="Floating label select example" name="theaterID">
 							<option value="${data.theaterID}">${data.theaterID}</option>
-							<option value="01">1</option>
-							<option value="02">2</option>
-							<option value="03">3</option>
-							<option value="04">4</option>
-							<option value="05">5</option>
-							<option value="06">6</option>
-							<option value="07">7</option>
+							<option value="강남점">강남점</option>
+							<option value="홍대점">홍대점</option>
+							<option value="성남점">성남점</option>
+							<option value="동탄점">동탄점</option>
+							<option value="향남점">향남점</option>
+							<option value="인천터미널점">인천터미널점</option>
+							<option value="원주무실점">원주무실점</option>
 						</select><label for="floatingSelect">Theater Place Select</label>
 					</div>
 		

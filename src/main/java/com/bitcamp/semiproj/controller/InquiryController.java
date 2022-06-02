@@ -77,9 +77,7 @@ public class InquiryController {
 	@PostMapping("/list/insert")
 	public String postcreate(InquiryDto dto,Model model) throws Exception {
 		inquiryService.inquirycreate(dto);
-		List<TheaterDto> theater = theaterService.getAllTheaters();
-		model.addAttribute("theater", theater);
-		
+
 		return "redirect:/inquiry/list";
 	}
 

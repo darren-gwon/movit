@@ -97,8 +97,8 @@
 					<a onclick="history.back()" role="button"
 						class="btn btn-outline-dark" style="width: 100px; text-align: left;">뒤로가기</a>
 				</div>
-				<div class="col" style="text-align: right;" >
-					<button type="submit" class="btn btn-outline-dark"
+				<div class="col" style="text-align: right;">
+					<button type="submit" class="btn btn-outline-dark" 
 						style="width: 100px;">등록</button>
 				</div>
 			</div>
