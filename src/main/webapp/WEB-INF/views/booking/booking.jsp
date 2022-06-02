@@ -51,7 +51,8 @@
 							<div class="simple_movie_info">
 								<img src="" class="poster_img">
 								<div>
-									<img src="" class="age_group"><span class="m_title"></span> <span class="m_classtype"></span> <span class="m_screen_date"></span>
+									<img src="" class="age_group"><span class="m_title"></span> <span class="m_classtype"></span>
+									<span class="m_screen_date">2022-06-03 12:00 ~ 13:00</span><span class="screen">강남점</span>
 								</div>
 							</div>
 							<div class="ticket_qty">
@@ -159,6 +160,8 @@
 									</dd>
 									<dt>영화관</dt>
 									<dd class="theater">영화관 지점</dd>
+									<dt>인원</dt>
+									<dd class="buyer_qty"></dd>
 									<!-- <dt>인원</dt>
 									<dd >성인1</dd> -->
 									<!-- <dt>인원</dt>
@@ -193,8 +196,6 @@
     	$(".info .age_group").attr("src", "/resources/img/movie_ages/txt-age-"+movie_info.data("age_group")+".png");
     	$(".info .theater").text(t_info);
     	$(".info .datetime").text(date_info);
-
-    	
     	
     }
     
@@ -208,13 +209,24 @@
     	const classtype = $(".scheduleValue.active").data("classtype");
     	const screen_date = $(".scheduleValue.active").data("screen_date");
     	
+        const adultCnt = parseInt($("#adultCnt").val());
+        const youthCnt = parseInt($("#youthCnt").val());
+        const specialCnt = parseInt($("#specialCnt").val());
+        const totalPrice = parseInt($("#totalPrice").text());
+        
+        let tmp = adultCnt<=0?"":"성인"+adultCnt;
+    	tmp+= youthCnt<=0?"":"청소년"+youthCnt;
+    	tmp+= youthCnt<=0?"":"우대"+specialCnt;
+
     	m_info.find(".poster_img").attr("src",poster_img);  
     	m_info.find(".age_group").attr("src","/resources/img/movie_ages/txt-age-"+age_group+".png");  
     	m_info.find(".m_title").text(movie_title);  
-    	m_info.find(".m_classtype").text(classtype);  
-    	m_info.find(".m_screen_date").text(screen_date);  
+    	m_info.find(".m_classtype").text("("+classtype+")");  
+    	m_info.find(".buyer_qty").text(tmp);  
+
     }
-        
+     
+    
         $(".regionValue").click(function () {
             $(this).siblings().removeClass("active");
             $(this).addClass("active");
@@ -424,6 +436,7 @@
         //카카오페이 클릭이벤트
         $("#kakaopayBtn").click(function () {
             //JSON으로 결제 데이터 보내기
+            const login = "${sessionScope.user_id}";
             const adultCnt = parseInt($("#adultCnt").val());
             const youthCnt = parseInt($("#youthCnt").val());
             const specialCnt = parseInt($("#specialCnt").val());
