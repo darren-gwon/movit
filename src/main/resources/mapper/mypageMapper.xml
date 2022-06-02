@@ -22,4 +22,16 @@
 	<update id="pwUpdate" parameterType="Map">
 		update user set password = #{password} where user_id = #{user_id}
 	</update>
+	
+	<delete id="deleteAccount" parameterType="String">
+		delete from user where user_id=#{user_id}
+	</delete>
+	
+	<select id="checkNickName" parameterType="String" resultType="int">
+		select count(*) from user where nickname=#{nickname}
+	</select>
+	
+	<select id="getUserReviewList" parameterType="String" resultType="ReviewDto">
+		select * from review where user_id=#{user_id} order by write_date desc
+	</select>
 </mapper>
