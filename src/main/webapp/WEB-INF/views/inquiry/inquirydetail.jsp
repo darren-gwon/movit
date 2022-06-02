@@ -20,7 +20,7 @@
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col" style="text-align: center;">
-				<img src="/resources/image/inquirytop.png" width="1200px;">
+				<img src="/resources/image/inquirytop.png" width="1300px;">
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -30,7 +30,6 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-1"></div>
 			<div class="col">
 				<table class="table table-hover"
 					style="text-align: center; font-size: 15px;">
@@ -61,25 +60,24 @@
 					</tr>
 				</table>
 			</div>
-			<div class="col-1"></div>
 		</div>
 	</div>
-
+	<br>
 	<div class="container">
 		<div class="row">
-			<div class="col-1"></div>
 			<div class="col" style="text-align: left;">
 
-				<a href="<c:url value="/inquiry/list"/>" role="button"
+				<a href="/inquiry/listpage?seq=1" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 			</div>
 			<div class="col" style="text-align: right;">
 				<a href="/inquiry/list/update?seq=${data.seq}" role="button"
-					class="btn btn-outline-dark" style="width: 100px;">수정</a> <a
-					href="/inquiry/list/delete?seq=${data.seq}" role="button"
+					class="btn btn-outline-dark" style="width: 100px;">수정</a> 
+					
+					
+					<a href="/inquiry/list/delete?seq=${data.seq}" role="button"
 					class="btn btn-outline-danger" style="width: 100px;">삭제</a>
 			</div>
-			<div class="col-1"></div>
 		</div>
 	</div>
 

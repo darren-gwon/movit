@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col" style="text-align: center;">
-				<img src="/resources/image/lostTop.png" width="1200px;">
+				<img src="/resources/image/lostTop.png" width="1300px;">
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -33,7 +33,6 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-1"></div>
 			<div class="col">
 				<table class="table table-hover"
 					style="text-align: center; font-size: 15px;">
@@ -77,13 +76,11 @@
 					</tr>
 				</table>
 			</div>
-			<div class="col-1"></div>
 		</div>
 	</div>
-
+<br>
 	<div class="container">
 		<div class="row">
-			<div class="col-1"></div>
 			<div class="col" style="text-align: left;">
 
 				<a href="<c:url value="/inquiry/lost"/>" role="button"
@@ -95,7 +92,6 @@
 					href="/inquiry/lost/delete?seq=${data.seq}" role="button"
 					class="btn btn-outline-danger" style="width: 100px;">삭제</a>
 			</div>
-			<div class="col-1"></div>
 		</div>
 	</div>
 	<br>

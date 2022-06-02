@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col" style="text-align: center;">
-				<img src="/resources/image/InquiryFAQ_TOP.png" width="1200px;">
+				<img src="/resources/image/InquiryFAQ_TOP.png" width="1300px;">
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -34,7 +34,6 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col">
 					<br> <br>
 					<div class="form-floating">
@@ -79,18 +78,15 @@
 						</div>
 					</div>
 
-					<br>
-					<hr>
+					
 					<br>
 				</div>
 
-				<div class="col-1"></div>
 			</div>
 		</div>
 
 		<div class="container">
 			<div class="row">
-				<div class="col-1"></div>
 				<div class="col" style="text-align: left;">
 
 					<a href="<c:url value='/inquiry/faq'/>" role="button"
@@ -104,7 +100,6 @@
 					<button type="reset" class="btn btn-outline-dark"
 						style="width: 100px;">리셋</button>
 				</div>
-				<div class="col-1"></div>
 			</div>
 		</div>
 		<br> <br> <br><br><br><br>

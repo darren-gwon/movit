@@ -10,4 +10,6 @@ public interface InquiryService {
 	public InquiryDto inquirydetail(int seq);
 	public void inquiryupdate(InquiryDto dto);
 	public void inquirydelete(String ajaxMsg);
+	public int count() throws Exception;
+	public List<InquiryDto> listPage(int displayPost, int postNum) throws Exception;
 }

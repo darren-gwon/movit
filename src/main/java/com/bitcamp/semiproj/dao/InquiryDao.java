@@ -10,5 +10,11 @@ public interface InquiryDao {
 	public InquiryDto inquirydetail(int seq); //상세보기
 	public void inquiryupdate(InquiryDto dto); //수정하기
 	public void inquirydelete(String seq); //삭제하기
+	
+	//게시물 총 개수
+	public int count() throws Exception;
+			
+	//게시물 목록 + 페이징
+	public List<InquiryDto> listPage(int displayPost, int postNum) throws Exception;
+	}
 
-}
