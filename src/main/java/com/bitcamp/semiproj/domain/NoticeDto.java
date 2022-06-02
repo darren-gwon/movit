@@ -10,6 +10,7 @@ public class NoticeDto {
 		String write_date;
 		int view_cnt;
 		String type;
+
 		public int getSeq() {
 			return seq;
 		}
@@ -46,10 +47,6 @@ public class NoticeDto {
 		public void setType(String type) {
 			this.type = type;
 		}
-		@Override
-		public String toString() {
-			return "NoticeDto [seq=" + seq + ", title=" + title + ", content=" + content + ", write_date=" + write_date
-					+ ", view_cnt=" + view_cnt + ", type=" + type + "]";
-		}
+
 		
 }
