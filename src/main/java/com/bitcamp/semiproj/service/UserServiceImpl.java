@@ -200,7 +200,7 @@ public class UserServiceImpl  implements UserService{
 			// 요청에 필요한 Header에 포함될 내용
 			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
-			int responseCode = conn.getResponseCode();
+			
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -223,26 +223,7 @@ public class UserServiceImpl  implements UserService{
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
 			
-			String password = getKey(false, 6)+"!@";
-			String kakao_email ="Kakao"+email;
-			Map<String, String> map = new HashMap<>();
-			map.put("user_id", "Kakao"+email);
-			map.put("password",password);
-			map.put("name",nickname);
-			map.put("nickname","Kakao"+email);
-			map.put("email","Kakao"+email);
-			map.put("phone","Kakao");
-			map.put("gender","Kakao");
-			map.put("birthday","1111-11-11");
-			if(userdao.getCheckEmail(kakao_email)==1)
-			{
-				
-			}
-			else {
-				userdao.snsregUser(map);
-			}
-			
-			
+		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -301,6 +282,13 @@ public class UserServiceImpl  implements UserService{
 		this.lowerCheck = lowerCheck;
 		this.size = size;
 		return init();
+	}
+
+	//카카오 간편 회원가입
+	@Override
+	public void snsReg(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		userdao.snsReguser(map);
 	}
 	
 

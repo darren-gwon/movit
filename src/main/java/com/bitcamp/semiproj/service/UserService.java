@@ -37,6 +37,8 @@ public interface UserService {
 	public String getAccessToken(String authorize_code);
 	// 카카오 유저정보 얻기
 	public KakaoDto getUserInfo(String access_Token);
+	// sns 간편회원가입
+	public void snsReg (Map<String, Object> map);
 	//sns 비번 난수
 	public String getKey(boolean lowerCheck, int size);
 }

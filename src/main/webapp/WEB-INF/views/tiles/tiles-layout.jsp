@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
+</svg>
+
 </head>
 
 <body>
@@ -42,7 +44,6 @@
 	<div class="modal" id="loginview">
 		<div class="modal-dialog">
 			<div class="modal-content">
-
 				<div class="section">
 					<div class="loginmodal-form-wrap mx-auto">
 						<div class="loginmodal-form-wrapper">
@@ -50,17 +51,19 @@
 								<div class="center-wrap">
 									<form action="/success" method="post">
 										<div class="text-center">
-											<h4 class="brand">;Movit</h4>
-											<h4 class="logintext">
-												<span class="glyphicon glyphicon-lock"></span> LogIn
+											<h4 class="brand" style="font-size: 35px; font-weight: bold;">;Movit</h4>
+											<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  											<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+											<h4 class="logintext" style="font-size: 30px; font-weight: bold;">
+													LOGIN
 											</h4>
 											<div class="form-group">
 												<input type="text" name="user_id" class="form-style" placeholder="Your ID" id="logemail" autocomplete="off">
-												<i class="input-icon uil uil-at"></i>
+												
 											</div>
 											<div class="form-group mt-2">
 												<input type="password" name="password" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
+												
 											</div>
 											<br>
 											<button type="submit" class="btnlogin">Login</button>
@@ -108,56 +111,66 @@
 										<div>
 											<div style="margin-bottom: 10px;" class="custom-control custom-radio custom-control-inline">
 												<input type="radio" class="custom-control-input" id="search_1" name="search_chk1"  onclick="search_check(1)" checked="checked">
-												<label class="custom-control-label font-weight-bold text-white" for="search_1">아이디 찾기</label>
+												<label class="custom-control-label font-weight-bold text-white" for="search_1" style="font-size: 18px; font-weight: bold;">아이디 찾기</label>
+												&nbsp;&nbsp;&nbsp;&nbsp;
 												<input type="radio" class="custom-control-input" id="search_2"  name="search_chk2" onclick="search_check(2)">
-												<label class="custom-control-label font-weight-bold text-white" for="search_2">비밀번호 찾기</label>
+												<label class="custom-control-label font-weight-bold text-white" for="search_2"style="font-size: 18px; font-weight: bold;">비밀번호 찾기</label>
 											</div>
 										</div>
 										<div id="searchId">
-
 											<div class="form-group">
-												<h4 class="logintext">
-													<span class="glyphicon glyphicon-lock"></span> 아이디 찾기
+											<br><br>
+												<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+ 												<path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
+  												<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+													</svg>
+													<br><br>
+												<h4 class="logintext" style="font-weight:bold;">
+													 아이디 찾기
 												</h4>
-
+												<br>		
 												<input type="text" name="inputname" class="form-style" placeholder="Your Name" id="inputname" autocomplete="off">
-												<i class="input-icon uil uil-at"></i>
+												
 											</div>
 											<div class="form-group mt-2">
 												<input type="email" name="inputemail" class="form-style" placeholder="Your Email" id="inputemail" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
+												
 											</div>
-											<br>
+											<br><br>
 											<button id="searchBtn" type="button" onclick="idSearch_click()" class="btnlogin" value="check">ID 찾기</button>
-
+											&nbsp;&nbsp;&nbsp;
 											<a class="btn btn-danger btn-block" id="Idfindviewclose" style="text-decoration: none; border-radius: 20px;">로그인하러가기</a>
 										</div>
 
 
 										<div id="searchPass" style="display: none;">
 											<div class="section text-center">
-												<h4 class="logintext">
-													<span class="glyphicon glyphicon-lock"></span> 비밀번호 찾기
+											<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+ 											 <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+											</svg>
+											<br><br>
+												<h4 class="logintext" style="font-weight:bold;">
+													 비밀번호 찾기
 												</h4>
 												<div class="form-group">
-													<input type="text" name="inputId" class="form-style" placeholder="Your Id" id="inputId" autocomplete="off">
-													<i class="input-icon uil uil-at"></i>
+													<input type="text" name="inputId" class="form-style" placeholder="Your ID" id="inputId" autocomplete="off">
+													
 												</div>
 												<div class="form-group mt-2">
 													<input type="email" name="inputemail2" class="form-style" placeholder="Your Email" id="inputemail2" autocomplete="off">
-													<i class="input-icon uil uil-lock-alt"></i>
+													
 												</div>
 												<div class="form-group mt-2">
 													<div class="mail_check_input_box" id="mail_check_input_box_false">
-														<input id="certi" type="text" name="certi" title="인증번호 입력" disabled required />
+														<input class="form-style" id="certi" type="text" name="certi" title="인증번호 입력" placeholder="인증번호 입력"disabled required />
 													</div>
-
+													<br>
 													<button type="button" class="btn btn-outline-danger btn-sm px-3" id="emailChkpass" class="doubleChk">
-														<i class="fa fa-envelope"></i>&nbsp;인증번호 보내기
+														&nbsp;인증번호 보내기
 													</button>
 													&nbsp;
 													<button type="button" class="btn btn-outline-info btn-sm px-3" id="emailChk2" class="doubleChk">
-														<i class="fa fa-envelope"></i>&nbsp;확인
+														&nbsp;확인
 													</button>
 													&nbsp;<br>
 													<input type="hidden" id="emailDoubleChk" />
@@ -199,12 +212,12 @@
 					<br> 
 			<div id="pwSearch_chk" style="display:none;">
 					<button type="button" id="pwSearch_btn" class="btn peach-gradient btn-rounded waves-effect">
-						<i class="fa fa-envelope" style="color: white;"></i><b style="color: white;" >비밀번호 찾기</b>
+						<b style="color: white;" >비밀번호 찾기</b>
 					</button>
 				</div>
 				<div id="idSearch_chk" style="display:none;">
 					<button type="button" id="IdreSearch_btn" class="btn peach-gradient btn-rounded waves-effect">
-						<i class="fa fa-envelope" style="color: white;"></i><b style="color: white;" >ID 찾기</b>
+						<b style="color: white;" >ID 찾기</b>
 					</button>
 				</div>
 				</div>
@@ -272,6 +285,8 @@
 		if (loginfail == "1") {
 			alert("로그인 실패! 아이디/패스워드를 다시 확인해주세요.");
 		}
+		//카카오 처음 로그인시 회원가입
+
 
 
 		//로그아웃 처리

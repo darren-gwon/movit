@@ -112,9 +112,8 @@ public class MailSendServiceImpl implements MailSendService{
 		MimeMessage mail = mailSender.createMimeMessage();
 		String htmlStr = "<h2>안녕하세요 ;Movit입니다.</h2><br><h2>'"+ name +"'("+user_id+") 님</h2><br><br>" 
 				+ "<p>비밀번호 찾기를 신청해주셔서 임시 비밀번호를 발급해드렸습니다.</p>"
-				+ "<p>임시로 발급 드린 비밀번호는 <h2 style='color : blue'>'" + password +"'</h2>이며 로그인 후 마이페이지에서 비밀번호를 변경해주시면 됩니다.</p><br>"
-				+ "<h3><a href='http://localhost:9001/semiproj/'> ;Movit:p 홈페이지 접속 ^0^</a></h3><br><br>"
-				+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
+				+ "<p>임시로 발급된 비밀번호는 <h2 style='color : blue'>'" + password +"'</h2>이며 로그인 후 마이페이지에서 비밀번호를 변경해주세요.</p><br>"
+				+ "<h3><a href='http://localhost:9005/'> ;Movit 누루시면 바로 홈페이지 접속 합니다. </a></h3><br><br>";
 		try {
 			mail.setSubject("[;Movit] 임시 비밀번호가 발급되었습니다", "utf-8");
 			mail.setText(htmlStr, "utf-8", "html");

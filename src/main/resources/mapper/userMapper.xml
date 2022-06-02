@@ -59,9 +59,4 @@
 		INSERT INTO naver_table(n_name, n_birthday, n_email, n_gender, n_nickname, n_phone, n_birthyear) 
 		VALUES (#{n_name},#{n_birthday},#{n_email},#{n_gender},#{n_nickname},#{n_phone},#{n_birthyear});
 	</insert> 
-
-<!-- 	<insert id="naverregUser" parameterType="java.util.HashMap">
-		INSERT INTO user(user_id, password, name, nickname, gender , phone, email, birthday, register_date) 
-		VALUES ('naver'+'#{n_email}','@@@@@@@','naver'+'#{n_email}','#{n_gender}','#{n_nickname}','#{n_phone}');
-	</insert>  -->
 </mapper>

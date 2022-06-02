@@ -25,8 +25,11 @@ import com.bitcamp.semiproj.domain.NaverDto;
 import com.bitcamp.semiproj.domain.NaverLoginBO;
 import com.bitcamp.semiproj.domain.UserDto;
 import com.bitcamp.semiproj.service.UserService;
+import com.bitcamp.semiproj.service.UserSha256;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.OAuth2AccessToken;
+
+
 
 
 @Controller
@@ -37,8 +40,7 @@ public class SnsController {
 	 
 	 @Autowired
 	 private HttpSession session;
-	 
-	 
+
 	 private KakaoDto kakaodto;
 
 	/**
@@ -52,23 +54,53 @@ public class SnsController {
 		
 		kakaodto = userService.getUserInfo(access_Token);
 		// 아래 코드가 추가되는 내용
-		
+		Map<String, String> map =new HashMap<>();
+		map.put("email", kakaodto.getK_email());
+		map.put("name", kakaodto.getK_name());
+		String getuser_id=userService.get_searchId(map);
+		if(getuser_id==null) {
+			session.setAttribute("kakao_id",kakaodto.getK_email());
+			session.setAttribute("email",kakaodto.getK_email());
+			session.setAttribute("name", kakaodto.getK_name());
+			return "/userReg/kakaouserReg.tiles";
+		}
+		else {
 		session.invalidate();
 		// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.
 		session.setAttribute("loginname", kakaodto.getK_name());
-		session.setAttribute("user_id", "Kakao_"+kakaodto.getK_email());
+		session.setAttribute("user_id", getuser_id); 
 		session.setAttribute("kakaoN", kakaodto.getK_name());
 		// 위 2개의 코드는 닉네임과 이메일을 session객체에 담는 코드
-		// jsp에서 ${sessionScope.kakaoN} 이런 형식으로 사용할 수 있다.
-		
 		
 		return "redirect:/";
-		/*
-		 * 리턴값의 testPage는 아무 페이지로 대체해도 괜찮습니다.
-		 * 없는 페이지를 넣어도 무방합니다.
-		 * 404가 떠도 제일 중요한건 #########인증코드 가 잘 출력이 되는지가 중요하므로 너무 신경 안쓰셔도 됩니다.
-		 */
+		}
+		
 	}
+	//카카오 유저 회원가입 
+	@RequestMapping(value="/kakaoreg", method=RequestMethod.POST)
+	public String UserRegPass(UserDto userdto,@RequestParam("birthday") String birthday,@RequestParam("nickname") String nickname, 
+			@RequestParam("gender") String gender, @RequestParam("phone") String phone){
+			String Password=userService.getKey(false, 6)+"!";
+			String keypassword = UserSha256.encrypt(Password);
+			Map<String, Object> map= new HashMap<>();
+			map.put("user_id",session.getAttribute("kakao_id"));
+			map.put("password",keypassword); //임의의 값 
+			map.put("email",session.getAttribute("email"));
+			map.put("name",session.getAttribute("name"));
+			map.put("birthday", birthday);
+			map.put("nickname", nickname);
+			map.put("gender", gender);
+			map.put("phone", phone);
+			userService.snsReg(map);
+			
+			session.invalidate();
+			session.setAttribute("user_id",map.get("user_id"));
+			session.setAttribute("kakaoN","kakao");
+			
+			return "redirect:/";
+		}
+		
+
 
 
     /* NaverLoginBO */
@@ -97,6 +129,7 @@ public class SnsController {
     
     @Autowired
     UserDao userdao;
+    // naver 유저 회원가입 및 회원확인하여 로그인
     @RequestMapping(value="/naverlogin",  method = {RequestMethod.GET,RequestMethod.POST})
 	public String userNaverLoginPro(Model model,@RequestParam Map<String,Object> paramMap, @RequestParam String code, @RequestParam String state,HttpSession session) throws SQLException, Exception {
 		NaverDto result ;
@@ -120,27 +153,69 @@ public class SnsController {
 		naver.put("n_name",apiJson.get("name"));
 		naver.put("n_birthyear",apiJson.get("birthyear"));
 		
+		//네이버 회원정보확인
 		result= userdao.findnaver(naver);
+		System.out.println(naver);
+		//세션에 토큰 저장 
 		session.setAttribute("oauthToken", oauthToken);
 		} catch(Exception e) {
 			return "redirect:/";
 		}
 		if(result==null) {
-			// result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
+			// result가 null이면 NAVER 정보가 저장이 안되있는거므로 정보를 저장.
 			userdao.naverinsert(naver);
+		}
+		//회원등록된 이메일 체크
+		result= userdao.findnaver(naver);
+		Map<String, String> map =new HashMap<>();
+		map.put("email", result.getN_email());
+		map.put("name", result.getN_name());
+		
+		String getuser_id=userService.get_searchId(map);
+		System.out.println(getuser_id);
+		//회원 등록된 이메일이 없으면 naver로 자동회원가입
+		if(getuser_id==null) {
 			
-			result=userdao.findnaver(naver);
-			session.setAttribute("loginname",result.getN_name());
-			session.setAttribute("user_id", "Naver_"+result.getN_email());
-
+			String naveruser_id=result.getN_email();
+			String Password=userService.getKey(false, 6)+"!";
+			String keypassword = UserSha256.encrypt(Password);
+			String genderchk=result.getN_gender();
+			String birthday;
+			if(result.getN_birthyear()!=null) {
+			String bitrhyear=result.getN_birthyear();
+			birthday=bitrhyear+"-"+result.getN_birthday();
+			}else {
+			birthday="1993-"+result.getN_birthday();
+			}
+			if(genderchk.equals("M"))
+			{
+				genderchk="남자";
+			}
+			else {
+				genderchk="여자";
+			}			
+		
+			Map<String, Object> add=new HashMap<>();
+			add.put("user_id", naveruser_id);
+			add.put("password", keypassword);
+			add.put("name",result.getN_name());
+			add.put("nickname",result.getN_nickName());
+			add.put("gender",genderchk);
+			add.put("phone",result.getN_phone());
+			add.put("email",result.getN_email());
+			add.put("birthday",birthday);
+			userService.snsReg(add);
+			session.setAttribute("loginname",add.get("name"));
+			session.setAttribute("user_id", add.get("user_id"));
 			return "redirect:/";
-		} else {
-			session.setAttribute("loginname", result.getN_name());
-			session.setAttribute("user_id", "Naver_"+result.getN_email());
-			return "redirect:/";
-		}	
-   
-    }	
-  
+			}
+		//회원 등록된 일치하는 이메일 있으면 해당 ID로 로그인.
+		else {	
+		session.setAttribute("loginname", result.getN_name());
+		session.setAttribute("user_id", getuser_id);
+		return "redirect:/";
+		}
 
-}
+		} 
+
+    }

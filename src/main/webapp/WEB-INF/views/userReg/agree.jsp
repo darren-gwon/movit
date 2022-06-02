@@ -6,10 +6,10 @@
 	<div class="container">
 
 
-		<table width=960px align=center style="margin-top: 10%">
+		<table width=60% align=center style="margin-top: 5%">
 			<tr>
 				<td>
-					<h1>;Movit회원가입</h1>
+					<center></center><h1>;Movit회원가입   이용 약관동의</h1></center>
 				</td>
 			</tr>
 
@@ -386,7 +386,10 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
 		<br> <br>
 		</center>
 		<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" id="agree">회원가입하기</button>
-		<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" id="back">취소</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" id="back" >취소</button>
+		<br><br><br>
+		
 	</div>
 </form>
 </div>
@@ -405,6 +408,10 @@ $("#agree").click(function(){
 		alert("약관 동의를 해주세요");
 	}	
 });
+$("#back").click(function(){
+	location.href="/"
+});
+
 	
 </script>
 
