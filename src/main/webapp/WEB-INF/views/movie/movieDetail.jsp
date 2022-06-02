@@ -83,26 +83,20 @@ $(function(){
 				"startNum":totalReviewCnt},
 			success:function(data){
 				var s = "";
+				s+="<ul class='reviewList'>";
 				$.each(data.list, function(i, d) {
 					s+="<li class='userReview' data-review_id='"+d.reviewID+"'>";
 					s+="<span style='font-weight:bold'>"+d.user_id+"</span>";
 					s+=" ⭐ "+d.rating;
 					s+="<pre><span id='reviewContent_"+d.reviewID+"'>"+d.content+"</span></pre>";
 					s+="<span style='color:#868e96;'>"+d.write_date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
-					s+="<img src='/resources/review_img/heart-empty.png' width='20' data-reviewid='"+d.reviewID+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
+					s+="<img src='' width='20' data-reviewid='"+d.reviewID+"' id='updateReview' style='cursor:pointer'>";
+					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='deleteReview' style='cursor:pointer'>";
+					s+="&nbsp;&nbsp;&nbsp;<img src='/resources/review_img/heart-empty.png' width='20' data-reviewid='"+d.reviewID+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
 					s+="<span id='totalLikesCnt'></span>";
-					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='updateReview' style='cursor:pointer'>";
-					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='deleteReview' style='cursor:pointer'></li>";
-					s+="<hr>";
-					//로그인세션과 유저아이디가 일치하면 좋아요 빨간색
-					/* var checkId = ${sessionScope.user_id == d.user_id};
-					console.log(checkId);
-					if(checkId) {
-						$(".idcheck"+d.reviewID+d.user_id).removeClass("fc");
-					} else {
-						$(".idcheck"+d.reviewID+d.user_id).addClass("fc");
-					} */
+					s+="</li>";
 				});
+				s+="</ul>";
 				$("div.review").append(s);
 				
 				checkUser();
@@ -131,6 +125,7 @@ $(function(){
 				$("#totAvg").html(r);
 				$("#tot").html(t);
 				var s = "";
+				s+="<ul class='reviewList'>";
 				$.each(data.list, function(i, d) {
 					s+="<li class='userReview' data-review_id='"+d.reviewID+"'>";
 					s+="<span style='font-weight:bold'>"+d.user_id+"</span>";
@@ -141,8 +136,9 @@ $(function(){
 					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='deleteReview' style='cursor:pointer'>";
 					s+="&nbsp;&nbsp;&nbsp;<img src='/resources/review_img/heart-empty.png' width='20' data-reviewid='"+d.reviewID+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
 					s+="<span id='totalLikesCnt'></span>";
-					s+="</li><hr>";
+					s+="</li>";
 				});
+				s+="</ul>";
 				$("div.review").html(s);
 				checkUser();
 				totalLikes();
@@ -554,7 +550,7 @@ function checkUserReview(){
 						<table style="border:0.5px solid gray;border-radius:30;">
 							<tr>
 								<td width="400">
-									<span id="star_rating" style="font-size:25px;">별점</span>
+									<span id="star_rating" style="font-size:25px;">별점</span><br>
 									<fieldset name="myform" id="myform">
 										<input type="radio" name="rating" value="10" id="rate1"><label class="label1" for="rate1">⭐</label>
 										<input type="radio" name="rating" value="9" id="rate2"><label class="label1" for="rate2">⭐</label>
@@ -580,9 +576,9 @@ function checkUserReview(){
 					<span id="tot" style="float:left"></span><br><hr>
 					<div class="review">
 					</div>
-					
-					<div class="listopener" style="cursor:pointer;">
-						<hr><h6>펼쳐보기 </h6><hr>
+					<br>
+					<div class="listopener" style="padding-top:30px;clear:both">
+						<button type="button" class="btn btn-primary">펼쳐보기</button>
 					</div>
 					
 					
@@ -591,7 +587,7 @@ function checkUserReview(){
 		</div>
 	</div>
 	<br><br><br><br>
-	<script
+	<script>
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
