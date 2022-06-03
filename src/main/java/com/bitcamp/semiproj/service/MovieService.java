@@ -7,6 +7,6 @@ import com.bitcamp.semiproj.domain.MovieDto;
 public interface MovieService {
 
 	public List<MovieDto> selectMovieByTheaterID(int theaterID);
-	public MovieDto selectMovieByMovieID(String string);
+	public MovieDto selectMovieByMovieID(int movieID);
 	public List<MovieDto> selectAllMovies();
 }

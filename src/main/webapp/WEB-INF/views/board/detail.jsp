@@ -31,7 +31,7 @@ $(function(){
 <body>
 <div class="content">
 <div class="title">
-	<h2>공지사항</h2></div>
+	<span>공지사항</span></div>
 	
 <div class="form">
    <table class="table table-hover">
@@ -44,15 +44,24 @@ $(function(){
 		<td><b>조회수</b>  ${dto.view_cnt}</td>
 		</tr>
 	<tr>
-		<td class="content-td" colspan="8"><pre>${dto.content}</pre></td>
+		<td class="content-td" colspan="8"><pre class="contents">${dto.content}</pre></td>
 	</tr>
 	</table>
 
 	<button class="listbtn" onclick="location.href='notice'">목록</button>
+	<c:if test="${user_id=='admin'}">
 	<button class="update" onclick="location.href='../board/updateform?num=${dto.seq}'">수정</button>
 	<button type="button" id="del" class="del" >삭제</button>
-	
+	</c:if>
 </div>
+	<ul>
+		<c:if test="${prev != null }">
+			<li>
+				<strong class="privious list-title">이전글</strong>
+				<b>${prev.title}</b>
+			</li>
+		</c:if>
+	</ul>
 </div>
 <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
