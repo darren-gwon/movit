@@ -16,14 +16,17 @@
 	.content-td{
 		text-align:left;
 		height:500px;
+		margin-top:30px;
 	}
 	.title{
 	float: left;
 	margin-left:410px;
 	margin-bottom:70px;
 }
-	.title h2{
+	.title span{
 	font-weight: bold;
+	margin-left:100px;
+	font-size:30px;
 }
 	.update{
 	display: inline-block;
@@ -63,4 +66,7 @@
     text-aling:center;
     line-height: 25px;
     border-radius: 5px;
+	}
+	pre.contents{
+	margin-top:30px;
 	}

@@ -22,6 +22,8 @@ l, li {
 	background-color: #fff;
 	width: 100%;
 	transition: all 1s;
+	margin-bottom: ;
+	border-radius
 }
 
 .sliWdebox .slidelist .slideitem>a {
@@ -146,10 +148,6 @@ ul {
 	font-size: 15px;
 	cursor: pointer;
 	margin-left: 40px;
-}
-.btnmore:hover{
-	background-color:#071a4c;
-	color:white;
 }
 
 .eventlist ul li img {

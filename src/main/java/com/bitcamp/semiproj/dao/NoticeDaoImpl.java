@@ -71,6 +71,6 @@ public class NoticeDaoImpl implements NoticeDao {
 		  
 		 return session.selectList(nameSpace + "listpage", data);
 		}
-
+		
 }
 	

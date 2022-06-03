@@ -29,7 +29,7 @@ public class MovieHomeController {
 	}
 	
 	@GetMapping("/detail")
-	public String moviewdetail(@RequestParam String movieID, Model model){
+	public String moviewdetail(@RequestParam int movieID, Model model){
 		MovieDto dto = movieService.selectMovieByMovieID(movieID);
 		String [] trailer_url = dto.getTrailer_url().split(",");
 		for(int i=0; i<trailer_url.length; i++) {
@@ -42,6 +42,6 @@ public class MovieHomeController {
 		//model.addAttribute("trailer_url", trailer_url);
 		model.addAttribute("movieID", movieID);
 		model.addAttribute("dto", dto);
-	return "movie/movieDetail2.tiles";
+	return "movie/movieDetail.tiles";
 	}
 }

@@ -23,7 +23,6 @@ public interface NoticeService {
 
 	public List <NoticeDto> listpage(int startnum, int postnum, String keyword);
 
-
 	
 	
 }

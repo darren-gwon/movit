@@ -14,5 +14,4 @@ public interface NoticeDao {
 	public void delete (int seq); 
     public int postcount(); 
     public List<NoticeDto> listpage(int startnum, int postnum, String keyword);
-	
 }
