@@ -9,10 +9,10 @@ public class OrderInfoDto {
 	private Integer youthCnt;
 	private Integer specialCnt;
 	private Integer totalPrice;
-	private String movieID;
-	private String scheduleID;
-	private String screenID;
-	private String classID;
+	private Integer movieID;
+	private Integer scheduleID;
+	private Integer screenID;
+	private Integer classID;
 	private BookingDto bookingDto;
 	
 	public String getCid() {
@@ -63,31 +63,32 @@ public class OrderInfoDto {
 	public void setTotalPrice(Integer totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	public String getMovieID() {
+
+	
+	public Integer getMovieID() {
 		return movieID;
 	}
-	public void setMovieID(String movieID) {
+	public void setMovieID(Integer movieID) {
 		this.movieID = movieID;
 	}
-	public String getScheduleID() {
+	public Integer getScheduleID() {
 		return scheduleID;
 	}
-	public void setScheduleID(String scheduleID) {
+	public void setScheduleID(Integer scheduleID) {
 		this.scheduleID = scheduleID;
 	}
-	public String getScreenID() {
+	public Integer getScreenID() {
 		return screenID;
 	}
-	public void setScreenID(String screenID) {
+	public void setScreenID(Integer screenID) {
 		this.screenID = screenID;
 	}
-	public String getClassID() {
+	public Integer getClassID() {
 		return classID;
 	}
-	public void setClassID(String classID) {
+	public void setClassID(Integer classID) {
 		this.classID = classID;
 	}
-	
 	public BookingDto getBookingDto() {
 		return bookingDto;
 	}
