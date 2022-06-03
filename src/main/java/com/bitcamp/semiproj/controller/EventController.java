@@ -39,7 +39,7 @@ import util.FileUtil;
 		@Autowired
 		EventDao dao;
 		
-		//�Խù� ���
+		//占쌉시뱄옙 占쏙옙占�
 		@RequestMapping(value = "/eventlist", method = RequestMethod.GET)
 		public String eventlist(Model model) throws Exception{ 
 			int startnum = 0;
@@ -52,7 +52,7 @@ import util.FileUtil;
 			return "event/eventlist.tiles";
 		}
 		
-		//�Խù� ���
+		//占쌉시뱄옙 占쏙옙占�
 		@RequestMapping(value = "/list", method = RequestMethod.POST)
 		@ResponseBody
 		public List<EventDto> list(@RequestBody Map<String,Integer> map) throws Exception{ 
@@ -63,21 +63,21 @@ import util.FileUtil;
 			return list;
 		}
 
-		//�Խù� �ۼ� �� �̵�
+		//占쌉시뱄옙 占쌜쇽옙 占쏙옙 占싱듸옙
 		@RequestMapping(value = "/eventwriteform", method = RequestMethod.GET)
 		public String write() throws Exception {
 			   return "event/eventwriteform.tiles";
 				}
 		
-		// �Խù� �ۼ� POST
+		// 占쌉시뱄옙 占쌜쇽옙 POST
 		@RequestMapping(value="/eventwriteform", method=RequestMethod.POST)
 		public String postcreate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
 				HttpServletRequest request,HttpSession session) throws Exception{
 			
 			String savepath =request.getServletContext().getRealPath("/resources/img/event_main/");
 			String savepath2 = request.getServletContext().getRealPath("/resources/img/event_thumnail/");
-			//System.out.println(savepath);
-			//System.out.println("2:"+savepath2);
+			System.out.println(savepath);
+			System.out.println("2:"+savepath2);
 				
 			 if(mainupload.get(0).getOriginalFilename().equals("")) {
 		         dto.setMain_img("no");
@@ -126,7 +126,7 @@ import util.FileUtil;
 			return "redirect:eventlist";
 		}
 
-		//�Խù� �������� �̵�
+		//占쌉시뱄옙 占쏙옙占쏙옙占쏙옙占쏙옙 占싱듸옙
 		@RequestMapping(value="/eventdetail", method=RequestMethod.GET)
 				public String getdetail(Model model,int num) {
 					EventDto dto=service.detail(num);	
@@ -134,7 +134,7 @@ import util.FileUtil;
 					model.addAttribute("dto",dto);
 					return "event/eventdetail.tiles";
 				}
-		//�Խù� ����
+		//占쌉시뱄옙 占쏙옙占쏙옙
 		@RequestMapping(value="/updateform",method=RequestMethod.GET)
 				public String getupdate(Model model, int num) throws Exception{
 					EventDto dto=service.detail(num);
@@ -142,7 +142,7 @@ import util.FileUtil;
 					
 					return "event/updateform.tiles";
 				}
-		//�Խù� ���� post
+		//占쌉시뱄옙 占쏙옙占쏙옙 post
 		@RequestMapping(value="/updateform",method=RequestMethod.POST)
 			public String postupdate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
 					HttpServletRequest request,HttpSession session) throws Exception {
@@ -194,7 +194,7 @@ import util.FileUtil;
 					 	service.updateform(dto);
 						return "redirect:eventlist";
 				}
-		//�Խù� ����
+		//占쌉시뱄옙 占쏙옙占쏙옙
 				@RequestMapping(value="/delete",method=RequestMethod.GET)
 					public String getdelete(@ModelAttribute EventDto dto,
 							HttpServletRequest request,HttpSession session,int num) throws Exception {
