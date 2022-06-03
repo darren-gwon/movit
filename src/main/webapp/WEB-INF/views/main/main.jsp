@@ -36,6 +36,7 @@
 			</div>
 		</div>
 	</div>
+	<br><br>
 	<div class="nav_wrap">
 		<div class="nav mypage">
 			<a style="text-decoration: none; color: black;" href="mypage/home"> <img src="/resources/img/main/nav/mypage.png" id="mypage_img" class="nav_img"> <span class="nav_name">마이페이지</span>
@@ -58,17 +59,18 @@
 			</a>
 		</div>
 	</div>
-
+		<br><br>
 	<div class="event_wrap" style="height: 400px; vertical-align: middle;">
 		<div>
 			<div class="row" style="text-align: center;">
-				<div class="col">
-						<br>
-					<iframe width="600px;" height="350px;" style="margin-left: 240px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
+				
 				<div class="col">
 					<br>
-					<img width="600px;" height="350px;" style="margin-right: 300px;" src="https://img.megabox.co.kr/SharedImg/event/2022/01/14/PaafbTzHLzAZslfTq3eRZS19bGTV7sG7.jpg"/>
+					<img width="600px;" height="330px;" style="margin-left: 240px;" src="https://img.megabox.co.kr/SharedImg/event/2022/01/14/PaafbTzHLzAZslfTq3eRZS19bGTV7sG7.jpg"/>
+				</div>
+				<div class="col">
+						<br>
+					<iframe width="600px;" height="340px;"  style="margin-right: 300px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 				
 			</div>
@@ -80,11 +82,11 @@
 			<div class="row" style="text-align: center;">
 				<div class="col">
 					<br>
-					<img width="600px;" height="350px;" style="margin-left: 240px;" src="http://localhost:9005/resources/cssimg/img1.jpg"/>
+					<img width="600px;" height="340px;" style="margin-left: 240px;" src="http://localhost:9005/resources/cssimg/img1.jpg"/>
 				</div>
 				<div class="col">
 					<br>
-					<iframe width="600px;" height="350px;"style="margin-right: 300px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="600px;" height="340px;"style="margin-right: 300px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
