@@ -165,6 +165,7 @@ public class MypageController {
 		model.addAttribute("dto", dto);
 		List<ReviewDto> list = service.getUserReviewList(user_id);
 		model.addAttribute("list", list);
+		model.addAttribute("count", list.size());
 		return "/mypage/userReviewList.tiles";
 	}
 	
