@@ -16,7 +16,6 @@ public interface MovieDao  {
 	public MovieDto selectMovieByMovieID(int movieID);
 
 	public List<MovieDto> selectAllMovies();
-	MovieDto selectMovieByMovieID(String movieID);
 
 	
 }
