@@ -105,12 +105,13 @@
 				</c:if></li>
 		</ul>
 		</div>
-		
+		<c:if test="${user_id=='admin'}">
 				<div class="bu1">
 					<button type="button" class="btn btn-primary" style="width: 100px;"
 						onclick="location.href='${root}/board/writeform'">글쓰기</button>
 				
 				</div>
+				</c:if>
 				</div>
 		<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
