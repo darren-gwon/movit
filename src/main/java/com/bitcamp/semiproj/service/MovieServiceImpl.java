@@ -18,7 +18,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 	
 	@Override
-	public MovieDto selectMovieByMovieID(int movieID) {
+	public MovieDto selectMovieByMovieID(String movieID) {
 		return movieDao.selectMovieByMovieID(movieID);
 	}
 	

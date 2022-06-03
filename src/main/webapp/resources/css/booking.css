@@ -174,12 +174,32 @@ img.age_group {
 
 .simple_movie_info {
 	display: inline-block;
+	width: 300px;
+	float: left;
+    margin-left: 20px;
+
 }
 
 .simple_movie_info .m_title{
 	text-align: left;
+	font-weight: bold;
 }
 
+.simple_movie_info .body *{
+	display:block;
+	    float: left;
+}
+
+.simple_movie_info{
+	display:block;
+	    float: left;
+    text-align: left;
+
+}
+
+.m_screen_date {
+	display:block;
+}
 .ticket_qty {
 	display: inline-block;
 }
@@ -202,12 +222,8 @@ img.age_group {
 	vertical-align: middle;
 }
 
-.simple_movie_info {
-	width: 300px;
-}
-
 .poster_img {
-	width: 100px;
+	width: 80px;
 }
 
 .adult, .youth, .special {
@@ -350,7 +366,6 @@ div.seat.taken {
 }
 
 .booking_detail{
-	border-left: 1px solid #303842;
 }
 .info {
 	width: fit-content;

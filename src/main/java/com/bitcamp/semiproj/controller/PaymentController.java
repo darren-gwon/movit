@@ -72,12 +72,12 @@ public class PaymentController {
 			bookingDto.setUser_id((String) session.getAttribute("user_id"));
 			bookingDto.setBookingID(bookingService.generateBookingID());
 
-			System.out.println(info);
-
-			System.out.println(bookingDto);
 			bookingService.insertBooking(bookingDto);
+			
+			session.setAttribute("payInfo", kPayApprovalDto);
+			session.setAttribute("orderInfo", info);
+			session.setAttribute("bookingDto", bookingDto);
 
-			model.addAttribute("payInfo", kPayApprovalDto);
 			return "pay/success.tiles";
 		}
 
