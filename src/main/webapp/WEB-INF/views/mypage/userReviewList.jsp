@@ -9,31 +9,8 @@
 <title>mypage</title>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>   
 <style>
-div.reviewdiv{
-	border-bottom: 1px solid #ced4da;
-	width: 1200px;
-	height:130px;
-	float: left;
-	padding-top: 30px;
-	padding-right:100px;
-	margin-left: 150px;
-	
-}
-ul.reviewlist{
-	margin-top: 10px;
-	left:0px;
-	width: 350px;
-	height: 200px;
-	display:inline-block;
-}
 
-pre {
-	display:inline-block;
-	padding-bottom: 150px;
-	width: 300px;
-	text-align: left;
-	padding-left: 50px;
-}
+
 
 .writeday {
 	font-size: 0.7em;
@@ -57,6 +34,9 @@ strong{
 	<c:if test="${sessionScope.user_id != null }">
 	<div class="content">
 		<c:forEach var="list" items="${list }">
+			<div class="container">
+			<div class="row">
+			<div class="col">
 			<div class="reviewdiv">
 				<ul class="reviewlist">
 					<li><strong>${list.title }</strong></li>
@@ -69,6 +49,10 @@ strong{
 			
 					<pre>${list.content }</pre>
 			</div>
+			</div>
+			</div>
+			</div>
+			
 		</c:forEach>
 		
 	</div>
