@@ -16,6 +16,7 @@
 <style type="text/css">
 .container a {
 	text-decoration: none;
+	color: black;
 }
 </style>
 </head>
@@ -37,44 +38,44 @@
 
 			<div class="row" style="text-align: center; font-size: 17px;">
 				<div class="col">
-					<img src="/resources/image/inquiry_home.png" width="110px"> <br>
+					<a href="../inquiry/faq/list?num&keyword=%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80"><img src="/resources/image/inquiry_home.png" width="110px"><br>
 					<br>
-					<p class="font-monospace">홈페이지</p>
+					<p class="font-monospace">홈페이지</p></a>
 				</div>
 				<div class="col">
-					<img src="/resources/image/inquiry_tiket.png" width="110px"> <br>
+					<a href="../inquiry/faq/list?num&keyword=%ED%95%A0%EC%9D%B8%ED%98%9C%ED%83%9D"><img src="/resources/image/inquiry_tiket.png" width="110px"> <br>
 					<br>
-					<p class="font-monospace">할인혜택</p>
+					<p class="font-monospace">할인혜택</p></a>
 				</div>
 				<div class="col">
-					<img src="/resources/image/inquiry_discount.png" width="110px"> <br>
+					<a href="../inquiry/faq/list?num&keyword=%EC%98%81%ED%99%94%EC%98%88%EB%A7%A4"><img src="/resources/image/inquiry_discount.png" width="110px"> <br>
 					<br>
-					<p class="font-monospace">영화예매</p>
+					<p class="font-monospace">영화예매</p></a>
 				</div>
 				<div class="col">
-					<img src="/resources/image/inquiry_payment.png" width="110px"> <br>
+					<a href="../inquiry/faq/list?num&keyword=%EA%B2%B0%EC%A0%9C%EC%88%98%EB%8B%A8"><img src="/resources/image/inquiry_payment.png" width="110px"> <br>
 					<br>
-					<p class="font-monospace">결제수단</p>
+					<p class="font-monospace">결제수단</p></a>
 				</div>
 				<div class="col">
-					<img src="/resources/image/inquiry_membership.png" width="110px"> <br>
+					<a href="../inquiry/faq/list?num&keyword=%EB%A9%A4%EB%B2%84%EC%8B%AD"><img src="/resources/image/inquiry_membership.png" width="110px"> <br>
 					<br>
-					<p class="font-monospace">멤버십</p>
+					<p class="font-monospace">멤버십</p></a>
 				</div>
 				<div class="col">
-					<img src="/resources/image/inquiry_vip.png" width="110px"> <br>
+					<a href="../inquiry/faq/list?num&keyword=VIP"><img src="/resources/image/inquiry_vip.png" width="110px"> <br>
 					<br>
-					<p class="font-monospace">VIP</p>
+					<p class="font-monospace">VIP</p></a>
 				</div>
 				<div class="col">
-					<img src="/resources/image/inquiry_theater.png" width="110px"> <br>
+					<a href="../inquiry/faq/list?num&keyword=%EA%B7%B9%EC%9E%A5"><img src="/resources/image/inquiry_theater.png" width="110px"> <br>
 					<br>
-					<p class="font-monospace">극장</p>
+					<p class="font-monospace">극장</p></a>
 				</div>
 				<div class="col">
-					<img src="/resources/image/inquiry_special.png" width="110px"> <br>
+					<a href="../inquiry/faq/list?num&keyword=%ED%8A%B9%EB%B3%84%EA%B4%80"><img src="/resources/image/inquiry_special.png" width="110px"> <br>
 					<br>
-					<p class="font-monospace">특별관</p>
+					<p class="font-monospace">특별관</p></a>
 				</div>
 			</div>
 

@@ -151,7 +151,7 @@ table.table-hover td {
 				<div class="row" style="font-size: 15px;">
 					<div class="col-5"></div>
 					<div class="col-6" style="text-align: right;">
-						<input type="search" class="form-control" placeholder="키워드 입력" id="keyword"
+						<input type="search" class="form-control" placeholder="문의유형 키워드 입력" id="keyword"
 							aria-label="Search" style="text-align: center;">
 					</div>
 

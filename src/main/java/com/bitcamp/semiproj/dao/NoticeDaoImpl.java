@@ -22,7 +22,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	
 		@Override
 		public List <NoticeDto> list() {
-			return session.selectList(nameSpace + "eventpage");
+			return session.selectList(nameSpace + "selectAll");
 		
 		}
 		

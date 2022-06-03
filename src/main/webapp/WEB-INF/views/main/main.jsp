@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <link href="/resources/css/main.css" rel='stylesheet' />
 <div class="content">
 	<div class="movieSlide_wrap">
 		<div id="movieSlide" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="/resources/img/main/banner/banner_1.jpg" class="d-block w-100" alt="...">
+					<a href="../movie/detail?movieID=20212855"> <img src="/resources/img/main/banner/banner_1.jpg" class="d-block w-100" alt="..."></a>
 				</div>
 				<div class="carousel-item">
 					<img src="/resources/img/main/banner/banner_2.jpg" class="d-block w-100" alt="...">
@@ -20,43 +23,72 @@
 		</div>
 		<div class="movie_poster_wrap">
 			<div class="movie_poster first">
-				<img src="https://img.megabox.co.kr/SharedImg/2022/05/04/4OFqLBLmda67a6BPXjaXCVM5wun7FAtb_420.jpg" class="poster_img"> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
+				<a href="../movie/detail?movieID=20212855"><img src="https://img.megabox.co.kr/SharedImg/2022/05/04/4OFqLBLmda67a6BPXjaXCVM5wun7FAtb_420.jpg" class="poster_img"></a> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
 			</div>
 			<div class="movie_poster">
-				<img src="https://img.megabox.co.kr/SharedImg/2022/04/29/Sj4v7jaCicFTLrGgxM5D0lRsrL3kgu8g_420.jpg" class="poster_img"> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
+				<a href="../movie/detail?movieID=20204548"><img src="https://img.megabox.co.kr/SharedImg/2022/05/23/oZfETtpEvKGpdY2JQo2Z6wFL0S4cpKy5_420.jpg" class="poster_img"></a> <span class="movie_title">범죄도시2</span>
 			</div>
 			<div class="movie_poster">
-				<img src="https://img.megabox.co.kr/SharedImg/2022/04/06/7YDE8KC4uv7RH6F57pTYUhS7IygSxYTF_420.jpg" class="poster_img"> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
+				<a href="../movie/detail?movieID=20206061"><img src="https://img.megabox.co.kr/SharedImg/2022/05/16/WApIttC9CrStYU7j7jzFRlc2HsIXBQtY_420.jpg" class="poster_img"></a> <span class="movie_title">쥬라기 월드: 도미니언</span>
 			</div>
 			<div class="movie_poster last">
-				<img src="https://img.megabox.co.kr/SharedImg/2022/03/25/p02Tj8NeXivFyhGgMGm3DD0kdeogGkkA_420.jpg" class="poster_img"> <span class="movie_title">12닥터 스트레인지: 대혼돈의 멀티버스</span>
+				<a href="../movie/detail?movieID=20223278"><img src="https://img.megabox.co.kr/SharedImg/2022/02/17/djm7aYuL9bQGZRsxyUH75wATz9ub9ouk_420.jpg" class="poster_img"></a> <span class="movie_title">극장판 주술회전 0</span>
 			</div>
 		</div>
 	</div>
 	<div class="nav_wrap">
 		<div class="nav mypage">
-			<a href="mypage/home"> <img src="/resources/img/main/nav/mypage.png" id="mypage_img" class="nav_img"> <span class="nav_name">마이페이지</span>
+			<a style="text-decoration: none; color: black;" href="mypage/home"> <img src="/resources/img/main/nav/mypage.png" id="mypage_img" class="nav_img"> <span class="nav_name">마이페이지</span>
 			</a>
 		</div>
 		<div class="nav event">
-			<a href="event/eventlist"> <img src="/resources/img/main/nav/event.png" id="event_img" class="nav_img"> <span class="nav_name">이벤트</span>
+			<a style="text-decoration: none; color: black;" href="event/eventlist"> <img src="/resources/img/main/nav/event.png" id="event_img" class="nav_img"> <span class="nav_name">이벤트</span>
 			</a>
 		</div>
 		<div class="nav booking">
-			<a href="booking"> <img src="/resources/img/main/nav/booking.png" id="booking_img" class="nav_img"> <span class="nav_name">예매</span>
+			<a style="text-decoration: none; color: black;" href="booking"> <img src="/resources/img/main/nav/booking.png" id="booking_img" class="nav_img"> <span class="nav_name">예매</span>
 			</a>
 		</div>
 		<div class="nav movies">
-			<a href="movie"> <img src="/resources/img/main/nav/movies.png" id="movies_img" class="nav_img"> <span class="nav_name">현재상영작</span>
+			<a style="text-decoration: none; color: black;" href="movie"> <img src="/resources/img/main/nav/movies.png" id="movies_img" class="nav_img"> <span class="nav_name">현재상영작</span>
 			</a>
 		</div>
 		<div class="nav support last">
-			<a href="inquiry/home"> <img src="/resources/img/main/nav/support.png" id="support_img" class="nav_img"> <span class="nav_name">고객센터</span>
+			<a style="text-decoration: none; color: black;" href="inquiry/home"> <img src="/resources/img/main/nav/support.png" id="support_img" class="nav_img"> <span class="nav_name">고객센터</span>
 			</a>
 		</div>
 	</div>
-	<div class="event_wrap">event</div>
 
+	<div class="event_wrap" style="height: 400px; vertical-align: middle;">
+		<div>
+			<div class="row" style="text-align: center;">
+				<div class="col">
+					<br>
+					<img width="600px;" height="350px;" style="margin-left: 240px;" src="http://localhost:9005/resources/cssimg/img1.jpg"/>
+				</div>
+				<div class="col">
+					<br>
+					<iframe width="600px;" height="350px;"style="margin-right: 300px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="event_wrap" style="height: 400px; vertical-align: middle;">
+		<div>
+			<div class="row" style="text-align: center;">
+				<div class="col">
+					<br>
+					<img width="600px;" height="350px;" style="margin-left: 240px;" src="http://localhost:9005/resources/cssimg/img1.jpg"/>
+				</div>
+				<div class="col">
+					<br>
+					<iframe width="600px;" height="350px;"style="margin-right: 300px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	
+	</div>
 	<div class="bottom_wrap">
 		<div class="bottom">
 			<div class="notice">
@@ -69,26 +101,15 @@
 					<th class="date"></th>
 				</tr>
 				-->
+
+				
+				<c:forEach items="${list}" var="list" varStatus="i<4">
 					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
+						<td class="titles"><a href="">${list.title}</></td>
+						<td class="dates">${list.write_date}</td>
 					</tr>
-					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
-					</tr>
-					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
-					</tr>
-					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
-					</tr>
-					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
-					</tr>
+					</c:forEach>
+
 				</table>
 			</div>
 			<div class="sns">

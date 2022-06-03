@@ -20,12 +20,19 @@ public class MovieDaoImpl implements MovieDao  {
 	}
 
 	@Override
-	public MovieDto selectMovieByMovieID(int movieID) {
+	public MovieDto selectMovieByMovieID(String movieID) {
 		return session.selectOne(namespace + "selectMovieByMovieID", movieID);
 	}
+	@Override
 	public List<MovieDto> selectAllMovies() {
 		// TODO Auto-generated method stub
 		return session.selectList(namespace+"selectAllMovies");
+	}
+
+	@Override
+	public MovieDto selectMovieByMovieID(int movieID) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

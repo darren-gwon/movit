@@ -85,17 +85,18 @@
 						<span class="input-group-text">분실 날짜必</span> <input type="date"
 							name="lost_date" id="lost_date" value="2022-01-01" style="width: 300px;">
 					</div>
-
+					<c:if test="${sessionScope.user_id=='admin'}">
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="inputGroup-sizing-default">분실물 처리</span>
 						<div class="form-floating">
 							<select class="form-select" id="floatingSelect"
 								aria-label="Floating label select example" name="status" style="width: 300px;">
-								<option value="01">미답변</option>
+								<option value="01" checked="checked">미답변</option>
 								<option value="02">답변완료</option>
 							</select><label for="floatingSelect">Status Select</label>
 						</div>
 					</div>
+					</c:if>
 					<br>
 					<hr>
 					<br>

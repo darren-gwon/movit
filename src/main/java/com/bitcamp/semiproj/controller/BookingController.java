@@ -4,6 +4,8 @@ package com.bitcamp.semiproj.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bitcamp.semiproj.domain.BookingDto;
+import com.bitcamp.semiproj.domain.KakaoPayApprovalDto;
 import com.bitcamp.semiproj.domain.MovieDto;
+import com.bitcamp.semiproj.domain.OrderInfoDto;
 import com.bitcamp.semiproj.domain.OwnSeatDto;
 import com.bitcamp.semiproj.domain.ScheduleDto;
 import com.bitcamp.semiproj.domain.TheaterDto;
@@ -67,7 +72,27 @@ public class BookingController {
 	}
 	
 	@GetMapping("/info")
-	public String bookinginfo() {
+	public String bookinginfo(HttpSession session, Model m) {
+		
+		KakaoPayApprovalDto payInfo = (KakaoPayApprovalDto) session.getAttribute("payInfo");
+		OrderInfoDto orderInfo = (OrderInfoDto) session.getAttribute("orderInfo");
+		BookingDto bookingDto = (BookingDto)session.getAttribute("bookingDto");
+		MovieDto movieDto = movieService.selectMovieByMovieID(orderInfo.getMovieID());
+		System.out.println(payInfo);
+		System.out.println(orderInfo);
+		System.out.println(bookingDto);
+		
+		m.addAttribute("payInfo",payInfo);
+		m.addAttribute("orderInfo",orderInfo);
+		m.addAttribute("bookingDto",bookingDto);
+		m.addAttribute("movieDto",movieDto);
+
+		session.removeAttribute("payInfo");
+		session.removeAttribute("payInfo");
+
+		session.removeAttribute("orderInfo");
+		session.removeAttribute("bookingDto");
+
 		return "booking/info.tiles";
 	}
 }
