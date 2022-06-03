@@ -90,7 +90,7 @@
 				</tr>
 				<tr>
 					<th>좋아요</th>
-					<td><img style="width:15px;"src="/resources/review_img/heart.png">&nbsp;${list.total_likes }</td>
+					<td><img style="width:18px;"src="/resources/review_img/heart.png">&nbsp;&nbsp;${list.total_likes }</td>
 				</tr>
 				
 				<tr>
