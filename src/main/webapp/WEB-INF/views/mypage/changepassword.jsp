@@ -64,8 +64,10 @@ $(function(){
 		$("#pwdmsg").val("");
 		var p1 = $("#pass1").val();
 		var p2 = $(this).val();
-		if(p1==p2){
-			$("#pwdmsg").html("비밀번호가 일치합니다.").css("color","blue");
+		if(p1 == '' || p2 == ''){
+			$("#pwdmsg").html("변경할 비밀번호를 입력해 주세요.")
+		} else if(p1==p2) {
+			$("#pwdmsg").html("비밀번호가 일치합니다.").css("color","green");
 		} else {
 			$("#pwdmsg").html("비밀번호가 일치하지 않습니다.").css("color","red");
 			
@@ -73,7 +75,7 @@ $(function(){
 	});
 	
 	//현재비밀번호 check
-	$("#pass0").keyup(function(){
+	$("#pass0").change(function(){
 		var data = {
 				"user_id":"${sessionScope.user_id}",
 				"currentpwd":$("#pass0").val()
@@ -87,11 +89,11 @@ $(function(){
 			success:function(data){
 				console.log(data);
 				if(data==1){
-					$("#pwdmsg2").html("OK!").css("color","blue");
+					$("#pwdmsg2").text("OK!");
 					
 				}
 				else {
-					$("#pwdmsg2").html("Fail!!").css("color","red");
+					$("#pwdmsg2").text("Fail!!");
 					
 				}
 				
@@ -126,12 +128,12 @@ function chkPW() {
     let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
     if (false === reg.test(pw)) {
-        $("#pwdmsg").text('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.').css("color","red");
+        $("#pwdmsg").css("color","red");
         $("#pass1").val("");
-        $("#pass1").focus();
+        //$("#pass1").focus();
         return false;
     } else {
-    	$("#pwdmsg").text('비밀번호가 정상입력되었습니다.').css("color","blue");
+    	//$("#pwdmsg").text('비밀번호가 정상입력되었습니다.').css("color","green");
         return true;
     }
 
@@ -179,7 +181,7 @@ function chkSubmit() {
 					<td>
 						<input type="hidden" class="form-control" name="user_id" id="user_id" value="${sessionScope.user_id }"><br>
 						<input type="password" class="form-control" name="currentpwd" id="pass0" value="${dto.password }">
-						<div style="display:none;border:1px solid black;height:25px;" id="pwdmsg2"></div>
+						<span style="display:none;border:1px solid black;height:25px;" id="pwdmsg2"></span>
 					</td> 
 				</tr>
 				<tr>
@@ -191,7 +193,8 @@ function chkSubmit() {
 				<tr>
 					<th>변경비밀번호 확인</th>
 					<td>
-						<input type="password" class="form-control" name="changepwd1" id="pass2" value="">&nbsp;&nbsp;<b id="pwdmsg"></b>
+						<input type="password" class="form-control" name="changepwd1" id="pass2" value="">&nbsp;&nbsp;
+						<span id="pwdmsg">비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.</span>
 					</td>
 				</tr>
 			</tbody>

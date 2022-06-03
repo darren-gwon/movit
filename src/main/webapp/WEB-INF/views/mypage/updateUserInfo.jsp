@@ -42,7 +42,7 @@
 	}
 	
 	table.type09 td {
-		width: 400px;
+		width: 550px;
 		padding: 10px;
 		vertical-align: top;
 		border-bottom: 1px solid #ccc;
@@ -99,9 +99,11 @@ $(function(){
 					$("#nickCheck").val("");
 					$("#nickCheck").focus();
 					$("#certNick").val("false");
+					$("#nickCheckResult").text("새로운 별명을 입력해주세요").css("color","red");
 				} else {
 					alert("사용가능한 별명입니다.");
 					$("#certNick").val("true");
+					$("#nickCheckResult").text("OK!!").css("color","green");
 				}
 			}
 		});
@@ -216,7 +218,7 @@ function chkSubmit() {
 			</thead>
 			<tbody>
 				<tr>
-					<th>이름</th>
+					<th style="width:150px;">이름</th>
 					<td>
 						<span>${dto.name }</span>
 						<input type="hidden" name="seq" value="${dto.seq }">
@@ -233,8 +235,9 @@ function chkSubmit() {
 				<tr>
 					<th>닉네임</th>
 					<td>
-						<input type="text" id="nickname" name="nickname" value="${dto.nickname}" style="width:150px;">
+						<input type="text" id="nickname" name="nickname" value="${dto.nickname}" style="width:200px;">
 						<button type="button" id="nickCheck">중복확인</button>
+						<span id="nickCheckResult"></span>
 						<input type="hidden" id="certNick" value="">
 					</td>
 				</tr>
@@ -249,7 +252,7 @@ function chkSubmit() {
 				<tr>
 					<th>휴대전화</th>
 					<td style="float:left">
-						<select id="phoneSelector" style="text-align:center;width:70px;">
+						<select id="phoneSelector" style="text-align:center;width:100px;">
 							<option <c:if test="${phone1==010 }">selected</c:if>>010</option>
 							<option <c:if test="${phone1==011 }">selected</c:if>>011</option>
 							<option <c:if test="${phone1==016 }">selected</c:if>>016</option>
@@ -257,15 +260,15 @@ function chkSubmit() {
 							<option <c:if test="${phone1==018 }">selected</c:if>>018</option>
 							<option <c:if test="${phone1==019 }">selected</c:if>>019</option>
 						</select>
-						<input type="hidden" maxlength="4" name="phone1" id="phone1" value=${phone1 } style="width:80px;">
-						&nbsp;-&nbsp;<input type="text" maxlength="4" name="phone2" id="phone2" value=${phone2 } style="width:70px;">&nbsp;-&nbsp;<input type="text" maxlength="4" name="phone3" id="phone3" value=${phone3 } style="width:70px;">
+						<input type="hidden" maxlength="4" name="phone1" id="phone1" value=${phone1 }>
+						&nbsp;-&nbsp;<input type="text" maxlength="4" name="phone2" id="phone2" value=${phone2 } style="width:100px;">&nbsp;-&nbsp;<input type="text" maxlength="4" name="phone3" id="phone3" value=${phone3 } style="width:100px;">
 					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
 					<td>
-						<input type="text" name="email1" id="email1" value=${email1 } style="width:100px;">@
-						<input type="text" name="email2" id="email2" value=${email2 } style="width:100px;">
+						<input type="text" name="email1" id="email1" value=${email1 } style="width:150px;">@
+						<input type="text" name="email2" id="email2" value=${email2 } style="width:150px;">
 						<select id="email3">
 							<option value="-">직접입력</option>
 							<option value="naver.com">네이버</option>
@@ -299,7 +302,7 @@ function chkSubmit() {
 		<br><br>
 		<button type="submit" id="submit">수정</button>
 		&nbsp;&nbsp;&nbsp;<button type="button" id="cancle" onclick="history.back()">취소</button>
-	</div>
+	</div><br>
 	</form>
 	</c:if>
 </body>
