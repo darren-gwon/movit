@@ -48,26 +48,25 @@ table.table-hover td {
 	text-decoration: none;
 }
 
-
 .btn {
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	display: inline-block;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	background-color: transparent;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	border-radius: 0.25rem;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out,
+		border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
-
 </style>
 
 <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
@@ -153,13 +152,13 @@ table.table-hover td {
 				<div class="row" style="font-size: 15px;">
 					<div class="col-5"></div>
 					<div class="col-6" style="text-align: right;">
-						<input type="search" class="form-control" placeholder="키워드 입력" id="keyword" 
-							aria-label="Search" style="text-align: center;">
+						<input type="search" class="form-control" placeholder="키워드 입력"
+							id="keyword" aria-label="Search" style="text-align: center;">
 					</div>
 
 					<div class="col-1" style="text-align: right;">
-						<button type="button" style="width: 100px; height: 38px;" onclick="search()"
-							class="btn btn-outline-dark">
+						<button type="button" style="width: 100px; height: 38px;"
+							onclick="search()" class="btn btn-outline-dark">
 							<p class=font-monospace>검색하기</p>
 						</button>
 					</div>
@@ -167,7 +166,7 @@ table.table-hover td {
 			</div>
 
 			<br>
-			
+
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -176,30 +175,30 @@ table.table-hover td {
 							<thead>
 								<tr>
 									<c:if test="${sessionScope.user_id == 'admin' }">
-									<th><input id="allCheck" type="checkbox" name="allCheck" /></th></c:if>
+										<th><input id="allCheck" type="checkbox" name="allCheck" /></th>
+									</c:if>
 									<th>번호</th>
 									<th>문의유형</th>
 									<th>영화관</th>
 									<th>글제목</th>
 									<th>ID</th>
-									<th>등록일</th>								
+									<th>등록일</th>
 									<th>조회수</th>
 								</tr>
 							</thead>
 							<tbody>
-							
+
 								<c:forEach items="${list}" var="inquiry" varStatus="i">
-									
+
 									<tr>
 										<c:if test="${sessionScope.user_id == 'admin' }">
-										<td><input name="RowCheck" type="checkbox"
-											value="${inquiry.seq}" /></td></c:if>
-										<td><c:out value="${displaypost+i.count}" /></td>										
+											<td><input name="RowCheck" type="checkbox"
+												value="${inquiry.seq}" /></td>
+										</c:if>
+										<td><c:out value="${displaypost+i.count}" /></td>
 										<td>${inquiry.inquiry_type}&nbsp;</td>
-										
-										<td>
-										
-										${inquiry.theaterID} </td>
+
+										<td>${inquiry.theaterID}</td>
 										<td style="width: 900px;"><a
 											href="${root}/inquiry/list/detail?seq=${inquiry.seq}">${inquiry.title}&nbsp;</a></td>
 										<td>${inquiry.user_id}</td>
@@ -215,7 +214,34 @@ table.table-hover td {
 			</div>
 
 			<br>
-			
+
+
+			<center>
+				<div class="col">
+					<c:if test="${prev}">
+
+						<a class="btn btn-outline-dark"
+							href="/inquiry/list?num=${startpagenum - 1}">〈</a>
+
+					</c:if>
+					<c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
+						<span> <c:if test="${num!=select}">
+								<a class="btn btn-outline-dark" href="/inquiry/list?num=${num}">${num}</a>
+							</c:if>
+						</span>
+						<span> <c:if test="${num==select}">
+								<b><a class="btn btn-outline-dark"
+									href="/inquiry/list?num=${num}">${num}</a></b>
+							</c:if>
+						</span>
+					</c:forEach>
+					<c:if test="${next}">
+						<a class="btn btn-outline-dark"
+							href="/inquiry/list?num=${endpagenum + 1}">〉</a>
+					</c:if>
+
+				</div>
+			</center>
 
 			<div class="container">
 				<div class="row">
@@ -223,37 +249,17 @@ table.table-hover td {
 						<a href="<c:url value='/inquiry/home'/>" role="button"
 							class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 					</div>
-					<center>
+
 					<div class="col">
-					<c:if test="${prev}">
-
-					<a class="btn btn-outline-dark" href="/inquiry/list?num=${startpagenum - 1}">〈</a>
-
-					</c:if>
-						<c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
-							<span> <c:if test="${num!=select}">
-									<a class="btn btn-outline-dark" href="/inquiry/list?num=${num}">${num}</a>
-								</c:if>
-							</span>
-							<span> <c:if test="${num==select}">
-									<b><a class="btn btn-outline-dark"
-										href="/inquiry/list?num=${num}">${num}</a></b>
-								</c:if>
-							</span>
-						</c:forEach>
-						<c:if test="${next}">
-							<a class="btn btn-outline-dark" href="/inquiry/list?num=${endpagenum + 1}">〉</a>
+						<c:if test="${sessionScope.user_id == 'admin'}">
+							<input type="button" class="btn btn-outline-danger"
+								style="width: 100px;" value="선택삭제" onclick="deleteValue();">
 						</c:if>
-
 					</div>
-					</center>
 					
 					<div class="col" style="text-align: right;">
 						<a href="<c:url value='/inquiry/list/insert'/>" role="button"
 							class="btn btn-outline-dark" style="width: 100px;">글쓰기</a>
-							<c:if test="${sessionScope.user_id == 'admin'}">
-							<input type="button" class="btn btn-outline-danger"
-							style="width: 100px;" value="선택삭제" onclick="deleteValue();"></c:if>
 					</div>
 				</div>
 
