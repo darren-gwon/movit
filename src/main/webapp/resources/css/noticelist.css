@@ -2,7 +2,7 @@
 .content {
 	position: relative;
 	margin-top:150px;
-	height:1000px;
+	height:1300px;
 }
 
 div.title{
@@ -76,10 +76,9 @@ ul a {
 ul a:hover{
 	 background-color : #071a4c;
 	 color:white;
-	 
 }
 div.bu1{
-	margin-left:1500px;
+	margin-left:1200px;
 }
 div #keyword {
 	height: 40px;

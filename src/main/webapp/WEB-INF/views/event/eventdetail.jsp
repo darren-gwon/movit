@@ -34,19 +34,20 @@
 				<p class="event-date">
 				<span>기간 : ${dto.start_date} ~ ${dto.end_date}</span>
 				<b class="cnt">조회수 : ${dto.view_cnt}</b></p>
-				
 				<div class="body">
 				<img src="/resources/img/event_main/${dto.main_img}">${dto.content}
 				</div>
 			</div>
-		</div>
-		<div class="btn-wrap">
+			<div class="btn-wrap">
 		<!-- <button onclick="location.href='eventlist'">목록</button> -->
 		<a class="btn-list" href="eventlist">목록</a>
 		</div>
+		<c:if test="${user_id=='admin'}">
 		<div class="btn-admin">
 		<a class="btn-update" href="../event/updateform?num=${dto.seq}">수정</button></a>
 		<a type="button" id="del">삭제</a>
+		</div>
+		</c:if>
 		</div>
 		
 
