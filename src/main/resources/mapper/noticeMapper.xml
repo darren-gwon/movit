@@ -16,6 +16,10 @@
 		view_cnt) value(#{seq},#{type},#{title},#{content},
 		now(),#{view_cnt})
 	</insert>
+	<!-- 메인 게시물 목록 -->
+	<select id="selectAll" resultType="InquiryFaqDto">
+		select seq, title,content,write_date,view_cnt,type from notice
+	</select>
 	
 	<!-- 게시글 상세 -->
 	<select id="detail" parameterType="int" resultType="NoticeDto">

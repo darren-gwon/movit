@@ -60,7 +60,7 @@
 	<!-- LOST 게시물 등록 --> 
 	<insert id="lostcreate" parameterType="InquiryLostDto">
 		insert into inquiry_lost (theaterID, item_type, title, content, status, lost_date, user_id, write_date)
-		values (#{theaterID}, #{item_type}, #{title}, #{content}, #{status}, #{lost_date}, #{user_id}, NOW())
+		values (#{theaterID}, #{item_type}, #{title}, #{content}, 0, #{lost_date}, #{user_id}, NOW())
 	</insert>
 
 	<!-- Lost 게시물 상세 정보 -->

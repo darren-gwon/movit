@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <link href="/resources/css/main.css" rel='stylesheet' />
 <div class="content">
 	<div class="movieSlide_wrap">
@@ -55,8 +58,37 @@
 			</a>
 		</div>
 	</div>
-	<div class="event_wrap">event</div>
 
+	<div class="event_wrap" style="height: 400px; vertical-align: middle;">
+		<div>
+			<div class="row" style="text-align: center;">
+				<div class="col">
+					<br>
+					<img width="600px;" height="350px;" style="margin-left: 240px;" src="http://localhost:9005/resources/cssimg/img1.jpg"/>
+				</div>
+				<div class="col">
+					<br>
+					<iframe width="600px;" height="350px;"style="margin-right: 300px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="event_wrap" style="height: 400px; vertical-align: middle;">
+		<div>
+			<div class="row" style="text-align: center;">
+				<div class="col">
+					<br>
+					<img width="600px;" height="350px;" style="margin-left: 240px;" src="http://localhost:9005/resources/cssimg/img1.jpg"/>
+				</div>
+				<div class="col">
+					<br>
+					<iframe width="600px;" height="350px;"style="margin-right: 300px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	
+	</div>
 	<div class="bottom_wrap">
 		<div class="bottom">
 			<div class="notice">
@@ -69,26 +101,15 @@
 					<th class="date"></th>
 				</tr>
 				-->
+
+				
+				<c:forEach items="${list}" var="list" varStatus="i<4">
 					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
+						<td class="titles"><a href="">${list.title}</></td>
+						<td class="dates">${list.write_date}</td>
 					</tr>
-					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
-					</tr>
-					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
-					</tr>
-					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
-					</tr>
-					<tr>
-						<td class="title">[공지] 공지사항입니다123456</td>
-						<td class="date">2022-05-31</td>
-					</tr>
+					</c:forEach>
+
 				</table>
 			</div>
 			<div class="sns">
