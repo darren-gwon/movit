@@ -35,7 +35,7 @@
 				</div>
 				<div class="card" id="card2"><a href="userReviewList">
 				<img src="/resources/mypage_img/mypagestar.png" style="width:100px;"><br><br>
-					<span>내가 쓴 평점</span></a>
+					<span>내가 쓴 리뷰</span></a>
 				</div>
 			</div>
 		</div>
