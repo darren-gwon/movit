@@ -53,9 +53,9 @@ public class KakaoPayServiceImpl implements KakaoPayService{
         params.add("quantity", info.getQuantity().toString());
         params.add("total_amount", info.getTotal_amount().toString());
         params.add("tax_free_amount", "0");
-        params.add("approval_url", "http://localhost:9005/pay/kakaoPaySuccess");
-        params.add("cancel_url", "http://localhost:9005/pay/kakaoPayCancel");
-        params.add("fail_url", "http://localhost:9005/pay/kakaoPayFail");
+        params.add("approval_url", "http://52.78.89.161:8080/pay/kakaoPaySuccess");
+        params.add("cancel_url", "http://52.78.89.161:8080/pay/kakaoPayCancel");
+        params.add("fail_url", "http://52.78.89.161:8080/pay/kakaoPayFail");
         
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
     	System.out.println("-----------------------PAY-READY RESPONSE PAYINFO-----------------------");
