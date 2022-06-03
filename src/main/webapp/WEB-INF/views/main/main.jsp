@@ -63,13 +63,14 @@
 		<div>
 			<div class="row" style="text-align: center;">
 				<div class="col">
-					<br>
-					<img width="600px;" height="350px;" style="margin-left: 240px;" src="http://localhost:9005/resources/cssimg/img1.jpg"/>
+						<br>
+					<iframe width="600px;" height="350px;" style="margin-left: 240px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 				<div class="col">
 					<br>
-					<iframe width="600px;" height="350px;"style="margin-right: 300px;" src="https://www.youtube.com/embed/smd2DODORbk?autoplay=1&mute=1" frameborder="0" allow="accelerometer; muted; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<img width="600px;" height="350px;" style="margin-right: 300px;" src="https://img.megabox.co.kr/SharedImg/event/2022/01/14/PaafbTzHLzAZslfTq3eRZS19bGTV7sG7.jpg"/>
 				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -103,12 +104,13 @@
 				-->
 
 				
-				<c:forEach items="${list}" var="list" varStatus="i<4">
+					<c:forEach items="${list}" var="list" varStatus="i<4">
 					<tr>
 						<td class="titles"><a href="">${list.title}</></td>
 						<td class="dates">${list.write_date}</td>
 					</tr>
 					</c:forEach>
+					
 
 				</table>
 			</div>
