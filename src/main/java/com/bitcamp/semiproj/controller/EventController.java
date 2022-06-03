@@ -39,7 +39,7 @@ import util.FileUtil;
 		@Autowired
 		EventDao dao;
 		
-		//°Ô½Ã¹° ¸ñ·Ï
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/eventlist", method = RequestMethod.GET)
 		public String eventlist(Model model) throws Exception{ 
 			int startnum = 0;
@@ -52,7 +52,7 @@ import util.FileUtil;
 			return "event/eventlist.tiles";
 		}
 		
-		//°Ô½Ã¹° ¸ñ·Ï
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½
 		@RequestMapping(value = "/list", method = RequestMethod.POST)
 		@ResponseBody
 		public List<EventDto> list(@RequestBody Map<String,Integer> map) throws Exception{ 
@@ -63,13 +63,13 @@ import util.FileUtil;
 			return list;
 		}
 
-		//°Ô½Ã¹° ÀÛ¼º Æû ÀÌµ¿
+		//ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ ï¿½Ìµï¿½
 		@RequestMapping(value = "/eventwriteform", method = RequestMethod.GET)
 		public String write() throws Exception {
 			   return "event/eventwriteform.tiles";
 				}
 		
-		// °Ô½Ã¹° ÀÛ¼º POST
+		// ï¿½Ô½Ã¹ï¿½ ï¿½Û¼ï¿½ POST
 		@RequestMapping(value="/eventwriteform", method=RequestMethod.POST)
 		public String postcreate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
 				HttpServletRequest request,HttpSession session) throws Exception{
@@ -126,7 +126,7 @@ import util.FileUtil;
 			return "redirect:eventlist";
 		}
 
-		//°Ô½Ã¹° »ó¼¼ÆäÀÌÁö ÀÌµ¿
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 		@RequestMapping(value="/eventdetail", method=RequestMethod.GET)
 				public String getdetail(Model model,int num) {
 					EventDto dto=service.detail(num);	
@@ -134,7 +134,7 @@ import util.FileUtil;
 					model.addAttribute("dto",dto);
 					return "event/eventdetail.tiles";
 				}
-		//°Ô½Ã¹° ¼öÁ¤
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping(value="/updateform",method=RequestMethod.GET)
 				public String getupdate(Model model, int num) throws Exception{
 					EventDto dto=service.detail(num);
@@ -142,7 +142,7 @@ import util.FileUtil;
 					
 					return "event/updateform.tiles";
 				}
-		//°Ô½Ã¹° ¼öÁ¤ post
+		//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ post
 		@RequestMapping(value="/updateform",method=RequestMethod.POST)
 			public String postupdate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
 					HttpServletRequest request,HttpSession session) throws Exception {

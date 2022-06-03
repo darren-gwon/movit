@@ -202,7 +202,7 @@ public class UserServiceImpl  implements UserService{
 
 			
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
 
 			String line = "";
 			String result = "";
