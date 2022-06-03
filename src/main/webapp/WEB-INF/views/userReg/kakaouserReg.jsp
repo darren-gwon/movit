@@ -228,7 +228,7 @@
 									&& $("#phonecheck").attr('value') == "true") {
 
 								let form = document.getElementById("frm");
-								form.setAttribute("action", "kakaoreg");
+								form.setAttribute("action", "/kakaoreg");
 								form.setAttribute("method", "post");
 								form.submit();
 
