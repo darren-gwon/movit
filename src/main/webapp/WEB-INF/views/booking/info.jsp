@@ -15,7 +15,7 @@
 		<div class="paySuccessInfo">
 			결제일자: 결제번호: 결제방식: 총금액: 영화명: 결제일: 갯수:
 
-			<table class="table table-striped">
+			<table class="table table-striped payment_info">
 				<tr>
 					<td colspan="2">영수증</td>
 				</tr>
@@ -37,11 +37,11 @@
 				</tr>
 				<tr>
 					<td>영화관</td>
-					<td>aaaaaaaaa</td>
+					<td>강남점</td>
 				</tr>
 				<tr>
 					<td>상영시간 </td>
-					<td></td>
+					<td>ㅋㅋㅋㅋㅋㅋㅋ</td>
 				</tr>
 				<tr>
 					<td>영화명</td>
@@ -58,21 +58,11 @@
 				</tr>
 				<tr>
 					<td>좌석번호</td>
-					<td></td>
+					<td>ㅋㅋㅋㅋㅋㅋㅋㅋ</td>
 				</tr>
 			</table>
 		</div>
 	</div>
-
-
-${payInfo}
-----------------------------------------------
-${orderInfo}
-----------------------------------------------
-${bookingDto}
-
-
-	결제 성공!!!! 
 
 </body>
 </html>
