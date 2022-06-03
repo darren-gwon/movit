@@ -22,7 +22,7 @@
 		<div class="content2" style="margin-top: 5%;">
 			<center>
 				<h1 id="title">kakao 유저 회원가입</h1>
-				<form id=frm style="width: 75%;" class="form-inlie">
+				<form id=frm  class="form-inlie" >
 					<div>
 						<center>
 							<div>
@@ -94,6 +94,7 @@
 			</center>
 		</div>
 	</div>
+	
 
 	<script>
 	
@@ -233,7 +234,7 @@
 								form.submit();
 
 								alert(
-										(${sessionScope.kakaoN}+"님 환영합니다. 선택해주셔서 감사합니다 ");
+										${sessionScope.kakaoN}+"님 환영합니다. 선택해주셔서 감사합니다 ");
 
 							} else {
 								alert("회원가입을 완료할 수 없습니다. 다시한번 확인해주십시오.");
