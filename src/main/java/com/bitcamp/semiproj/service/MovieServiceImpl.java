@@ -13,14 +13,14 @@ public class MovieServiceImpl implements MovieService {
 	@Autowired
 	MovieDao movieDao;
 	
-	public List<MovieDto> selectMovieByTheaterID(int theaterID){
+	public List<MovieDto> selectMovieByTheaterID(Integer theaterID){
 		return movieDao.selectMovieByTheaterID(theaterID);
 	}
 	
 	@Override
-	public MovieDto selectMovieByMovieID(int movieID) {
+	public MovieDto selectMovieByMovieID(Integer movieID) {
 		return movieDao.selectMovieByMovieID(movieID);
-	}
+	}	
 	
 	@Override
 	public List<MovieDto> selectAllMovies() {
