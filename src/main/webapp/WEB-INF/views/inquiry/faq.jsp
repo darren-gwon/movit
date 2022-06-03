@@ -205,14 +205,11 @@ table.table-hover td {
 	
 
 
-
+<br>
 
 
 			<div class="container">
 				<div class="row">
-					<div class="col" style="text-align: left;">
-						<a href="<c:url value='/inquiry/home'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
-					</div>
 					<center>
 					<div class="col">
 						<c:if test="${prev}">
@@ -235,12 +232,18 @@ table.table-hover td {
 						</c:if>
 					</div>
 					</center>
-					<c:if test="${sessionScope.user_id == 'admin' }">
+					
+					<div class="col" style="text-align: left;">
+						<a href="<c:url value='/inquiry/home'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
+					</div>
+					
+					
 					<div class="col" style="text-align: right;">
+					<c:if test="${sessionScope.user_id == 'admin' }">
 						<a href="<c:url value='/inquiry/faq/insert'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">글쓰기</a>
 
 						<input type="button" class="btn btn-outline-danger" style="width: 100px;" value="선택삭제" onclick="deleteValue();">
-					</div></c:if>
+					</c:if></div>
 				</div>
 
 				<br> <br> <br> <br> <br> <br>

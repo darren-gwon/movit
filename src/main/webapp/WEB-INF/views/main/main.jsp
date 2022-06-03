@@ -107,7 +107,7 @@
 
 				<div class="col">
 					<br> <img width="600px;" height="340px;"
-						src="http://localhost:9005/resources/cssimg/img2.jpg" />
+						src="https://caching.lottecinema.co.kr//Media/Event/92398b601eba4e66ae409ca288ea58de.jpg" />
 				</div>
 
 				<div class="col">
