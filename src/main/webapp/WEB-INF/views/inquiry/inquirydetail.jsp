@@ -30,33 +30,31 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<table class="table table-hover"
-					style="text-align: center; font-size: 15px;">
+				<table class="table table-hover" style="text-align: center; font-size: 15px;">
 					<tr style="display: none;">
-						<td style="display: none;">번호</td>
+						<th style="display: none;">번호</th>
 						<td>${data.seq}</td>
 					</tr>
 					<tr>
-						<td style="width: 100px;"><b>영화관</b></td>
-						<td>${data.theaterID}</td>
+						<th style="width: 100px;">영화관</th>
+						<td style="text-align:left">${data.theaterID}</td>
+						<th>문의 타입</th>
+						<td style="text-align:left">${data.inquiry_type}</td>
+						<th>작성일자</th>
+						<td style="text-align:left"><fmt:formatDate value="${data.write_date}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 					<tr>
-						<td><b>문의 타입</b></td>
-						<td>${data.inquiry_type}</td>
-					</tr>
-					<tr>
-						<td><b>제목</b></td>
-						<td>${data.title}</td>
+						<th>제목</th>
+						<td colspan="5" style="text-align:left">${data.title}</td>
 					</tr>
 					<tr style="vertical-align: middle;">
 						<td><b>내용</b></td>
-						<td><pre>${data.content}</pre></td>
+						<td colspan="5" style="text-align:left"><pre>${data.content}</pre></td>
 					</tr>
-					<tr>
+					<%-- <tr>
 						<td style="display: none;">작성일자</td>
-						<td style="display: none;"><fmt:formatDate
-								value="${data.write_date}" pattern="yyyy-MM-dd" /></td>
-					</tr>
+						<td style="display: none;"><fmt:formatDate value="${data.write_date}" pattern="yyyy-MM-dd" /></td>
+					</tr> --%>
 				</table>
 			</div>
 		</div>
