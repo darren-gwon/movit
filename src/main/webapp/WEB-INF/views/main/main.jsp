@@ -163,7 +163,7 @@
 
 								<c:forEach items="${list}" var="list" varStatus="i<4">
 									<tr>
-										<td class="titles"><a style="text-decoration: none; color: black;"  href="">${list.title}</></td>
+										<td class="titles"><a style="text-decoration: none; color: black;"  href="../board/detail?num=${list.seq}">${list.title}</></td>
 										<td class="dates">${list.write_date}</td>
 									</tr>
 								</c:forEach>
