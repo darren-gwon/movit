@@ -30,7 +30,7 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
-	@GetMapping("/home")
+	@GetMapping("")
 	public String home(HttpSession session, Model model) {
 		String user_id = (String)session.getAttribute("user_id");
 		MypageDto dto = service.getUserData(user_id);
