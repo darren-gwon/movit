@@ -25,7 +25,7 @@
 				</tr>
 				<tr>
 					<td>예매번호</td>
-					<td>${bookingDto.bookingID}</td>
+					<td>${bookingDto.booking_id}</td>
 				</tr>
 				<tr>
 					<td>결제번호</td>

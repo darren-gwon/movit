@@ -23,13 +23,14 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 	
 	@Override
-	public List<ScheduleDto> selectByTheaterID(int theaterID){
-		return session.selectList(namespace+"selectByTheaterID", theaterID);
+	public List<ScheduleDto> selectBytheater_id(int theater_id){
+		return session.selectList(namespace+"selectBytheater_id", theater_id);
 	}
 
 	@Override
 	public List<ScheduleDto> selectScheduleInfo(Map<String, String> map) {
-		// TODO Auto-generated method stub
+		List<ScheduleDto> list = session.selectList(namespace+"selectScheduleInfo", map);
+		System.out.println(list);
 		return session.selectList(namespace+"selectScheduleInfo", map);
 	}
 	

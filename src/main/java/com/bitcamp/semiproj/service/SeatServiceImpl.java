@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.bitcamp.semiproj.dao.SeatDao;
 import com.bitcamp.semiproj.domain.OwnSeatDto;
-import com.bitcamp.semiproj.domain.ScreenSeatDto;
 
 @Service
 public class SeatServiceImpl implements SeatService {

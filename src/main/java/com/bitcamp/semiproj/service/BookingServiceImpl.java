@@ -19,7 +19,7 @@ public class BookingServiceImpl implements BookingService {
 		return bookingDao.insertBooking(bookingDto);
 	}
 	
-	public String generateBookingID() {
+	public String generatebooking_id() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmssSSS");
 		sdf.format(new Date());
 		

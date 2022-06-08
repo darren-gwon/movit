@@ -1,25 +1,25 @@
 package com.bitcamp.semiproj.domain;
 
 public class PriceDto {
-	private Integer priceID;
-	private Integer classID;
+	private Integer price_id;
+	private String class_type;
 	private String age_group;
 	private Integer price;
 	
-	public Integer getPriceID() {
-		return priceID;
+	public Integer getPrice_id() {
+		return price_id;
 	}
 
-	public void setPriceID(Integer priceID) {
-		this.priceID = priceID;
+	public void setPrice_id(Integer price_id) {
+		this.price_id = price_id;
 	}
 
-	public Integer getClassID() {
-		return classID;
+	public String getClass_type() {
+		return class_type;
 	}
 
-	public void setClassID(Integer classID) {
-		this.classID = classID;
+	public void setClass_type(String class_type) {
+		this.class_type = class_type;
 	}
 
 	public String getAge_group() {
@@ -40,7 +40,7 @@ public class PriceDto {
 
 	@Override
 	public String toString() {
-		return "PriceDto [priceID=" + priceID + ", classID=" + classID + ", age_group=" + age_group + ", price=" + price
+		return "PriceDto [price_id=" + price_id + ", class_type=" + class_type + ", age_group=" + age_group + ", price=" + price
 				+ "]";
 	}
 	

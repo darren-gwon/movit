@@ -8,11 +8,11 @@ import com.bitcamp.semiproj.domain.ReviewDto;
 public interface ReviewDao {
 	List<ReviewDto> findAllReviewList();
 	void insertReview(ReviewDto dto);
-	void deleteReview(int reviewID);
+	void deleteReview(int review_id);
 	void updateReview(ReviewDto dto);
-	List<ReviewDto> findReviewListByMovieId(Map<String, Object> map);
-	int findReviewTotalCountByMovieId(int movieID);
-	double findReviewRatingAvgByMovieId(int movieID);
-	int findSumReviewRating(int movieID);
+	List<ReviewDto> findReviewListByMovie_id(Map<String, Object> map);
+	int findReviewTotalCountByMovie_id(int movie_id);
+	double findReviewRatingAvgByMovie_id(int movie_id);
+	int findSumReviewRating(int movie_id);
 	List<ReviewDto> checkUserReview(ReviewDto dto);
 }

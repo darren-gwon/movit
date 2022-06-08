@@ -7,7 +7,7 @@ import com.bitcamp.semiproj.domain.TheaterDto;
 public interface TheaterDao {
 
 	List<TheaterDto> selectAll();
-	List<TheaterDto> selectRegion();
-	List<TheaterDto> selectByRegion(int regionID);
+	List<TheaterDto> selectRegions();
+	List<TheaterDto> selectByRegion(String region_name);
 
 }

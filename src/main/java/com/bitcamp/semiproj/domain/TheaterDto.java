@@ -1,25 +1,31 @@
 package com.bitcamp.semiproj.domain;
 
 public class TheaterDto {
-	private Integer theaterID;
-	private String name;
-	private RegionDto regionDto;
+	private Integer theater_id;
+	private String theater_name;
+	private String region_name;	
+	private ScreenDto screenDto;
 	private String address;
 	private String contact;
 	
-	public Integer getTheaterID() {
-		return theaterID;
+	public Integer getTheater_id() {
+		return theater_id;
 	}
-	public void setTheaterID(Integer theaterID) {
-		this.theaterID = theaterID;
+	public void setTheater_id(Integer theater_id) {
+		this.theater_id = theater_id;
 	}
-	public String getName() {
-		return name;
+	public String getRegion_name() {
+		return region_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRegion_name(String region_name) {
+		this.region_name = region_name;
 	}
-	
+	public ScreenDto getScreenDto() {
+		return screenDto;
+	}
+	public void setScreenDto(ScreenDto screenDto) {
+		this.screenDto = screenDto;
+	}
 	public String getAddress() {
 		return address;
 	}
@@ -32,19 +38,15 @@ public class TheaterDto {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	
-	public RegionDto getRegionDto() {
-		return regionDto;
+	public String getTheater_name() {
+		return theater_name;
 	}
-	public void setRegionDto(RegionDto regionDto) {
-		this.regionDto = regionDto;
+	public void setTheater_name(String theater_name) {
+		this.theater_name = theater_name;
 	}
-	
 	@Override
 	public String toString() {
-		return "TheaterDto [theaterID=" + theaterID + ", name=" + name + ", regionDto=" + regionDto + ", address="
-				+ address + ", contact=" + contact + "]";
+		return "TheaterDto [theater_id=" + theater_id + ", theater_name=" + theater_name + ", region_name=" + region_name
+				+ ", screenDto=" + screenDto + ", address=" + address + ", contact=" + contact + "]";
 	}
-	
-	
 }

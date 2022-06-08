@@ -45,7 +45,7 @@ public class LoginController {
 	// 로그인 버튼 누르면 로그인 완료
 	@RequestMapping(value = "success", method = RequestMethod.POST)
 	public String loginProcess(@RequestParam String user_id, @RequestParam String password,
-			@RequestParam(required = false) String chkid, HttpServletRequest request, HttpServletResponse response,
+			 HttpServletRequest request, HttpServletResponse response,
 			HttpSession session, RedirectAttributes rattr) {
 
 		String secretpassword = (UserSha256.encrypt(password)); // 비밀번호 암호화

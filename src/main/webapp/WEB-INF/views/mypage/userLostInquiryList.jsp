@@ -79,7 +79,7 @@
 				</tr>
 				<tr>
 					<th>분실장소</th>
-					<td>${list.theaterID }관</td>
+					<td>${list.theater_id }관</td>
 					<th>분실날짜</th>
 					<td colspan="3">${list.lost_date }</td>
 				</tr>

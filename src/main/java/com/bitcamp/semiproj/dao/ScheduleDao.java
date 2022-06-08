@@ -10,7 +10,7 @@ public interface ScheduleDao {
 
 	List<ScheduleDto> selectAll();
 
-	List<ScheduleDto> selectByTheaterID(int theaterID);
+	List<ScheduleDto> selectBytheater_id(int theater_id);
 	
 	List<ScheduleDto> selectScheduleInfo(Map<String, String> map);
 

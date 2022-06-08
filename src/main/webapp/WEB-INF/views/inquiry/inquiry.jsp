@@ -198,7 +198,7 @@ table.table-hover td {
 										<td><c:out value="${displaypost+i.count}" /></td>
 										<td>${inquiry.inquiry_type}&nbsp;</td>
 
-										<td>${inquiry.theaterID}</td>
+										<td>${inquiry.theater_id}</td>
 										<td style="width: 900px;"><a
 											href="${root}/inquiry/list/detail?seq=${inquiry.seq}">${inquiry.title}&nbsp;</a></td>
 										<td>${inquiry.user_id}</td>

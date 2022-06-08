@@ -20,16 +20,12 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return scheduleDao.selectAll();
 	}
 	
-	public List<ScheduleDto> getMovieByTheaterID(int theaterID){
-		return scheduleDao.selectByTheaterID(theaterID);
+	public List<ScheduleDto> getMovieBytheater_id(int theater_id){
+		return scheduleDao.selectBytheater_id(theater_id);
 	}
 
 	@Override
 	public List<ScheduleDto> getScheduleInfo(Map<String, String> map) {
-		List<ScheduleDto> list = scheduleDao.selectScheduleInfo(map);
-		for(int i = 0; i<list.size(); i++) {
-			list.get(0);
-		}
 		return scheduleDao.selectScheduleInfo(map);
 	}
 }

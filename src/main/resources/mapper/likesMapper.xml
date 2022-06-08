@@ -4,39 +4,39 @@
 
 <mapper namespace="com.bitcamp.semiproj.dao.LikesDao">
 	<select id="checkLikes" parameterType="Map" resultType="LikesDto">
-		select * from review_likes where user_id=#{user_id} and movieID=#{movieID}
+		select * from review_likes where user_id=#{user_id} and movie_id=#{movie_id}
 	</select>
 
 	<select id="findLikes" parameterType="LikesDto" resultType="LikesDto">
-		select * from review_likes where reviewID=#{reviewID} and user_id=#{user_id}
+		select * from review_likes where review_id=#{review_id} and user_id=#{user_id}
 	</select>
 	
 	<insert id="insertLikes" parameterType="LikesDto">
-		insert into review_likes (reviewID, user_id, movieID, likes, like_date) values (#{reviewID}, #{user_id}, #{movieID}, 1, now())
+		insert into review_likes (review_id, user_id, movie_id, likes, like_date) values (#{review_id}, #{user_id}, #{movie_id}, 1, now())
 	</insert>
 	
 	<delete id="deleteLikes" parameterType="LikesDto">
-		delete from review_likes where reviewID=#{reviewID} and user_id=#{user_id}
+		delete from review_likes where review_id=#{review_id} and user_id=#{user_id}
 	</delete>
 	
 	<select id="totalLikes" parameterType="int" resultType="LikesDto">
-<!-- 		SELECT r.movieID, r.reviewID, r.total_likes
+<!-- 		SELECT r.movie_id, r.review_id, r.total_likes
 		FROM review AS r
 		JOIN likes
-		ON r.reviewID = likes.reviewID
-		where r.movieID=#{movieID} order by r.reviewID desc; -->
-		select review.total_likes, review.reviewID, review.movieID
+		ON r.review_id = likes.review_id
+		where r.movie_id=#{movie_id} order by r.review_id desc; -->
+		select review.total_likes, review.review_id, review.movie_id
         from review 
-        where review.movieID=#{movieID}
-        order by review.reviewID desc;
+        where review.movie_id=#{movie_id}
+        order by review.review_id desc;
 	</select>
 	
 	<update id="increaseTotalLikes" parameterType="LikesDto">
-		update review set total_likes=(total_likes+1) where reviewID=#{reviewID};
+		update review set total_likes=(total_likes+1) where review_id=#{review_id};
 	</update>
 	
 	<update id="decreaseTotalLikes" parameterType="LikesDto">
-		update review set total_likes=(total_likes-1) where reviewID=#{reviewID};
+		update review set total_likes=(total_likes-1) where review_id=#{review_id};
 	</update>
 	
 </mapper>

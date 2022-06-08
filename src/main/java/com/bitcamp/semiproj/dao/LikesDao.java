@@ -10,7 +10,7 @@ public interface LikesDao {
 	LikesDto findLikes(LikesDto dto);
 	int insertLikes(LikesDto dto);
 	void deleteLikes(LikesDto dto);
-	List<LikesDto> totalLikes(int movieID);
+	List<LikesDto> totalLikes(int movie_id);
 	int increaseTotalLikes(LikesDto dto); 
 	int decreaseTotalLikes(LikesDto dto); 
 

@@ -3,19 +3,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
 <mapper namespace="com.bitcamp.semiproj.dao.MovieMapper">
-    <select id="selectMovieByTheaterID" parameterType="int" resultType="MovieDto">
-		SELECT m.*
+    <select id="selectMovieByTheaterName" parameterType="String" resultType="MovieDto">
+		SELECT m.seq, m.movie_id, m.title, m.age_group, m.genre, m.runningtime, m.poster_img, m.trailer_url, m.on_show, m.still_cut
 		FROM movie AS m
 		JOIN theater as t
 		JOIN screen AS s
 		JOIN show_schedule as shw
-		ON shw.theaterID = t.theaterID AND shw.screenID = s.screenID
-			AND shw.movieID = m.movieID
-		WHERE shw.screen_date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-%d')
-			AND DATE_ADD(NOW(), INTERVAL 7 DAY) and t.theaterID=${theaterID};
+		ON shw.theater_name= t.theater_name AND shw.screen_id = s.screen_id AND shw.movie_id = m.movie_id
+		WHERE shw.screen_date BETWEEN DATE_FORMAT(NOW(), '%Y-%m-%d') AND DATE_ADD(NOW(), INTERVAL 7 DAY) and t.theater_name=#{theater_name}
+		GROUP BY m.title;
     </select>
-    <select id="selectMovieByMovieID" parameterType="int" resultType="MovieDto">
-    	SELECT * FROM movie where movieID=#{movieID};
+    <select id="selectMovieByMovie_id" parameterType="int" resultType="MovieDto">
+    	SELECT * FROM movie where movie_id=#{movie_id};
     </select>
     <select id="selectAllMovies" resultType="MovieDto">
     	SELECT * FROM movie where on_show=1 order by total_audience desc;

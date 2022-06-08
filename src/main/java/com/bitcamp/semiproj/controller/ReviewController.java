@@ -36,13 +36,13 @@ public class ReviewController {
 	@GetMapping("/list")
 	@ResponseBody
 	public Map<String, Object> getReviewList(
-			@RequestParam("movieID") int movieID, 
+			@RequestParam("movie_id") int movie_id, 
 			@RequestParam("startNum") int startNum
 			) {
 		int perPage = 5;
-		int reviewTotalCount = service.findReviewTotalCountByMovieId(movieID);
-		int sumReviewRating = service.findSumReviewRating(movieID);
-		List<ReviewDto> list = service.findReviewListByMovieId(movieID, startNum, perPage);
+		int reviewTotalCount = service.findReviewTotalCountByMovie_id(movie_id);
+		int sumReviewRating = service.findSumReviewRating(movie_id);
+		List<ReviewDto> list = service.findReviewListByMovie_id(movie_id, startNum, perPage);
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
@@ -54,10 +54,10 @@ public class ReviewController {
 	
 	@GetMapping("/form")
 	public String reviewForm(
-			@RequestParam int movieID, 
+			@RequestParam int movie_id, 
 			Model model, 
 			HttpSession session) {
-		model.addAttribute("movieID", movieID);
+		model.addAttribute("movie_id", movie_id);
 		return "review/reviewform.tiles";
 	}
 	
@@ -75,9 +75,9 @@ public class ReviewController {
 	
 	@GetMapping("/deleteReview")
 	@ResponseBody
-	public void deleteReview(@RequestParam int reviewID) {
-		System.out.println("reviewID = "+reviewID);
-		service.deleteReview(reviewID);
+	public void deleteReview(@RequestParam int review_id) {
+		System.out.println("review_id = "+review_id);
+		service.deleteReview(review_id);
 	}
 	
 	@PostMapping("/updateReview")
