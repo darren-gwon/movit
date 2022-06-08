@@ -38,12 +38,12 @@ public class MypageController {
 		return "mypage/mypagehome.tiles";
 	}
 	
-	@PostMapping("userCheck")
-	public String userCheck(@RequestParam String password) {
-		return "/mypage/mypageUserInfo";
-	}
+//	@PostMapping("userCheck")
+//	public String userCheck(@RequestParam String password) {
+//		return "/mypage/mypageUserInfo";
+//	}
 	
-	@GetMapping("/mypageUserInfo")
+	@GetMapping("/UserInfo")
 	public String updateForm(
 			Model model, 
 			HttpSession session) {
@@ -79,7 +79,7 @@ public class MypageController {
 		return "/mypage/updateUserInfo.tiles";
 	}
 	
-	@PostMapping("/updateMypage")
+	@PostMapping("/update")
 	public String updateMyage(
 			@ModelAttribute MypageDto dto,
 			@RequestParam String email1,
@@ -95,7 +95,7 @@ public class MypageController {
 		
 		
 		service.updateMypage(dto);
-		return "redirect:/mypage/home";
+		return "redirect:/mypage/";
 	}
 	
 	@GetMapping("/pwUpdateView")
@@ -134,7 +134,7 @@ public class MypageController {
 		//session.invalidate();
 		//rttr.addFlashAttribute("msg", "정보 수정이 완료되었습니다. 다시 로그인해주세요.");
 		//로그인화면으로 나중에 전환필요
-		return "redirect:home";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/deleteAccountView")

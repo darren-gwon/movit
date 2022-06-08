@@ -47,12 +47,12 @@ public class LikesController {
 	}
 	
 	
-	@GetMapping("/increaseLikes")
-	public int increaseLikes() {
-		LikesDto dto = new LikesDto();
-		dto.getTotal_likes();
-		return dto.getTotal_likes();
-	}
+//	@GetMapping("/increaseLikes")
+//	public int increaseLikes() {
+//		LikesDto dto = new LikesDto();
+//		dto.getTotal_likes();
+//		return dto.getTotal_likes();
+//	}
 	
 	
 	
