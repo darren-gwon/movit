@@ -24,6 +24,6 @@
 </style>
 </head>
 <body>
-	<a href="form?movieID=1">관람평</a>
+	<a href="form?movie_id=1">관람평</a>
 </body>
 </html>

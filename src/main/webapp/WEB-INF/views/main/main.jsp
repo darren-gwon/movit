@@ -42,24 +42,24 @@
 		</div>
 		<div class="movie_poster_wrap">
 			<div class="movie_poster first">
-				<a href="../movie/detail?movieID=20212855"><img
+				<a href="../movie/detail?movie_id=20212855"><img
 					src="https://img.megabox.co.kr/SharedImg/2022/05/04/4OFqLBLmda67a6BPXjaXCVM5wun7FAtb_420.jpg"
 					class="poster_img"></a> <span class="movie_title">12닥터
 					스트레인지: 대혼돈의 멀티버스</span>
 			</div>
 			<div class="movie_poster">
-				<a href="../movie/detail?movieID=20204548"><img
+				<a href="../movie/detail?movie_id=20204548"><img
 					src="https://img.megabox.co.kr/SharedImg/2022/05/23/oZfETtpEvKGpdY2JQo2Z6wFL0S4cpKy5_420.jpg"
 					class="poster_img"></a> <span class="movie_title">범죄도시2</span>
 			</div>
 			<div class="movie_poster">
-				<a href="../movie/detail?movieID=20206061"><img
+				<a href="../movie/detail?movie_id=20206061"><img
 					src="https://img.megabox.co.kr/SharedImg/2022/05/16/WApIttC9CrStYU7j7jzFRlc2HsIXBQtY_420.jpg"
 					class="poster_img"></a> <span class="movie_title">쥬라기 월드:
 					도미니언</span>
 			</div>
 			<div class="movie_poster last">
-				<a href="../movie/detail?movieID=20223278"><img
+				<a href="../movie/detail?movie_id=20223278"><img
 					src="https://img.megabox.co.kr/SharedImg/2022/02/17/djm7aYuL9bQGZRsxyUH75wATz9ub9ouk_420.jpg"
 					class="poster_img"></a> <span class="movie_title">극장판 주술회전
 					0</span>

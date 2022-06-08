@@ -187,7 +187,7 @@ table.table-hover td {
 												value="${lost.seq}" /></td>
 										</c:if>
 										<td><c:out value="${displaypost+i.count}" /></td>
-										<td>${lost.theaterID}&nbsp;</td>
+										<td>${lost.theater_id}&nbsp;</td>
 
 										<td style="width: 900px;"><a
 											href="lost/detail?seq=${lost.seq}">${lost.title}&nbsp;</a></td>

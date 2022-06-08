@@ -39,9 +39,9 @@
 					<br> <br>
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
-							aria-label="Floating label select example" name="theaterID">
+							aria-label="Floating label select example" name="theater_id">
 
-							<option value="${data.theaterID}">${data.theaterID}</option>
+							<option value="${data.theater_id}">${data.theater_id}</option>
 							<option value="01">1</option>
 							<option value="02">2</option>
 							<option value="03">3</option>

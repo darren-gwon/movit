@@ -7,20 +7,20 @@
         SELECT own.*
 		FROM ownseat AS own
 		JOIN show_schedule AS shw
-		ON shw.scheduleID = own.scheduleID
-		WHERE own.scheduleID=#{scheduleID}<!--  AND shw.movieID=#{movieID} AND shw.screenID=#{screenID}; -->
+		ON shw.schedule_id = own.schedule_id
+		WHERE own.schedule_id=#{schedule_id}<!--  AND shw.movie_id=#{movie_id} AND shw.screen_id=#{screen_id}; -->
 	</select>
     
     <select id="selectOwnSeatCount" parameterType="Map" resultType="int" >
         SELECT count(*)
 		FROM ownseat AS own
 		JOIN show_schedule AS shw
-		ON shw.scheduleID = own.scheduleID
-		WHERE own.scheduleID=#{scheduleID};
+		ON shw.schedule_id = own.schedule_id
+		WHERE own.schedule_id=#{schedule_id};
 	</select>
     
     <select id="selectSeatPrice" parameterType="Map" resultType="PriceDto">
     	SELECT * FROM price
-    	WHERE classID=#{classID} and age_group=#{age_group};
+    	WHERE class_type=#{class_type} and age_group=#{age_group};
     </select>
 </mapper>

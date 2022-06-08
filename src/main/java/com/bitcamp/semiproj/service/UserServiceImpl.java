@@ -89,7 +89,7 @@ public class UserServiceImpl  implements UserService{
 	public int login(Map<String, String> map) {
 		// TODO Auto-generated method stub
 
-
+		
 		return userdao.login(map);
 	}
 	//ID 찾기

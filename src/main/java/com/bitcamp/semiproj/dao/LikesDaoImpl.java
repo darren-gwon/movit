@@ -38,8 +38,8 @@ public class LikesDaoImpl implements LikesDao {
 	}
 	
 	@Override
-	public List<LikesDto> totalLikes(int movieID) {
-		return session.selectList(namespace + "totalLikes", movieID);
+	public List<LikesDto> totalLikes(int movie_id) {
+		return session.selectList(namespace + "totalLikes", movie_id);
 	}
 
 	@Override

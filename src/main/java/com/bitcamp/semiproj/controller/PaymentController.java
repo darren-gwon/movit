@@ -40,7 +40,7 @@ public class PaymentController {
 
 	@PostMapping("/valid")
 	public ResponseEntity<String> validPrice(HttpServletRequest requset, @RequestBody Map<String, String> tickets) {
-		System.out.println(tickets);
+		System.out.println("tickets"+tickets);
 		int realPrice = seatService.isValidPrice(tickets);
 		int totalPrice = Integer.valueOf(tickets.get("totalPrice"));
 
@@ -67,10 +67,10 @@ public class PaymentController {
 
 		KakaoPayApprovalDto kPayApprovalDto = kakaoPayService.payInfo(pg_token, session);
 		if (kPayApprovalDto != null) {
-			BookingDto bookingDto = info.getBookingDto();
+			BookingDto bookingDto = null;//info.getBookingDto();
 			bookingDto.setPay_tid(kPayApprovalDto.getTid());
 			bookingDto.setUser_id((String) session.getAttribute("user_id"));
-			bookingDto.setBookingID(bookingService.generateBookingID());
+			bookingDto.setBooking_id(bookingService.generatebooking_id());
 
 			bookingService.insertBooking(bookingDto);
 			
@@ -103,7 +103,7 @@ public class PaymentController {
 
 		try {
 			OrderInfoDto orderInfo = objMapper.readValue(jsonObj, OrderInfoDto.class);
-
+			
 			System.out.println(orderInfo);
 			session.setAttribute("orderInfoDto", orderInfo);
 		} catch (JsonMappingException e) {

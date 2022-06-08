@@ -9,7 +9,7 @@ import com.bitcamp.semiproj.domain.ScheduleDto;
 public interface ScheduleService {
 	public List<ScheduleDto> getAllSchedules();
 	
-	public List<ScheduleDto> getMovieByTheaterID(int theaterID);
+	public List<ScheduleDto> getMovieBytheater_id(int theater_id);
 	
 	public List<ScheduleDto> getScheduleInfo(Map<String, String> map);
 }

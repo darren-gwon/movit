@@ -12,6 +12,8 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+
 		<property name="driverClassName" value="${spring.datasource.driverClassname}"/>
 		<property name="url" value="${spring.datasource.url}"/>
 		<property name="username" value="${spring.datasource.username}"/>

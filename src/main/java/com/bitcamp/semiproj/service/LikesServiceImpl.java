@@ -18,10 +18,10 @@ public class LikesServiceImpl implements LikesService {
 	LikesDao dao;
 	
 	
-	public List<LikesDto> checkLikes(String user_id, String movieID) {
+	public List<LikesDto> checkLikes(String user_id, String movie_id) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("user_id", user_id);
-		map.put("movieID", movieID);
+		map.put("movie_id", movie_id);
 		return dao.checkLikes(map);
 	}
 	
@@ -46,8 +46,8 @@ public class LikesServiceImpl implements LikesService {
 		return result;
 	}
 	
-	public List<LikesDto> getTotalLikes(int movieID) {
-		return dao.totalLikes(movieID);
+	public List<LikesDto> getTotalLikes(int movie_id) {
+		return dao.totalLikes(movie_id);
 	}
 	
 	

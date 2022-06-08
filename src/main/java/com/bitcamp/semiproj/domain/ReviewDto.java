@@ -22,7 +22,7 @@ public class ReviewDto {
 	@Override
 	public String toString() {
 		return "ReviewDto [start=" + start + ", perPage=" + perPage + ", totalReviewCount=" + totalReviewCount
-				+ ", reviewID=" + reviewID + ", movieID=" + movieID + ", user_id=" + user_id + ", content=" + content
+				+ ", review_id=" + review_id + ", movie_id=" + movie_id + ", user_id=" + user_id + ", content=" + content
 				+ ", rating=" + rating + ", likes=" + likes + ", write_date=" + write_date + "]";
 	}
 	public int getStart() {
@@ -47,8 +47,8 @@ public class ReviewDto {
 	private int start;
 	private int perPage;
 	private int totalReviewCount;
-	private int reviewID;
-	private int movieID;
+	private int review_id;
+	private int movie_id;
 	private String user_id;
 	private String content;
 	private String rating;
@@ -56,17 +56,17 @@ public class ReviewDto {
 	private String write_date;
 	private int total_likes;
 	private String title;
-	public int getReviewID() {
-		return reviewID;
+	public int getReview_id() {
+		return review_id;
 	}
-	public void setReviewID(int reviewID) {
-		this.reviewID = reviewID;
+	public void setReview_id(int review_id) {
+		this.review_id = review_id;
 	}
-	public int getMovieID() {
-		return movieID;
+	public int getMovie_id() {
+		return movie_id;
 	}
-	public void setMovieID(int movieID) {
-		this.movieID = movieID;
+	public void setMovie_id(int movie_id) {
+		this.movie_id = movie_id;
 	}
 	public String getUser_id() {
 		return user_id;

@@ -45,7 +45,7 @@ public class LoginController {
 	// 로그인 버튼 누르면 로그인 완료
 	@RequestMapping(value = "success", method = RequestMethod.POST)
 	public String loginProcess(@RequestParam String user_id, @RequestParam String password,
-			@RequestParam(required = false) String chkid, HttpServletRequest request, HttpServletResponse response,
+			 HttpServletRequest request, HttpServletResponse response,
 			HttpSession session, RedirectAttributes rattr) {
 
 		String secretpassword = (UserSha256.encrypt(password)); // 비밀번호 암호화
@@ -65,7 +65,7 @@ public class LoginController {
 			session.setAttribute("loginname", name);
 			String old_url = request.getHeader("referer");
 			return "redirect:" + old_url; // 성공후 이전페이지이동 
-		} else {
+		} else { 
 			// 아이디와 비번이 틀린경우
 			String old_url = request.getHeader("referer");
 			rattr.addFlashAttribute("loginfail", 1);

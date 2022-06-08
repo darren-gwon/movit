@@ -4,13 +4,13 @@
         
 <mapper namespace="com.bitcamp.semiproj.dao.BookingMapper">
     <insert id="insertBooking" parameterType="BookingDto">
-    	INSERT INTO booking (bookingID, scheduleID, pay_tid, user_id, quantity, booking_time)
-		VALUES("${bookingID}", "${scheduleID}", "${pay_tid}", "${user_id}","${quantity}", now());
+    	INSERT INTO booking (booking_id, schedule_id, pay_tid, user_id, quantity, booking_time)
+		VALUES("${booking_id}", "${schedule_id}", "${pay_tid}", "${user_id}","${quantity}", now());
 		
-		INSERT INTO ownseat(bookingID, scheduleID, user_id, row_no, column_no, status)
+		INSERT INTO ownseat(booking_id, schedule_id, user_id, row_no, column_no, status)
 		VALUES
 	<foreach item="item" index="index" collection="ownSeatList" separator=",">
-		("${bookingID}","${scheduleID}","${user_id}","${item.row_no}","${item.column_no}",1)
+		("${booking_id}","${schedule_id}","${user_id}","${item.row_no}","${item.column_no}",1)
 	</foreach>
     </insert>
     

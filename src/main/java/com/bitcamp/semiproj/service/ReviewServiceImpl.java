@@ -29,9 +29,9 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void deleteReview(int reviewID) {
+	public void deleteReview(int review_id) {
 		// TODO Auto-generated method stub
-		dao.deleteReview(reviewID);
+		dao.deleteReview(review_id);
 	}
 
 	@Override
@@ -41,28 +41,28 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewDto> findReviewListByMovieId(int movieID, int start, int perPage) {
+	public List<ReviewDto> findReviewListByMovie_id(int movie_id, int start, int perPage) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("movieID", movieID);
+		map.put("movie_id", movie_id);
 		map.put("start", start);
 		map.put("perPage", perPage);
-		return dao.findReviewListByMovieId(map);
+		return dao.findReviewListByMovie_id(map);
 	}
 
 	@Override
-	public int findReviewTotalCountByMovieId(int movieID) {
+	public int findReviewTotalCountByMovie_id(int movie_id) {
 		// TODO Auto-generated method stub
-		return dao.findReviewTotalCountByMovieId(movieID);
+		return dao.findReviewTotalCountByMovie_id(movie_id);
 	}
 	
 	@Override
-	public double findReviewRatingAvgByMovieId(int movieID) {
-		return dao.findReviewRatingAvgByMovieId(movieID);
+	public double findReviewRatingAvgByMovie_id(int movie_id) {
+		return dao.findReviewRatingAvgByMovie_id(movie_id);
 	}
 	
 	@Override
-	public int findSumReviewRating(int movieID) {
-		int sum = dao.findSumReviewRating(movieID);
+	public int findSumReviewRating(int movie_id) {
+		int sum = dao.findSumReviewRating(movie_id);
 			return sum;
 	}
 

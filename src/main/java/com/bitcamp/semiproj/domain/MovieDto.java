@@ -3,18 +3,12 @@ package com.bitcamp.semiproj.domain;
 import java.sql.Date;
 
 public class MovieDto {
-	public String getStill_cut() {
-		return still_cut;
-	}
-	public void setStill_cut(String still_cut) {
-		this.still_cut = still_cut;
-	}
 	private Integer seq;
-	private String movieID;
+	private String movie_id;
 	private String title;
 	private Integer age_group;
 	private String genre;
-	private Date opendate;
+	private String opendate;
 	private String director;
 	private String casts;
 	private String summary;
@@ -32,11 +26,11 @@ public class MovieDto {
 	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
-	public String getMovieID() {
-		return movieID;
+	public String getMovie_id() {
+		return movie_id;
 	}
-	public void setMovieID(String movieID) {
-		this.movieID = movieID;
+	public void setMovie_id(String movie_id) {
+		this.movie_id = movie_id;
 	}
 	public String getTitle() {
 		return title;
@@ -56,10 +50,10 @@ public class MovieDto {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public Date getOpendate() {
+	public String getOpendate() {
 		return opendate;
 	}
-	public void setOpendate(Date opendate) {
+	public void setOpendate(String opendate) {
 		this.opendate = opendate;
 	}
 	public String getDirector() {
@@ -122,14 +116,18 @@ public class MovieDto {
 	public void setOn_show(Integer on_show) {
 		this.on_show = on_show;
 	}
+	public String getStill_cut() {
+		return still_cut;
+	}
+	public void setStill_cut(String still_cut) {
+		this.still_cut = still_cut;
+	}
 	@Override
 	public String toString() {
-		return "MovieDto [seq=" + seq + ", movieID=" + movieID + ", title=" + title + ", age_group=" + age_group
-				+ ", genre=" + genre + ", director=" + director + ", casts=" + casts + ", summary=" + summary
-				+ ", runningtime=" + runningtime + ", distributor=" + distributor + ", country=" + country
-				+ ", total_audience=" + total_audience + ", poster_img=" + poster_img + ", trailer_url=" + trailer_url
-				+ ", on_show=" + on_show + "]";
+		return "MovieDto [seq=" + seq + ", movie_id=" + movie_id + ", title=" + title + ", age_group=" + age_group
+				+ ", genre=" + genre + ", opendate=" + opendate + ", director=" + director + ", casts=" + casts
+				+ ", summary=" + summary + ", runningtime=" + runningtime + ", distributor=" + distributor
+				+ ", country=" + country + ", total_audience=" + total_audience + ", poster_img=" + poster_img
+				+ ", trailer_url=" + trailer_url + ", on_show=" + on_show + ", still_cut=" + still_cut + "]";
 	}
-	
-	
 }

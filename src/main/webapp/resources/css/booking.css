@@ -142,7 +142,6 @@ img.movieChk {
 .date_cell {
 	border-right: 1px solid #303842;
 	background-color: #f5f5f5;
-
 }
 
 .cell .date_cell li {
@@ -163,54 +162,117 @@ img.movieChk {
 	display: block;
 }
 
-img.age_group {
-	
-}
 
-/* 좌석테이블 */
-.seatTable {
-	
-}	
-
-.simple_movie_info {
-	display: inline-block;
+/*
+.summerized_movie_info {
 	width: 300px;
-	float: left;
-    margin-left: 20px;
-
+	margin-left: 20px;
 }
 
-.simple_movie_info .m_title{
+.summerized_movie_info .m_title {
 	text-align: left;
 	font-weight: bold;
 }
 
-.simple_movie_info .body *{
-	display:block;
-	    float: left;
+.summerized_movie_info .body * {
+	display: block;
+	float: left;
 }
 
-.simple_movie_info{
-	display:block;
-	    float: left;
-    text-align: left;
-
+.summerized_movie_info {
+	display: block;
+	float: left;
+	text-align: left;
 }
 
 .m_screen_date {
-	display:block;
+	display: block;
 }
+
 .ticket_qty {
 	display: inline-block;
 }
 
-.poster_img {
+.s_poster_img {
 	border-radius: 4px;
 	float: left;
 }
 
-.poster_img::after {
+.s_poster_img::after {
 	clear: both;
+}
+
+.s_poster_img {
+	width: 80px;
+}
+
+.s_poster_img::after {
+	clear: both;
+}
+
+.s_age_group{
+	float:left;
+}
+
+.s_title{
+	display:inline-block;
+	float:left;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:160px;
+    height: inherit;
+}
+
+.s_class_type{
+	display:inline-block;
+	float:left;
+}
+
+.s_class_type::after{
+	clear:both;
+}
+
+.s_screen_datetime{
+	display:inline-block;
+}
+
+.s_theater{
+	display:inline-block;
+}
+*/
+
+.summerized_movie_info {
+	width: 300px;
+	margin-left: 20px;
+}
+
+.s_poster_img {
+	border-radius: 4px;
+	width: 80px;
+	float:left;
+}
+
+.s_age_group {
+	display:inline;
+}
+.s_info{
+    display: inline-block;
+    width: 200px;
+	text-align: left;
+}
+
+.s_info .s_title{
+	display:block;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:200px;
+    height:inherit;
+}
+
+.ticket_qty {
+	display: inline-block;
 }
 
 .seat.empty {
@@ -222,10 +284,6 @@ img.age_group {
 	vertical-align: middle;
 }
 
-.poster_img {
-	width: 80px;
-}
-
 .adult, .youth, .special {
 	display: inline-block;
 	margin-right: 50px;
@@ -234,6 +292,8 @@ img.age_group {
 .special.last {
 	margin-right: 0px;
 }
+
+
 
 input.inputCnt {
 	width: 50px;
@@ -254,6 +314,7 @@ span.seat_row {
 	width: 7px;
 	margin-right: 20px;
 	color: white;
+	margin-right: 60px;
 }
 
 div.seat.empty {
@@ -365,46 +426,49 @@ div.seat.taken {
 	padding: 0;
 }
 
-.booking_detail{
+.booking_detail {
+	
 }
+
 .info {
 	width: fit-content;
 	margin: 50px auto;
 }
-.info .poster{
+
+.info .poster {
 	display: inline-block;
-	width:175px;
+	width: 175px;
 }
 
-.info .age_group{
+.info .age_group {
 	display: inline-block;
 }
 
-.info .title{
+.info .title {
 	display: inline-block;
 	font-weight: bold;
 	font-size: 17px;
 }
 
-.info span{
-	display:block;
+.info span {
+	display: block;
 	margin-top: 10px;
 }
 
-.dlist_infor{
-	padding-top:15px;
-	width:270px;
-	font-size:15px;
+.dlist_infor {
+	padding-top: 15px;
+	width: 270px;
+	font-size: 15px;
 	text-align: left;
 }
 
-.dlist_infor dt{
+.dlist_infor dt {
 	float: left;
 	width: 65px;
 }
 
 .dlist_infor dd {
-    text-align: left;
+	text-align: left;
 }
 
 #kakaopayBtn {

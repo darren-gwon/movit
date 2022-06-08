@@ -4,15 +4,10 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class BookingDto {
-	public String getItem_name() {
-		return item_name;
-	}
-	public void setItem_name(String item_name) {
-		this.item_name = item_name;
-	}
+
 	private Integer seq;
-	private String bookingID;
-	private Integer scheduleID;
+	private String booking_id;
+	private Integer schedule_id;
 	private String pay_tid;
 	private String user_id;
 	private Integer quantity;
@@ -26,17 +21,17 @@ public class BookingDto {
 	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
-	public String getBookingID() {
-		return bookingID;
+	public String getBooking_id() {
+		return booking_id;
 	}
-	public void setBookingID(String bookingID) {
-		this.bookingID = bookingID;
+	public void setBooking_id(String booking_id) {
+		this.booking_id = booking_id;
 	}
-	public Integer getScheduleID() {
-		return scheduleID;
+	public Integer getSchedule_id() {
+		return schedule_id;
 	}
-	public void setScheduleID(Integer scheduleID) {
-		this.scheduleID = scheduleID;
+	public void setSchedule_id(Integer schedule_id) {
+		this.schedule_id = schedule_id;
 	}
 	public String getPay_tid() {
 		return pay_tid;
@@ -68,9 +63,15 @@ public class BookingDto {
 	public void setOwnSeatList(List<OwnSeatDto> ownSeatList) {
 		this.ownSeatList = ownSeatList;
 	}
+	public String getItem_name() {
+		return item_name;
+	}
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
+	}
 	@Override
 	public String toString() {
-		return "BookingDto [seq=" + seq + ", bookingID=" + bookingID + ", scheduleID=" + scheduleID + ", pay_tid="
+		return "BookingDto [seq=" + seq + ", booking_id=" + booking_id + ", schedule_id=" + schedule_id + ", pay_tid="
 				+ pay_tid + ", user_id=" + user_id + ", quantity=" + quantity + ", booking_time=" + booking_time
 				+ ", ownSeatList=" + ownSeatList + "]";
 	}

@@ -27,22 +27,22 @@ public class LikesController {
 	@ResponseBody
 	public int alikes(@RequestBody LikesDto dto) {
 		int result = service.insertLikes(dto);
-//		int movieID = dto.getMovieID();
-//		int reviewID = dto.getReviewID();
-//		service.increaseLikesCount(reviewID, movieID);
+//		int movie_id = dto.getMovie_id();
+//		int review_id = dto.getReview_id();
+//		service.increaseLikesCount(review_id, movie_id);
 		return result;
 	}
 	
 	@PostMapping("/checkLikes")
 	@ResponseBody
 	public List<LikesDto> checkLikes(@RequestBody Map<String, String> map) {
-		return service.checkLikes(map.get("user_id"), map.get("movieID"));
+		return service.checkLikes(map.get("user_id"), map.get("movie_id"));
 	}
 	
 	@PostMapping("/totalLikes")
 	@ResponseBody
-	public List<LikesDto> totalLikes(@RequestParam int movieID) {
-		List<LikesDto> list = service.getTotalLikes(movieID);
+	public List<LikesDto> totalLikes(@RequestParam int movie_id) {
+		List<LikesDto> list = service.getTotalLikes(movie_id);
 		return list;
 	}
 	

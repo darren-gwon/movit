@@ -37,7 +37,7 @@
 					</tr>
 					<tr>
 						<th style="width: 100px;">영화관</th>
-						<td style="text-align:left">${data.theaterID}</td>
+						<td style="text-align:left">${data.theater_id}</td>
 						<th>문의 타입</th>
 						<td style="text-align:left">${data.inquiry_type}</td>
 						<th>작성일자</th>

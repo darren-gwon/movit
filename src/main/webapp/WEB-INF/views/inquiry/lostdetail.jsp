@@ -42,7 +42,7 @@
 					</tr>
 					<tr>
 						<td style="width: 130px;"><b>영화관</b></td>
-						<td>${data.theaterID}</td>
+						<td>${data.theater_id}</td>
 					</tr>
 					<tr>
 						<td><b>분실물 유형</b></td>
@@ -62,7 +62,7 @@
 					</tr>
 					<tr>
 						<td><b>첨부파일</b></td>
-						<td>${data.fileID}</td>
+						<td>${data.file_id}</td>
 					</tr>
 					<tr>
 						<td><b>접수상태</b></td>
