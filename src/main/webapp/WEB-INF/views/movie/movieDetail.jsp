@@ -67,6 +67,7 @@ $(function(){
 			});
 	});
 	
+	//펼쳐보기
 	$("div.listopener").click(function(){
 		totalReviewCnt+=5;
 		$.ajax({
@@ -101,6 +102,7 @@ $(function(){
 		});
 	});
 	
+	//리스트 출력
 	function list() {
 		$.ajax({
 			type:"get",

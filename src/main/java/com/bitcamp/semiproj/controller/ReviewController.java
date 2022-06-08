@@ -28,10 +28,10 @@ public class ReviewController {
 	@Autowired
 	private ReviewService service;
 	
-	@GetMapping("/home")
-	public String reviewHome() throws Exception {
-		return "review/reviewhome.tiles";
-	}
+//	@GetMapping("/home")
+//	public String reviewHome() throws Exception {
+//		return "review/reviewhome.tiles";
+//	}
 
 	@GetMapping("/list")
 	@ResponseBody
@@ -52,14 +52,14 @@ public class ReviewController {
 		return map;
 	}
 	
-	@GetMapping("/form")
-	public String reviewForm(
-			@RequestParam int movieID, 
-			Model model, 
-			HttpSession session) {
-		model.addAttribute("movieID", movieID);
-		return "review/reviewform.tiles";
-	}
+//	@GetMapping("/form")
+//	public String reviewForm(
+//			@RequestParam int movieID, 
+//			Model model, 
+//			HttpSession session) {
+//		model.addAttribute("movieID", movieID);
+//		return "review/reviewform.tiles";
+//	}
 	
 	@PostMapping("/insert")
 	@ResponseBody
@@ -67,23 +67,21 @@ public class ReviewController {
 		service.insertReview(dto);
 	}
 	
-	@PostMapping("/checkUserReview")
+	@PostMapping("/checkUser")
 	@ResponseBody
 	public List<ReviewDto> userReviewCheck(@ModelAttribute ReviewDto dto) {
 		return service.checkUserReview(dto);
 	}
 	
-	@GetMapping("/deleteReview")
+	@GetMapping("/delete")
 	@ResponseBody
 	public void deleteReview(@RequestParam int reviewID) {
-		System.out.println("reviewID = "+reviewID);
 		service.deleteReview(reviewID);
 	}
 	
-	@PostMapping("/updateReview")
+	@PostMapping("/update")
 	@ResponseBody
 	public void updateReview(@ModelAttribute ReviewDto dto) {
-		System.out.println(dto);
 		service.updateReview(dto);
 	}
 }
