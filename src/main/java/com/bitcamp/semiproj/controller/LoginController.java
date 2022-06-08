@@ -65,7 +65,7 @@ public class LoginController {
 			session.setAttribute("loginname", name);
 			String old_url = request.getHeader("referer");
 			return "redirect:" + old_url; // 성공후 이전페이지이동 
-		} else {
+		} else { 
 			// 아이디와 비번이 틀린경우
 			String old_url = request.getHeader("referer");
 			rattr.addFlashAttribute("loginfail", 1);
