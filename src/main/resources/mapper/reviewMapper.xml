@@ -4,41 +4,41 @@
 
 <mapper namespace="com.bitcamp.semiproj.dao.ReviewDao">
     <select id="findAllReviewList" resultType="ReviewDto">
-        select * from review order by reviewID desc
+        select * from review order by review_id desc
     </select>
     
     <insert id="insertReview" parameterType="ReviewDto">
-    	insert into review (user_id, movieID, content, rating, write_date) values (#{user_id}, #{movieID}, #{content}, #{rating}, now())
+    	insert into review (user_id, movie_id, content, rating, write_date) values (#{user_id}, #{movie_id}, #{content}, #{rating}, now())
     </insert>
     
     <delete id="deleteReview" parameterType="int">
-    	delete from review where reviewID=#{reviewID}
+    	delete from review where review_id=#{review_id}
     </delete>
     
     <update id="updateReview" parameterType="ReviewDto">
-    	update review set content=#{content}, rating=#{rating} where reviewID=#{reviewID}
+    	update review set content=#{content}, rating=#{rating} where review_id=#{review_id}
     </update>
     
-    <select id="findReviewListByMovieId" parameterType="Map" resultType="ReviewDto">
-    	select * from review where movieID=#{movieID} order by reviewID desc limit #{start}, #{perPage}
+    <select id="findReviewListByMovie_id" parameterType="Map" resultType="ReviewDto">
+    	select * from review where movie_id=#{movie_id} order by review_id desc limit #{start}, #{perPage}
     </select>
     
-    <select id="findReviewTotalCountByMovieId" parameterType="int" resultType="int">
-    	select count(*) from review where movieID=#{movieID}
+    <select id="findReviewTotalCountByMovie_id" parameterType="int" resultType="int">
+    	select count(*) from review where movie_id=#{movie_id}
     </select>
     
-    <select id="findReviewRatingAvgByMovieId" parameterType="int" resultType="double">
-    	select round(avg(rating), 2) from review where movieID=#{movieID}
+    <select id="findReviewRatingAvgByMovie_id" parameterType="int" resultType="double">
+    	select round(avg(rating), 2) from review where movie_id=#{movie_id}
     </select>
     
     <select id="findSumReviewRating" parameterType="int" resultType="int">
-    	select sum(rating) from review where movieID=#{movieID}
+    	select sum(rating) from review where movie_id=#{movie_id}
     </select>
     
     <select id="checkUserReview" parameterType="ReviewDto" resultType="ReviewDto">
-	    SELECT reviewID, movieID, user_id
+	    SELECT review_id, movie_id, user_id
 		FROM bitcinema.review
-		where movieID=#{movieID} and user_id=#{user_id}
-		order by reviewID;
+		where movie_id=#{movie_id} and user_id=#{user_id}
+		order by review_id;
     </select>
 </mapper>

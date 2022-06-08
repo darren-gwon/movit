@@ -37,10 +37,10 @@
 		review.write_date,
 		review.total_likes,
 		review.content,
-		review.movieID,
+		review.movie_id,
 		movie.title
 		from review
-		left join movie on review.movieID=movie.movieID
+		left join movie on review.movie_id=movie.movie_id
 		where user_id=#{user_id}
 		order by review.write_date desc;
 	</select>

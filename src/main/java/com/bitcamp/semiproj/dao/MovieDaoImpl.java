@@ -15,13 +15,13 @@ public class MovieDaoImpl implements MovieDao  {
 	
 	private final String namespace="com.bitcamp.semiproj.dao.MovieMapper.";
 	
-	public List<MovieDto> selectMovieByTheaterID(int theaterID){
-		return session.selectList(namespace+"selectMovieByTheaterID", theaterID);
+	public List<MovieDto> selectMovieByTheaterName(String theater_name){
+		return session.selectList(namespace+"selectMovieByTheaterName", theater_name);
 	}
 
 	@Override
-	public MovieDto selectMovieByMovieID(String movieID) {
-		return session.selectOne(namespace + "selectMovieByMovieID", movieID);
+	public MovieDto selectMovieByMovie_id(Integer movie_id) {
+		return session.selectOne(namespace + "selectMovieByMovie_id", movie_id);
 	}
 	@Override
 	public List<MovieDto> selectAllMovies() {
@@ -29,11 +29,6 @@ public class MovieDaoImpl implements MovieDao  {
 		return session.selectList(namespace+"selectAllMovies");
 	}
 
-	@Override
-	public MovieDto selectMovieByMovieID(int movieID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 }

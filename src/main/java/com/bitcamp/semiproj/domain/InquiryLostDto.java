@@ -5,15 +5,15 @@ import java.util.Date;
 
 public class InquiryLostDto {
 	private int seq;
-	private int theaterID;
+	private int theater_id;
 	private String item_type;
 	private String lost_date;
 	private int status;
 	private String user_id;
-	private int guestID;
+	private int guest_id;
 	private String title;
 	private String content;
-	private int fileID;
+	private int file_id;
 	private int view_cnt;
 	private Timestamp write_date;
 
@@ -24,11 +24,11 @@ public class InquiryLostDto {
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
-	public int getTheaterID() {
-		return theaterID;
+	public int getTheater_id() {
+		return theater_id;
 	}
-	public void setTheaterID(int theaterID) {
-		this.theaterID = theaterID;
+	public void setTheater_id(int theater_id) {
+		this.theater_id = theater_id;
 	}
 	public String getItem_type() {
 		return item_type;
@@ -50,11 +50,11 @@ public class InquiryLostDto {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public int getGuestID() {
-		return guestID;
+	public int getGuest_id() {
+		return guest_id;
 	}
-	public void setGuestID(int guestID) {
-		this.guestID = guestID;
+	public void setGuest_id(int guest_id) {
+		this.guest_id = guest_id;
 	}
 	public String getTitle() {
 		return title;
@@ -68,11 +68,11 @@ public class InquiryLostDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getFileID() {
-		return fileID;
+	public int getFile_id() {
+		return file_id;
 	}
-	public void setFileID(int fileID) {
-		this.fileID = fileID;
+	public void setFile_id(int file_id) {
+		this.file_id = file_id;
 	}
 	public int getView_cnt() {
 		return view_cnt;

@@ -8,7 +8,7 @@ public interface TheaterService {
 
 	List<TheaterDto> getAllTheaters();
 
-	List<TheaterDto> getTheaterByRegion(int regionID);
+	List<TheaterDto> getTheatersByRegion(String region_name);
 
 	List<TheaterDto> getAllRegions();
 

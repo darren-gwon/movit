@@ -76,7 +76,7 @@
 												<a href="${pass}/user/agree" class="link">아직 회원이 아니십니까?</a>
 											</p>
 
-											<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=1ae5e64fdf23e2e6840b736262379606&redirect_uri=http://localhost:9005/kakaologin&response_type=code">
+											<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=1ae5e64fdf23e2e6840b736262379606&redirect_uri=http://52.78.89.161:8080/kakaologin&response_type=code">
 
 												<img src="/resources/image/kakaologin.png" style="height: 50px; width: 130px;">
 											</a>
@@ -526,7 +526,7 @@
 		var naverLogin = new naver.LoginWithNaverId({
 			clientId : "wmxTFuijyRLQbSXlc64_",
 			// 본인의 Client ID로 수정, 띄어쓰기는 사용하지 마세요.
-			callbackUrl : "http://localhost:9005/naverlogin",
+			callbackUrl : "http://52.78.89.161:8080/naverlogin",
 			// 본인의 callBack url로 수정하세요.
 
 		// 네이버 로그인버튼 디자인 설정. 한번 바꿔보세요:D

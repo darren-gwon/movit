@@ -22,16 +22,22 @@ public class TheaterDaoImpl implements TheaterDao {
 	}
 
 	@Override
-	public List<TheaterDto> selectRegion() {
-		return session.selectList(namespace+"selectRegion");
+	public List<TheaterDto> selectRegions() {
+		return session.selectList(namespace+"selectRegions");
 	}
 	
 	@Override
-	public List<TheaterDto> selectByRegion(int regionID) {
-		return session.selectList(namespace+"selectTheaterByRegion", regionID);
+	public List<TheaterDto> selectByRegion(String region_name) {
+		return session.selectList(namespace+"selectTheatersByRegion", region_name);
 	}
 
-	
+	/*
+	 * <select id="selectTheatersByRegion" parameterType="String"
+	 * resultType="TheaterDto"> SELECT theater_id, theater_name FROM theater where
+	 * region_name=#{region_name} </select> <select id="selectRegions"
+	 * resultType="TheaterDto"> SELECT region_name from theater group by
+	 * region_name; </select>
+	 */
 	
 	
 }

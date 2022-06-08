@@ -74,20 +74,20 @@ $(function(){
 			dataType:"json",
 			url:"../review/list",
 			data:{
-				"movieID":${movieID},
+				"movie_id":${movie_id},
 				"startNum":totalReviewCnt},
 			success:function(data){
 				var s = "";
 				s+="<ul class='reviewList'>";
 				$.each(data.list, function(i, d) {
-					s+="<li class='userReview' data-review_id='"+d.reviewID+"'>";
+					s+="<li class='userReview' data-review_id='"+d.review_id+"'>";
 					s+="<span style='font-weight:bold'>"+d.user_id+"</span>";
 					s+=" ⭐ "+d.rating;
-					s+="<pre><span id='reviewContent_"+d.reviewID+"'>"+d.content+"</span></pre>";
+					s+="<pre><span id='reviewContent_"+d.review_id+"'>"+d.content+"</span></pre>";
 					s+="<span style='color:#868e96;'>"+d.write_date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
-					s+="<img src='' width='20' data-reviewid='"+d.reviewID+"' id='updateReview' style='cursor:pointer'>";
-					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='deleteReview' style='cursor:pointer'>";
-					s+="&nbsp;&nbsp;&nbsp;<img src='/resources/review_img/heart-empty.png' width='20' data-reviewid='"+d.reviewID+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
+					s+="<img src='' width='20' data-review_id='"+d.review_id+"' id='updateReview' style='cursor:pointer'>";
+					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-review_id='"+d.review_id+"' id='deleteReview' style='cursor:pointer'>";
+					s+="&nbsp;&nbsp;&nbsp;<img src='/resources/review_img/heart-empty.png' width='20' data-review_id='"+d.review_id+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
 					s+="<span id='totalLikesCnt'></span>";
 					s+="</li>";
 				});
@@ -107,7 +107,7 @@ $(function(){
 			dataType:"json",
 			url:"../review/list",
 			data:{
-				"movieID":${movieID},
+				"movie_id":${movie_id},
 				"startNum":"0"},
 			success:function(data){
 				var ratingAvg = data.sumReviewRating/data.reviewTotalCount;
@@ -119,14 +119,14 @@ $(function(){
 				var s = "";
 				s+="<ul class='reviewList'>";
 				$.each(data.list, function(i, d) {
-					s+="<li class='userReview' data-review_id='"+d.reviewID+"'>";
+					s+="<li class='userReview' data-review_id='"+d.review_id+"'>";
 					s+="<span style='font-weight:bold'>"+d.user_id+"</span>";
 					s+=" ⭐ "+d.rating;
-					s+="<pre><span id='reviewContent_"+d.reviewID+"'>"+d.content+"</span></pre>";
+					s+="<pre><span id='reviewContent_"+d.review_id+"'>"+d.content+"</span></pre>";
 					s+="<span style='color:#868e96;'>"+d.write_date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
-					s+="<img src='' width='20' data-reviewid='"+d.reviewID+"' id='updateReview' style='cursor:pointer'>";
-					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-reviewid='"+d.reviewID+"' id='deleteReview' style='cursor:pointer'>";
-					s+="&nbsp;&nbsp;&nbsp;<img src='/resources/review_img/heart-empty.png' width='20' data-reviewid='"+d.reviewID+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
+					s+="<img src='' width='20' data-review_id='"+d.review_id+"' id='updateReview' style='cursor:pointer'>";
+					s+="&nbsp;&nbsp;&nbsp;<img src='' width='20' data-review_id='"+d.review_id+"' id='deleteReview' style='cursor:pointer'>";
+					s+="&nbsp;&nbsp;&nbsp;<img src='/resources/review_img/heart-empty.png' width='20' data-review_id='"+d.review_id+"' id='addLike' style='cursor:pointer'>&nbsp;&nbsp;</span>"
 					s+="<span id='totalLikesCnt'></span>";
 					s+="</li>";
 				});
@@ -141,14 +141,14 @@ $(function(){
 	
 	//삭제 버튼이벤트
 	$(document).on("click","#deleteReview", function(){
-	var data = $(this).attr("data-reviewid");
+	var data = $(this).attr("data-review_id");
 	console.log(data);
 	var ans = confirm("삭제하려면 [확인]을 눌러주세요");
 	if(ans) {
 			$.ajax({
 				type:"get",
 				url:"../review/deleteReview",
-				data:"reviewID="+data,
+				data:"review_id="+data,
 				success:function(){
 					list();
 					checkUser();
@@ -161,14 +161,14 @@ $(function(){
 	
 	//수정 버튼이벤트
 	$(document).on("click","#updateReview", function(){
-		var data = $(this).attr("data-reviewid");
+		var data = $(this).attr("data-review_id");
 		console.log(data);
 		var ctext = $("#reviewContent_"+data).text();
 		var updateUserId = "${sessionScope.user_id}";
 		var s = "";
 		s += "<form action='updateReview' id=bfrm method='post'>";
-		s += "<input type='hidden' name='reviewID' value='"+data+"'>";
-		s += "<input type='hidden' name='movieID' value='"+${movieID}+"'>";
+		s += "<input type='hidden' name='review_id' value='"+data+"'>";
+		s += "<input type='hidden' name='movie_id' value='"+${movie_id}+"'>";
 		s += "<input type='hidden' name='user_id' value='"+updateUserId+"'>";
 		s += "<textarea required name='content' id='updateContent' class='form-control' >"+ctext+"</textarea>";
 		s += "<select name='rating'>";
@@ -230,9 +230,9 @@ $(function(){
 $(document).on("click","#addLike", function(){
 	if(${sessionScope.user_id == null}){alert("로그인이 필요한 서비스입니다."); return}
 	var data = {
-			"reviewID": $(this).attr("data-reviewid"),
+			"review_id": $(this).attr("data-review_id"),
 			"user_id": "${sessionScope.user_id}",
-			"movieID": ${movieID}
+			"movie_id": ${movie_id}
 	}
 		$.ajax({
 		type:"post",
@@ -260,7 +260,7 @@ function checkUser(){
 	
 	var data = {
 			"user_id":user_id,
-			"movieID":${movieID},
+			"movie_id":${movie_id},
 	};
 
 	$.ajax({
@@ -271,7 +271,7 @@ function checkUser(){
 		success:function(result){
 			$(result).each(function(idx, data){
 				//유저별 하트찾기
-				const likebtn = $(".userReview").filter("[data-review_id='"+data.reviewID+"']").children("#addLike");
+				const likebtn = $(".userReview").filter("[data-review_id='"+data.review_id+"']").children("#addLike");
 				likebtn.attr("src","/resources/review_img/heart.png");
 			})
 		}
@@ -284,10 +284,10 @@ function totalLikes(){
 		type:"post",
 		dataType: "json",
 		url:"../review/totalLikes",
-		data:{"movieID":${movieID}},
+		data:{"movie_id":${movie_id}},
 		success:function(result){
 			$(result).each(function(idx, data){
-				const totalLikesCnt = $(".userReview").filter("[data-review_id='"+data.reviewID+"']").children("#totalLikesCnt");
+				const totalLikesCnt = $(".userReview").filter("[data-review_id='"+data.review_id+"']").children("#totalLikesCnt");
 				totalLikesCnt.text(data.total_likes);
 			})
 		}
@@ -300,14 +300,14 @@ function checkUserReview(){
 		type:"post",
 		dataType: "json",
 		url:"../review/checkUserReview",
-		data:{"movieID":${movieID}, "user_id":"${sessionScope.user_id}"},
+		data:{"movie_id":${movie_id}, "user_id":"${sessionScope.user_id}"},
 		success:function(result){
 			$(result).each(function(idx, data){
 				//수정식별코드
-				const checkUser1 = $(".userReview").filter("[data-review_id='"+data.reviewID+"']").children("#updateReview");
+				const checkUser1 = $(".userReview").filter("[data-review_id='"+data.review_id+"']").children("#updateReview");
 				checkUser1.attr("src","/resources/review_img/edit.png");
 				//삭제식별코드
-				const checkUser2 = $(".userReview").filter("[data-review_id='"+data.reviewID+"']").children("#deleteReview");
+				const checkUser2 = $(".userReview").filter("[data-review_id='"+data.review_id+"']").children("#deleteReview");
 				checkUser2.attr("src","/resources/review_img/trash-bin.png");
 			})
 		}
@@ -533,7 +533,7 @@ function checkUserReview(){
 					<div class="row">
 					<div class="col" style="text-align: center;">
 					<form action="insert" id="afrm" method="post" onsubmit="return chkSubmit()">
-					<input type="hidden" name="movieID" value="${movieID }">
+					<input type="hidden" name="movie_id" value="${movie_id }">
 						<table style="border:0.5px solid gray;border-radius:30;">
 							<tr>
 								<td width="500" style="height: 150px;">
@@ -553,7 +553,7 @@ function checkUserReview(){
 								</td>
 								<td width="400">
 									<input type="hidden" id="user_id" name="user_id" class="form-control" value="${sessionScope.user_id}">
-									<input type="hidden" id="movieID" name="movieID" class="form-control" value="${movieID}">
+									<input type="hidden" id="movie_id" name="movie_id" class="form-control" value="${movie_id}">
 									
 									<textarea style="width:100%; height: 100%; width:500px; height: 150px; "id="content" name="content" class="form-control" placeholder="평점 및 관람평을 작성해 보세요. &#13;&#10;주제와 무관한 리뷰 또는 스포일러는 삭제되실수 있습니다."></textarea>
 									

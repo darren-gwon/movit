@@ -26,7 +26,7 @@
 		</c:if>
 		<c:if test="${sessionScope.kakaoN!=null}">
 			<a href="/mypage/home" style="font-weight: bold; font-size: 18px;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><b>환영합니다. ${sessionScope.loginname}님</b></a> &nbsp; &nbsp;<a href="https://kauth.kakao.com/oauth/logout?client_id=1ae5e64fdf23e2e6840b736262379606&logout_redirect_uri=http://localhost:9005/kakaologout" onclick="kakaologout()" style="font-weight: bold; font-size: 18px;">Logout</a>		
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><b>환영합니다. ${sessionScope.loginname}님</b></a> &nbsp; &nbsp;<a href="https://kauth.kakao.com/oauth/logout?client_id=1ae5e64fdf23e2e6840b736262379606&logout_redirect_uri=http://52.78.89.161:8080/kakaologout" onclick="kakaologout()" style="font-weight: bold; font-size: 18px;">Logout</a>		
 		</c:if>
 		<c:if test="${sessionScope.NaverN!=null}">
 			<a href="/mypage/home" style="font-weight: bold; font-size: 18px;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">

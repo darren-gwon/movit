@@ -1,23 +1,31 @@
 package com.bitcamp.semiproj.domain;
 
 public class ScreenDto {
-	private Integer screenID;
-	private Integer theaterID;
+	private Integer screen_id;
+	private String theater_name;
 	private String screen_name;
-	private ScreenClassDto screenClassDto;
-	private ScreenSeatDto seatDto;
-	
-	public Integer getScreenID() {
-		return screenID;
+	private String class_type;
+	private Integer seat_rows;
+	private Integer seat_columns;
+	private Integer total_seats;
+
+	public Integer getTotal_seats() {
+		return total_seats;
 	}
-	public void setScreenID(Integer screenID) {
-		this.screenID = screenID;
+	public void setTotal_seats(Integer total_seats) {
+		this.total_seats = total_seats;
 	}
-	public Integer getTheaterID() {
-		return theaterID;
+	public Integer getScreen_id() {
+		return screen_id;
 	}
-	public void setTheaterID(Integer theaterID) {
-		this.theaterID = theaterID;
+	public void setScreen_id(Integer screen_id) {
+		this.screen_id = screen_id;
+	}
+	public String getTheater_name() {
+		return theater_name;
+	}
+	public void setTheater_name(String theater_name) {
+		this.theater_name = theater_name;
 	}
 	public String getScreen_name() {
 		return screen_name;
@@ -25,23 +33,33 @@ public class ScreenDto {
 	public void setScreen_name(String screen_name) {
 		this.screen_name = screen_name;
 	}
-	public ScreenClassDto getScreenClass() {
-		return screenClassDto;
+	public String getClass_type() {
+		return class_type;
 	}
-	public void setScreenClass(ScreenClassDto screenClass) {
-		this.screenClassDto = screenClass;
+	public void setClass_type(String class_type) {
+		this.class_type = class_type;
 	}
-	public ScreenSeatDto getSeatDto() {
-		return seatDto;
+	public Integer getSeat_rows() {
+		return seat_rows;
 	}
-	public void setSeatDto(ScreenSeatDto seatDto) {
-		this.seatDto = seatDto;
+	public void setSeat_rows(Integer seat_rows) {
+		this.seat_rows = seat_rows;
 	}
-	
+	public Integer getSeat_columns() {
+		return seat_columns;
+	}
+	public void setSeat_columns(Integer seat_columns) {
+		this.seat_columns = seat_columns;
+	}
+
 	@Override
 	public String toString() {
-		return "ScreenDto [screenID=" + screenID + ", theaterID=" + theaterID + ", name=" + screen_name
-				+ ", screenClass=" + screenClassDto + ", seatDto=" + seatDto + "]";
+		return "ScreenDto [screen_id=" + screen_id + ", theater_name=" + theater_name + ", screen_name=" + screen_name
+				+ ", class_type=" + class_type + ", seat_rows=" + seat_rows + ", seat_columns=" + seat_columns
+				+ ", total_seats=" + total_seats + "]";
 	}
+
+	
+	
 
 }

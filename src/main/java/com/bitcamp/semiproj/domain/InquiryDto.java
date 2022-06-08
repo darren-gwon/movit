@@ -7,26 +7,26 @@ import org.apache.ibatis.type.Alias;
 @Alias("InquiryDto")
 public class InquiryDto {
 	private int seq;
-	private	String theaterID;
+	private	String theater_id;
 	private String inquiry_type;
 	private String user_id;
-	private	int guestID;
+	private	int guest_id;
 	private	String title;
 	private String content;
 	private Timestamp write_date;
 	private int view_cnt;
-	private	int fileID;
+	private	int file_id;
 	public int getSeq() {
 		return seq;
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
-	public String getTheaterID() {
-		return theaterID;
+	public String getTheater_id() {
+		return theater_id;
 	}
-	public void setTheaterID(String theaterID) {
-		this.theaterID = theaterID;
+	public void setTheater_id(String theater_id) {
+		this.theater_id = theater_id;
 	}
 	public String getInquiry_type() {
 		return inquiry_type;
@@ -40,11 +40,11 @@ public class InquiryDto {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public int getGuestID() {
-		return guestID;
+	public int getGuest_id() {
+		return guest_id;
 	}
-	public void setGuestID(int guestID) {
-		this.guestID = guestID;
+	public void setGuest_id(int guest_id) {
+		this.guest_id = guest_id;
 	}
 	public String getTitle() {
 		return title;
@@ -70,17 +70,17 @@ public class InquiryDto {
 	public void setView_cnt(int view_cnt) {
 		this.view_cnt = view_cnt;
 	}
-	public int getFileID() {
-		return fileID;
+	public int getFile_id() {
+		return file_id;
 	}
-	public void setFileID(int fileID) {
-		this.fileID = fileID;
+	public void setFile_id(int file_id) {
+		this.file_id = file_id;
 	}
 	@Override
 	public String toString() {
-		return "InquiryDto [seq=" + seq + ", theaterID=" + theaterID + ", inquiry_type=" + inquiry_type + ", user_id="
-				+ user_id + ", guestID=" + guestID + ", title=" + title + ", content=" + content + ", write_date="
-				+ write_date + ", view_cnt=" + view_cnt + ", fileID=" + fileID + "]";
+		return "InquiryDto [seq=" + seq + ", theater_id=" + theater_id + ", inquiry_type=" + inquiry_type + ", user_id="
+				+ user_id + ", guest_id=" + guest_id + ", title=" + title + ", content=" + content + ", write_date="
+				+ write_date + ", view_cnt=" + view_cnt + ", file_id=" + file_id + "]";
 	}
 	
 	

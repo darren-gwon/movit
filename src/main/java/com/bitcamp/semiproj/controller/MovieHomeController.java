@@ -29,8 +29,8 @@ public class MovieHomeController {
 	}
 	
 	@GetMapping("/detail")
-	public String moviewdetail(@RequestParam String movieID, Model model){
-		MovieDto dto = movieService.selectMovieByMovieID(movieID);
+	public String moviewdetail(@RequestParam int movie_id, Model model){
+		MovieDto dto = movieService.selectMovieByMovie_id(movie_id);
 		String [] trailer_url = dto.getTrailer_url().split(",");
 		for(int i=0; i<trailer_url.length; i++) {
 			model.addAttribute("trailer_url"+(i+1), trailer_url[i]);
@@ -40,8 +40,8 @@ public class MovieHomeController {
 			model.addAttribute("still_cut"+(i+1), still_cut[i]);
 		}
 		//model.addAttribute("trailer_url", trailer_url);
-		model.addAttribute("movieID", movieID);
+		model.addAttribute("movie_id", movie_id);
 		model.addAttribute("dto", dto);
-	return "movie/movieDetail2.tiles";
+	return "movie/movieDetail.tiles";
 	}
 }

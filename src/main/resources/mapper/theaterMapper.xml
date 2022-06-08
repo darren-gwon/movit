@@ -3,13 +3,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bitcamp.semiproj.dao.TheaterMapper">
-    <select id="selectAll" resultType="TheaterDto">
-        SELECT * FROM theater
-    </select>
-    <select id="selectTheaterByRegion" parameterType="int" resultType="TheaterDto">
-        SELECT * FROM theater where regionID=#{regionID}
-    </select>
-    <select id="selectRegion" resultType="RegionDto">
-        SELECT * FROM region;
-    </select>
-</mapper>
+	<select id="selectAll" resultType="TheaterDto">
+		SELECT * FROM theater
+	</select>
+	<select id="selectTheatersByRegion" parameterType="String"
+		resultMap="TheaterDtoResultMap">
+		SELECT theater_id, theater_name FROM theater where region_name=#{region_name}
+		group by theater_name;
+	</select>
+	<select id="selectRegions" resultType="TheaterDto">
+		SELECT region_name from theater group by region_name;
+	</select>
+
+	<resultMap id="TheaterDtoResultMap" type="TheaterDto">
+		<result property="theater_id" column="theater_id" />
+		<result property="theater_name" column="theater_name" />
+		<result property="region_name" column="region_name" />
+		<result property="address" column="address" />
+		<result property="contact" column="contact" />
+		<association property="screenDto" javaType="ScreenDto">
+			<result property="screen_id" column="screen_id" />
+			<result property="screen_name" column="screen_name" />
+			<result property="class_type" column="class_type" />
+			<result property="seat_rows" column="seat_rows" />
+			<result property="seat_columns" column="seat_columns" />
+		</association>
+	</resultMap>
+</mapper>	

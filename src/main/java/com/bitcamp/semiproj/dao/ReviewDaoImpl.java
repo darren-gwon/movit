@@ -26,28 +26,28 @@ public class ReviewDaoImpl implements ReviewDao {
 		session.insert(namespace+"insertReview", dto);
 	}
 	
-	public void deleteReview(int reviewID) {
-		session.delete(namespace+"deleteReview", reviewID);
+	public void deleteReview(int review_id) {
+		session.delete(namespace+"deleteReview", review_id);
 	}
 	public void updateReview(ReviewDto dto) {
 		session.update(namespace+"updateReview", dto);
 	}
-	public List<ReviewDto> findReviewListByMovieId(Map<String, Object> map) {
-		return session.selectList(namespace+"findReviewListByMovieId", map);
+	public List<ReviewDto> findReviewListByMovie_id(Map<String, Object> map) {
+		return session.selectList(namespace+"findReviewListByMovie_id", map);
 	}
 	
-	public int findReviewTotalCountByMovieId(int movieID) {
-		return session.selectOne(namespace + "findReviewTotalCountByMovieId", movieID);
-	}
-	
-	@Override
-	public double findReviewRatingAvgByMovieId(int movieID) {
-		return session.selectOne(namespace + "findReviewRatingAvgByMovieId", movieID);
+	public int findReviewTotalCountByMovie_id(int movie_id) {
+		return session.selectOne(namespace + "findReviewTotalCountByMovie_id", movie_id);
 	}
 	
 	@Override
-	public int findSumReviewRating(int movieID) {
-		return session.selectOne(namespace + "findSumReviewRating", movieID);
+	public double findReviewRatingAvgByMovie_id(int movie_id) {
+		return session.selectOne(namespace + "findReviewRatingAvgByMovie_id", movie_id);
+	}
+	
+	@Override
+	public int findSumReviewRating(int movie_id) {
+		return session.selectOne(namespace + "findSumReviewRating", movie_id);
 	}
 	
 	@Override

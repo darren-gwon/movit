@@ -89,7 +89,7 @@ public class UserServiceImpl  implements UserService{
 	public int login(Map<String, String> map) {
 		// TODO Auto-generated method stub
 
-
+		
 		return userdao.login(map);
 	}
 	//ID 찾기
@@ -147,7 +147,7 @@ public class UserServiceImpl  implements UserService{
 			sb.append("grant_type=authorization_code");
 
 			sb.append("&client_id=1ae5e64fdf23e2e6840b736262379606"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://localhost:9005/kakaologin"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://52.78.89.161:8080/kakaologin"); // 본인이 설정한 주소
 
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
@@ -199,11 +199,17 @@ public class UserServiceImpl  implements UserService{
 
 			// 요청에 필요한 Header에 포함될 내용
 			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
-
+			
+			String headerType = conn.getContentType();
 			
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
+			BufferedReader br; 
+			if (headerType.toUpperCase().indexOf("UTF-8")!=-1) {
+			
+			br= new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
+			}else {
+				br= new BufferedReader(new InputStreamReader(conn.getInputStream(),"ECU-KR"));
+			}
 			String line = "";
 			String result = "";
 

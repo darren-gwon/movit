@@ -9,39 +9,43 @@
 <title>mypage</title>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>   
 <style>
-div.reviewdiv{
-	border-bottom: 1px solid #ced4da;
-	width: 1200px;
-	height:130px;
-	float: left;
-	padding-top: 30px;
-	padding-right:100px;
-	margin-left: 150px;
+	table.type09 {
+		border-collapse: collapse;
+		text-align: left;
+		line-height: 1.5;
+		margin : 0 auto ;
+	}
 	
-}
-ul.reviewlist{
-	margin-top: 10px;
-	left:0px;
-	width: 350px;
-	height: 200px;
-	display:inline-block;
-}
+	table.type09 thead th {
+		padding: 10px;
+		font-weight: bold;
+		vertical-align: top;
+		color: #369;
+		border-bottom: 3px solid #036;
+		font-size: 1.3em;
+	}
+	
+	table.type09 tbody th {
+		width: 150px;
+		padding: 10px;
+		font-weight: bold;
+		vertical-align: top;
+		border-bottom: 1px solid #ccc;
+		background: #f3f6f7;
+	}
+	
+	table.type09 td {
+		width: 150px;
+		padding: 10px;
+		vertical-align: top;
+		border-bottom: 1px solid #ccc;
+	}
 
-pre {
-	display:inline-block;
-	padding-bottom: 150px;
-	width: 300px;
-	text-align: left;
-	padding-left: 50px;
-}
-
-.writeday {
-	font-size: 0.7em;
-	color: #ced4da;
-}
-strong{
-	font-size: 1.2em;
-}
+	.writeday {
+		font-size: 0.7em;
+		color: #ced4da;
+	}
+	
 </style>
 <script type="text/javascript">
 
@@ -56,21 +60,45 @@ strong{
 	</c:if>
 	<c:if test="${sessionScope.user_id != null }">
 	<div class="content">
-		<c:forEach var="list" items="${list }">
-			<div class="reviewdiv">
-				<ul class="reviewlist">
-					<li><strong>${list.title }</strong></li>
-					<li>
-						<span>${list.user_id }</span>
-						<span class="writeday">${list.write_date }</span>
-					</li>
-					<li><span><img style="width:15px;"src="/resources/review_img/heart.png">&nbsp;${list.total_likes }</span></li>
-				</ul>
-			
-					<pre>${list.content }</pre>
-			</div>
-		</c:forEach>
-		
+		<table class="type09">
+			<thead>
+				<tr>
+					<th colspan="6">내가 쓴 리뷰</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:if test="${count==0 }">
+				<tr>
+					<td style="text-align:center;width:300px">
+						등록하신 영화리뷰가 없습니다.
+					</td>
+				</tr>
+				</c:if>
+			<c:forEach var="list" items="${list }">
+				<tr>
+					<th>영화제목</th>
+					<td style="width:300px;">${list.title}</td>
+					<td rowspan="4" style="width:500px;">${list.content }</td>
+				</tr>
+				<tr>
+					<th>아이디</th>
+					<td>${list.user_id }</td>
+				</tr>
+				<tr>
+					<th>작성일</th>
+					<td>${list.write_date }</td>
+				</tr>
+				<tr>
+					<th>좋아요</th>
+					<td><img style="width:18px;"src="/resources/review_img/heart.png">&nbsp;&nbsp;${list.total_likes }</td>
+				</tr>
+				
+				<tr>
+					<td colspan="3"></td>
+				</tr>
+			</c:forEach>
+			<tbody>
+		</table>
 	</div>
 	</c:if>
 </body>

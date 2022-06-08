@@ -46,16 +46,20 @@ public class KakaoPayServiceImpl implements KakaoPayService{
         headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
                 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("cid", info.getCid());
-        params.add("partner_order_id", "123456789");
-        params.add("partner_user_id", (String) session.getAttribute("user_id"));
-        params.add("item_name", info.getItem_name());
-        params.add("quantity", info.getQuantity().toString());
-        params.add("total_amount", info.getTotal_amount().toString());
+//        params.add("cid", info.getCid());
+//        params.add("partner_order_id", "123456789");
+//        params.add("partner_user_id", (String) session.getAttribute("user_id"));
+//        params.add("item_name", info.getItem_name());
+//        params.add("quantity", info.getQuantity().toString());
+//        params.add("total_amount", info.getTotal_amount().toString());
         params.add("tax_free_amount", "0");
         params.add("approval_url", "http://localhost:9005/pay/kakaoPaySuccess");
         params.add("cancel_url", "http://localhost:9005/pay/kakaoPayCancel");
         params.add("fail_url", "http://localhost:9005/pay/kakaoPayFail");
+        
+//        params.add("approval_url", "http://52.78.89.161:8080/pay/kakaoPaySuccess");
+//        params.add("cancel_url", "http://52.78.89.161:8080/pay/kakaoPayCancel");
+//        params.add("fail_url", "http://52.78.89.161:8080/pay/kakaoPayFail");
         
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
     	System.out.println("-----------------------PAY-READY RESPONSE PAYINFO-----------------------");
@@ -95,14 +99,14 @@ public class KakaoPayServiceImpl implements KakaoPayService{
         headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 		
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("cid", info.getCid());
-        params.add("tid", kPayReadyDto.getTid());
-        
-        //partner_order_id(가맹점 고유 주문번호) 수정 필요.
-        params.add("partner_order_id", "123456789");
-        params.add("partner_user_id", (String) session.getAttribute("user_id"));
-        params.add("pg_token", pg_token);
-        params.add("total_amount", info.getTotal_amount().toString());
+//        params.add("cid", info.getCid());
+//        params.add("tid", kPayReadyDto.getTid());
+//        
+//        //partner_order_id(가맹점 고유 주문번호) 수정 필요.
+//        params.add("partner_order_id", "123456789");
+//        params.add("partner_user_id", (String) session.getAttribute("user_id"));
+//        params.add("pg_token", pg_token);
+//        params.add("total_amount", info.getTotal_amount().toString());
         
     	HttpEntity<MultiValueMap<String,String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
     	System.out.println("-----------------------SUCCESS RESPONSE PAYINFO-----------------------");

@@ -3,58 +3,60 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bitcamp.semiproj.dao.ScheduleMapper">
-    
-    <select id="selectAll" resultType="ScheduleDto">
-	select shw.*, m.title, s.name as screen_name
-	from theater as t
-	join movie as m
-	join screen as s
-	join show_schedule as shw
-	on shw.theaterID = t.theaterID and shw.screenID = s.screenID and shw.movieID = m.movieID;
-    </select>
-       
-    <select id="selectScheduleInfo" parameterType="Map" resultMap="ScheduleDtoMap">
-		SELECT *
+
+	<select id="selectAll" resultType="ScheduleDto">
+		select shw.*, m.title, s.name
+		as screen_name
+		from theater as t
+		join movie as m
+		join screen as s
+		join
+		show_schedule as shw
+		on shw.theater_id = t.theater_id and shw.screen_id =
+		s.screen_id and
+		shw.movie_id = m.movie_id;
+	</select>
+
+	<select id="selectScheduleInfo" parameterType="Map"
+		resultMap="ScheduleDtoResultMap">
+SELECT m.movie_id, m.title, m.age_group, m.runningtime, m.poster_img,
+		m.trailer_url, m.on_show, m.still_cut, t.theater_id, t.theater_name,
+		t.region_name, s.screen_id, s.screen_name, s.class_type, s.seat_rows, s.seat_columns,
+		s.seat_rows*seat_columns as total_seats, shw.schedule_id, shw.screen_date, shw.start_time, shw.end_time
 		FROM movie AS m
 		JOIN theater as t
 		JOIN screen AS s
-		JOIN screen_class as c
 		JOIN show_schedule as shw
-		JOIN screen_seat as seat
-			ON shw.theaterID = t.theaterID AND shw.screenID = s.screenID AND shw.movieID = m.movieID AND c.classID = s.classID AND seat.screenID = s.screenID
-		WHERE shw.screen_date=#{date} and t.theaterID=#{theaterID} and shw.movieID=#{movieID}
-		ORDER BY shw.screen_date ASC, shw.start_time ASC, shw.start_time ASC;
-    </select>
-    
-   <resultMap id="ScheduleDtoMap" type="ScheduleDto">
-    	<result property="scheduleID" column="scheduleID"/>
-    	<result property="theaterID" column="theaterID"/>
-    	<result property="screenID" column="screenID"/>
-    	<result property="movieID" column="movieID"/>
-    	<result property="screen_date" column="screen_date"/>
-    	<result property="start_time" column="start_time"/>
-    	<result property="end_time" column="end_time"/>
-	    	<association property="screenDto" javaType="ScreenDto">
-	    	    	<result property="screenID" column="screenID"/>
-	    	    	<result property="theaterID" column="theaterID"/>
-	    	    	<result property="screen_name" column="screen_name"/>
-		    	    	<association property="screenClassDto" javaType="ScreenClassDto">
-		    	    		<result property="classID" column="classID"/>
-		    	    		<result property="class_type" column="class_type"/>
-								<!-- <association property="priceDto" javaType="PriceDto">
-		    	    				<result property="priceID" column="priceID"/>
-		    	    				<result property="classID" column="classID"/>
-		    	    				<result property="age_group" column="age_group"/>
-		    	    				<result property="price" column="price"/>
-		    					</association> -->
-		    			</association>
-		    			<association property="seatDto" javaType="ScreenSeatDto">
-		    	    		<result property="screenID" column="screenID"/>
-		    	    		<result property="row_qty" column="row_qty"/>
-		    	    		<result property="column_qty" column="column_qty"/>
-		    			</association>
-	    	</association>
-    </resultMap>
-    
-   
+		ON shw.theater_name = t.theater_name AND shw.screen_id = s.screen_id AND shw.movie_id = m.movie_id
+		WHERE shw.screen_date=#{screen_date} and t.theater_name=#{theater_name} and shw.movie_id=#{movie_id}
+		ORDER BY shw.start_time	ASC;
+	</select>
+
+	<resultMap id="ScheduleDtoResultMap" type="ScheduleDto">
+		<result property="schedule_id" column="schedule_id" />
+		<result property="movie_id" column="movie_id" />
+		<result property="screen_date" column="screen_date" />
+		<result property="start_time" column="start_time" />
+		<result property="end_time" column="end_time" />
+
+		<association property="theaterDto" javaType="TheaterDto">
+			<result property="theater_id" column="theater_id" />
+			<result property="theater_name" column="theater_name" />
+			<result property="region_name" column="region_name" />
+			<result property="address" column="address" />
+			<result property="contact" column="contact" />
+			
+			<association property="screenDto" javaType="ScreenDto">
+				<result property="screen_id" column="screen_id" />
+				<result property="screen_name" column="screen_name" />
+				<result property="class_type" column="class_type" />
+				<result property="seat_rows" column="seat_rows" />
+				<result property="seat_columns" column="seat_columns" />
+				<result property="total_seats" column="total_seats" />
+				
+			</association>
+		</association>
+	</resultMap>
+
+
 </mapper>

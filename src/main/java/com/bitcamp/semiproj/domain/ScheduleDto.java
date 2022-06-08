@@ -1,33 +1,26 @@
 package com.bitcamp.semiproj.domain;
 
 public class ScheduleDto {
-	private Integer scheduleID;
-	private Integer theaterID;
-	private Integer screenID;
-	private Integer movieID;
+
+	private Integer schedule_id;
+	private Integer movie_id;
 	private String screen_date;
 	private String start_time;
 	private String end_time;
-	private ScreenDto screenDto;
+	private TheaterDto theaterDto;
 	
-	
-	public Integer getScheduleID() {
-		return scheduleID;
+	public Integer getSchedule_id() {
+		return schedule_id;
 	}
-	public void setScheduleID(Integer scheduleID) {
-		this.scheduleID = scheduleID;
+	public void setSchedule_id(Integer schedule_id) {
+		this.schedule_id = schedule_id;
 	}
-	public Integer getScreenID() {
-		return screenID;
+
+	public Integer getMovie_id() {
+		return movie_id;
 	}
-	public void setScreenID(Integer screenID) {
-		this.screenID = screenID;
-	}
-	public Integer getMovieID() {
-		return movieID;
-	}
-	public void setMovieID(Integer movieID) {
-		this.movieID = movieID;
+	public void setMovie_id(Integer movie_id) {
+		this.movie_id = movie_id;
 	}
 	public String getScreen_date() {
 		return screen_date;
@@ -47,26 +40,19 @@ public class ScheduleDto {
 	public void setEnd_time(String end_time) {
 		this.end_time = end_time;
 	}
-	public Integer getTheaterID() {
-		return theaterID;
+	public TheaterDto getTheaterDto() {
+		return theaterDto;
 	}
-	public void setTheaterID(Integer theaterID) {
-		this.theaterID = theaterID;
+	public void setTheaterDto(TheaterDto theaterDto) {
+		this.theaterDto = theaterDto;
 	}
-	
 	@Override
 	public String toString() {
-		return "ScheduleDto [scheduleID=" + scheduleID + ", theaterID=" + theaterID + ", screenID=" + screenID
-				+ ", movieID=" + movieID + ", screen_date=" + screen_date + ", start_time=" + start_time + ", end_time="
-				+ end_time + "]";
+		return "ScheduleDto [schedule_id=" + schedule_id + ", movie_id=" + movie_id + ", screen_date=" + screen_date
+				+ ", start_time=" + start_time + ", end_time=" + end_time + ", theaterDto=" + theaterDto + "]";
 	}
-	public ScreenDto getScreenDto() {
-		return screenDto;
-	}
-	public void setScreenDto(ScreenDto screenDto) {
-		this.screenDto = screenDto;
-	}
+	
+	
 
-	
-	
+		
 }

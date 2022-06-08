@@ -46,7 +46,7 @@
 					</c:if>
 					<div class="form-floating">
 						<select class="form-select" id="floatingSelect"
-							aria-label="Floating label select example" name="theaterID">
+							aria-label="Floating label select example" name="theater_id">
 							<option value="강남점">강남점</option>
 							<option value="홍대점">홍대점</option>
 							<option value="성남점">성남점</option>

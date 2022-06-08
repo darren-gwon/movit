@@ -2,24 +2,24 @@ package com.bitcamp.semiproj.domain;
 
 public class OwnSeatDto {
 	private Integer seq;
-	private String bookingID;
-	private Integer scheduleID;
+	private String booking_id;
+	private Integer schedule_id;
 	private String user_id;
 	private String row_no;
 	private String column_no;
 	private Integer status;
 	
-	public String getBookingID() {
-		return bookingID;
+	public String getBooking_id() {
+		return booking_id;
 	}
-	public void setBookingID(String bookingID) {
-		this.bookingID = bookingID;
+	public void setBooking_id(String booking_id) {
+		this.booking_id = booking_id;
 	}
-	public Integer getScheduleID() {
-		return scheduleID;
+	public Integer getSchedule_id() {
+		return schedule_id;
 	}
-	public void setScheduleID(Integer scheduleID) {
-		this.scheduleID = scheduleID;
+	public void setSchedule_id(Integer schedule_id) {
+		this.schedule_id = schedule_id;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -48,7 +48,7 @@ public class OwnSeatDto {
 	
 	@Override
 	public String toString() {
-		return "OwnSeatDto [bookingID=" + bookingID + ", scheduleID=" + scheduleID + ", user_id=" + user_id
+		return "OwnSeatDto [booking_id=" + booking_id + ", schedule_id=" + schedule_id + ", user_id=" + user_id
 				+ ", row_no=" + row_no + ", column_no=" + column_no + ", status=" + status + "]";
 	}
 	public Integer getSeq() {
