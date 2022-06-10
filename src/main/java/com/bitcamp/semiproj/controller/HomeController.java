@@ -17,15 +17,12 @@ public class HomeController {
 	
 	@Autowired
 	private NoticeService noticeservice;
-	
-	private NoticeDto noticedto;
-	
+		
 	@GetMapping("/")
 	public String home(Model model,HttpSession session)throws Exception {
 		List<NoticeDto> list= noticeservice.list();
 		model.addAttribute("list", list);
 		
-//		session.setAttribute("user_id", "rnjssmd11");
 		return "main/main.tiles";	
 	}
 

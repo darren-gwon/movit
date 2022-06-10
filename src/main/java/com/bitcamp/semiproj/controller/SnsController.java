@@ -46,7 +46,7 @@ public class SnsController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value="/kakaologin", method=RequestMethod.GET)
+	@RequestMapping(value="/login/kakao", method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
 		String access_Token = userService.getAccessToken(code);
 	    
@@ -77,7 +77,7 @@ public class SnsController {
 		
 	}
 	//카카오 유저 회원가입 
-	@RequestMapping(value="/kakaoreg", method=RequestMethod.POST)
+	@RequestMapping(value="/reg/kakao", method=RequestMethod.POST)
 	public String UserRegPass(UserDto userdto,@RequestParam("birthday") String birthday,@RequestParam("nickname") String nickname, 
 			@RequestParam("gender") String gender, @RequestParam("phone") String phone){
 			String Password=userService.getKey(false, 6)+"!";
@@ -106,7 +106,6 @@ public class SnsController {
 
     /* NaverLoginBO */
     private NaverLoginBO naverLoginBO;
-    private String apiResult="";
     
     @Autowired
     private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
@@ -114,7 +113,7 @@ public class SnsController {
     }
  
     //로그인 첫 화면 요청 메소드
-    @RequestMapping(value = "/naver", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "/login/naver", method = { RequestMethod.GET, RequestMethod.POST })
     public String login(Model model, HttpSession session) {
         
         /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
@@ -131,7 +130,7 @@ public class SnsController {
     @Autowired
     UserDao userdao;
     // naver 유저 회원가입 및 회원확인하여 로그인
-    @RequestMapping(value="/naverlogin",  method = {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value="/login/naver/success",  method = {RequestMethod.GET,RequestMethod.POST})
 	public String userNaverLoginPro(Model model,@RequestParam Map<String,Object> paramMap, @RequestParam String code, @RequestParam String state,HttpSession session) throws SQLException, Exception {
 		NaverDto result ;
 		HashMap<String, Object> naver;
@@ -156,7 +155,6 @@ public class SnsController {
 		
 		//네이버 회원정보확인
 		result= userdao.findnaver(naver);
-		System.out.println(naver);
 		//세션에 토큰 저장 
 		session.setAttribute("oauthToken", oauthToken);
 		} catch(Exception e) {
@@ -173,7 +171,6 @@ public class SnsController {
 		map.put("name", result.getN_name());
 		
 		String getuser_id=userService.get_searchId(map);
-		System.out.println(getuser_id);
 		//회원 등록된 이메일이 없으면 naver로 자동회원가입
 		if(getuser_id==null) {
 			
@@ -182,12 +179,9 @@ public class SnsController {
 			String keypassword = UserSha256.encrypt(Password);
 			String genderchk=result.getN_gender();
 			String birthday;
-			if(result.getN_birthyear()!=null) {
 			String bitrhyear=result.getN_birthyear();
 			birthday=bitrhyear+"-"+result.getN_birthday();
-			}else {
-			birthday="1993-"+result.getN_birthday();
-			}
+
 			if(genderchk.equals("M"))
 			{
 				genderchk="남자";
@@ -210,6 +204,7 @@ public class SnsController {
 			session.setAttribute("user_id", add.get("user_id"));
 			session.setAttribute("NaverN", "NaverN");
 			return "redirect:/";
+			
 			}
 		//회원 등록된 일치하는 이메일 있으면 해당 ID로 로그인.
 		else {	
