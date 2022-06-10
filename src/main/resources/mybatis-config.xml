@@ -27,5 +27,7 @@
 		<typeAlias alias="LikesDto" type="com.bitcamp.semiproj.domain.LikesDto"/>
 		<typeAlias alias="MypageDto" type="com.bitcamp.semiproj.domain.MypageDto"/>
 		<typeAlias alias="NaverDto" type="com.bitcamp.semiproj.domain.NaverDto"/>
+		<typeAlias alias="OrderInfoDto" type="com.bitcamp.semiproj.domain.OrderInfoDto"/>
+		
 	</typeAliases>
 </configuration>

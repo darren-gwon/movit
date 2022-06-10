@@ -4,3 +4,18 @@
 	width:1500px;
 	margin:100px auto;
 }
+
+.paySuccessInfo{
+	width:700px;
+    margin: 0 auto;
+    border: 1px solid #adb5bd;
+    
+}
+
+.message{
+	margin: 30px auto;
+}
+
+.pay_success{
+	width:120px;
+}

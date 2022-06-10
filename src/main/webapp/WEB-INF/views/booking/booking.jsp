@@ -57,7 +57,7 @@
                                                 </span><span class="s_theater"></span>
                                             </div>
                                         </div>
-                                        <div class="ticket_qty">
+                                        <div class="ticket_selection">
                                             <div class="adult">
                                                 성인:
                                                 <button type="button"
@@ -114,20 +114,20 @@
                                 <div class="table_row">
                                     <div class="cell booking_detail">
                                         <div class="info">
-                                            <img src="" class="poster"> <span><img src="" class="age_group">
-                                                <div class="title"></div>
-                                            </span>
+                                            <img src="" class="p_poster"> <div><img src="" class="p_age_group">
+                                                <span class="p_title"></span>
+                                            </div>
                                             <dl class="dlist_infor">
                                                 <dt>일시</dt>
-                                                <dd class="datetime">상영시간</dd>
+                                                <dd class="p_datetime">상영시간</dd>
                                                 <dt>영화관</dt>
-                                                <dd class="theater">영화관 지점</dd>
+                                                <dd class="p_theater">영화관 지점</dd>
                                                 <dt>인원</dt>
-                                                <dd class="buyer_qty"></dd>
+                                                <dd class="p_buyer_qty"></dd>
                                                 <!-- <dt>인원</dt>
-									<dd >성인1</dd> -->
-                                                <!-- <dt>인원</dt>
-									<dd >성인1</dd> -->
+												<dd >성인1</dd>
+                                                <dt>인원</dt>
+												<dd >성인1</dd> -->
                                             </dl>
                                         </div>
                                     </div>
@@ -138,28 +138,31 @@
 
                                     </div>
                                 </div>
-                                <div class="table_row">ㅁㅁㅁㅁㅁㅁㅁ</div>
+                                <div class="table_row"></div>
                             </div>
                         </div>
 
                         <script>
                             initialize();
 
-                            /*     
-                             function initBookingInfo(){
-                             const movie_info = $(".movieValue.active");
-                             const schedule_info = $(".scheduleValue.active");
-                             const theater_info = $(".theaterValue.active");
-                             const t_info = theater_info.text() + " " + schedule_info.data("screen_name") + ", " + schedule_info.data("class_type");
-                             const date_info = schedule_info.data("screen_date") + " " + schedule_info.data("start_time").slice(0,-3) + " ~ " + schedule_info.data("end_time").slice(0,-3);
-                        	
-                             $(".info .poster").attr("src", movie_info.data("poster_img"));
-                             $(".info .title").text(movie_info.text());
-                             $(".info .age_group").attr("src", "/resources/img/movie_ages/txt-age-"+movie_info.data("age_group")+".png");
-                             $(".info .theater").text(t_info);
-                             $(".info .datetime").text(date_info);
+                             function initDetailBookingInfo(){
+                                	
+                                	$.ajax({
+                                		type:"GET",
+                                		dataType:"JSON",
+                                		url:"/booking/getOrderInfo",
+                                		success:function(result){
+                                			$(".p_poster").attr("src",result.poster_img);
+                                			$(".p_age_group").attr("src", "/resources/img/movie_ages/txt-age-"+ result.age_group + ".png");
+                                			$(".p_title").text(result.title);
+                                			$(".p_datetime").text(result.screen_date+" "+result.start_time.substring(0,result.start_time.length - 3)
+                                                    + "~"+ result.end_time.substring(0,result.start_time.length - 3));
+                                			$(".p_theater").text(result.theater_name+" "+result.screen_name+" - " +result.class_type);
+                                		}
+                                	})
+                                	
                              }
-                             */
+                             
                             //영화 요약
                             function summerizedMovieInfo() {
                                 const s_info = $(".summerized_movie_info");
@@ -354,7 +357,6 @@
                                             },
                                             data: JSON.stringify(orderInfoJson),
                                             success: function () {
-                                                alert("성공");
                                                 summerizedMovieInfo();
                                             }
                                         })
@@ -370,11 +372,7 @@
                                     });
 
                             //좌석 클릭 이벤트
-                            $(".seatAlignment")
-                                .on(
-                                    "click",
-                                    ".seat",
-                                    function () {
+                            $(".seatAlignment").on("click",".seat",function () {
                                         if ($(this).hasClass("taken")) {
                                             return;
                                         }
@@ -394,9 +392,7 @@
                                         let totalPrice = parseInt($("#totalPrice")
                                             .text());
                                         let price = 0;
-                                        const class_type = $(
-                                            ".scheduleValue.active").data(
-                                                "class_type");
+                                        const class_type = $(".scheduleValue.active").data("class_type");
 
                                         if (totalCnt <= 0) {
                                             alert("관람하실 인원을 먼저 선택해주세요.");
@@ -477,81 +473,10 @@
 
                             //카카오페이 클릭이벤트
                             $("#kakaopayBtn").click(function () {
-                                //JSON으로 결제 데이터 보내기
-                                const login = "${sessionScope.user_id}";
-                                const adultCnt = parseInt($("#adultCnt")
-                                    .val());
-                                const youthCnt = parseInt($("#youthCnt")
-                                    .val());
-                                const specialCnt = parseInt($("#specialCnt")
-                                    .val());
-                                const totalPrice = parseInt($("#totalPrice")
-                                    .text());
-
-                                const movie_id = $(".scheduleValue.active")
-                                    .attr("data-movie_id");
-                                const schedule_id = $(
-                                    ".scheduleValue.active").attr(
-                                        "data-schedule_id");
-                                const screen_id = $(".scheduleValue.active")
-                                    .attr("data-screen_id");
-                                const class_type = $(
-                                    ".scheduleValue.active").attr(
-                                        "data-class_type");
-
-                                const title = $(".movieValue.active .title")
-                                    .text();
-                                const quantity = (adultCnt + youthCnt + specialCnt);
-
-                                let ownSeatList = "[";
-                                $(".seat.selected")
-                                    .each(
-                                        function (idx, el) {
-                                            //ownSeatList+=JSON.stringify($(el).data())+",";
-                                            ownSeatList += JSON
-                                                .stringify($(el)
-                                                    .data())
-                                                + ",";
-
-                                        });
-                                ownSeatList = ownSeatList.substring(0,
-                                    ownSeatList.length - 1);
-                                ownSeatList += "]";
-                                const ownSeatJson = JSON.parse(ownSeatList);
-
-                                let json = {
-                                    "cid": "TC0ONETIME",
-                                    "quantity": quantity,
-                                    "total_amount": totalPrice,
-                                    "item_name": title,
-                                    "adultCnt": adultCnt,
-                                    "youthCnt": youthCnt,
-                                    "specialCnt": specialCnt,
-                                    "totalPrice": totalPrice,
-                                    "movie_id": movie_id,
-                                    "schedule_id": schedule_id,
-                                    "screen_id": screen_id,
-                                    "class_type": class_type,
-                                    "bookingDto": {
-                                        "seq": null,
-                                        "booking_id": null,
-                                        "schedule_id": schedule_id,
-                                        "pay_tid": null,
-                                        "user_id": null,
-                                        "quantity": quantity,
-                                        "booking_time": null,
-                                        "ownSeatList": ownSeatJson
-                                    }
-                                };
-
                                 $.ajax({
                                     type: "POST",
                                     url: "pay/kakaoPay",
                                     dataType: "text",
-                                    headers: {
-                                        "content-type": "application/json"
-                                    },
-                                    data: JSON.stringify(json),
                                     success: function (result) {
                                         let parent = window;
                                         let childWin = window.open(result,
@@ -566,21 +491,22 @@
 
                             //결제 페이지 넘어가기 전 가격 유효성체크
                             $(".cell.orderInfo_cell").on("click", "#initPayment",function () {
+                            	if(${sessionScope.user_id==null || sessionScope.user_id==""}){
+                            		alert("로그인이 필요한 서비스입니다.")
+                            		return;
+                            	}
                             	const adultCnt = parseInt($("#adultCnt").val());
                                 const youthCnt = parseInt($("#youthCnt").val());
                                 const specialCnt = parseInt($("#specialCnt").val());
+                                const quantity = (adultCnt + youthCnt + specialCnt);
                                 const totalPrice = parseInt($("#totalPrice").text());
-
-                                const movie_id = $(".scheduleValue.active").attr("data-movie_id");
-                                const schedule_id = $(".scheduleValue.active").attr("data-schedule_id");
-                                const screen_id = $(".scheduleValue.active").attr("data-screen_id");
                                 const class_type = $(".scheduleValue.active").attr("data-class_type");
-
+                                
                                 if (adultCnt + youthCnt + specialCnt > $(".seat.selected").length) {
                                     alert("좌석을 모두 선택해주시기바랍니다.");
                                     return;
                                 }
-
+                                
                                 if (specialCnt >= 1) {
                                     alert("우대 요금으로 예매하신 고객님께서는\n"
                                         + "상영관 입장 시 증빙서류를 제시해 주시기 바랍니다.\n"
@@ -592,39 +518,45 @@
                                         + "우대 요금 선택 시 추가 할인이 제한될 수 있습니다.\n"
                                         + "※일부 지점의 경우 경로 우대요금 미운영");
                                 }
-
+                                
+                                let ownSeatList = "[";
+                                $(".seat.selected").each(function (idx, el) {
+                                            ownSeatList += JSON.stringify($(el).data())+ ",";
+                                            });
+                                ownSeatList = ownSeatList.substring(0,ownSeatList.length - 1);
+                                ownSeatList += "]";
+                                
+                                const ownSeatJson = JSON.parse(ownSeatList);
+                                
+                                let json = {
+                                    "cid": "TC0ONETIME",
+                                    "quantity": quantity,
+                                    "adultCnt": adultCnt,
+                                    "youthCnt": youthCnt,
+                                    "specialCnt": specialCnt,
+                                    "totalPrice": totalPrice,
+                                    "class_type": class_type,
+                                    "ownSeatList": ownSeatJson
+                                };
+                                
                                 $.ajax({
                                     type: "POST",
                                     url: "pay/valid",
                                     headers: {"content-type": "application/json"},
-                                    data: JSON.stringify({
-                                        "adultCnt": adultCnt,
-                                        "youthCnt": youthCnt,
-                                        "specialCnt": specialCnt,
-                                        "totalPrice": totalPrice,
-                                        "schedule_id": schedule_id,
-                                        "screen_id": screen_id,
-                                        "class_type": class_type
-                                    }),
+                                    data: JSON.stringify(json),
                                     success: function (result) {
                                         $(".seatTable").hide();
                                         $(".payTable").show();
+                                        initDetailBookingInfo();
                                     },
                                     error: function () {
                                         alert("유효하지 않은 데이터가 있어 예매를 초기화합니다.");
                                         location.reload();
                                     }
-
                                 })
                                 
-                                    //initBookingInfo();
                                 })
-
-/*                             function isValidPrice() {
-
-                                
-                            } */
-
+                            
                             //오늘 날짜를 기준으로 7일을 출력
                             function dateList() {
                                 const date = new Date();
@@ -690,7 +622,6 @@
                                     for (let j = 1; j <= seat_columns; j++) {
                                         tmp += "<div class='seat empty' data-row_no=" + i + " data-column_no=" + j + ">"
                                             + j + "</div>";
-                                        //tmp += "<span class='seatIdx available' data-row_no=" + i + " data-column_no=" + j + ">" + j + "</span>";
                                     }
                                     tmp += "<br>";
                                     if (i % 4 == 0) {
@@ -712,40 +643,26 @@
                                 const screen_date = $(".scheduleValue.active").attr(
                                     "data-screen_date");
 
-                                $
-                                    .ajax({
+                                $.ajax({
                                         type: "POST",
                                         url: "booking/getOwnSeat",
-                                        headers: {
-                                            "content-type": "application/json"
-                                        },
+                                        headers: {"content-type": "application/json"},
                                         data: JSON.stringify({
-                                            "screen_id": screen_id,
+                                        	"screen_id": screen_id,
                                             "schedule_id": schedule_id,
                                             "movie_id": movie_id,
                                             "screen_date": screen_date
                                         }),
                                         success: function (result) {
-                                            $(result)
-                                                .each(
-                                                    function (idx, ownSeat) {
-                                                        const takenSeat = $(
-                                                            ".seat")
-                                                            .filter(
-                                                                "[data-row_no='"
-                                                                + ownSeat.row_no
-                                                                + "']")
-                                                            .filter(
-                                                                "[data-column_no='"
-                                                                + ownSeat.column_no
-                                                                + "']");
-                                                        takenSeat
-                                                            .toggleClass("empty taken");
+                                            $(result).each(function (idx, ownSeat) {
+                                                        const takenSeat = $(".seat").filter("[data-row_no='"+ ownSeat.row_no+ "']").filter("[data-column_no='"+ ownSeat.column_no+ "']");
+                                                        takenSeat.toggleClass("empty taken");
                                                         takenSeat.text("X");
                                                     })
                                         }
-                                    });
-                            }
+                                    })
+                            };
+                            
 
                             function initialize() {
                                 dateList();

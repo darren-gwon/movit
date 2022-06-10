@@ -1,10 +1,10 @@
 package com.bitcamp.semiproj.dao;
 
-import com.bitcamp.semiproj.domain.BookingDto;
+import com.bitcamp.semiproj.domain.OrderInfoDto;
 
 public interface BookingDao {
 
-	int insertBooking(BookingDto bookingDto);
+	int insertBooking(OrderInfoDto orderInfoDto);
 
 	String selectSequence();
 

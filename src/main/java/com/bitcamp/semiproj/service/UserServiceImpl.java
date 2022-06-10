@@ -147,7 +147,7 @@ public class UserServiceImpl  implements UserService{
 			sb.append("grant_type=authorization_code");
 
 			sb.append("&client_id=1ae5e64fdf23e2e6840b736262379606"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://52.78.89.161:8080/kakaologin"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://15.164.162.4:8080/kakaologin"); // 본인이 설정한 주소
 
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());

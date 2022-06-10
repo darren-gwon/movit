@@ -25,7 +25,7 @@ public class HomeController {
 		List<NoticeDto> list= noticeservice.list();
 		model.addAttribute("list", list);
 		
-		session.setAttribute("user_id", "rnjssmd11");
+//		session.setAttribute("user_id", "rnjssmd11");
 		return "main/main.tiles";	
 	}
 

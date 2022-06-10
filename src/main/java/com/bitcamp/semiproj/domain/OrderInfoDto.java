@@ -1,7 +1,9 @@
 package com.bitcamp.semiproj.domain;
 
 import java.util.List;
-import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 //기존에 이미 만들어놓은 DTO를 재활용하도록 리팩토링
 //2022-06-04
@@ -22,8 +24,35 @@ public class OrderInfoDto {
 	private String class_type;
 	private Integer total_seats;
 	private String screen_name;
-	private BookingDto bookingDto;
+	private Integer adultCnt;
+	private Integer youthCnt;
+	private Integer specialCnt;
+	private Integer quantity;
+	private Integer totalPrice;
+	private String pay_tid;
+	private String user_id;
+	private String booking_id;
+	private List<OwnSeatDto> ownSeatList;
+
 	
+	public String getPay_tid() {
+		return pay_tid;
+	}
+	public void setPay_tid(String pay_tid) {
+		this.pay_tid = pay_tid;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getBooking_id() {
+		return booking_id;
+	}
+	public void setBooking_id(String booking_id) {
+		this.booking_id = booking_id;
+	}
 	public String getCid() {
 		return cid;
 	}
@@ -120,43 +149,51 @@ public class OrderInfoDto {
 	public void setScreen_name(String screen_name) {
 		this.screen_name = screen_name;
 	}
-	public BookingDto getBookingDto() {
-		return bookingDto;
+	public Integer getAdultCnt() {
+		return adultCnt;
 	}
-	public void setBookingDto(BookingDto bookingDto) {
-		this.bookingDto = bookingDto;
+	public void setAdultCnt(Integer adultCnt) {
+		this.adultCnt = adultCnt;
+	}
+	public Integer getYouthCnt() {
+		return youthCnt;
+	}
+	public void setYouthCnt(Integer youthCnt) {
+		this.youthCnt = youthCnt;
+	}
+	public Integer getSpecialCnt() {
+		return specialCnt;
+	}
+	public void setSpecialCnt(Integer specialCnt) {
+		this.specialCnt = specialCnt;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+	public Integer getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(Integer totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public List<OwnSeatDto> getOwnSeatList() {
+		return ownSeatList;
+	}
+	public void setOwnSeatList(List<OwnSeatDto> ownSeatList) {
+		this.ownSeatList = ownSeatList;
 	}
 	@Override
 	public String toString() {
-		return "OrderInfoDto [cid=" + cid + ", theater_id=" + theater_id + ", theater_name=" + theater_name
-				+ ", region_name=" + region_name + ", movie_id=" + movie_id + ", title=" + title + ", age_group="
-				+ age_group + ", runningtime=" + runningtime + ", poster_img=" + poster_img + ", schedule_id="
-				+ schedule_id + ", screen_date=" + screen_date + ", start_time=" + start_time + ", end_time=" + end_time
-				+ ", class_type=" + class_type + ", total_seats=" + total_seats + ", screen_name=" + screen_name
-				+ ", bookingDto=" + bookingDto + "]";
+		return "OrderInfoDto [cid=" + cid + ", theater_id=" + theater_id + ", theater_name=" + theater_name + ", region_name=" + region_name
+				+ ", movie_id=" + movie_id + ", title=" + title + ", age_group=" + age_group + ", runningtime=" + runningtime + ", poster_img="
+				+ poster_img + ", schedule_id=" + schedule_id + ", screen_date=" + screen_date + ", start_time=" + start_time + ", end_time="
+				+ end_time + ", class_type=" + class_type + ", total_seats=" + total_seats + ", screen_name=" + screen_name + ", adultCnt=" + adultCnt
+				+ ", youthCnt=" + youthCnt + ", specialCnt=" + specialCnt + ", quantity=" + quantity + ", totalPrice=" + totalPrice + ", pay_tid="
+				+ pay_tid + ", user_id=" + user_id + ", booking_id=" + booking_id + ", ownSeatList=" + ownSeatList + "]";
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(age_group, bookingDto, cid, class_type, end_time, movie_id, poster_img, region_name, runningtime, schedule_id,
-				screen_date, screen_name, start_time, theater_id, theater_name, title, total_seats);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OrderInfoDto other = (OrderInfoDto) obj;
-		return Objects.equals(age_group, other.age_group) && Objects.equals(bookingDto, other.bookingDto) && Objects.equals(cid, other.cid)
-				&& Objects.equals(class_type, other.class_type) && Objects.equals(end_time, other.end_time)
-				&& Objects.equals(movie_id, other.movie_id) && Objects.equals(poster_img, other.poster_img)
-				&& Objects.equals(region_name, other.region_name) && Objects.equals(runningtime, other.runningtime)
-				&& Objects.equals(schedule_id, other.schedule_id) && Objects.equals(screen_date, other.screen_date)
-				&& Objects.equals(screen_name, other.screen_name) && Objects.equals(start_time, other.start_time)
-				&& Objects.equals(theater_id, other.theater_id) && Objects.equals(theater_name, other.theater_name)
-				&& Objects.equals(title, other.title) && Objects.equals(total_seats, other.total_seats);
-	}	
-	
+
+
 }
