@@ -147,7 +147,7 @@ public class UserServiceImpl  implements UserService{
 			sb.append("grant_type=authorization_code");
 
 			sb.append("&client_id=1ae5e64fdf23e2e6840b736262379606"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://52.78.89.161:8080/kakaologin"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://localhost:9005/login/kakao"); // 본인이 설정한 주소
 
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
@@ -155,7 +155,7 @@ public class UserServiceImpl  implements UserService{
 
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
+
 
 			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -165,7 +165,6 @@ public class UserServiceImpl  implements UserService{
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
 
 			// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 			JsonParser parser = new JsonParser();
@@ -173,9 +172,6 @@ public class UserServiceImpl  implements UserService{
 
 			access_Token = element.getAsJsonObject().get("access_token").getAsString();
 			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-
-			System.out.println("access_token : " + access_Token);
-			System.out.println("refresh_token : " + refresh_Token);
 
 			br.close();
 			bw.close();
@@ -236,7 +232,6 @@ public class UserServiceImpl  implements UserService{
 		// catch 아래 코드 추가.
 		KakaoDto result = userdao.findkakao(userInfo);
 		// 위 코드는 먼저 정보가 저장되있는지 확인하는 코드.
-		System.out.println("S:" + result);
 		if(result==null) {
 			// result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
 		

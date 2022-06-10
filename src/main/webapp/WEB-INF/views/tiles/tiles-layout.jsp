@@ -49,7 +49,7 @@
 						<div class="loginmodal-form-wrapper">
 							<div class="loginmodal-front">
 								<div class="center-wrap">
-									<form action="/success" method="post">
+									<form action="/login/success" method="post">
 										<div class="text-center">
 											<h4 class="brand" style="font-size: 35px; font-weight: bold;">;Movit</h4>
 											<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
@@ -67,21 +67,21 @@
 											</div>
 											<br>
 											<button type="submit" class="btnlogin">Login</button>
-											<%-- <a href="${pass}/login/ok" class="btnlogin" type="submit">Login</a> --%>
+											
 
 											<p class="idpassfind text-center">
 												<a class="link" id="idpassview">ID/Password찾기</a>
 											</p>
-											<p class="regtext ">
-												<a href="${pass}/user/agree" class="link">아직 회원이 아니십니까?</a>
+											<p class="regtext">
+												<a href="${pass}/reg/agree" class="link">아직 회원이 아니십니까?</a>
 											</p>
 
-											<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=1ae5e64fdf23e2e6840b736262379606&redirect_uri=http://52.78.89.161:8080/kakaologin&response_type=code">
+											<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=1ae5e64fdf23e2e6840b736262379606&redirect_uri=http://localhost:9005/login/kakao&response_type=code">
 
 												<img src="/resources/image/kakaologin.png" style="height: 50px; width: 130px;">
 											</a>
 											<!-- 네이버 로그인 버튼 생성 위치 -->
-											<a href="/naver">
+											<a href="/login/naver">
 												<img src="/resources/image/naverlogin.png" style="height: 50px; width: 130px;" >
 											</a>
 
@@ -182,7 +182,7 @@
 
 												</div>
 											</div>
-											<button type="button" class="btnlogin" id="searchBtn2" onclick="passwordSerch_click()">Password 찾기</button>
+											<button type="button" class="btnlogin" onclick="passwordSerch_click()">Password 찾기</button>
 											<a class="btn btn-danger btn-block" id="passfindviewclose" style="text-decoration: none; border-radius: 20px;">로그인하러가기</a>
 										</div>
 
@@ -274,12 +274,39 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 	<script type="text/javascript">
+		
+	
 		//로그인 모달 창
-
 		$(".loginview").click(function() {
 			$("#loginview").modal();
 		});
+		
+		//  모달창 닫기 버튼
+		$('.close').on('click', function() {
+			/* $('#Idresultview').hide(); */
+			$('.modal').hide();
+		});
+		//  모달창 위도우 클릭 시 닫기
+		$(window).on('click', function() {
+		 if (event.target == $('#Idresultview').get(0)) {	
+		 				}
+			if (event.target == $('.modal').get(0)) {
+			}
+			 if (event.target == $('#Idfindview').get(0)) {	
+				}
+			 if (event.target == $('#Idpassview').get(0)) {	
+				}
+		});
+		//naver 로그인.
+		var naverLogin = new naver.LoginWithNaverId({
+			clientId : "wmxTFuijyRLQbSXlc64_",
+			// Client ID
+			callbackUrl : "http://localhost:9005/login/naver/success",
+			//callBack url로 수정하세요.
 
+		});
+		naverLogin.init();
+		
 		//로그인 실패시
 		let loginfail = "${loginfail}";
 		if (loginfail == "1") {
@@ -301,12 +328,13 @@
 			});
 			window.location.reload(true);
 		}
+		//카카오 로그아웃
 		function kakaologout() {
 
 			$.ajax({
 				type : "get",
 				dataType : "json",
-				url : "kakaologout",
+				url : "logout/kakao",
 				success : function() {
 
 				}
@@ -316,7 +344,6 @@
 		}
 
 		//체크 버튼에 따라 아이디/비밀번호 기능이 달라진다
-
  		function search_check(num) {
 			if (num == '1') {
 				$("input:radio[id='search_2']").prop("checked", false);
@@ -363,7 +390,7 @@
 							$
 									.ajax({
 										type : "GET",
-										url : "${pageContext.request.contextPath}/usercheck?user_id="
+										url : "${pageContext.request.contextPath}/find/checkUser?user_id="
 												+ user_id + "&email=" + email,
 										success : function(data) {
 											if (data == 0) {
@@ -413,27 +440,12 @@
 			}
 		});
 
-		// 1. 모달창 (ID 찾기 모달창) 
+		//  모달창 (ID 찾기 모달창) 
 		$('#searchBtn').click(function() {
 			$('#Idresultview').show();
 
 		});
-		// 2. 모달창 닫기 버튼
-		$('.close').on('click', function() {
-			/* $('#Idresultview').hide(); */
-			$('.modal').hide();
-		});
-		// 3. 모달창 위도우 클릭 시 닫기
-		$(window).on('click', function() {
-		 if (event.target == $('#Idresultview').get(0)) {	
-		 				}
-			if (event.target == $('.modal').get(0)) {
-			}
-			 if (event.target == $('#Idfindview').get(0)) {	
-				}
-			 if (event.target == $('#Idpassview').get(0)) {	
-				}
-		});
+
 		//아이디 패스워드 찾기 모달 창 띄우기
 		$('#idpassview').click(function() {
 			$('#loginview').hide();
@@ -450,7 +462,7 @@
 			$('#Idresultview').hide();
 			$('#passresultview').hide();
 		});
-		// 패스워드 찾기 결과 모달 창 띄우기
+		// 패스워드 결과 후 로그인 화면 띄우기 
 		$('#passfindviewclose').click(function() {
 			$('#Idfindview').hide();
 			$('#loginview').show();
@@ -473,7 +485,7 @@
 		var idSearch_click = function() {
 			$.ajax({
 				type : "POST",
-				url : "${pageContext.request.contextPath}/userSearch?name="
+				url : "${pageContext.request.contextPath}/find/userId?name="
 						+ $('#inputname').val() + "&email="
 						+ $('#inputemail').val(),
 				success : function(data) {
@@ -497,7 +509,7 @@
 				$
 						.ajax({
 							type : "POST",
-							url : "${pageContext.request.contextPath}/searchPassword?user_id="
+							url : "${pageContext.request.contextPath}/setTempPwd?user_id="
 									+ $('#inputId').val()
 									+ "&email="
 									+ $('#inputemail2').val(),
@@ -517,21 +529,8 @@
 				setTimeout(function() {
 					$('#passusercheck').hide();
 				}, 2500);
-
 			}
-
 		}
-		
-		//naver 로그인.
-		var naverLogin = new naver.LoginWithNaverId({
-			clientId : "wmxTFuijyRLQbSXlc64_",
-			// 본인의 Client ID로 수정, 띄어쓰기는 사용하지 마세요.
-			callbackUrl : "http://52.78.89.161:8080/naverlogin",
-			// 본인의 callBack url로 수정하세요.
-
-		// 네이버 로그인버튼 디자인 설정. 한번 바꿔보세요:D
-		});
-		naverLogin.init();
 	</script>
 </body>
 
