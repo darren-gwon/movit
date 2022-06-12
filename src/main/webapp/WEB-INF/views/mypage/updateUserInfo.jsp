@@ -201,7 +201,7 @@ function chkSubmit() {
 </head>
 <body>
 	<jsp:include page="mypageHeader.jsp"/>
-	<c:if test="${sessionScope.user_id ==null }">
+	<c:if test="${sessionScope.user_id ==null}">
 		<br><br>
 		<h3>로그인이 필요한 서비스입니다.</h3>
 		<br><br>

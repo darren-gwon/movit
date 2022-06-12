@@ -48,6 +48,9 @@ public class MypageController {
 			Model model, 
 			HttpSession session) {
 		String user_id = (String)session.getAttribute("user_id");
+		if(user_id==null || "".equals(user_id)) {
+			return "redirect:/mypage/home";
+		}
 		MypageDto dto = service.getUserData(user_id);
 		model.addAttribute("dto", dto);
 		
