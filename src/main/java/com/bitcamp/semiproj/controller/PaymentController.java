@@ -49,6 +49,7 @@ public class PaymentController {
 		OrderInfoDto tmpOrderDto;
 		try {
 			tmpOrderDto = objMapper.readValue(json, OrderInfoDto.class);
+			
 			Map<String, String> tickets = new HashMap<>();
 			tickets.put("adultCnt", tmpOrderDto.getAdultCnt().toString());
 			tickets.put("youthCnt", tmpOrderDto.getYouthCnt().toString());
@@ -64,7 +65,6 @@ public class PaymentController {
 			if (realPrice == totalPrice) {
 
 				OrderInfoDto orderInfoDto = (OrderInfoDto) session.getAttribute("orderInfoDto");
-				System.out.println("######before set######" + orderInfoDto);
 
 				orderInfoDto.setAdultCnt(tmpOrderDto.getAdultCnt());
 				orderInfoDto.setYouthCnt(tmpOrderDto.getYouthCnt());
@@ -73,10 +73,6 @@ public class PaymentController {
 				orderInfoDto.setOwnSeatList(tmpOrderDto.getOwnSeatList());
 				orderInfoDto.setQuantity(tmpOrderDto.getQuantity());
 
-				System.out.println("######after set######" + orderInfoDto);
-
-				System.out.println("#####json#####" + json);
-				System.out.println("#####json#####" + json);
 			} else {
 				return new ResponseEntity<String>("데이터가 없습니다.", HttpStatus.SERVICE_UNAVAILABLE);
 			}
@@ -122,15 +118,6 @@ public class PaymentController {
 
 		return "pay/fail.tiles";
 	}
-
-	/*
-	 * @PostMapping("/kakaoPay")
-	 * 
-	 * @ResponseBody public String kakaopayReady(@RequestBody OrderInfoDto
-	 * orderInfo, HttpSession session) { session.setAttribute("user_id",
-	 * "asdf1234"); session.setAttribute("orderInfoDto", orderInfo); return
-	 * kakaoPayService.ready(session); }
-	 */
 
 	@PostMapping("/kakaoPay")
 	@ResponseBody

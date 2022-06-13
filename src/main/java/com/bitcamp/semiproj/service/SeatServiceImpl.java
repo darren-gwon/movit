@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.semiproj.dao.SeatDao;
 import com.bitcamp.semiproj.domain.OrderInfoDto;
 import com.bitcamp.semiproj.domain.OwnSeatDto;
+import com.bitcamp.semiproj.domain.ScheduleDto;
 
 @Service
 public class SeatServiceImpl implements SeatService {
@@ -45,4 +46,6 @@ public class SeatServiceImpl implements SeatService {
 		return realTotalPrice;
 		
 	}
+
+	
 }

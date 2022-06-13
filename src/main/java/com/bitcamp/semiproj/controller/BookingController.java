@@ -1,5 +1,6 @@
 package com.bitcamp.semiproj.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bitcamp.semiproj.domain.BookingDto;
 import com.bitcamp.semiproj.domain.KakaoPayApprovalDto;
 import com.bitcamp.semiproj.domain.MovieDto;
 import com.bitcamp.semiproj.domain.OrderInfoDto;
@@ -27,7 +27,6 @@ import com.bitcamp.semiproj.service.ScheduleService;
 import com.bitcamp.semiproj.service.SeatService;
 import com.bitcamp.semiproj.service.TheaterService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -47,8 +46,14 @@ public class BookingController {
 	
 	@GetMapping("")
 	public String booking(Model m) {
-		List<TheaterDto> region = theaterService.getAllRegions();
-		m.addAttribute("region", region);
+		List<TheaterDto> regionList = theaterService.getAllRegions();
+		List<TheaterDto> theaterList = theaterService.getTheatersByRegion("서울");
+		List<MovieDto> movieList = movieService.selectMovieByTheaterName("강남점");
+		
+		m.addAttribute("regionList", regionList);
+		m.addAttribute("theaterList", theaterList);
+		m.addAttribute("movieList", movieList);
+
 		return "booking/booking.tiles";
 	}
 
