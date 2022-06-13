@@ -21,7 +21,7 @@ $(function(){
 		var de=confirm("게시글을 삭제합니다");
 		
 		if (de){
-	         return location.href="delete?num="+${dto.seq};
+	         return location.href="del?num="+${dto.seq};
 				}
 			});
 	});
@@ -48,9 +48,9 @@ $(function(){
 	</tr>
 	</table>
 
-	<button class="listbtn" onclick="location.href='notice'">목록</button>
+	<button class="listbtn" onclick="location.href='/notice'">목록</button>
 	<c:if test="${user_id=='admin'}">
-	<button class="update" onclick="location.href='../board/updateform?num=${dto.seq}'">수정</button>
+	<button class="update" onclick="location.href='../notice/edit?num=${dto.seq}'">수정</button>
 	<button type="button" id="del" class="del" >삭제</button>
 	</c:if>
 </div>

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="updateform" method="post" action="../board/updateform?num=${dto.seq}"> 
+<form name="updateform" method="post" action="../notice/edit?num=${dto.seq}"> 
 <div class="content">
 
 <table class="table table-bordered boardform" style="width:500px;">
@@ -45,7 +45,7 @@
 	<tr>
 	<td colspan="4">
 	<button type="button" class="btn btn-default" style="width:100px;"
-	onclick="location.href='notice'">돌아가기</button>
+	onclick="history.back()">돌아가기</button>
 	</td>
 	</tr>
 	

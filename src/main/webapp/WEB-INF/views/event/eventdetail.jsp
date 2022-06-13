@@ -17,7 +17,7 @@
 			var de = confirm("게시글을 삭제합니다");
 
 			if (de) {
-				return location.href = "../event/delete?num=" + ${dto.seq}
+				return location.href = "../event/del?num=" + ${dto.seq}
 			}
 		});
 	});
@@ -40,11 +40,11 @@
 			</div>
 			<div class="btn-wrap">
 		<!-- <button onclick="location.href='eventlist'">목록</button> -->
-		<a class="btn-list" href="eventlist">목록</a>
+		<a class="btn-list" href="/event">목록</a>
 		</div>
 		<c:if test="${user_id=='admin'}">
 		<div class="btn-admin">
-		<a class="btn-update" href="../event/updateform?num=${dto.seq}">수정</button></a>
+		<a class="btn-update" href="../event/edit?num=${dto.seq}">수정</button></a>
 		<a type="button" id="del">삭제</a>
 		</div>
 		</c:if>

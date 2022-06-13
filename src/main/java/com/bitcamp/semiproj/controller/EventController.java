@@ -40,7 +40,7 @@ import util.FileUtil;
 		EventDao dao;
 		
 		//占쌉시뱄옙 占쏙옙占�
-		@RequestMapping(value = "/eventlist", method = RequestMethod.GET)
+		@RequestMapping(value = "", method = RequestMethod.GET)
 		public String eventlist(Model model) throws Exception{ 
 			int startnum = 0;
 			int totalcount=service.postcount();
@@ -53,7 +53,7 @@ import util.FileUtil;
 		}
 		
 		//占쌉시뱄옙 占쏙옙占�
-		@RequestMapping(value = "/list", method = RequestMethod.POST)
+		@RequestMapping(value = "", method = RequestMethod.POST)
 		@ResponseBody
 		public List<EventDto> list(@RequestBody Map<String,Integer> map) throws Exception{ 
 			int perpage=8;
@@ -64,13 +64,13 @@ import util.FileUtil;
 		}
 
 		//占쌉시뱄옙 占쌜쇽옙 占쏙옙 占싱듸옙
-		@RequestMapping(value = "/eventwriteform", method = RequestMethod.GET)
+		@RequestMapping(value = "/write", method = RequestMethod.GET)
 		public String write() throws Exception {
 			   return "event/eventwriteform.tiles";
 				}
 		
 		// 占쌉시뱄옙 占쌜쇽옙 POST
-		@RequestMapping(value="/eventwriteform", method=RequestMethod.POST)
+		@RequestMapping(value="/write", method=RequestMethod.POST)
 		public String postcreate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
 				HttpServletRequest request,HttpSession session) throws Exception{
 			
@@ -127,7 +127,7 @@ import util.FileUtil;
 		}
 
 		//占쌉시뱄옙 占쏙옙占쏙옙占쏙옙占쏙옙 占싱듸옙
-		@RequestMapping(value="/eventdetail", method=RequestMethod.GET)
+		@RequestMapping(value="/detail", method=RequestMethod.GET)
 				public String getdetail(Model model,int num) {
 					EventDto dto=service.detail(num);	
 					service.readcount(dto);
@@ -135,7 +135,7 @@ import util.FileUtil;
 					return "event/eventdetail.tiles";
 				}
 		//占쌉시뱄옙 占쏙옙占쏙옙
-		@RequestMapping(value="/updateform",method=RequestMethod.GET)
+		@RequestMapping(value="/edit",method=RequestMethod.GET)
 				public String getupdate(Model model, int num) throws Exception{
 					EventDto dto=service.detail(num);
 					model.addAttribute("dto",dto);
@@ -143,7 +143,7 @@ import util.FileUtil;
 					return "event/updateform.tiles";
 				}
 		//占쌉시뱄옙 占쏙옙占쏙옙 post
-		@RequestMapping(value="/updateform",method=RequestMethod.POST)
+		@RequestMapping(value="/edit",method=RequestMethod.POST)
 			public String postupdate(@ModelAttribute EventDto dto, @RequestParam ArrayList<MultipartFile> mainupload, @RequestParam ArrayList<MultipartFile> thumupload,
 					HttpServletRequest request,HttpSession session) throws Exception {
 					
@@ -192,10 +192,10 @@ import util.FileUtil;
 				         dto.setthumbnail_img(subphoto);
 				      }
 					 	service.updateform(dto);
-						return "redirect:eventlist";
+						return "redirect:/event";
 				}
 		//占쌉시뱄옙 占쏙옙占쏙옙
-				@RequestMapping(value="/delete",method=RequestMethod.GET)
+				@RequestMapping(value="/del",method=RequestMethod.GET)
 					public String getdelete(@ModelAttribute EventDto dto,
 							HttpServletRequest request,HttpSession session,int num) throws Exception {
 					
@@ -212,7 +212,7 @@ import util.FileUtil;
 						   }
 					   }
 						service.delete(num);
-						return "redirect:eventlist";	
+						return "redirect:/event";	
 				}
 			
 }

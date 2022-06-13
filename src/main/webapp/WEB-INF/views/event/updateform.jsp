@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<form name="updateform" method="post" enctype="multipart/form-data" action="../event/updateform?num=${dto.seq}"> 
+<form name="updateform" method="post" enctype="multipart/form-data" action="../event/edit?num=${dto.seq}"> 
 <div class="content">
 <table class="table table-bordered boardform" style="width:500px;">
 	<tr>
@@ -70,7 +70,7 @@
 	<tr>
 	<td colspan="5">
 	<button type="button" class="btn btn-default" style="width:100px;"
-	onclick="location.href='eventlist'">돌아가기</button>
+	onclick="history.back()">돌아가기</button>
 	</td>
 	</tr>
 	

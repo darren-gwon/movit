@@ -20,7 +20,7 @@
   keyword = document.getElementById("keyword").value;
   
   console.log(keyword)
-  location.href = "../board/notice?num&keyword=" + keyword;
+  location.href = "../notice?num&keyword=" + keyword;
  };
 </script>
 </head>
@@ -69,7 +69,7 @@
 								<td><c:out value="${displaypost+i.count}" /></td>
 
 								<td>${list.type}</td>
-								<td class="text1"><a href="../board/detail?num=${list.seq}">${list.title}</a></td>
+								<td class="text1"><a href="../notice/detail?num=${list.seq}">${list.title}</a></td>
 								<fmt:parseDate value="${list.write_date}" var="dateValue"
 									pattern="yyyy-MM-dd" />
 								<td><fmt:formatDate value="${dateValue}"
@@ -88,27 +88,27 @@
 		<ul>
 			<li><c:if test="${prev}">
 
-					<a href="../board/notice?num=${startpagenum - 1}">〈</a>
+					<a href="../notice?num=${startpagenum - 1}">〈</a>
 
 				</c:if> 
 				<c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
 
 					<c:if test="${num!=select}">
-						<a href="../board/notice?num=${num}">${num}</a>
+						<a href="../notice?num=${num}">${num}</a>
 					</c:if>
 					<c:if test="${num==select}">
-						<b><a href="../board/notice?num=${num}">${num}</a></b>
+						<b><a href="../notice?num=${num}">${num}</a></b>
 					</c:if>
 				</c:forEach>
 				<c:if test="${next}">
-					<a href="../board/notice?num=${endpagenum + 1}">〉</a>
+					<a href="../notice?num=${endpagenum + 1}">〉</a>
 				</c:if></li>
 		</ul>
 		</div>
 		<c:if test="${user_id=='admin'}">
 				<div class="bu1">
 					<button type="button" class="btn btn-primary" style="width: 100px;"
-						onclick="location.href='${root}/board/writeform'">글쓰기</button>
+						onclick="location.href='${root}/notice/write'">글쓰기</button>
 				
 				</div>
 				</c:if>
