@@ -16,11 +16,11 @@ import com.bitcamp.semiproj.service.NoticeService;
 public class HomeController {
 	
 	@Autowired
-	private NoticeService noticeservice;
+	private NoticeService noticeService;
 		
 	@GetMapping("/")
 	public String home(Model model,HttpSession session)throws Exception {
-		List<NoticeDto> list= noticeservice.list();
+		List<NoticeDto> list= noticeService.list();
 		model.addAttribute("list", list);
 		
 		return "main/main.tiles";	
