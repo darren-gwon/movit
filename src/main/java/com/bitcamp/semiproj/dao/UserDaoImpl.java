@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int login(Map<String, String> map) {
 		// TODO Auto-generated method stub
-		return session.selectOne(namespace + "Login", map);
+		return session.selectOne(namespace + "login", map);
 	}
 
 	// ID 중복확인
