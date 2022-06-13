@@ -28,7 +28,7 @@
 						
 						
 						<br>
-					<button type="button" class="btn btn-outline-primary">예매하기</button>
+					<button type="button" class="btn btn-outline-primary" onclick="location.href='/booking'">예매하기</button>
 					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/movie/detail?movie_id=${list.movie_id}'">상세보기</button>
 				</li>
 			</c:forEach>

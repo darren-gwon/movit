@@ -36,21 +36,21 @@ public class UserController {
 	UserDao userdao;
 
 	// 회원가입 전 동의 창
-	@RequestMapping(value = "user/agree", method = RequestMethod.GET)
+	@RequestMapping(value = "reg/agree", method = RequestMethod.GET)
 	public String agree(UserDto userdto) {
 
 		 return "/userReg/agree.tiles";
 	}
 	
 	// 회원가입 창
-	@RequestMapping(value = "user/reg", method = RequestMethod.GET)
+	@RequestMapping(value = "/reg", method = RequestMethod.GET)
 	public String UserReg(UserDto userdto) {
 
 		return "/userReg/userReg.tiles";
 	}
 
 	// 회원가입 완료
-	@RequestMapping(value = "user/reg", method = RequestMethod.POST)
+	@RequestMapping(value = "/reg", method = RequestMethod.POST)
 	public String UserRegPass(UserDto userdto, HttpSession session, HttpServletRequest request) {
 
 		// 비밀번호 암호화 (sha256)
@@ -63,8 +63,8 @@ public class UserController {
 
 	}
 
-	// id 중복 체크 컨트롤러
-	@RequestMapping(value = "user/idCheck", method = RequestMethod.POST)
+	// id 중복 체크 컨트롤러 user/idCheck
+	@RequestMapping(value = "/reg/chkId", method = RequestMethod.POST)
 	@ResponseBody
 	public int idCheck(@RequestParam("userId") String user_id) {
 
@@ -72,7 +72,7 @@ public class UserController {
 	}
 	
 	// 아이디 찾기
-	@RequestMapping(value = "userSearch", method = RequestMethod.POST)
+	@RequestMapping(value = "/find/userId", method = RequestMethod.POST)
 	@ResponseBody
 	public String userIdSearch(@RequestParam("name") String name, 
 			@RequestParam("email") String email,RedirectAttributes rattr) {
@@ -88,7 +88,7 @@ public class UserController {
 		return result;
 	}
 	// 비밀번호 인증 이메일
-	@RequestMapping(value = "usercheck", method = RequestMethod.GET)
+	@RequestMapping(value = "/find/checkUser", method = RequestMethod.GET)
 	@ResponseBody
 	public String userCheck(@RequestParam("user_id")String user_id,
 			@RequestParam("email")String email,
@@ -109,7 +109,7 @@ public class UserController {
 	}
 	
 	// 임시비밀번호 생성(비밀번호찾기)
-	@RequestMapping(value = "searchPassword", method = RequestMethod.POST)
+	@RequestMapping(value = "/setTempPwd", method = RequestMethod.POST)
 	@ResponseBody
 	public void passwordSearch(@RequestParam("user_id")String user_id,
 			@RequestParam("email")String email,

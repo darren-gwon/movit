@@ -28,15 +28,15 @@ public class ReviewController {
 	@Autowired
 	private ReviewService service;
 	
-	@GetMapping("/home")
-	public String reviewHome() throws Exception {
-		return "review/reviewhome.tiles";
-	}
+//	@GetMapping("/home")
+//	public String reviewHome() throws Exception {
+//		return "review/reviewhome.tiles";
+//	}
 
 	@GetMapping("/list")
 	@ResponseBody
 	public Map<String, Object> getReviewList(
-			@RequestParam("movie_id") int movie_id, 
+			@RequestParam("movie_id") int movie_id,
 			@RequestParam("startNum") int startNum
 			) {
 		int perPage = 5;
@@ -52,14 +52,14 @@ public class ReviewController {
 		return map;
 	}
 	
-	@GetMapping("/form")
-	public String reviewForm(
-			@RequestParam int movie_id, 
-			Model model, 
-			HttpSession session) {
-		model.addAttribute("movie_id", movie_id);
-		return "review/reviewform.tiles";
-	}
+//	@GetMapping("/form")
+//	public String reviewForm(
+//			@RequestParam int movieID, 
+//			Model model, 
+//			HttpSession session) {
+//		model.addAttribute("movieID", movieID);
+//		return "review/reviewform.tiles";
+//	}
 	
 	@PostMapping("/insert")
 	@ResponseBody
@@ -67,23 +67,22 @@ public class ReviewController {
 		service.insertReview(dto);
 	}
 	
-	@PostMapping("/checkUserReview")
+	@PostMapping("/chkUser")
 	@ResponseBody
 	public List<ReviewDto> userReviewCheck(@ModelAttribute ReviewDto dto) {
 		return service.checkUserReview(dto);
 	}
 	
-	@GetMapping("/deleteReview")
+	@GetMapping("/delete")
 	@ResponseBody
 	public void deleteReview(@RequestParam int review_id) {
 		System.out.println("review_id = "+review_id);
 		service.deleteReview(review_id);
 	}
 	
-	@PostMapping("/updateReview")
+	@PostMapping("/update")
 	@ResponseBody
 	public void updateReview(@ModelAttribute ReviewDto dto) {
-		System.out.println(dto);
 		service.updateReview(dto);
 	}
 }

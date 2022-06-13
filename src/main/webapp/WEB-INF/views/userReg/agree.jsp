@@ -404,7 +404,7 @@ NICE신용평가정보㈜(이하 “대행사”)가 “대행사”에서 제�
 $("#agree").click(function(){
 	if($(".check,chek").is(":checked") && 
 			$(".check2").is(":checked")){
-		location.href="/user/reg";
+		location.href="/reg";
 	}else{
 		alert("약관 동의를 해주세요");
 	}	

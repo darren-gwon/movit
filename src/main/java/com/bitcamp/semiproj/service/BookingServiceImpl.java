@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.semiproj.dao.BookingDao;
-import com.bitcamp.semiproj.domain.BookingDto;
+import com.bitcamp.semiproj.domain.OrderInfoDto;
 
 @Service
 public class BookingServiceImpl implements BookingService {
@@ -15,8 +15,8 @@ public class BookingServiceImpl implements BookingService {
 	@Autowired
 	BookingDao bookingDao;
 
-	public int insertBooking(BookingDto bookingDto) {
-		return bookingDao.insertBooking(bookingDto);
+	public int insertBooking(OrderInfoDto orderInfoDto) {
+		return bookingDao.insertBooking(orderInfoDto);
 	}
 	
 	public String generatebooking_id() {

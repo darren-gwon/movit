@@ -10,7 +10,7 @@
 		values (#{user_id},#{password},#{name},#{nickname},#{gender},#{phone},#{email},#{birthday},now());
 	</insert>
 	<!--로그인 인증 확인 -->
-	<select id="Login" parameterType="Map" resultType="int">
+	<select id="login" parameterType="Map" resultType="int">
 		select count(*) from user where user_id=#{user_id} and password=#{password}
 	</select>
 	<!--아이디 중복확인 -->

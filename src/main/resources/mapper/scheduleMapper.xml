@@ -19,7 +19,7 @@
 
 	<select id="selectScheduleInfo" parameterType="Map"
 		resultMap="ScheduleDtoResultMap">
-SELECT m.movie_id, m.title, m.age_group, m.runningtime, m.poster_img,
+		SELECT m.movie_id, m.title, m.age_group, m.runningtime, m.poster_img,
 		m.trailer_url, m.on_show, m.still_cut, t.theater_id, t.theater_name,
 		t.region_name, s.screen_id, s.screen_name, s.class_type, s.seat_rows, s.seat_columns,
 		s.seat_rows*seat_columns as total_seats, shw.schedule_id, shw.screen_date, shw.start_time, shw.end_time

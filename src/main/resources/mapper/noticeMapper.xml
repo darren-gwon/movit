@@ -18,7 +18,7 @@
 	</insert>
 	<!-- 메인 게시물 목록 -->
 	<select id="selectAll" resultType="InquiryFaqDto">
-		select seq, title,content,write_date,view_cnt,type from notice
+		select seq, title,content,write_date,view_cnt,type from notice order by seq desc;
 	</select>
 	
 	<!-- 게시글 상세 -->

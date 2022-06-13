@@ -1,11 +1,12 @@
 package com.bitcamp.semiproj.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -38,17 +39,52 @@ public class PaymentController {
 	@Autowired
 	private BookingService bookingService;
 
-	@PostMapping("/valid")
-	public ResponseEntity<String> validPrice(HttpServletRequest requset, @RequestBody Map<String, String> tickets) {
-		System.out.println("tickets"+tickets);
-		int realPrice = seatService.isValidPrice(tickets);
-		int totalPrice = Integer.valueOf(tickets.get("totalPrice"));
+	@Autowired
+	@Qualifier("jacksonObjectMapper")
+	ObjectMapper objMapper;
 
-		if (realPrice == totalPrice) {
-			return new ResponseEntity<String>("성공", HttpStatus.OK);
-		} else {
+	@PostMapping("/valid")
+	public ResponseEntity<String> validPrice(HttpSession session, @RequestBody String json) {// Map<String, String> tickets) {
+
+		OrderInfoDto tmpOrderDto;
+		try {
+			tmpOrderDto = objMapper.readValue(json, OrderInfoDto.class);
+			
+			Map<String, String> tickets = new HashMap<>();
+			tickets.put("adultCnt", tmpOrderDto.getAdultCnt().toString());
+			tickets.put("youthCnt", tmpOrderDto.getYouthCnt().toString());
+			tickets.put("specialCnt", tmpOrderDto.getSpecialCnt().toString());
+			tickets.put("totalPrice", tmpOrderDto.getTotalPrice().toString());
+			tickets.put("class_type", tmpOrderDto.getClass_type().toString());
+			tickets.put("quantity", tmpOrderDto.getQuantity().toString());
+
+			int realPrice = seatService.isValidPrice(tickets);
+			int totalPrice = tmpOrderDto.getTotalPrice();
+
+
+			if (realPrice == totalPrice) {
+
+				OrderInfoDto orderInfoDto = (OrderInfoDto) session.getAttribute("orderInfoDto");
+
+				orderInfoDto.setAdultCnt(tmpOrderDto.getAdultCnt());
+				orderInfoDto.setYouthCnt(tmpOrderDto.getYouthCnt());
+				orderInfoDto.setSpecialCnt(tmpOrderDto.getSpecialCnt());
+				orderInfoDto.setTotalPrice(tmpOrderDto.getTotalPrice());
+				orderInfoDto.setOwnSeatList(tmpOrderDto.getOwnSeatList());
+				orderInfoDto.setQuantity(tmpOrderDto.getQuantity());
+
+			} else {
+				return new ResponseEntity<String>("데이터가 없습니다.", HttpStatus.SERVICE_UNAVAILABLE);
+			}
+
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return new ResponseEntity<String>("데이터가 없습니다.", HttpStatus.SERVICE_UNAVAILABLE);
+
 		}
+		return new ResponseEntity<String>("성공", HttpStatus.OK);
+
 	}
 
 	@GetMapping("/kakaoPayFail")
@@ -67,16 +103,15 @@ public class PaymentController {
 
 		KakaoPayApprovalDto kPayApprovalDto = kakaoPayService.payInfo(pg_token, session);
 		if (kPayApprovalDto != null) {
-			BookingDto bookingDto = null;//info.getBookingDto();
-			bookingDto.setPay_tid(kPayApprovalDto.getTid());
-			bookingDto.setUser_id((String) session.getAttribute("user_id"));
-			bookingDto.setBooking_id(bookingService.generatebooking_id());
+			info.setPay_tid(kPayApprovalDto.getTid());
+			info.setUser_id((String) session.getAttribute("user_id"));
+			info.setBooking_id(bookingService.generatebooking_id());
+			info.setOwnSeatList(info.getOwnSeatList());
+			bookingService.insertBooking(info);
 
-			bookingService.insertBooking(bookingDto);
-			
 			session.setAttribute("payInfo", kPayApprovalDto);
-			session.setAttribute("orderInfo", info);
-			session.setAttribute("bookingDto", bookingDto);
+//			session.setAttribute("orderInfo", info);
+//			session.setAttribute("bookingDto", bookingDto);
 
 			return "pay/success.tiles";
 		}
@@ -84,36 +119,9 @@ public class PaymentController {
 		return "pay/fail.tiles";
 	}
 
-	/*
-	 * @PostMapping("/kakaoPay")
-	 * 
-	 * @ResponseBody public String kakaopayReady(@RequestBody OrderInfoDto
-	 * orderInfo, HttpSession session) { session.setAttribute("user_id",
-	 * "asdf1234"); session.setAttribute("orderInfoDto", orderInfo); return
-	 * kakaoPayService.ready(session); }
-	 */
-
 	@PostMapping("/kakaoPay")
 	@ResponseBody
-	public String kakaopayReady(@RequestBody String jsonObj, HttpSession session) {
-
-		System.out.println(jsonObj);
-		ObjectMapper objMapper = new ObjectMapper();
-		objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
-		try {
-			OrderInfoDto orderInfo = objMapper.readValue(jsonObj, OrderInfoDto.class);
-			
-			System.out.println(orderInfo);
-			session.setAttribute("orderInfoDto", orderInfo);
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+	public String kakaopayReady(HttpSession session) {
 		return kakaoPayService.ready(session);
 	}
 }

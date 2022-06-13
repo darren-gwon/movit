@@ -91,7 +91,7 @@ $(function(){
 		console.log(1);
 		$.ajax({
 			type : "get",
-			url : "checkNickName",
+			url : "chkNickname",
 			data : "nickname="+nick,
 			success : function(data) {
 				if(data == 1) {
@@ -201,13 +201,13 @@ function chkSubmit() {
 </head>
 <body>
 	<jsp:include page="mypageHeader.jsp"/>
-	<c:if test="${sessionScope.user_id ==null }">
+	<c:if test="${sessionScope.user_id ==null}">
 		<br><br>
 		<h3>로그인이 필요한 서비스입니다.</h3>
 		<br><br>
 	</c:if>
 	<c:if test="${sessionScope.user_id != null }">
-	<form action="updateMypage" method="post" onsubmit="return chkSubmit()">
+	<form action="update" method="post" onsubmit="return chkSubmit()">
 	<div class="content" id="userinfo">
 		<table class="type09">
 			<thead>
@@ -294,7 +294,7 @@ function chkSubmit() {
 					<th>비밀번호</th>
 					<td>
 						<!-- <div style="background-color:cyan;cursor:pointer;width:110px;" type="button" onclick="location.href='/mypage/pwUpdateView'">비밀번호 변경</div> -->
-						<button type="button" onclick="location.href='/mypage/pwUpdateView'">비밀번호 변경</button>
+						<button type="button" onclick="location.href='/mypage/updatePwd'">비밀번호 변경</button>
 					</td>
 				</tr>
 			</tbody>

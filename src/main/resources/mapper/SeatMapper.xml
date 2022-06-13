@@ -4,7 +4,7 @@
 
 <mapper namespace="com.bitcamp.semiproj.dao.SeatMapper">
     <select id="selectOwnSeat" parameterType="Map" resultType="OwnSeatDto" >
-        SELECT own.*
+        SELECT row_no,column_no, status
 		FROM ownseat AS own
 		JOIN show_schedule AS shw
 		ON shw.schedule_id = own.schedule_id
@@ -21,6 +21,6 @@
     
     <select id="selectSeatPrice" parameterType="Map" resultType="PriceDto">
     	SELECT * FROM price
-    	WHERE class_type=#{class_type} and age_group=#{age_group};
+    	WHERE class_type=#{class_type} and age_type=#{age_type};
     </select>
 </mapper>
