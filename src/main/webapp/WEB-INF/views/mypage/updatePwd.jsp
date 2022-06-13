@@ -59,20 +59,8 @@
 </style>
 <script type="text/javascript">
 $(function(){
-	//비번체크
-	$("#pass2").keyup(function(){
-		$("#pwdmsg").val("");
-		var p1 = $("#pass1").val();
-		var p2 = $(this).val();
-		if(p1 == '' || p2 == ''){
-			$("#pwdmsg").html("변경할 비밀번호를 입력해 주세요.")
-		} else if(p1==p2) {
-			$("#pwdmsg").html("비밀번호가 일치합니다.").css("color","green");
-		} else {
-			$("#pwdmsg").html("비밀번호가 일치하지 않습니다.").css("color","red");
-			
-		}
-	});
+	
+	
 	
 	//현재비밀번호 check
 	$("#pass0").change(function(){
@@ -83,17 +71,17 @@ $(function(){
 		
 		$.ajax({
 			type:"post",
-			url:"pwCheck",
+			url:"chkPwd",
 			dataType:"json",
 			data:data,
 			success:function(data){
 				console.log(data);
 				if(data==1){
-					$("#pwdmsg2").text("OK!");
+					$("#chkCurrentPwd").val("true");
 					
 				}
 				else {
-					$("#pwdmsg2").text("Fail!!");
+					$("#chkCurrentPwd").val("false");
 					
 				}
 				
@@ -102,7 +90,7 @@ $(function(){
 	});
 	
 	//비밀번호 변경
-	$("#pwdbtn").click(function(){
+	/* $("#pwdbtn").click(function(){
 		var data = {
 				"user_id":"${sessionScope.user_id}",
 				"changepwd1":$("#pass1").val()
@@ -110,11 +98,11 @@ $(function(){
 		
 		$.ajax({
 			type:"post",
-			url:"pwUpdate",
+			url:"updatePwd",
 			dataType:"json",
 			data:data
 		});
-	});
+	}); */
 	
 });
 
@@ -129,11 +117,10 @@ function chkPW() {
 
     if (false === reg.test(pw)) {
         $("#pwdmsg").css("color","red");
-        $("#pass1").val("");
-        //$("#pass1").focus();
+        $("#pwdFmt").val("false");
         return false;
     } else {
-    	//$("#pwdmsg").text('비밀번호가 정상입력되었습니다.').css("color","green");
+    	$("#pwdFmt").val("true");
         return true;
     }
 
@@ -141,19 +128,18 @@ function chkPW() {
 
 //onsubmit 버튼이벤트
 function chkSubmit() {
-	if($("#pwdmsg2").text() != "OK!") {
-		alert("현재 비밀번호가 일치하지 않습니다.");
-		$("#pass0").val('');
-		$("#pass0").focus();
-		return false;
-	} else if($("#pwdmsg").html() != "비밀번호가 일치합니다.") {
-		alert("변경 비밀번호가 일치하지 않습니다.")
-		$("#pass1").val('');
-		$("#pass2").val("");
-		$("#pass1").focus();
-		return false;
-	} else {
+	//비번일치여부 체크
+	var p1 = $("#pass1").val();
+	var p2 = $("#pass2").val();
+	if(p1 === p2 && p1 != '') {
+		$("#coincidePwd").val("true");
+	} else {$("#coincidePwd").val("false");}
+	if($("#coincidePwd").val()=="true" && $("#chkCurrentPwd").val()=="true" && $("#pwdFmt").val()=="true") {
+		alert("비밀번호가 성공적으로 변경되었습니다.");
 		return true;
+	} else {
+		alert("입력한 정보가 맞지않습니다.")
+		return false;
 	}
 }
 
@@ -167,7 +153,7 @@ function chkSubmit() {
 		<br><br>
 	</c:if>
 	<div class="content" id="changepwd">
-		<form action="pwUpdate" id="pwUpdate" method="post" onsubmit="return chkSubmit()">
+		<form action="updatePwd" id="pwUpdate" method="post" onsubmit="return chkSubmit()">
 		<table class="type09">
 			<thead>
 				<tr>
@@ -175,26 +161,29 @@ function chkSubmit() {
 					<th></th>
 				</tr>
 			</thead>
-			<tbody> 
+			<tbody>
 				<tr>
 					<th>현재비밀번호</th>
 					<td>
 						<input type="hidden" class="form-control" name="user_id" id="user_id" value="${sessionScope.user_id }"><br>
 						<input type="password" class="form-control" name="currentpwd" id="pass0" value="${dto.password }">
-						<span style="display:none;border:1px solid black;height:25px;" id="pwdmsg2"></span>
+						<input type="text" id="chkCurrentPwd">
 					</td> 
 				</tr>
 				<tr>
 					<th>변경비밀번호</th>
 					<td>
-						<input type="password" class="form-control" name="changepwd1" id="pass1" onblur="chkPW(this.value)"><br>
+						<input type="password" class="form-control" name="changepwd1" id="pass1" onblur="chkPW(this.value)">
+						<input type="text" id="pwdFmt">
 					</td>
 				</tr>
 				<tr>
 					<th>변경비밀번호 확인</th>
 					<td>
-						<input type="password" class="form-control" name="changepwd1" id="pass2" value="">&nbsp;&nbsp;
+						<input type="password" class="form-control" name="changepwd2" id="pass2" value="">&nbsp;&nbsp;
 						<span id="pwdmsg">비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.</span>
+						<input type="text" id="coincidePwd">
+						
 					</td>
 				</tr>
 			</tbody>

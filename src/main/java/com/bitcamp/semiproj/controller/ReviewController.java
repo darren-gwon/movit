@@ -36,7 +36,7 @@ public class ReviewController {
 	@GetMapping("/list")
 	@ResponseBody
 	public Map<String, Object> getReviewList(
-			@RequestParam("movie_id") int movie_id, 
+			@RequestParam("movie_id") int movie_id,
 			@RequestParam("startNum") int startNum
 			) {
 		int perPage = 5;
@@ -67,7 +67,7 @@ public class ReviewController {
 		service.insertReview(dto);
 	}
 	
-	@PostMapping("/checkUser")
+	@PostMapping("/chkUser")
 	@ResponseBody
 	public List<ReviewDto> userReviewCheck(@ModelAttribute ReviewDto dto) {
 		return service.checkUserReview(dto);

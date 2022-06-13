@@ -83,7 +83,7 @@ $(function(){
 				$.each(data.list, function(i, d) {
 					s+="<li class='userReview' data-review_id='"+d.review_id+"'>";
 					s+="<span style='font-weight:bold'>"+d.user_id+"</span>";
-					s+=" ⭐ "+d.rating;
+					s+="⭐ <span id='reviewRating_"+d.review_id+"'>"+d.rating+"</span>";
 					s+="<pre><span id='reviewContent_"+d.review_id+"'>"+d.content+"</span></pre>";
 					s+="<span style='color:#868e96;'>"+d.write_date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
 					s+="<img src='' width='20' data-review_id='"+d.review_id+"' id='updateReview' style='cursor:pointer'>";
@@ -123,7 +123,7 @@ $(function(){
 				$.each(data.list, function(i, d) {
 					s+="<li class='userReview' data-review_id='"+d.review_id+"'>";
 					s+="<span style='font-weight:bold'>"+d.user_id+"</span>";
-					s+=" ⭐ "+d.rating;
+					s+="⭐ <span id='reviewRating_"+d.review_id+"'>"+d.rating+"</span>";
 					s+="<pre><span id='reviewContent_"+d.review_id+"'>"+d.content+"</span></pre>";
 					s+="<span style='color:#868e96;'>"+d.write_date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
 					s+="<img src='' width='20' data-review_id='"+d.review_id+"' id='updateReview' style='cursor:pointer'>";
@@ -149,7 +149,7 @@ $(function(){
 	if(ans) {
 			$.ajax({
 				type:"get",
-				url:"../review/deleteReview",
+				url:"../review/delete",
 				data:"review_id="+data,
 				success:function(){
 					list();
@@ -164,30 +164,33 @@ $(function(){
 	//수정 버튼이벤트
 	$(document).on("click","#updateReview", function(){
 		var data = $(this).attr("data-review_id");
-		console.log(data);
 		var ctext = $("#reviewContent_"+data).text();
+		var rstar = $("#reviewRating_"+data).text(); 
+		var jums = parseInt(rstar);
 		var updateUserId = "${sessionScope.user_id}";
 		var s = "";
-		s += "<form action='updateReview' id=bfrm method='post'>";
+		s += "<form action='update' id=bfrm method='post'>";
 		s += "<input type='hidden' name='review_id' value='"+data+"'>";
 		s += "<input type='hidden' name='movie_id' value='"+${movie_id}+"'>";
 		s += "<input type='hidden' name='user_id' value='"+updateUserId+"'>";
 		s += "<textarea required name='content' id='updateContent' class='form-control' >"+ctext+"</textarea>";
 		s += "<select name='rating'>";
-		s += "<option value=''>평점입력</option>";
-		s += "<option value=1>1점</option>";
-		s += "<option value=2>2점</option>";
-		s += "<option value=3>3점</option>";
-		s += "<option value=4>4점</option>";
-		s += "<option value=5>5점</option>";
-		s += "<option value=6>6점</option>";
-		s += "<option value=7>7점</option>";
-		s += "<option value=8>8점</option>";
-		s += "<option value=9>9점</option>";
-		s += "<option value=10>10점</option>";
+		s += "<option id='op0' value=''>평점입력</option>";
+		s += "<option id='op1' value=1>1점</option>";
+		s += "<option id='op2' value=2>2점</option>";
+		s += "<option id='op3' value=3>3점</option>";
+		s += "<option id='op4' value=4>4점</option>";
+		s += "<option id='op5' value=5>5점</option>";
+		s += "<option id='op6' value=6>6점</option>";
+		s += "<option id='op7' value=7>7점</option>";
+		s += "<option id='op8' value=8>8점</option>";
+		s += "<option id='op9' value=9>9점</option>";
+		s += "<option id='op10' value=10>10점</option>";
 		s += "</select>";
 		s += "<span style='width:40px;height:100px;cursor:pointer;background-color:#febd1a' id='updatebtn'>수정완료</span>";
 		$("#reviewContent_"+data).html(s);
+	$("#op"+jums).attr("selected","selected");
+	
 	});
 	
 	$(document).on("click","#updatebtn", function(){
@@ -205,13 +208,14 @@ $(function(){
 			$.ajax({
 				type:"post",
 				dataType:"text",
-				url:"../review/updateReview",
+				url:"../review/update",
 				data:datas,
 				success:function(){
 					list();
 					checkUser();
 					totalLikes();
 					checkUserReview();
+					totalReviewCnt = 0;
 				}
 			})
 	});
@@ -268,7 +272,7 @@ function checkUser(){
 	$.ajax({
 		type:"post",
 		contentType: "application/json",
-		url:"../review/checkLikes",
+		url:"../review/chkLikes",
 		data:JSON.stringify(data),
 		success:function(result){
 			$(result).each(function(idx, data){
@@ -301,7 +305,7 @@ function checkUserReview(){
 	$.ajax({
 		type:"post",
 		dataType: "json",
-		url:"../review/checkUserReview",
+		url:"../review/chkUser",
 		data:{"movie_id":${movie_id}, "user_id":"${sessionScope.user_id}"},
 		success:function(result){
 			$(result).each(function(idx, data){
