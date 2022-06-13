@@ -29,11 +29,11 @@
 		<div id="mypageFooter">
 			<span id="welcome"><strong style="font-size:1.2em;">"${dto.nickname }"</strong>님 환영합니다.</span><span id="reg_date">&nbsp;&nbsp;가입일 "2020-12-12"</span>
 			<div id="cardBox">	
-				<div class="card" id="card1"><a href="myMovieList">
+				<div class="card" id="card1"><a href="/mypage/myWatchList">
 					<img src="/resources/mypage_img/mypagefilm.png" style="width:100px;"><br><br>
 					<span>내가 본 영화</span></a>
 				</div>
-				<div class="card" id="card2"><a href="userReviewList">
+				<div class="card" id="card2"><a href="/mypage/myReview">
 				<img src="/resources/mypage_img/mypagestar.png" style="width:100px;"><br><br>
 					<span>내가 쓴 리뷰</span></a>
 				</div>

@@ -33,7 +33,7 @@ public class LikesController {
 		return result;
 	}
 	
-	@PostMapping("/checkLikes")
+	@PostMapping("/chkLikes")
 	@ResponseBody
 	public List<LikesDto> checkLikes(@RequestBody Map<String, String> map) {
 		return service.checkLikes(map.get("user_id"), map.get("movie_id"));

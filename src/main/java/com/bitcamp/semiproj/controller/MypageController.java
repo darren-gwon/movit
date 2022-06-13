@@ -43,7 +43,7 @@ public class MypageController {
 //		return "/mypage/mypageUserInfo";
 //	}
 	
-	@GetMapping("/UserInfo")
+	@GetMapping("/userInfo")
 	public String updateForm(
 			Model model, 
 			HttpSession session) {
@@ -76,7 +76,7 @@ public class MypageController {
 		model.addAttribute("email1", email1);
 		model.addAttribute("email2", email2);
 		
-		return "/mypage/updateUserInfo.tiles";
+		return "/mypage/userInfo.tiles";
 	}
 	
 	@PostMapping("/update")
@@ -98,12 +98,12 @@ public class MypageController {
 		return "redirect:/mypage/";
 	}
 	
-	@GetMapping("/pwUpdateView")
+	@GetMapping("/updatePwd")
 	public String pwUpdateView() throws Exception{
-		return "/mypage/changepassword.tiles";
+		return "/mypage/updatePwd.tiles";
 	}
 	
-	@PostMapping("/pwCheck")
+	@PostMapping("/chkPwd")
 	@ResponseBody
 	public int pwCheck(
 			@ModelAttribute MypageDto dto,
@@ -121,7 +121,7 @@ public class MypageController {
 		return result;
 	}
 	
-	@PostMapping("/pwUpdate")
+	@PostMapping("/updatePwd")
 	public String pwUpdate(
 			@RequestParam String user_id,
 			@RequestParam String changepwd1,
@@ -137,19 +137,19 @@ public class MypageController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/deleteAccountView")
+	@GetMapping("/delAccount")
 	public String deleteAccountView() {
-		return "/mypage/deleteAccount.tiles";
+		return "/mypage/delAccount.tiles";
 	}
 	
-	@GetMapping("/deleteAccount")
+	@PostMapping("/delAccount")
 	public String deleteAccount(String user_id, HttpSession session) {
 		service.deleteAccount(user_id);
 		session.invalidate();
 		return "redirect:/";
 	}
 	
-	@GetMapping("/checkNickName")
+	@GetMapping("/chkNickname")
 	@ResponseBody
 	public int checkNickName(String nickname) {
 		int result = service.checkNickName(nickname);
@@ -158,7 +158,7 @@ public class MypageController {
 		return result;
 	}
 	
-	@GetMapping("/userReviewList")
+	@GetMapping("/myReview")
 	public String userReviewList(HttpSession session, Model model) {
 		String user_id = (String)session.getAttribute("user_id");
 		MypageDto dto = service.getUserData(user_id);
@@ -166,10 +166,10 @@ public class MypageController {
 		List<ReviewDto> list = service.getUserReviewList(user_id);
 		model.addAttribute("list", list);
 		model.addAttribute("count", list.size());
-		return "/mypage/userReviewList.tiles";
+		return "/mypage/myReview.tiles";
 	}
 	
-	@GetMapping("/userInquiryList")
+	@GetMapping("/myInquiry")
 	public String userInquiryList(HttpSession session, Model model) {
 		String user_id = (String)session.getAttribute("user_id");
 		MypageDto dto = service.getUserData(user_id);
@@ -177,10 +177,10 @@ public class MypageController {
 		List<InquiryDto> list = service.getUserInquiry(user_id);
 		model.addAttribute("list", list);
 		model.addAttribute("count", list.size());
-		return "/mypage/userInquiryList.tiles";
+		return "/mypage/myInquiry.tiles";
 	}
 	
-	@GetMapping("/userLostInquiryList")
+	@GetMapping("/myLostInquiry")
 	public String userLostInquiryList(HttpSession session, Model model) {
 		String user_id = (String)session.getAttribute("user_id");
 		MypageDto dto = service.getUserData(user_id);
@@ -188,10 +188,10 @@ public class MypageController {
 		List<InquiryLostDto> list = service.getUserLost(user_id);
 		model.addAttribute("list", list);
 		model.addAttribute("count", list.size());
-		return "/mypage/userLostInquiryList.tiles";
+		return "/mypage/myLostInquiry.tiles";
 	}
 	
-	@GetMapping("/myMovieList")
+	@GetMapping("/myWatchList")
 	public String myMovieList(HttpSession session, Model model) {
 		String user_id = (String)session.getAttribute("user_id");
 		MypageDto dto = service.getUserData(user_id);
@@ -199,6 +199,6 @@ public class MypageController {
 		List<BookingDto> list = service.myMovieList(user_id);
 		model.addAttribute("list", list);
 		model.addAttribute("count", list.size());
-		return "/mypage/myMovieList.tiles";
+		return "/mypage/myWatchList.tiles";
 	}
 }
