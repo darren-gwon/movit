@@ -22,7 +22,6 @@ public class HomeController {
 	public String home(Model model,HttpSession session)throws Exception {
 		List<NoticeDto> list= noticeService.list();
 		model.addAttribute("list", list);
-		
 		return "main/main.tiles";	
 	}
 
