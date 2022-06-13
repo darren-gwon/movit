@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bitcamp.semiproj.domain.BookingDto;
+import com.bitcamp.semiproj.domain.OrderInfoDto;
 
 @Repository
 public class BookingDaoImpl implements BookingDao {
@@ -14,8 +15,8 @@ public class BookingDaoImpl implements BookingDao {
 	private final String namespace="com.bitcamp.semiproj.dao.BookingMapper.";
 	
 	@Override
-	public int insertBooking(BookingDto bookingDto) {
-		return session.insert(namespace+"insertBooking", bookingDto);
+	public int insertBooking(OrderInfoDto orderInfoDto) {
+		return session.insert(namespace+"insertBooking", orderInfoDto);
 	}
 	
 	@Override

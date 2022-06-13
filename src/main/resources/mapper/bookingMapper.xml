@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
 <mapper namespace="com.bitcamp.semiproj.dao.BookingMapper">
-    <insert id="insertBooking" parameterType="BookingDto">
+    <insert id="insertBooking" parameterType="OrderInfoDto">
     	INSERT INTO booking (booking_id, schedule_id, pay_tid, user_id, quantity, booking_time)
 		VALUES("${booking_id}", "${schedule_id}", "${pay_tid}", "${user_id}","${quantity}", now());
 		

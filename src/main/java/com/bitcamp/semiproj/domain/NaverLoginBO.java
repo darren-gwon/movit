@@ -27,7 +27,7 @@ public class NaverLoginBO {
 
 	private final static String CLIENT_ID = "wmxTFuijyRLQbSXlc64_";
 	private final static String CLIENT_SECRET = "Xp2SjtKPMR";
-    private final static String REDIRECT_URI = "http://52.78.89.161:8080/naverlogin";
+    private final static String REDIRECT_URI = "http://15.164.162.4:8080/naverlogin";
     private final static String SESSION_STATE = "oauth_state";
     /* 프로필 조회 API URL */
     private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";

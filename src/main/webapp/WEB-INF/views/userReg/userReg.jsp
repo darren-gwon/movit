@@ -24,12 +24,11 @@
 				<h1 id="title">회원가입</h1>
 				<form id=frm style="width: 80%;" class="form-inlie">
 					<div>
-						<center>
-							<div>
-								<p style="font-size: 25px;">
-									;Movit 회원가입에 <br>오신걸환영합니다.
-								</p>
-							</div>
+						<div>
+							<p style="font-size: 25px;">
+								;Movit 회원가입에 <br>오신걸환영합니다.
+							</p>
+						</div>
 							<div>
 								<br>
 								<h4>아이디</h4>
@@ -158,7 +157,7 @@
 					<div>
 						<button type="button" class="btn btn-primary btn-block reg" style="background: #5673bd; border-radius: 25px; font-size: 18px; font-weight: bold;width: 100%; height: 55px;" id="RegSuccess">가입하기</button>
 						<br><br>
-						<a href="/user/agree" class="text-center">이미 회원이십니까?</a>
+						<a href="/" class="text-center">이미 회원이십니까?</a>
 						<br> <br>
 					</div>
 			
@@ -168,7 +167,6 @@
 	</div>
 
 	<script>
-	
 	
 		function showMsg(message) {
 			const msg = document.getElementById("msg");
@@ -187,8 +185,7 @@
 
 		}
 		function showMsgpasswordcheck(message) {
-			const msgpasswordcheck = document
-					.getElementById("msgpasswordcheck");
+			const msgpasswordcheck = document.getElementById("msgpasswordcheck");
 			msgpasswordcheck.innerHTML = message;
 
 		}
@@ -236,7 +233,7 @@
 			var user_id = $('#user_id').val();
 			var regExp = /^[a-z]+[a-z0-9_]{5,20}$/g;
 			$.ajax({
-						url : '${pageContext.request.contextPath}/user/idCheck?userId='
+						url : '${pageContext.request.contextPath}/reg/chkId?userId='
 								+ user_id,
 						type : 'post',
 						success : function(data) {
@@ -316,7 +313,7 @@
 		}
 
 		function isName(asValue) {
-			var regExp = /^[가-힣a-zA-Z]/g;
+			var regExp = /^[가-힣a-zA-Z]+$/g;
 			if (!regExp.test(asValue)) {
 				$('#hiddenname').attr('style', 'margin-bottom:30px;');
 				$('#namecheck').attr('value', 'false');
@@ -332,19 +329,33 @@
 
 		function isNickname(asValue) {
 			var regExp = /^[가-힣a-zA-Z0-9$`~!@$!%*#^?&\\(\\)\-_=+]/g;
-			if (!regExp.test(asValue)) {
-				$('#hiddennickname').attr('style', 'margin-bottom:30px;');
-				$('#nicknamecheck').attr('value', 'false');
-				showMsgnickname("별명을 한글과 영문 대 소문자 영어 숫자만 사용하세요.<br>(특수기호, 공백 사용 불가)");
-				return false;
-			} else {
-				$('#hiddennickname').attr('style', 'margin-bottom:0px;');
-				$('#nicknamecheck').attr('value', 'true');
-				showMsgnickname("");
-				return true;
-			}
+			var nick = $("#nickname").val();
+			$.ajax({
+				type : "get",
+				url : "mypage/checkNickName",
+				data : "nickname="+nick,
+				success : function(data) {
+					if(data == 1) {
+						$('#hiddennickname').attr('style', 'margin-bottom:30px;');
+						$('#nicknamecheck').attr('value', 'false');
+						showMsgnickname("중복되는 닉네임입니다.");
+					}else{
+						if (!regExp.test(asValue)) {
+							$('#hiddennickname').attr('style', 'margin-bottom:30px;');
+							$('#nicknamecheck').attr('value', 'false');
+							showMsgnickname("별명을 한글과 영문 대 소문자 영어 숫자만 사용하세요.<br>(특수기호, 공백 사용 불가)");
+							return false;
+						} else {
+							$('#hiddennickname').attr('style', 'margin-bottom:0px;');
+							$('#nicknamecheck').attr('value', 'true');
+							showMsgnickname("");
+							return true;
+						}						
+					}
+				}
+			});
 		}
-
+		
 		function isGender(asValue) {
 			var gender = document.getElementById("genderselect").value;
 			if (gender == "미정" || gender == null) {
@@ -433,7 +444,7 @@
 							$
 									.ajax({
 										type : "GET",
-										url : "mailCheck?email=" + email,
+										url : "/mail/send?email=" + email,
 										success : function(data) {
 											let checkEmail = "${checkEmail}";
 											
@@ -471,7 +482,7 @@
 										}
 									});
 						});
-
+		//이메일 인증번호 확인
 		$("#emailChk2").click(function() {
 			if ($("#certi").val() == code) {
 				$(".successEmailChk").text("인증번호가 일치합니다.");
@@ -486,7 +497,7 @@
 				$("#certi").attr("autofocus", true);
 			}
 		});
-
+		//회원가입 유효성 확인후 회원가입완료 
 		$("#RegSuccess")
 				.click(
 						function() {

@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +41,10 @@ public class BookingController {
 	MovieService movieService;
 	@Autowired
 	SeatService seatService;
-
+	@Autowired
+	@Qualifier("jacksonObjectMapper")
+	ObjectMapper objMapper;
+	
 	@GetMapping("")
 	public String booking(Model m) {
 		List<TheaterDto> region = theaterService.getAllRegions();
@@ -70,24 +74,16 @@ public class BookingController {
 	@ResponseBody
 	public void myOrderInfo(@RequestBody String jsonObj, HttpSession session) {
 
-		ObjectMapper objMapper = new ObjectMapper();
-		objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		OrderInfoDto orderInfoDto;
 			try {
 				orderInfoDto = objMapper.readValue(jsonObj, OrderInfoDto.class);
 				System.out.println(orderInfoDto);
-				session.setAttribute("orderInfo", orderInfoDto);
+				session.setAttribute("orderInfoDto", orderInfoDto);
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}
-	/*
-	 * ObjectMapper objMapper = new ObjectMapper();
-	 * objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
-	 * false); OrderInfoDto orderInfoDto; try { orderInfoDto =
-	 * objMapper.readValue(orderInfo, OrderInfoDto.class);
-	 */
 
 	@PostMapping("/getOwnSeat")
 	@ResponseBody
@@ -99,23 +95,15 @@ public class BookingController {
 	public String bookinginfo(HttpSession session, Model m) {
 
 		KakaoPayApprovalDto payInfo = (KakaoPayApprovalDto) session.getAttribute("payInfo");
-		OrderInfoDto orderInfo = (OrderInfoDto) session.getAttribute("orderInfo");
-		BookingDto bookingDto = (BookingDto) session.getAttribute("bookingDto");
-		MovieDto movieDto = null;// movieService.selectMovieByMovie_id(orderInfo.getMovie_id());
+		OrderInfoDto orderInfoDto = (OrderInfoDto) session.getAttribute("orderInfoDto");
 		System.out.println(payInfo);
-		System.out.println(orderInfo);
-		System.out.println(bookingDto);
+		System.out.println(orderInfoDto);
 
 		m.addAttribute("payInfo", payInfo);
-		m.addAttribute("orderInfo", orderInfo);
-		m.addAttribute("bookingDto", bookingDto);
-		m.addAttribute("movieDto", movieDto);
+		m.addAttribute("orderInfoDto", orderInfoDto);
 
 		session.removeAttribute("payInfo");
-		session.removeAttribute("payInfo");
-
-		session.removeAttribute("orderInfo");
-		session.removeAttribute("bookingDto");
+		session.removeAttribute("orderInfoDto");
 
 		return "booking/info.tiles";
 	}
@@ -123,6 +111,6 @@ public class BookingController {
 	@GetMapping("/getOrderInfo")
 	@ResponseBody
 	public OrderInfoDto summerizedMovieInfo(HttpSession session) {
-		return (OrderInfoDto)session.getAttribute("orderInfo");
+		return (OrderInfoDto)session.getAttribute("orderInfoDto");
 	}
 }

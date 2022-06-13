@@ -189,7 +189,7 @@ img.movieChk {
 	display: block;
 }
 
-.ticket_qty {
+.ticket_selection {
 	display: inline-block;
 }
 
@@ -243,8 +243,10 @@ img.movieChk {
 */
 
 .summerized_movie_info {
-	width: 300px;
-	margin-left: 20px;
+    display: inline-block;
+    width: 300px;
+    margin-left: 20px;
+    float: left;
 }
 
 .s_poster_img {
@@ -271,7 +273,11 @@ img.movieChk {
     height:inherit;
 }
 
-.ticket_qty {
+.p_poster {
+	width:200px;
+}
+
+.ticket_selection {
 	display: inline-block;
 }
 
