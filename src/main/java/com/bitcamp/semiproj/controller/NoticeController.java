@@ -13,14 +13,14 @@ import com.bitcamp.semiproj.domain.NoticeDto;
 import com.bitcamp.semiproj.service.NoticeService;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/notice")
 public class NoticeController {
 
 	@Autowired
 	private NoticeService service;
 	
 	//게시물 목록
-	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String list(Model model, @RequestParam(defaultValue = "1")Integer num,
 			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
 			) throws Exception{
@@ -67,19 +67,16 @@ public class NoticeController {
 			return "board/list.tiles";
 	}
 	
-
-
-	
 		//게시물 작성 폼 이동
-		@RequestMapping(value = "/writeform", method = RequestMethod.GET)
+		@RequestMapping(value = "/write", method = RequestMethod.GET)
 		public String write() throws Exception {
 				return "board/writeform.tiles";
 		}
 		// 게시물 작성 POST
-		@RequestMapping(value="/create", method=RequestMethod.POST)
+		@RequestMapping(value="/write", method=RequestMethod.POST)
 		public String postcreate(NoticeDto dto) throws Exception{
 			service.create(dto);
-			return "redirect:notice";
+			return "redirect:/notice";
 		}
 		//게시물 상세페이지 이동
 		@RequestMapping(value="/detail", method=RequestMethod.GET)
@@ -90,7 +87,7 @@ public class NoticeController {
 			return "board/detail.tiles";
 		}
 		//게시물 수정
-		@RequestMapping(value="/updateform",method=RequestMethod.GET)
+		@RequestMapping(value="/edit",method=RequestMethod.GET)
 			public String getupdate(Model model, int num) throws Exception{
 			NoticeDto dto=service.detail(num);
 			model.addAttribute("dto",dto);
@@ -98,18 +95,18 @@ public class NoticeController {
 			return "board/updateform.tiles";
 		}
 		//게시물 수정 post
-		@RequestMapping(value="/updateform",method=RequestMethod.POST)
+		@RequestMapping(value="/edit",method=RequestMethod.POST)
 			public String postupdate(NoticeDto dto) throws Exception {
 			//System.out.println(dto);
 			service.updateform(dto);
-				return "redirect:notice";
+				return "redirect:/notice";
 		}
 		//게시물 삭제
-		@RequestMapping(value="/delete",method=RequestMethod.GET)
+		@RequestMapping(value="/del",method=RequestMethod.GET)
 			public String getdelete(int num) throws Exception {
 			//System.out.println(num);
 			service.delete(num);
-				return "redirect:notice";
+				return "redirect:/notice";
 		}
 
 

@@ -76,7 +76,8 @@ a.btn-list{
     font-size: 14px;
     color: #ffffff !important;
     background-color: #414141;
-    text-aling:center;
+    text-align:center;
     line-height: 48px;
     border-radius: 5px;
+    margin-left:20px;
 }

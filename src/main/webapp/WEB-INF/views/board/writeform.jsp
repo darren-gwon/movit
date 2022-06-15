@@ -14,7 +14,7 @@
    crossorigin="anonymous">
 </head>
 <body>
-<form name="form" method="post" action="create"> 
+<form name="form" method="post" action="write"> 
 <div class="content">
    <div class="container">
 <table class="table table-bordered boardform" style="width:500px;">
@@ -50,7 +50,7 @@
 	<tr>
 	<td colspan="4">
 	<button type="button" class="btn btn-default" style="width:100px;"
-	onclick="location.href='notice'">돌아가기</button>
+	onclick="location.href='/notice'">돌아가기</button>
 	</td>
 	</tr>
 

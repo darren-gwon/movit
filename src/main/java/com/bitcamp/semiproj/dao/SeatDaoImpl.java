@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bitcamp.semiproj.domain.OwnSeatDto;
 import com.bitcamp.semiproj.domain.PriceDto;
+import com.bitcamp.semiproj.domain.ScheduleDto;
 
 @Repository
 public class SeatDaoImpl implements SeatDao {
@@ -26,4 +27,5 @@ public class SeatDaoImpl implements SeatDao {
 	public PriceDto selectSeatPrice(Map<String, String> map){
 		return session.selectOne(namespace+"selectSeatPrice", map);
 	}
+
 }

@@ -44,8 +44,8 @@
 			<div class="movie_poster first">
 				<a href="../movie/detail?movie_id=20212855"><img
 					src="https://img.megabox.co.kr/SharedImg/2022/05/04/4OFqLBLmda67a6BPXjaXCVM5wun7FAtb_420.jpg"
-					class="poster_img"></a> <span class="movie_title">12닥터
-					스트레인지: 대혼돈의 멀티버스</span>
+					class="poster_img"></a> <span class="movie_title">닥터
+				스트레인지: 대혼돈의 멀티버스</span>
 			</div>
 			<div class="movie_poster">
 				<a href="../movie/detail?movie_id=20204548"><img
@@ -62,7 +62,7 @@
 				<a href="../movie/detail?movie_id=20223278"><img
 					src="https://img.megabox.co.kr/SharedImg/2022/02/17/djm7aYuL9bQGZRsxyUH75wATz9ub9ouk_420.jpg"
 					class="poster_img"></a> <span class="movie_title">극장판 주술회전
-					0</span>
+					</span>
 			</div>
 		</div>
 	</div>
@@ -159,16 +159,12 @@
 					<th class="date"></th>
 				</tr>
 				-->
-
-
 								<c:forEach items="${list}" var="list" varStatus="i<4">
 									<tr>
 										<td class="titles"><a style="text-decoration: none; color: black;"  href="../board/detail?num=${list.seq}">${list.title}</></td>
 										<td class="dates">${list.write_date}</td>
 									</tr>
 								</c:forEach>
-
-
 							</table>
 						</div>
 						<div class="sns">

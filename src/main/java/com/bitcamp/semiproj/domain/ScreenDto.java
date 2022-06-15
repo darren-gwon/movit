@@ -7,6 +7,7 @@ public class ScreenDto {
 	private String class_type;
 	private Integer seat_rows;
 	private Integer seat_columns;
+	private Integer taken_seats;
 	private Integer total_seats;
 
 	public Integer getTotal_seats() {
@@ -57,6 +58,12 @@ public class ScreenDto {
 		return "ScreenDto [screen_id=" + screen_id + ", theater_name=" + theater_name + ", screen_name=" + screen_name
 				+ ", class_type=" + class_type + ", seat_rows=" + seat_rows + ", seat_columns=" + seat_columns
 				+ ", total_seats=" + total_seats + "]";
+	}
+	public Integer getTaken_seats() {
+		return taken_seats;
+	}
+	public void setTaken_seats(Integer taken_seats) {
+		this.taken_seats = taken_seats;
 	}
 
 	

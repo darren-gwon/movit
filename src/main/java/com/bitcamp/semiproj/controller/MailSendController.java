@@ -1,11 +1,9 @@
 package com.bitcamp.semiproj.controller;
 
-import javax.mail.internet.MimeMessage;
 
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,14 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitcamp.semiproj.dao.UserDao;
-import com.bitcamp.semiproj.domain.MypageDto;
 import com.bitcamp.semiproj.service.MailSendService;
 import com.bitcamp.semiproj.service.UserService;
 @Controller
 public class MailSendController {
 	
-	@Autowired
-	private JavaMailSender mailSender;
+
 	@Autowired
 	MailSendService mailService;
 	@Autowired
@@ -30,7 +26,7 @@ public class MailSendController {
 	private UserService userService;
 	
 		
-	@RequestMapping(value = "user/mailCheck", method = RequestMethod.GET) 
+	@RequestMapping(value = "/mail/send", method = RequestMethod.GET) 
 	@ResponseBody 
 	public String mailCheck(@RequestParam("email") String email, RedirectAttributes rattr) throws Exception{ 
 		int n= userService.userEmailCheck(email);

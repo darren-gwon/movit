@@ -65,7 +65,7 @@
 	<tr>
 	<td colspan="5">
 	<button type="button" class="btn btn-default" style="width:100px;"
-	onclick="location.href='eventlist'">돌아가기</button>
+	onclick="location.href='/event'">돌아가기</button>
 	</td>
 	</tr>
 	

@@ -33,7 +33,7 @@ function chkSubmit() {
 		<br><br>
 	</c:if>
 	<c:if test="${sessionScope.user_id != null }">
-	<form action="deleteAccount" id="frm" method="get" onsubmit="return chkSubmit()">
+	<form action="delAccount" id="frm" method="post" onsubmit="return chkSubmit()">
 	<input type="hidden" name="user_id" value="${sessionScope.user_id }">
 		<div class="content">
 			<br><br>

@@ -2,14 +2,7 @@ package com.bitcamp.semiproj.dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpSession;
-
-import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.bitcamp.semiproj.domain.KakaoDto;
 import com.bitcamp.semiproj.domain.NaverDto;
 import com.bitcamp.semiproj.domain.UserDto;

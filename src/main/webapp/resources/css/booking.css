@@ -6,6 +6,7 @@
 
 /* DivTable.com */
 .booking_table {
+	position: relative;
 	display: table;
 	width: 1300px;
 	height: 450px;
@@ -74,6 +75,19 @@
 	clear: both;
 }
 
+.backwardBtn{
+	position: absolute;
+    width: 69px;
+    height: 59px;
+    background-color: #FF243E;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    line-height: 59px;
+    color: white;
+    font-size: 15px;
+    cursor:pointer
+}
 .theater_cell .region {
 	display: block;
 	width: 50%;
@@ -189,7 +203,7 @@ img.movieChk {
 	display: block;
 }
 
-.ticket_qty {
+.ticket_selection {
 	display: inline-block;
 }
 
@@ -243,8 +257,10 @@ img.movieChk {
 */
 
 .summerized_movie_info {
-	width: 300px;
-	margin-left: 20px;
+    display: inline-block;
+    width: 300px;
+    margin-left: 20px;
+    float: left;
 }
 
 .s_poster_img {
@@ -271,7 +287,11 @@ img.movieChk {
     height:inherit;
 }
 
-.ticket_qty {
+.p_poster {
+	width:200px;
+}
+
+.ticket_selection {
 	display: inline-block;
 }
 
@@ -327,6 +347,7 @@ div.seat.empty {
 	margin-bottom: 10px;
 	font-size: 7px;
 	color: black;
+	cursor: pointer;
 }
 
 div.seat.taken {
