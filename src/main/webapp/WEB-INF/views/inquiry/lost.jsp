@@ -6,32 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://kit.fontawesome.com/5d8badcf1a.js"
-	crossorigin="anonymous"></script>
 
-
-
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		var chkObj = document.getElementsByName("RowCheck");
@@ -52,7 +32,7 @@
 		});
 	});
 	function deleteValue() {
-
+		var url = "/lost/del";
 		var valueArr = new Array();
 		var list = $("input[name='RowCheck']");
 		for (var i = 0; i < list.length; i++) {
@@ -66,7 +46,7 @@
 			var chk = confirm("정말 삭제하시겠습니까?");
 			if (chk) {
 				$.ajax({
-					url : "lost/delete", // 전송 URL
+					url : url, // 전송 URL
 					type : 'POST', //POST 방식
 					traditional : true,
 					data : {
@@ -76,7 +56,7 @@
 					success : function(jdata) {
 						if (jdata = 1) {
 							alert("삭제 성공");
-							location.replace("lost") //lost로 맵핑 페이지 새로고침
+							location.replace("/lost?num=1"); //lost로 맵핑 페이지 새로고침
 						} else {
 							alert("삭제 실패");
 						}
@@ -90,11 +70,9 @@
 		keyword = document.getElementById("keyword").value;
 
 		console.log(keyword)
-		location.href = "../inquiry/lost?num&keyword=" + keyword;
+		location.href = "/lost?num&keyword=" + keyword;
 	};
 </script>
-
-
 
 </head>
 <style type="text/css">
@@ -144,7 +122,7 @@ table.table-hover td {
 				<div class="row" style="font-size: 15px;">
 					<div class="col-5"></div>
 					<div class="col-6" style="text-align: right;">
-						<input type="search" class="form-control" placeholder="키워드 입력"
+						<input type="search" class="form-control" placeholder="찾으실 글 제목을 입력해주세요"
 							id="keyword" aria-label="Search" style="text-align: center;">
 					</div>
 
@@ -177,21 +155,22 @@ table.table-hover td {
 									<th>등록일</th>
 								</tr>
 							</thead>
-
 							<tbody>
 
 								<c:forEach items="${list}" var="lost" varStatus="i">
+								
 									<tr>
 										<c:if test="${sessionScope.user_id == 'admin' }">
 											<td><input name="RowCheck" type="checkbox"
 												value="${lost.seq}" /></td>
 										</c:if>
 										<td><c:out value="${displaypost+i.count}" /></td>
+										
 										<td>${lost.theater_id}&nbsp;</td>
-
 										<td style="width: 900px;"><a
 											href="lost/detail?seq=${lost.seq}">${lost.title}&nbsp;</a></td>
-										<td>${inquiry.user_id}</td>
+										
+										<td>${lost.user_id}</td>
 										<c:set var="accept" value="${lost.status}"></c:set>
 
 										<td><c:if test="${accept=='1'}">미답변&nbsp;</c:if> <c:if
@@ -208,67 +187,57 @@ table.table-hover td {
 					</div>
 				</div>
 			</div>
-
 			<br>
-
-
 				<div class="col">
 					<c:if test="${prev}">
 
 						<a class="btn btn-outline-dark"
-							href="/inquiry/lost?num=${startpagenum - 1}">〈</a>
+							href="/lost?num=${startpagenum - 1}">〈</a>
 
 					</c:if>
 					<c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
 						<span> <c:if test="${num!=select}">
-								<a class="btn btn-outline-dark" href="/inquiry/lost?num=${num}">${num}</a>
+								<a class="btn btn-outline-dark" href="/lost?num=${num}">${num}</a>
 							</c:if>
 						</span>
 						<span> <c:if test="${num==select}">
 								<b><a class="btn btn-outline-dark"
-									href="/inquiry/lost?num=${num}">${num}</a></b>
+									href="/lost?num=${num}">${num}</a></b>
 							</c:if>
 						</span>
 					</c:forEach>
 					<c:if test="${next}">
 						<a class="btn btn-outline-dark"
-							href="/inquiry/lost?num=${endpagenum + 1}">〉</a>
+							href="/lost?num=${endpagenum + 1}">〉</a>
 					</c:if>
 				</div>
 
 			<div class="container">
 				<div class="row">
 					<div class="col-10" style="text-align: left;">
-						<a href="<c:url value='/inquiry/home'/>" role="button"
+						<a href="<c:url value='/support'/>" role="button"
 							class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 					</div>
 
 					
 					
-					<div class="col">
+					<div class="col-1">
 						<c:if test="${sessionScope.user_id == 'admin'}">
 
 							<input type="button" class="btn btn-outline-danger"
 								style="width: 100px;" value="선택삭제" onclick="deleteValue();">
 						</c:if>
 					</div>
-					<div class="col" style="text-align: right;">
-						<a href="<c:url value='/inquiry/lost/insert'/>" role="button"
+					<div class="col-1" style="text-align: right;">
+						<a href="<c:url value='/lost/write'/>" role="button"
 							class="btn btn-outline-dark" style="width: 100px;">글쓰기</a>
 					</div>
-
 				</div>
 
 				<br> <br> <br> <br> <br> <br>
 			</div>
-
-
 		</form>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
 
 </body>
 </html>

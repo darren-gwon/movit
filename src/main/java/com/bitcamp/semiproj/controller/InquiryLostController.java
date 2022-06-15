@@ -17,7 +17,6 @@ import com.bitcamp.semiproj.domain.InquiryLostDto;
 import com.bitcamp.semiproj.service.InquiryLostService;
 
 @Controller
-@RequestMapping("/inquiry") 
 public class InquiryLostController {
 
 	@Autowired
@@ -64,16 +63,16 @@ public class InquiryLostController {
 	}
 	
 	//게시물 작성 페이지로 이동
-	@GetMapping("/lost/insert")
+	@GetMapping("/lost/write")
 	public String create() throws Exception {
 		return "inquiry/lostCreate.tiles";
 	}
 	
 	//게시물 작성 Lost Post
-	@PostMapping("/lost/insert")
+	@PostMapping("/lost/write")
 	public String postcreate(InquiryLostDto dto) throws Exception {
 		lostService.lostcreate(dto);
-		return "redirect:/inquiry/lost";
+		return "redirect:/lost?num=1";
 	}
 	
 	//게시물 detail 페이지로 이동
@@ -85,7 +84,7 @@ public class InquiryLostController {
 	}
 	
 	//게시물 detail update 페이지로 이동
-	@GetMapping("/lost/update")
+	@GetMapping("/lost/edit")
 	public String lostupdate(int seq, Model model) throws Exception {
 		InquiryLostDto data = lostService.lostdetail(seq);
 		model.addAttribute("data",data);
@@ -93,22 +92,22 @@ public class InquiryLostController {
 	}
 	
 	//게시물 업데이트(lost 수정)
-	@PostMapping("/lost/update")
-	public String postupdate(InquiryLostDto dto) throws Exception {
+	@PostMapping("/lost/edit")
+	public String postupdate(InquiryLostDto dto, @RequestParam("seq") int seq) throws Exception{
 		lostService.lostupdate(dto);
 		
-		return "redirect:/inquiry/lost";
+		return "redirect:/lost/detail?seq=" + seq;
 	}
 	//게시물 삭제	
-	@GetMapping("/lost/delete")
+	@GetMapping("/lost/del")
 	public String lostdelete(@RequestParam String seq) throws Exception	{
 		lostService.lostdelete(seq);
 		
-		return "redirect:/inquiry/lost";
+		return "redirect:/lost?num=1";
 	}
 	
 	//게시글 선택삭제
-		@PostMapping("/lost/delete") 
+		@PostMapping("/lost/del")
 		public String ajaxTest(HttpServletRequest request) {
 			
 			String[] ajaxMsg = request.getParameterValues("valueArr");
@@ -117,16 +116,7 @@ public class InquiryLostController {
 				lostService.lostdelete(ajaxMsg[i]);
 			}
 			
-			return "redirect:/inquiry/lost";
+			return "redirect:/lost?num=1";
 		}
 		
 }
-
-
-
-
-
-
-
-
-

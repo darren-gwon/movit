@@ -83,13 +83,13 @@
 		<div class="row">
 			<div class="col" style="text-align: left;">
 
-				<a href="<c:url value="/inquiry/lost"/>" role="button"
+				<a href="<c:url value="/lost"/>" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 			</div>
 			<div class="col" style="text-align: right;">
-				<a href="/inquiry/lost/update?seq=${data.seq}" role="button"
+				<a href="/lost/edit?seq=${data.seq}" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">수정</a> <a
-					href="/inquiry/lost/delete?seq=${data.seq}" role="button"
+					href="/lost/del?seq=${data.seq}" role="button"
 					class="btn btn-outline-danger" style="width: 100px;">삭제</a>
 			</div>
 		</div>

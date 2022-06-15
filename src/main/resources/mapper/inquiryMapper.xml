@@ -5,157 +5,181 @@
 <mapper namespace="com.bitcamp.semiproj.dao.InquiryMapper">
 	<!-- FAQ 게시물 목록 -->
 	<select id="selectAll" resultType="InquiryFaqDto">
-		select seq, inquiry_type, title, content, write_date
+		select seq, inquiry_type,
+		title, content, write_date
 		from inquiry_faq
 	</select>
-	
+
 	<!-- FAQ 게시물 등록 -->
 	<insert id="create" parameterType="InquiryFaqDto">
-		insert into inquiry_faq (inquiry_type, title, content, write_date)
-		values (#{inquiry_type}, #{title}, #{content}, NOW())
+		insert into inquiry_faq
+		(inquiry_type, title, content, write_date)
+		values (#{inquiry_type},
+		#{title}, #{content}, NOW())
 	</insert>
-	
+
 	<!-- FAQ 게시글 상세정보 -->
 	<select id="faqdetail" resultType="InquiryFaqDto">
-		select seq, inquiry_type, title, content, write_date
+		select seq, inquiry_type,
+		title, content, write_date
 		from inquiry_faq where seq = #{seq}
 	</select>
-	
+
 	<update id="faqupdate" parameterType="InquiryFaqDto">
 		update inquiry_faq
-		set inquiry_type = #{inquiry_type}, title = #{title}, content = #{content}, write_date = NOW()
+		set
+		inquiry_type = #{inquiry_type}, title = #{title}, content =
+		#{content}, write_date = NOW()
 		where seq = #{seq}
 	</update>
-	
+
 	<!-- FAQ 게시글 삭제 -->
 	<delete id="faqdelete">
 		delete from inquiry_faq
 		where seq = #{seq}
 	</delete>
-	
-		<!-- faq 게시물 총 개수 -->
+
+	<!-- FAQ 게시물 총 개수 -->
 	<select id="faqcount" resultType="int">
-		select count(seq) from inquiry_faq
+		select count(seq) from
+		inquiry_faq
 	</select>
-	
-		<!-- faq 게시물 목록 + 페이징 + 검색 -->
-	<select id="faqlistPage" parameterType="hashMap" resultType="InquiryFaqDto">
-		select seq, inquiry_type, title, content, write_date from inquiry_faq
-		where inquiry_type	LIKE concat ('%',#{keyword},'%')
+
+	<!-- FAQ 게시물 목록 + 페이징 + 검색 -->
+	<select id="faqlistPage" parameterType="hashMap"
+		resultType="InquiryFaqDto">
+		select seq, inquiry_type, title, content, write_date from
+		inquiry_faq
+		where inquiry_type LIKE concat ('%',#{keyword},'%')
+		order by
+		seq desc limit #{startnum}, #{postnum}
+	</select>
+
+
+	<!-- INQUIRY 게시판 -->
+	<select id="selectinquiryAll" resultType="InquiryDto">
+		select
+		seq, theater_id, inquiry_type, title, content, write_date, view_cnt,
+		file_id, user_id
+		from inquiry
+	</select>
+
+	<!-- INQUIRY 게시물 등록 -->
+	<insert id="inquirycreate" parameterType="InquiryDto">
+		insert into inquiry
+		(theater_id, inquiry_type, title, content, user_id,
+		write_date,view_cnt)
+		values (#{theater_id}, #{inquiry_type}, #{title}, #{content}, #{user_id},
+		NOW(),#{view_cnt})
+	</insert>
+
+	<!-- INQUIRY 조회수 증가 -->
+	<update id="inquiryreadcount" parameterType="InquiryDto">
+		update inquiry set
+		view_cnt=view_cnt+1 where seq=#{seq}
+	</update>
+
+
+	<!-- INQUIRY 게시물 상세 정보 -->
+	<select id="inquirydetail" parameterType="int"
+		resultType="InquiryDto">
+		select seq, theater_id, inquiry_type, title, content,
+		write_date, view_cnt, user_id, file_id
+		from inquiry where seq = #{seq}
+	</select>
+
+	<update id="inquiryupdate" parameterType="InquiryDto">
+		update inquiry
+
+		set theater_id = #{theater_id}, inquiry_type = #{inquiry_type}, title =
+		#{title}, content = #{content},
+		write_date = NOW()
+
+		where seq = #{seq}
+
+	</update>
+
+	<!-- INQUIRY 게시글 삭제 -->
+	<delete id="inquirydelete">
+		delete from inquiry
+		where seq = #{seq}
+	</delete>
+
+	<!-- INQUIRY 게시물 총 개수 -->
+	<select id="count" resultType="int">
+		select count(seq) from inquiry
+	</select>
+
+	<!-- INQUIRY 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap"
+		resultType="InquiryDto">
+		select seq, view_cnt, theater_id, title, write_date,
+		inquiry_type, user_id from inquiry
+		where title LIKE concat
+		('%',#{keyword},'%')
 		order by seq desc limit #{startnum}, #{postnum}
 	</select>
 
-	
-	
-	
+
 	<!-- LOST 게시글 목록 -->
 	<select id="selectLostAll" resultType="InquiryLostDto">
 		select
-			seq, theater_id, item_type, lost_date, title,
-			status, user_id, guest_id, content, file_id,
-			view_cnt, write_date
-		from inquiry_lost 
+		seq, theater_id, item_type, lost_date, title,
+		status, user_id, guest_id, content, file_id,
+		view_cnt, write_date
+		from inquiry_lost
 	</select>
-	
-	<!-- LOST 게시물 등록 --> 
+
+	<!-- LOST 게시물 등록 -->
 	<insert id="lostcreate" parameterType="InquiryLostDto">
-		insert into inquiry_lost (theater_id, item_type, title, content, status, lost_date, user_id, write_date)
-		values (#{theater_id}, #{item_type}, #{title}, #{content}, 0, #{lost_date}, #{user_id}, NOW())
+		insert into
+		inquiry_lost (theater_id, item_type, title, content, status, lost_date, user_id, write_date)
+		values (#{theater_id}, #{item_type}, #{title}, #{content}, #{status}, #{lost_date}, #{user_id}, NOW())
 	</insert>
 
-	<!-- Lost 게시물 상세 정보 -->
+	<!-- LOST 게시물 상세 정보 -->
 	<select id="lostdetail" resultType="InquiryLostDto">
-		select seq, theater_id, item_type, lost_date, title,
-			status, user_id, guest_id, content, file_id,
-			view_cnt, write_date
+		select seq, theater_id,
+		item_type, lost_date, title,
+		status, user_id, guest_id, content, file_id,
+		view_cnt, write_date
 		from inquiry_lost where seq = #{seq}
 	</select>
 	
+	<!-- LOST 게시물 업데이트 -->
 	<update id="lostupdate" parameterType="InquiryLostDto">
 		update inquiry_lost
-		
-		set theater_id = #{theater_id}, title = #{title}, content = #{content}, lost_date = #{lost_date}, status = #{status},
+
+		set theater_id = #{theater_id}, title = #{title}, content = #{content},
+		lost_date = #{lost_date}, status = #{status},
 		write_date = NOW()
-		
+
 		where seq = #{seq}
 	</update>
-	<!-- lost 게시물 총 개수 -->
+	<!-- LOST 게시물 총 개수 -->
 	<select id="lostcount" resultType="int">
-		select count(seq) from inquiry_lost
+		select count(seq) from
+		inquiry_lost
 	</select>
+
 	<!-- LOST 게시글 삭제 -->
 	<delete id="lostdelete">
 		delete from inquiry_lost
 		where seq = #{seq}
 	</delete>
-	
-	<select id="lostPage" parameterType="hashMap" resultType="InquiryLostDto">
-		select 	seq, theater_id, item_type, lost_date, title,
-			status, user_id, guest_id, content, file_id,
-			view_cnt, write_date from inquiry_lost
-		where title	LIKE concat ('%',#{keyword},'%')
+
+	<!-- LOST 게시물 목록 + 페이징 + 검색 -->
+	<select id="lostPage" parameterType="hashMap"
+		resultType="InquiryLostDto">
+		select seq, theater_id, item_type, lost_date, title,
+		status, user_id, guest_id, content, file_id,
+		view_cnt, write_date from inquiry_lost
+		where title LIKE concat
+		('%',#{keyword},'%')
 		order by seq desc limit #{startnum}, #{postnum}
-	
 	</select>
 
 
-
-
-
-
-	<!-- Inquiry 게시판-->
-	<select id="selectinquiryAll" resultType="InquiryDto">
-		select
-			seq, theater_id, inquiry_type, title, content, write_date, view_cnt, file_id, user_id
-		from inquiry
-	</select>
-	
-	<!-- Inquiry 게시물 등록 --> 
-	<insert id="inquirycreate" parameterType="InquiryDto">
-		insert into inquiry (theater_id, inquiry_type, title, content, user_id, write_date,view_cnt)
-						values (#{theater_id}, #{inquiry_type}, #{title}, #{content}, #{user_id}, NOW(),#{view_cnt})
-	</insert>
-	
-	<!-- 조회수 증가 -->
-	<update id="inquiryreadcount" parameterType="InquiryDto">
-		update inquiry set view_cnt=view_cnt+1 where seq=#{seq}
-	</update>
-	
-	
-	<!-- Inquiry 게시물 상세 정보 -->
-	<select id="inquirydetail" parameterType="int" resultType="InquiryDto">
-		select seq, theater_id, inquiry_type, title, content, write_date, view_cnt, user_id, file_id
-		from inquiry where seq = #{seq}
-	</select>
-	
-	<update id="inquiryupdate" parameterType="InquiryDto">
-		update inquiry
-		
-		set theater_id = #{theater_id}, inquiry_type = #{inquiry_type}, title = #{title}, content = #{content},
-		write_date = NOW()
-		
-		where seq = #{seq}
-		
-	</update>
-	
-	<!-- Inquiry 게시글 삭제 -->
-	<delete id="inquirydelete">
-		delete from inquiry
-		where seq = #{seq}
-	</delete>
-	
-	<!-- 게시물 총 개수 -->
-	<select id="count" resultType="int">
-		select count(seq) from inquiry
-	</select>
-	
-		<!-- 게시물 목록 + 페이징 -->
-	<select id="listPage" parameterType="hashMap" resultType="InquiryDto">
-		select seq, view_cnt, theater_id, title, write_date, inquiry_type, user_id from inquiry
-		where title	LIKE concat ('%',#{keyword},'%')
-		order by seq desc limit #{startnum}, #{postnum}
-	
-	</select>
 </mapper>
 	
 

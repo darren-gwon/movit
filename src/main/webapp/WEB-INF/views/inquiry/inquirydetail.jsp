@@ -64,16 +64,16 @@
 		<div class="row">
 			<div class="col" style="text-align: left;">
 
-				<a href="/inquiry/list?num=1" role="button"
+				<a href="/inquiry?num=1" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 			</div>
 			<c:if test="${sessionScope.user_id == data.user_id }">
 				<div class="col" style="text-align: right;">
-					<a href="/inquiry/list/update?seq=${data.seq}" role="button"
+					<a href="/inquiry/edit?seq=${data.seq}" role="button"
 						class="btn btn-outline-dark" style="width: 100px;">수정</a> 
 						
 						
-						<a href="/inquiry/list/delete?seq=${data.seq}" role="button"
+						<a href="/inquiry/del?seq=${data.seq}" role="button"
 						class="btn btn-outline-danger" style="width: 100px;">삭제</a>
 				</div>
 			</c:if>

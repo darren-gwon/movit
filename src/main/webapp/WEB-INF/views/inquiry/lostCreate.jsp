@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class= "content">
-	<form action="insert" method="post">
+	<form action="write" method="post">
 		<div class="container">
 			<div class="row">
 				<div class="col-1"></div>
@@ -91,7 +91,7 @@
 						<div class="form-floating">
 							<select class="form-select" id="floatingSelect"
 								aria-label="Floating label select example" name="status" style="width: 300px;">
-								<option value="01" checked="checked">미답변</option>
+								<option value="01">미답변</option>
 								<option value="02">답변완료</option>
 							</select><label for="floatingSelect">Status Select</label>
 						</div>
@@ -108,7 +108,7 @@
 			<div class="row">
 				<div class="col" style="text-align: left;">
 
-					<a href="<c:url value='/inquiry/lost'/>" role="button"
+					<a href="<c:url value='/lost'/>" role="button"
 						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 				</div>
 				<div class="col" style="text-align: right;">

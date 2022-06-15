@@ -18,13 +18,12 @@ import com.bitcamp.semiproj.domain.InquiryFaqDto;
 import com.bitcamp.semiproj.service.InquiryFaqService;
 
 @Controller
-@RequestMapping("/inquiry")
 public class InquiryFaqController {
 
 	@Autowired
 	private InquiryFaqService faqService;
 
-	@GetMapping("/faq/list")
+	@GetMapping("/faq")
 	public String SupportHome(Model model, @RequestParam(defaultValue = "1") Integer num,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) throws Exception {
 			
@@ -64,16 +63,16 @@ public class InquiryFaqController {
 	}
 
 	// 게시물 작성 페이지로 이동
-	@GetMapping("/faq/insert")
+	@GetMapping("/faq/write")
 	public String create() throws Exception {
 		return "inquiry/faqCreate.tiles";
 	}
 
 	// 게시물 작성 faq post
-	@PostMapping("/faq/insert")
+	@PostMapping("/faq/write")
 	public String postcreate(InquiryFaqDto dto) throws Exception {
 		faqService.create(dto);
-		return "redirect:/inquiry/faq/list?num=1";
+		return "redirect:/faq?num=1";
 	}
 
 	// 게시물 faq 상세페이지로 이동
@@ -85,7 +84,7 @@ public class InquiryFaqController {
 	}
 
 	// 게시물 업데이트(faq 수정) faq 이동
-	@GetMapping("/faq/update")
+	@GetMapping("/faq/edit")
 	public String getupdate(int seq, Model model) throws Exception {
 		InquiryFaqDto data = faqService.faqdetail(seq);
 		model.addAttribute("data", data);
@@ -93,35 +92,30 @@ public class InquiryFaqController {
 	}
 
 	// 게시물 업데이트(faq 수정)
-	@PostMapping("/faq/update")
+	@PostMapping("/faq/edit")
 	public String postupdate(InquiryFaqDto dto, @RequestParam("seq") int seq) throws Exception {
 		faqService.update(dto);
 
-		return "redirect:/inquiry/faq/detail?seq=" + seq;
+		return "redirect:/faq/detail?seq=" + seq;
 	}
 
 	// 게시물 삭제 (faq 글 삭제)
-	@GetMapping("/faq/delete")
+	@GetMapping("/faq/del")
 	public String getdelete(String seq) throws Exception {
 		faqService.delete(seq);
-		System.out.println("sd"+seq);
-		return "redirect:/inquiry/faq/list?num=1";
+		return "redirect:/faq?num=1";
 	}
 
 	// 게시물 선택 삭제
-	@PostMapping("/faq/delete")
+	@PostMapping("/faq/del")
 	public String ajaxTest(HttpServletRequest request) {
 
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		int size = ajaxMsg.length;
-		// System.out.println("Dfdf");
 		for (int i = 0; i < size; i++) {
 			faqService.delete(ajaxMsg[i]);
 		}
 
-		return "redirect:/inquiry/faq/list?num=1";
+		return "redirect:/faq?num=1";
 	}
-
-
-
 }

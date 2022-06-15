@@ -7,15 +7,72 @@
 <html>
 <head>
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
-
 <meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt = chkObj.length;
 
-<style type="text/css">
+		$("input[name='allCheck']").click(function() {
+			var chk_listArr = $("input[name='RowCheck']");
+			for (var i = 0; i < chk_listArr.length; i++) {
+				chk_listArr[i].checked = this.checked;
+			}
+		});
+		$("input[name='RowCheck']").click(function() {
+			if ($("input[name='RowCheck']:checked").length == rowCnt) {
+				$("input[name='allCheck']")[0].checked = true;
+			} else {
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+	function deleteValue() {
+		var url = "/inquiry/del"; //Controller로 보내고자하는 URL
+		var valueArr = new Array();
+		var list = $("input[name='RowCheck']");
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].checked) {//선택되어 있으면 배열에 값을 저장함
+				valueArr.push(list[i].value);
+			}
+		}
+		if (valueArr.length == 0) {
+			alert("선택된 글이 없습니다.");
+		} else {
+			var chk = confirm("정말 삭제하시겠습니까?");
+			if (chk) {
+				$.ajax({
+					url : url, // 전송 URL
+					type : 'POST', //POST 방식
+					traditional : true,
+					data : {
+						valueArr : valueArr
+					//보내고자 하는 data 변수 설정
+					},
+					success : function(jdata) {
+						if (jdata = 1) {
+							alert("삭제 성공");
+							location.replace("/inquiry?num=1"); //list로 맵핑 페이지 새로고침
+						} else {
+							alert("삭제 실패");
+						}
+					}
+				});
+			}
+		}
+	}
+	 function search() {
+		  
+		  keyword = document.getElementById("keyword").value;
+		  
+		  console.log(keyword)
+		  location.href = "/inquiry?num&keyword=" + keyword;
+		 };
+</script>
+
+</head>
+<style>
 table.table-hover {
 	border-collapse: separate;
 	border-spacing: 1px;
@@ -43,98 +100,8 @@ table.table-hover td {
 .container a {
 	text-decoration: none;
 }
-
-.pageunder {
-	text-decoration: none;
-}
-
-.btn {
-	display: inline-block;
-	font-weight: 400;
-	line-height: 1.5;
-	color: #212529;
-	text-align: center;
-	text-decoration: none;
-	vertical-align: middle;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-	background-color: transparent;
-	padding: 0.375rem 0.75rem;
-	font-size: 1rem;
-	border-radius: 0.25rem;
-	transition: color .15s ease-in-out, background-color .15s ease-in-out,
-		border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
 </style>
-
-<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		var chkObj = document.getElementsByName("RowCheck");
-		var rowCnt = chkObj.length;
-
-		$("input[name='allCheck']").click(function() {
-			var chk_listArr = $("input[name='RowCheck']");
-			for (var i = 0; i < chk_listArr.length; i++) {
-				chk_listArr[i].checked = this.checked;
-			}
-		});
-		$("input[name='RowCheck']").click(function() {
-			if ($("input[name='RowCheck']:checked").length == rowCnt) {
-				$("input[name='allCheck']")[0].checked = true;
-			} else {
-				$("input[name='allCheck']")[0].checked = false;
-			}
-		});
-	});
-	function deleteValue() {
-		var url = "list/delete"; //Controller로 보내고자하는 URL
-		var valueArr = new Array();
-		var list = $("input[name='RowCheck']");
-		for (var i = 0; i < list.length; i++) {
-			if (list[i].checked) {//선택되어 있으면 배열에 값을 저장함
-				valueArr.push(list[i].value);
-			}
-		}
-		if (valueArr.length == 0) {
-			alert("선택된 글이 없습니다.");
-		} else {
-			var chk = confirm("정말 삭제하시겠습니까?");
-			if (chk) {
-				$.ajax({
-					url : url, // 전송 URL
-					type : 'POST', //POST 방식
-					traditional : true,
-					data : {
-						valueArr : valueArr
-					//보내고자 하는 data 변수 설정
-					},
-					success : function(jdata) {
-						if (jdata = 1) {
-							alert("삭제 성공");
-							location.replace("/inquiry/list?num=1"); //list로 맵핑 페이지 새로고침
-						} else {
-							alert("삭제 실패");
-						}
-					}
-				});
-			}
-		}
-	}
-	 function search() {
-		  
-		  keyword = document.getElementById("keyword").value;
-		  
-		  console.log(keyword)
-		  location.href = "../inquiry/list?num&keyword=" + keyword;
-		 };
-</script>
-
-</head>
 <body>
-
 	<div class="content">
 		<form name="userForm">
 			<div class="container">
@@ -200,7 +167,8 @@ table.table-hover td {
 
 										<td>${inquiry.theater_id}</td>
 										<td style="width: 900px;"><a
-											href="${root}/inquiry/list/detail?seq=${inquiry.seq}">${inquiry.title}&nbsp;</a></td>
+											href="${root}/inquiry/detail?seq=${inquiry.seq}">${inquiry.title}&nbsp;</a></td>
+										
 										<td>${inquiry.user_id}</td>
 										<td class="text_ct"><fmt:formatDate
 												value="${inquiry.write_date}" pattern="yyyy/MM/dd" /></td>
@@ -221,23 +189,23 @@ table.table-hover td {
 					<c:if test="${prev}">
 
 						<a class="btn btn-outline-dark"
-							href="/inquiry/list?num=${startpagenum - 1}">〈</a>
+							href="/inquiry?num=${startpagenum - 1}">〈</a>
 
 					</c:if>
 					<c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
 						<span> <c:if test="${num!=select}">
-								<a class="btn btn-outline-dark" href="/inquiry/list?num=${num}">${num}</a>
+								<a class="btn btn-outline-dark" href="/inquiry?num=${num}">${num}</a>
 							</c:if>
 						</span>
 						<span> <c:if test="${num==select}">
 								<b><a class="btn btn-outline-dark"
-									href="/inquiry/list?num=${num}">${num}</a></b>
+									href="/inquiry?num=${num}">${num}</a></b>
 							</c:if>
 						</span>
 					</c:forEach>
 					<c:if test="${next}">
 						<a class="btn btn-outline-dark"
-							href="/inquiry/list?num=${endpagenum + 1}">〉</a>
+							href="/inquiry?num=${endpagenum + 1}">〉</a>
 					</c:if>
 
 				</div>
@@ -245,20 +213,20 @@ table.table-hover td {
 
 			<div class="container">
 				<div class="row">
-					<div class="col" style="text-align: left;">
-						<a href="<c:url value='/inquiry/home'/>" role="button"
+					<div class="col-10" style="text-align: left;">
+						<a href="<c:url value='/support'/>" role="button"
 							class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 					</div>
 
-					<div class="col">
+					<div class="col-1">
 						<c:if test="${sessionScope.user_id == 'admin'}">
 							<input type="button" class="btn btn-outline-danger"
 								style="width: 100px;" value="선택삭제" onclick="deleteValue();">
 						</c:if>
 					</div>
 					
-					<div class="col" style="text-align: right;">
-						<a href="<c:url value='/inquiry/list/insert'/>" role="button"
+					<div class="col-1" style="text-align: right;">
+						<a href="<c:url value='/inquiry/write'/>" role="button"
 							class="btn btn-outline-dark" style="width: 100px;">글쓰기</a>
 					</div>
 				</div>
@@ -267,10 +235,7 @@ table.table-hover td {
 			</div>
 		</form>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
+	
 
 </body>
 </html>

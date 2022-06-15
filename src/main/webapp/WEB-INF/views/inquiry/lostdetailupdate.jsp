@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,10 +26,8 @@
 
 	</div>
 
-	<form name="lostupdate" method="post" action="update?seq=${data.seq}">
+	<form name="lostupdate" method="post" action="edit?seq=${data.seq}">
 		<input type="hidden" value="${data.seq}">
-
-
 
 		<div class="container">
 			<div class="row">
@@ -42,13 +39,13 @@
 							aria-label="Floating label select example" name="theater_id">
 
 							<option value="${data.theater_id}">${data.theater_id}</option>
-							<option value="01">1</option>
-							<option value="02">2</option>
-							<option value="03">3</option>
-							<option value="04">4</option>
-							<option value="05">5</option>
-							<option value="06">6</option>
-							<option value="07">7</option>
+							<option value="강남점">강남점</option>
+							<option value="홍대점">홍대점</option>
+							<option value="성남점">성남점</option>
+							<option value="동탄점">동탄점</option>
+							<option value="향남점">향남점</option>
+							<option value="인천터미널점">인천터미널점</option>
+							<option value="원주무실점">원주무실점</option>
 						</select><label for="floatingSelect">Select Place</label>
 					</div>
 					<br>
@@ -87,11 +84,6 @@
 						</div>
 					</div>
 					
-					
-					
-					
-					
-
 					<div style="display: none;">작성일자</div>
 					<br>
 
@@ -112,7 +104,7 @@
 				<div class="col-1"></div>
 				<div class="col" style="text-align: left;">
 
-					<a href="<c:url value='/inquiry/lost'/>" role="button"
+					<a onclick="history.back()" role="button"
 						class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 				</div>
 

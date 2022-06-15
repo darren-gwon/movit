@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +16,7 @@
 </head>
 <body>
 <div class= "content">
-	<form action="insert" method="post">
+	<form action="write" method="post">
 		<div class="container">
 			<div class="row">
 				<div class="col-1"></div>

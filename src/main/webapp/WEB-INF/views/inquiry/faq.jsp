@@ -85,7 +85,7 @@ table.table-hover td {
 		});
 	});
 	function deleteValue() {
-		var url = "delete"; //Controller로 보내고자하는 URL
+		var url = "/faq/del"; //Controller로 보내고자하는 URL
 		var valueArr = new Array();
 		var list = $("input[name='RowCheck']");
 		for (var i = 0; i < list.length; i++) {
@@ -109,7 +109,7 @@ table.table-hover td {
 					success : function(jdata) {
 						if (jdata = 1) {
 							alert("삭제 성공");
-							location.replace("/inquiry/faq/list?seq=1") //faq로 맵핑 페이지 새로고침
+							location.replace("/faq?num=1") //faq로 맵핑 페이지 새로고침
 						} else {
 							alert("삭제 실패");
 						}
@@ -124,7 +124,7 @@ table.table-hover td {
 		  keyword = document.getElementById("keyword").value;
 		  
 		  console.log(keyword)
-		  location.href = "/inquiry/faq/list?num&keyword=" + keyword;
+		  location.href = "/faq?num&keyword=" + keyword;
 		 };
 </script>
 
@@ -191,7 +191,7 @@ table.table-hover td {
 										<td><c:out value="${displaypost+i.count}" /></td>
 										<td>${faq.inquiry_type}&nbsp;</td>
 										<td style="width: 900px;"><a
-											href="detail?seq=${faq.seq}">${faq.title}&nbsp;</a></td>
+											href="faq/detail?seq=${faq.seq}">${faq.title}&nbsp;</a></td>
 										
 										<td><fmt:formatDate value="${faq.write_date}"
 												pattern="yyyy/MM/dd" /></td>
@@ -214,33 +214,33 @@ table.table-hover td {
 					<div class="col">
 						<c:if test="${prev}">
 
-							<a class="btn btn-outline-dark" href="/inquiry/fqq/list?num=${startpagenum - 1}">〈</a>
+							<a class="btn btn-outline-dark" href="/fqq?num=${startpagenum - 1}">〈</a>
 
 						</c:if>
 						<c:forEach begin="${startpagenum}" end="${endpagenum}" var="num">
 							<span> <c:if test="${num!=select}">
-									<a class="btn btn-outline-dark" href="/inquiry/faq/list?num=${num}">${num}</a>
+									<a class="btn btn-outline-dark" href="/faq?num=${num}">${num}</a>
 								</c:if>
 							</span>
 							<span> <c:if test="${num==select}">
-									<b><a class="btn btn-outline-dark" href="/inquiry/faq/list?num=${num}">${num}</a></b>
+									<b><a class="btn btn-outline-dark" href="/faq?num=${num}">${num}</a></b>
 								</c:if>
 							</span>
 						</c:forEach>
 						<c:if test="${next}">
-							<a class="btn btn-outline-dark" href="/inquiry/faq/list?num=${endpagenum + 1}">〉</a>
+							<a class="btn btn-outline-dark" href="/faq?num=${endpagenum + 1}">〉</a>
 						</c:if>
 					</div>
 					</center>
 					
 					<div class="col" style="text-align: left;">
-						<a href="<c:url value='/inquiry/home'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
+						<a href="<c:url value='/support'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 					</div>
 					
 					
 					<div class="col" style="text-align: right;">
 					<c:if test="${sessionScope.user_id == 'admin' }">
-						<a href="<c:url value='/inquiry/faq/insert'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">글쓰기</a>
+						<a href="<c:url value='faq/write'/>" role="button" class="btn btn-outline-dark" style="width: 100px;">글쓰기</a>
 
 						<input type="button" class="btn btn-outline-danger" style="width: 100px;" value="선택삭제" onclick="deleteValue();">
 					</c:if></div>

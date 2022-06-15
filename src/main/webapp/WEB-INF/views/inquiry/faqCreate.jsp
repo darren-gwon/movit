@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="content">
-	<form action="insert" method="post">
+	<form action="write" method="post">
 		<div class="container">
 			<div class="row">
 				<div class="col-1"></div>
@@ -75,9 +75,9 @@
 					<a onclick="history.back()" role="button"
 						class="btn btn-outline-dark" style="width: 100px; text-align: left;">뒤로가기</a>
 				</div>
-				<div class="col" style="text-align: right;"><a href="http://localhost:9005/inquiry/faqlistpage?num=1">
+				<div class="col" style="text-align: right;">
 					<button type="submit" class="btn btn-outline-dark"
-						style="width: 100px;">등록</button></a>
+						style="width: 100px;">등록</button>
 				</div>
 				
 			</div>

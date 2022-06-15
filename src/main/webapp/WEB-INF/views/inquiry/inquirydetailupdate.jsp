@@ -27,8 +27,7 @@
 	</div>
 
 
-	<form name="inquiryupdate" method="post"
-		action="update?seq=${data.seq}">
+	<form name="inquiryupdate" method="post" action="edit?seq=${data.seq}">
 		<input type="hidden" value="${data.seq}">
 
 		<div class="container">

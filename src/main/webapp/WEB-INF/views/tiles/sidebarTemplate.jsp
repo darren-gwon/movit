@@ -9,7 +9,7 @@
   <a href="../movie" class="side_menu">현재상영작</a>
   <a href="../booking" class="side_menu">예매하기</a>
 
-  <a href="/inquiry/home" class="side_menu">고객센터</a>
+  <a href="/support" class="side_menu">고객센터</a>
 </div>
 <div id="sidebarBlock"></div>
 

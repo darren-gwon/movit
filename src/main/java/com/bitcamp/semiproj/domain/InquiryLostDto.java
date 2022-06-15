@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class InquiryLostDto {
 	private int seq;
-	private int theater_id;
+	private String theater_id;
 	private String item_type;
 	private String lost_date;
 	private int status;
@@ -24,10 +24,12 @@ public class InquiryLostDto {
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
-	public int getTheater_id() {
+	
+	
+	public String getTheater_id() {
 		return theater_id;
 	}
-	public void setTheater_id(int theater_id) {
+	public void setTheater_id(String theater_id) {
 		this.theater_id = theater_id;
 	}
 	public String getItem_type() {

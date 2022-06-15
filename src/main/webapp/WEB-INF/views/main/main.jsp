@@ -94,7 +94,7 @@
 			</a>
 		</div>
 		<div class="nav support last">
-			<a style="text-decoration: none; color: black;" href="inquiry/home">
+			<a style="text-decoration: none; color: black;" href="support">
 				<img src="/resources/img/main/nav/support.png" id="support_img"
 				class="nav_img"> <span class="nav_name">고객센터</span>
 			</a>

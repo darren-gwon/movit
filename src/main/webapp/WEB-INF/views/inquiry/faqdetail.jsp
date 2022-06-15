@@ -12,22 +12,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 </head>
-<style type="text/css">
-		body
-		{
-			/* border: 1px solid black; */
-			width: 800px;
-			height: 1100px;
-		}
-		th
-		{
-			border: 1px solid black;
-		}
-		td
-		{
-			border: 1px solid black;
-		}
-	</style>
+
 <body>
 <div class= "content">
 	<div class="container">
@@ -77,16 +62,16 @@
 		<div class="row">
 			<div class="col" style="text-align: left;">
 
-				<a href="/inquiry/faq/list?num=1" role="button"
+				<a href="/faq?num=1" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">뒤로가기</a>
 			</div>
 			<c:if test="${sessionScope.user_id == 'admin' }">
 			<div class="col" style="text-align: right;">
-				<a href="/inquiry/faq/update?seq=${data.seq}" role="button"
+				<a href="/faq/edit?seq=${data.seq}" role="button"
 					class="btn btn-outline-dark" style="width: 100px;">수정</a>
 					
 					<a
-					href="/inquiry/faq/delete?seq=${data.seq}" role="button"
+					href="/faq/del?seq=${data.seq}" role="button"
 					class="btn btn-outline-danger" style="width: 100px;">삭제</a>
 			</div>
 			</c:if>
