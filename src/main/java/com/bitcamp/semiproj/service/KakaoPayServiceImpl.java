@@ -52,9 +52,9 @@ public class KakaoPayServiceImpl implements KakaoPayService{
         params.add("quantity", info.getQuantity().toString());
         params.add("total_amount", info.getTotalPrice().toString());
         params.add("tax_free_amount", "0");
-//        params.add("approval_url", "http://localhost:9005/pay/kakaoPaySuccess");
-//        params.add("cancel_url", "http://localhost:9005/pay/kakaoPayCancel");
-//        params.add("fail_url", "http://localhost:9005/pay/kakaoPayFail");
+        params.add("approval_url", "http://localhost:9005/pay/kakaoPaySuccess");
+        params.add("cancel_url", "http://localhost:9005/pay/kakaoPayCancel");
+        params.add("fail_url", "http://localhost:9005/pay/kakaoPayFail");
         
         params.add("approval_url", "http://15.164.162.4:8080/pay/kakaoPaySuccess");
         params.add("cancel_url", "http://15.164.162.4:8080/pay/kakaoPayCancel");

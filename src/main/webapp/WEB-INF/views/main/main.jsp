@@ -69,14 +69,14 @@
 	<br> <br>
 	<div class="nav_wrap">
 		<div class="nav mypage">
-			<a style="text-decoration: none; color: black;" href="mypage/home">
+			<a style="text-decoration: none; color: black;" href="mypage">
 				<img src="/resources/img/main/nav/mypage.png" id="mypage_img"
 				class="nav_img"> <span class="nav_name">마이페이지</span>
 			</a>
 		</div>
 		<div class="nav event">
 			<a style="text-decoration: none; color: black;"
-				href="event/eventlist"> <img
+				href="event"> <img
 				src="/resources/img/main/nav/event.png" id="event_img"
 				class="nav_img"> <span class="nav_name">이벤트</span>
 			</a>
@@ -161,7 +161,7 @@
 				-->
 								<c:forEach items="${list}" var="list" varStatus="i<4">
 									<tr>
-										<td class="titles"><a style="text-decoration: none; color: black;"  href="../board/detail?num=${list.seq}">${list.title}</></td>
+										<td class="titles"><a style="text-decoration: none; color: black;"  href="../notice/detail?num=${list.seq}">${list.title}</></td>
 										<td class="dates">${list.write_date}</td>
 									</tr>
 								</c:forEach>
